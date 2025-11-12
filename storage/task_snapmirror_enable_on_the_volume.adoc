@@ -1,0 +1,33 @@
+---
+permalink: storage/task_snapmirror_enable_on_the_volume.html 
+sidebar: sidebar 
+keywords: element, snapmirror, enable, volume, ui, manually 
+summary: Sie müssen SnapMirror für das Volume in der Element-Benutzeroberfläche aktivieren.  Dies ermöglicht die Replikation von Daten auf bestimmte ONTAP Volumes.  Dies ist eine Berechtigung des Administrators des Clusters, auf dem die NetApp Element -Software ausgeführt wird, damit SnapMirror ein Volume steuern kann. 
+---
+= Aktivieren Sie SnapMirror auf dem Volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen SnapMirror für das Volume in der Element-Benutzeroberfläche aktivieren.  Dies ermöglicht die Replikation von Daten auf bestimmte ONTAP Volumes.  Dies ist eine Berechtigung des Administrators des Clusters, auf dem die NetApp Element -Software ausgeführt wird, damit SnapMirror ein Volume steuern kann.
+
+.Was du brauchst
+* Sie haben SnapMirror in der Element-Benutzeroberfläche für den Cluster aktiviert.
+* Ein SnapMirror Endpunkt ist verfügbar.
+* Das Volumen muss eine Blockgröße von 512e haben.
+* Das Volume nimmt nicht an der Remote-Replikation teil.
+* Der Datenträgerzugriffstyp ist nicht Replikationsziel.
+
+
+
+NOTE: Diese Eigenschaft kann auch beim Erstellen oder Klonen eines Volumes festgelegt werden.
+
+.Schritte
+. Klicken Sie auf *Verwaltung* > *Volumes*.
+. Klicken Sie auf das Symbol *Aktionen* für das Volume, für das Sie SnapMirror aktivieren möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Bearbeiten*.
+. Im Dialogfeld *Volume bearbeiten* aktivieren Sie das Kontrollkästchen * SnapMirror aktivieren*.
+. Klicken Sie auf *Änderungen speichern*.
+

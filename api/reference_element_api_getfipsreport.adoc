@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_getfipsreport.html 
+sidebar: sidebar 
+keywords: fips,report,get,getting,getfipsreport,feature,support 
+summary: Mit der Methode GetFipsReport können Sie den Status der FIPS 140-2-Verschlüsselungsfunktionsunterstützung aller Knoten im Speichercluster überprüfen. 
+---
+= GetFipsReport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetFipsReport` Methode zur Überprüfung des Unterstützungsstatus der FIPS 140-2-Verschlüsselungsfunktion auf allen Knoten im Speichercluster.
+
+
+
+== Parameter
+
+Diese Methode hat keinen Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Ergebnis
+ a| 
+Ein JSON-Objekt, das den Status der FIPS 140-2-Funktionsunterstützung für jeden Knoten sowie Fehlerinformationen für jeden Knoten enthält, der nicht auf die Abfrage geantwortet hat.
+ a| 
+xref:reference_element_api_fipsreport.adoc[fipsReport]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetFipsReport",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+    "nodes": [
+        {
+           "nodeID": 1,
+		   "fipsDrives": "None",
+           "httpsEnabled": true
+        },
+        {
+           "nodeID": 3,
+		   "fipsDrives": "None",
+           "httpsEnabled": true
+        }
+    ],
+    "errorNodes": [
+        {
+           "nodeID": 2,
+           "error": {
+               "message": "The RPC timed out.",
+               "name": "xRpcTimeout"
+               }
+        }
+    ]
+    }
+}
+----
+
+
+== Neu seit Version
+
+10,3

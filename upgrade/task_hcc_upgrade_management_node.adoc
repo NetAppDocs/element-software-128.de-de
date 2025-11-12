@@ -1,0 +1,195 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_management_node.html 
+summary: Im Rahmen eines Upgrades eines NetApp SolidFire -Speichersystems wird der Management-Knoten aktualisiert. 
+keywords: netapp, cluster, management node, mNode, upgrade, 10, 11.0, 11.1, 11.3, 11.5, 11.7, 12.0, 12.2, 12.3, 12.3.1, 12.3.2, 12.3.x, 12.5, 12.7, 12.8 
+---
+= Aktualisieren eines Verwaltungsknotens
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Ihren Management-Knoten von Version 12.3.x oder höher auf Management-Knoten 12.5 oder höher aktualisieren.
+
+Für ein Upgrade der Element-Software auf dem Speichercluster ist kein Upgrade des Betriebssystems des Management-Knotens mehr erforderlich.  Sie können die Management-Services einfach auf die neueste Version aktualisieren, um Element-Upgrades mit NetApp Hybrid Cloud Control durchzuführen.  Wenn Sie das Betriebssystem des Management-Knotens aus anderen Gründen, wie z. B. zur Behebung von Sicherheitslücken, aktualisieren möchten, befolgen Sie die für Ihr Szenario vorgesehene Vorgehensweise zur Aktualisierung des Management-Knotens.
+
+
+NOTE: Informationen zum Aktualisieren von Management-Knoten der Version 12.2 oder älter finden Sie unter https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_management_node.html["Dokumentation zum Upgrade des Management-Knotens Element 12.3.x"^] Die
+
+
+
+== Schritt 1: Aktualisieren Sie die VM-Hardwareversion auf einem Management-Knoten
+
+Wenn Sie ein In-Place-Upgrade eines bestehenden Management-Knotens auf Element 12.8 durchführen, müssen Sie vor dem Upgrade sicherstellen, dass die VM-Hardwareversion auf dem Management-Knoten mit ESXi 6.7 (VM-Hardwareversion 14) oder höher kompatibel ist, abhängig von Ihrer Umgebung.
+
+.Schritte
+. Melden Sie sich als vCenter-Administrator beim vSphere Web Client an.
+. Wählen Sie im vSphere Client-Menü *VMs und Vorlagen* aus.
+. Klicken Sie mit der rechten Maustaste auf die virtuelle Maschine (VM) und wählen Sie *Ein/Aus* > *Gastbetriebssystem herunterfahren*.
++
+Warten Sie, bis die VM ausgeschaltet ist.
+
+. Klicken Sie mit der rechten Maustaste auf die VM und wählen Sie *Kompatibilität* > *VM-Kompatibilität aktualisieren*.
+. Wählen Sie *Ja*.
+. Wählen Sie ESXi 6.7 oder eine spätere Version, abhängig von der Version Ihrer vSphere-Umgebung.
+. Wählen Sie *OK*.
+. Nach Abschluss des Upgrades klicken Sie mit der rechten Maustaste auf die VM und wählen *Einschalten* > *Einschalten*.
+. Wählen Sie *vSphere-Client aktualisieren* und überprüfen Sie, ob die VM-Kompatibilität der gewünschten Version entspricht.
+
+
+
+
+== Schritt 2: Aktualisieren Sie einen Management-Knoten auf Element 12.5 oder höher.
+
+Wählen Sie eine der folgenden Upgrade-Optionen:
+
+* <<Aktualisieren Sie einen Management-Knoten von Version 12.3.x oder höher auf Version 12.5 oder höher.>>
+* <<Konfigurieren Sie die Authentifizierung mithilfe der REST-API des Management-Knotens neu.>>
++
+Wählen Sie diese Option, wenn Sie (1) Ihre Management-Services-Version und (2) Ihre Element-Speicherversion *nacheinander* aktualisiert haben und Ihren bestehenden Management-Knoten *beibehalten* möchten:
+
+
+
+
+NOTE: Wenn Sie Ihre Verwaltungsdienste nicht nacheinander aktualisieren, gefolgt vom Element-Speicher, können Sie die erneute Authentifizierung mit diesem Verfahren nicht neu konfigurieren.  Befolgen Sie stattdessen das entsprechende Upgrade-Verfahren.
+
+
+
+=== Aktualisieren Sie einen Management-Knoten von Version 12.3.x oder höher auf Version 12.5 oder höher.
+
+Sie können ein direktes Upgrade des Management-Knotens von Version 12.3.x oder höher auf Version 12.5 oder höher durchführen, ohne dass eine neue Management-Knoten-VM bereitgestellt werden muss.
+
+
+NOTE: Der Management-Knoten Element 12.5 oder höher ist ein optionales Upgrade.  Für bestehende Installationen ist dies nicht erforderlich.
+
+.Bevor Sie beginnen
+* Der Arbeitsspeicher (RAM) der Management-Node-VM beträgt 24 GB.
+* Der Management-Knoten, den Sie aktualisieren möchten, hat die Version 12.0 und verwendet IPv4-Netzwerkfunktionen.  Die Management-Node-Version 12.5 oder höher unterstützt IPv6 nicht.
++
+
+TIP: Um die Version Ihres Management-Knotens zu überprüfen, melden Sie sich bei Ihrem Management-Knoten an und sehen Sie sich die Element-Versionsnummer im Anmeldebanner an.
+
+* Sie haben Ihr Management-Services-Bundle mit NetApp Hybrid Cloud Control auf die neueste Version aktualisiert.  Sie können über die folgende IP-Adresse auf NetApp Hybrid Cloud Control zugreifen: `\https://<ManagementNodeIP>`
+* Wenn Sie Ihren Management-Knoten auf Version 12.5 oder höher aktualisieren, benötigen Sie die Management-Dienste 2.21.61 oder höher, um fortfahren zu können.
+* Sie haben (falls erforderlich) einen zusätzlichen Netzwerkadapter gemäß den Anweisungen für konfiguriert.link:../mnode/task_mnode_install_add_storage_NIC.html["Konfiguration einer zusätzlichen Speicher-Netzwerkkarte"] Die
++
+
+NOTE: Für persistente Volumes ist möglicherweise ein zusätzlicher Netzwerkadapter erforderlich, wenn eth0 nicht zum SVIP geroutet werden kann.  Konfigurieren Sie einen neuen Netzwerkadapter im iSCSI-Speichernetzwerk, um die Konfiguration persistenter Datenträger zu ermöglichen.
+
+* Auf den Speicherknoten läuft Element 12.3.x oder höher.
+
+
+.Schritte
+. Melden Sie sich über SSH oder Konsolenzugriff an der Management-Node-VM an.
+. Laden Sie die https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Management-Knoten-ISO"^] für Element-Software von der NetApp -Supportseite zur Management-Node-VM.
++
+
+NOTE: Der Name der ISO ist ähnlich wie `solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. Überprüfen Sie die Integrität des Downloads, indem Sie md5sum auf die heruntergeladene Datei anwenden und die Ausgabe mit den Angaben auf der NetApp Supportseite für die Element-Software vergleichen, wie im folgenden Beispiel:
++
+`sudo md5sum -b <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso`
+
+. Mounten Sie das ISO-Image des Management-Knotens und kopieren Sie den Inhalt mithilfe der folgenden Befehle in das Dateisystem:
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. Wechseln Sie in das Home-Verzeichnis und hängen Sie die ISO-Datei aus. `/mnt` :
++
+[listing]
+----
+sudo umount /mnt
+----
+. Löschen Sie die ISO-Datei, um Speicherplatz auf dem Management-Knoten zu sparen:
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. Führen Sie auf dem Management-Knoten, den Sie aktualisieren, den folgenden Befehl aus, um die Betriebssystemversion Ihres Management-Knotens zu aktualisieren.  Das Skript behält nach dem Upgrade alle notwendigen Konfigurationsdateien bei, wie z. B. die Active IQ Collector- und Proxy-Einstellungen.
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+Der Management-Knoten wird nach Abschluss des Upgrade-Prozesses mit einem neuen Betriebssystem neu gestartet.
+
++
+
+NOTE: Nach Ausführung des in diesem Schritt beschriebenen sudo-Befehls wird die SSH-Sitzung beendet.  Für die fortlaufende Überwachung ist ein Konsolenzugriff erforderlich.  Falls Ihnen während des Upgrades kein Konsolenzugriff zur Verfügung steht, versuchen Sie die SSH-Anmeldung erneut und überprüfen Sie die Verbindung nach 15 bis 30 Minuten.  Sobald Sie sich angemeldet haben, können Sie die neue Betriebssystemversion im SSH-Banner überprüfen, das anzeigt, dass das Upgrade erfolgreich war.
+
+. Führen Sie auf dem Management-Knoten den folgenden Befehl aus: `redeploy-mnode` Skript zum Beibehalten der vorherigen Konfigurationseinstellungen der Verwaltungsdienste:
++
+
+NOTE: Das Skript behält die vorherige Konfiguration der Verwaltungsdienste bei, einschließlich der Konfiguration des Active IQ Collector-Dienstes, der Controller (vCenters) oder des Proxys, abhängig von Ihren Einstellungen.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: Wenn Sie die SSH-Funktionalität auf dem Management-Knoten zuvor deaktiviert hatten, müssen Sielink:../mnode/task_mnode_ssh_management.html["SSH erneut deaktivieren"] auf dem wiederhergestellten Managementknoten.  SSH-Funktionalität, die Folgendes bietetlink:../mnode/task_mnode_enable_remote_support_connections.html["NetApp Support Remote Support Tunnel (RST) Sitzungszugriff"] ist auf dem Management-Knoten standardmäßig aktiviert.
+
+
+
+=== Konfigurieren Sie die Authentifizierung mithilfe der REST-API des Management-Knotens neu.
+
+Sie können Ihren bestehenden Management-Knoten behalten, wenn Sie (1) die Management-Dienste und (2) den Element-Speicher nacheinander aktualisiert haben.  Falls Sie eine andere Upgrade-Reihenfolge befolgt haben, beachten Sie die Vorgehensweise für In-Place-Management-Node-Upgrades.
+
+.Bevor Sie beginnen
+* Sie haben Ihre Management-Services auf Version 2.20.69 oder höher aktualisiert.
+* Ihr Speichercluster verwendet Element 12.3 oder höher.
+* Sie haben Ihre Management-Services nacheinander aktualisiert und anschließend Ihren Element-Speicher aufgerüstet.  Sie können die Authentifizierung mit diesem Verfahren nicht neu konfigurieren, es sei denn, Sie haben die Aktualisierungen in der beschriebenen Reihenfolge abgeschlossen.
+
+
+.Schritte
+. Öffnen Sie die REST-API-Benutzeroberfläche des Management-Knotens auf dem Management-Knoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` falls der Wert noch nicht belegt ist.
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+
+
+. Wählen Sie in der REST-API-Benutzeroberfläche *POST /services/reconfigure-auth* aus.
+. Wählen Sie *Ausprobieren*.
+. Wählen Sie für den Parameter *load_images* Folgendes aus `true` Die
+. Wählen Sie *Ausführen*.
++
+Der Antworttext zeigt an, dass die Rekonfiguration erfolgreich war.
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

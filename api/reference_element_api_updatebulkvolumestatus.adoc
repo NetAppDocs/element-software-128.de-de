@@ -1,0 +1,184 @@
+---
+permalink: api/reference_element_api_updatebulkvolumestatus.html 
+sidebar: sidebar 
+keywords: updatebulkvolumestatus,update,updating,bulk,volume,status,job 
+summary: Mit der Methode UpdateBulkVolumeStatus können Sie den Status eines Bulk-Volume-Jobs aktualisieren, den Sie mit den Methoden StartBulkVolumeRead oder StartBulkVolumeWrite gestartet haben. 
+---
+= UpdateBulkVolumeStatus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `UpdateBulkVolumeStatus` Methode zum Aktualisieren des Status eines Massenvolumenauftrags, den Sie mit der `StartBulkVolumeRead` oder `StartBulkVolumeWrite` Methoden.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Schlüssel
+ a| 
+Der Schlüssel, der während der Initialisierung einesxref:reference_element_api_startbulkvolumeread.adoc[StartBulkVolumeRead] oderxref:reference_element_api_startbulkvolumewrite.adoc[StartBulkVolumeWrite] Sitzung.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Status
+ a| 
+Das System legt den Status des jeweiligen Massenvolumenauftrags fest. Mögliche Werte:
+
+* laufend: Jobs, die noch aktiv sind.
+* abgeschlossen: Erledigte Aufgaben.
+* gescheitert: Jobs, die nicht erfolgreich waren.
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Prozent abgeschlossen
+ a| 
+Der abgeschlossene Fortschritt des Massenauftrags in Prozent.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Nachricht
+ a| 
+Gibt den Status des Massenvolumenauftrags zurück, sobald der Auftrag abgeschlossen ist.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Attribute
+ a| 
+JSON-Attribute; aktualisiert die Inhalte des Massenvolumenauftrags.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Status
+ a| 
+Status der angeforderten Sitzung.  Zurückgegebener Status:
+
+* Vorbereitung
+* aktiv
+* Erledigt
+* fehlgeschlagen
+
+ a| 
+Schnur
+
+
+
+ a| 
+Attribute
+ a| 
+Gibt die im Methodenaufruf angegebenen Attribute zurück.  Es werden Werte zurückgegeben, unabhängig davon, ob sie sich geändert haben oder nicht.
+ a| 
+Schnur
+
+
+
+ a| 
+URL
+ a| 
+Die URL für den Zugriff auf den Webserver des Knotens; wird nur bereitgestellt, wenn die Sitzung noch aktiv ist.
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "UpdateBulkVolumeStatus",
+   "params": {
+          "key": "0b2f532123225febda2625f55dcb0448",
+	      "status": "running"
+      },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {
+	  "status" : "running",
+	  "url" : "https://10.10.23.47:8443/"
+    }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_startbulkvolumeread.adoc[StartBulkVolumeRead]
+* xref:reference_element_api_startbulkvolumewrite.adoc[StartBulkVolumeWrite]
+

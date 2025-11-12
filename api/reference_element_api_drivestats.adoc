@@ -1,0 +1,254 @@
+---
+permalink: api/reference_element_api_drivestats.html 
+sidebar: sidebar 
+keywords: object,objects,driveStats 
+summary: Das driveStats-Objekt enthält allgemeine Aktivitätsmessungen für ein einzelnes Laufwerk.  Sie können Messinformationen mit der API-Methode GetDriveStats abrufen. 
+---
+= Fahrstatistik
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das driveStats-Objekt enthält allgemeine Aktivitätsmessungen für ein einzelnes Laufwerk.  Sie können Messinformationen mit der API-Methode abrufen. `GetDriveStats` Die
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+aktive Sitzungen
+ a| 
+Anzahl der iSCSI-Sitzungen, die dieses Laufwerk aktuell verwenden (nur bei Metadaten-Laufwerken vorhanden).
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Laufwerk-ID
+ a| 
+Eindeutige Kennung des Laufwerks im Cluster.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+fehlgeschlageneDieCount
+ a| 
+Anzahl der defekten Laufwerkshardwareelemente.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+iosInProgress
+ a| 
+Die Anzahl der laufenden E/A-Vorgänge auf diesem Laufwerk.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+verbleibende Lebensdauer in Prozent
+ a| 
+Verschleißanzeige für Laufwerksmedien.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Gesamtlaufzeit gelesene Bytes
+ a| 
+Gesamtzahl der von diesem Laufwerk gelesenen Bytes während der gesamten Lebensdauer des Laufwerks.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+lifetimeWriteBytes
+ a| 
+Gesamtzahl der während der gesamten Lebensdauer des Laufwerks auf dieses Laufwerk geschriebenen Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Betriebsstunden
+ a| 
+Anzahl der Betriebsstunden dieses Laufwerks.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+liest
+ a| 
+Die Anzahl der read()-Aufrufe pro Sekunde für dieses Laufwerk.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+gelesene Bytes
+ a| 
+Gesamtzahl der vom Laufwerk aufgrund von Clientvorgängen gelesenen Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+readsCombined
+ a| 
+Die Anzahl der read()-Aufrufe an benachbarte Sektoren, die zu einem größeren Lesevorgang kombiniert werden könnten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Lese-Millisekunden
+ a| 
+Die Anzahl der Millisekunden, die zum Lesen aufgewendet wurden.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Leseoperationen
+ a| 
+Gesamtzahl der Lesevorgänge auf dem Laufwerk aufgrund von Clientvorgängen.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+neu zugewiesene Sektoren
+ a| 
+Anzahl der auf diesem Laufwerk ersetzten defekten Sektoren.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+ReservekapazitätProzent
+ a| 
+Die verfügbare Reservekapazität des Laufwerks.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Zeitstempel
+ a| 
+Die aktuelle Uhrzeit im UTC+0-Format.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+Gesamtkapazität
+ a| 
+Gesamtkapazität des Laufwerks in Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+nicht korrigierbare Fehler
+ a| 
+Der Wert für gemeldete, nicht korrigierbare Fehler aus dem SMART-Überwachungssystem (Self-Monitoring, Analysis and Reporting Technology) im Antrieb.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+genutzte Kapazität
+ a| 
+Belegte Speicherkapazität des Laufwerks in Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+verwendeter Speicher
+ a| 
+Die aktuell vom Knoten, auf dem dieses Laufwerk gehostet wird, genutzte Speichermenge.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+schreibt
+ a| 
+Die Anzahl der write()-Aufrufe pro Sekunde auf dieses Laufwerk.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+writeBytes
+ a| 
+Gesamtzahl der durch Clientaktivitäten auf das Laufwerk geschriebenen Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+schreibtKombiniert
+ a| 
+Die Anzahl der write()-Aufrufe an benachbarte Sektoren, die zu einem größeren Schreibvorgang zusammengefasst werden könnten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Schreib-Msec
+ a| 
+Die Anzahl der Millisekunden, die für das Schreiben aufgewendet wurden.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Schreibvorgänge
+ a| 
+Gesamtzahl der Schreibvorgänge auf dem Laufwerk aufgrund von Clientaktivitäten.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_getdrivestats.adoc[GetDriveStats]

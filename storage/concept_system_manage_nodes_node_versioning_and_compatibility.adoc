@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_nodes_node_versioning_and_compatibility.html 
+sidebar: sidebar 
+keywords: compatibility, node version, clusters, software version, compatible versions, major, minor, micro 
+summary: Die Knotenkompatibilität basiert auf der auf dem Knoten installierten Element-Softwareversion.  Bei softwarebasierten Speicherclustern von Element wird ein Knoten automatisch auf die Element-Softwareversion im Cluster abgebildet, wenn Knoten und Cluster nicht kompatible Versionen aufweisen. 
+---
+= Node-Versionierung und Kompatibilität
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Knotenkompatibilität basiert auf der auf dem Knoten installierten Element-Softwareversion.  Bei softwarebasierten Speicherclustern von Element wird ein Knoten automatisch auf die Element-Softwareversion im Cluster abgebildet, wenn Knoten und Cluster nicht kompatible Versionen aufweisen.
+
+Die folgende Liste beschreibt die Bedeutungsstufen der Software-Releases, aus denen sich die Software-Versionsnummer von Element zusammensetzt:
+
+* *Wesentlich*
++
+Die erste Zahl bezeichnet eine Softwareversion.  Ein Knoten mit einer bestimmten Hauptkomponentennummer kann nicht zu einem Cluster hinzugefügt werden, der Knoten mit einer anderen Hauptpatchnummer enthält. Ebenso wenig kann ein Cluster mit Knoten unterschiedlicher Hauptversionen erstellt werden.
+
+* *Unerheblich*
++
+Die zweite Zahl kennzeichnet kleinere Softwarefunktionen oder Erweiterungen bestehender Softwarefunktionen, die in einer Hauptversion hinzugefügt wurden.  Diese Komponente wird innerhalb einer Hauptversionskomponente inkrementiert, um anzuzeigen, dass diese inkrementelle Version nicht mit anderen inkrementellen Softwareversionen von Element mit einer anderen Nebenkomponente kompatibel ist.  Beispielsweise ist Version 11.0 nicht mit Version 11.1 kompatibel, und Version 11.1 ist nicht mit Version 11.2 kompatibel.
+
+* *Mikro*
++
+Die dritte Zahl kennzeichnet einen kompatiblen Patch (inkrementelle Version) für die Element-Softwareversion, die durch die Komponenten major.minor repräsentiert wird.  Beispielsweise ist Version 11.0.1 mit Version 11.0.2 kompatibel, und Version 11.0.2 ist mit Version 11.0.3 kompatibel.
+
+
+
+Die Haupt- und Nebenversionsnummern müssen für die Kompatibilität übereinstimmen.  Die Mikronummern müssen für die Kompatibilität nicht übereinstimmen.

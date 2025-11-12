@@ -1,0 +1,74 @@
+---
+permalink: storage/reference_per_node_cluster_settings_details.html 
+sidebar: sidebar 
+keywords: nodes, changing cluster settings, per-node UI 
+summary: Sie können die Clustereinstellungen für einen Speicherknoten nach der Clusterkonfiguration überprüfen und den Hostnamen des Knotens ändern. 
+---
+= Details zu den Clustereinstellungen aus der Benutzeroberfläche pro Knoten.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Clustereinstellungen für einen Speicherknoten nach der Clusterkonfiguration überprüfen und den Hostnamen des Knotens ändern.
+
+Die folgende Liste beschreibt die Clustereinstellungen für einen Speicherknoten, der auf der Seite *Clustereinstellungen* der Benutzeroberfläche pro Knoten angegeben ist. (`https://<node_IP>:442/hcc/node/cluster-settings`).
+
+* *Rolle*
++
+Rolle des Knotens im Cluster. Mögliche Werte:
+
++
+** Speicher: Speicher- oder Fibre-Channel-Knoten.
+** Management: Der Knoten ist ein Managementknoten.
+
+
+* *Hostname*
++
+Name des Knotens.
+
+* *Cluster*
++
+Name des Clusters.
+
+* *Clusterzugehörigkeit*
++
+Zustand des Knotens. Mögliche Werte:
+
++
+** Verfügbar: Der Knoten hat keinen zugeordneten Clusternamen und ist noch nicht Teil eines Clusters.
+** Status: Der Knoten ist konfiguriert und kann einem bestimmten Cluster hinzugefügt werden.  Für den Zugriff auf den Knoten ist keine Authentifizierung erforderlich.
+** PendingActive: Das System installiert gerade kompatible Software auf dem Knoten.  Nach Abschluss des Vorgangs wechselt der Knoten in den aktiven Zustand.
+** Aktiv: Der Knoten ist Teil eines Clusters.  Zur Änderung des Knotens ist eine Authentifizierung erforderlich.
+
+
+* *Version*
++
+Version der Element-Software, die auf dem Knoten ausgeführt wird.
+
+* *Ensemble*
++
+Knoten, die Teil des Datenbankensembles sind.
+
+* *Knoten-ID*
++
+Eine ID wird zugewiesen, wenn ein Knoten dem Cluster hinzugefügt wird.
+
+* *Cluster-Schnittstelle*
++
+Netzwerkschnittstelle zur Clusterkommunikation.
+
+* *Verwaltungsschnittstelle*
++
+Management-Netzwerkschnittstelle.  Standardmäßig wird Bond1G verwendet, es kann aber auch Bond10G genutzt werden.
+
+* *Speicherschnittstelle*
++
+Speichernetzwerkschnittstelle über Bond10G.
+
+* *Verschlüsselungsfähig*
++
+Gibt an, ob der Knoten die Laufwerksverschlüsselung unterstützt oder nicht.
+
+

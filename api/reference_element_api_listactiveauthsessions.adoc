@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listactiveauthsessions.html 
+sidebar: sidebar 
+keywords: active,sessions,authentication session,list 
+summary: Mit der Methode ListActiveAuthSessions können Sie alle aktiven authentifizierten Sitzungen auflisten.  Nur Benutzer mit Administratorrechten können diese Methode aufrufen. 
+---
+= ListActiveAuthSessions
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListActiveAuthSessions` Methode zum Auflisten aller aktiven authentifizierten Sitzungen.  Nur Benutzer mit Administratorrechten können diese Methode aufrufen.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Sitzungen
+ a| 
+Sitzungsinformationen für die Authentifizierungssitzungen.
+ a| 
+link:reference_element_api_authsessioninfo.html["authSessionInfo"]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ListActiveAuthSessions"
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== Neu seit Version
+
+12,0

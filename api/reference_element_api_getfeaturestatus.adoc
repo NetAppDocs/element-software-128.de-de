@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: Mit der Methode GetFeatureStatus können Sie den Status eines Cluster-Features abrufen. 
+---
+= GetFeatureStatus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetFeatureStatus` Methode zum Abrufen des Status eines Cluster-Features.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Besonderheit
+ a| 
+Der Status eines Cluster-Features.  Wird kein Wert angegeben, gibt das System den Status aller Funktionen zurück. Mögliche Werte:
+
+* `Vvols`: Status des VVols-Cluster-Features abrufen.
+* `SnapMirror`: Status der SnapMirror Replikationsclusterfunktion abrufen.
+* `Fips`: Status der FIPS 140-2-Verschlüsselungsfunktion für HTTPS-Kommunikation abrufen.
+* `FipsDrives`: Status der FIPS 140-2-Laufwerkverschlüsselungsfunktion abrufen.
+* `VolumeLoadBalanceOnActualIOPS`: Status des Slice-Balancings anhand der tatsächlichen IOPS anstatt der Min-IOPS-Funktion abrufen.  Verfügbar ab Element 12.8.
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Merkmale
+ a| 
+Ein Array von Feature-Objekten, das den Feature-Namen und seinen Status angibt.  Objektmitglieder:
+
+* Feature: (Zeichenkette) Der Name des Features.
+* aktiviert: (boolescher Wert) Gibt an, ob die Funktion aktiviert ist oder nicht.
+
+ a| 
+JSON-Objektarray
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== Neu seit Version
+
+9,6

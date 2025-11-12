@@ -1,0 +1,209 @@
+---
+permalink: api/reference_element_api_rollbacktogroupsnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktogroupsnapshot,snapshot,group,individual,creating,create,roll,back,rollback,roll back,existing 
+summary: Mit RollbackToGroupSnapshot können Sie alle einzelnen Volumes in einer Snapshot-Gruppe auf den jeweiligen individuellen Snapshot jedes Volumes zurücksetzen. 
+---
+= RollbackToGroupSnapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `RollbackToGroupSnapshot` Alle einzelnen Volumes einer Snapshot-Gruppe auf den jeweiligen individuellen Snapshot jedes Volumes zurücksetzen.
+
+Durch das Zurücksetzen auf einen Gruppen-Snapshot wird ein temporärer Snapshot jedes einzelnen Volumes innerhalb des Gruppen-Snapshots erstellt.
+
+[NOTE]
+====
+* Das Erstellen eines Snapshots ist zulässig, wenn der Cluster ausgelastet ist (Stufe 1, 2 oder 3).  Snapshots werden nicht erstellt, wenn der Cluster-Füllstand Stufe 4 oder 5 erreicht hat.
+* Das Zurücksetzen von Volumes auf einen Gruppen-Snapshot kann fehlschlagen, wenn die Slice-Synchronisierung gerade läuft.  Wiederholen `RollbackToGroupSnapshot` nach Abschluss der Synchronisierung.
+
+
+====
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+`groupSnapshotID`
+ a| 
+Eindeutige ID des Gruppen-Snapshots.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+`attributes`
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+`name`
+ a| 
+Name für den Gruppen-Snapshot des aktuellen Zustands des Volumes, der erstellt wird, wenn `saveCurrentState` ist auf „true“ gesetzt.  Wenn Sie keinen Namen angeben, wird der Name der Snapshots (Gruppen- und Einzelvolume) auf den Zeitstempel des Zeitpunkts des Rollbacks gesetzt.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+`saveCurrentState`
+ a| 
+Gibt an, ob das vorherige aktive Volume-Image gespeichert werden soll oder nicht.  Gültige Werte:
+
+* `true`Das zuvor aktive Volumenabbild wird beibehalten.
+* `false`Das zuvor aktive Volume-Image wurde gelöscht.
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Mitglieder
+ a| 
+Ein Array, das die Volume-IDs und Snapshot-IDs der Mitglieder der Gruppe Snapshot enthält.  Werte:
+
+* Prüfsumme: Eine kurze Zeichenkettendarstellung der Daten im gespeicherten Snapshot.  Diese Prüfsumme kann später verwendet werden, um andere Momentaufnahmen zu vergleichen und Fehler in den Daten zu erkennen.  (Zeichenkette)
+* snapshotID: Eindeutige ID eines Snapshots, aus dem der neue Snapshot erstellt wurde.  Die snapshotID muss ein Snapshot des angegebenen Volumes sein.  (ganze Zahl)
+* volumeID: Die Quell-Volume-ID für den Snapshot.  (ganze Zahl)
+
+ a| 
+JSON-Objektarray
+
+
+
+ a| 
+Gruppen-Snapshot-ID
+ a| 
+Wenn `saveCurrentState` wurde auf „false“ gesetzt, dieser Wert ist null.
+
+Wenn `saveCurrentState` wurde auf „true“ gesetzt, die eindeutige ID des neu erstellten Gruppen-Snapshots.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Gruppenfoto
+ a| 
+Wenn `saveCurrentState` wurde auf „false“ gesetzt, dieser Wert ist null.
+
+Wenn `saveCurrentState` wurde auf „true“ gesetzt, ein Objekt, das Informationen über den Gruppen-Snapshot enthält, `RollbackToGroupSnapshot` einfach zurückgesetzt auf.
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[Gruppenfoto]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "id": 438,
+  "method": "RollbackToGroupSnapshot",
+  "params": {
+    "groupSnapshotID": 1,
+    "name": "grpsnap1",
+    "saveCurrentState": true
+  }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 438,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-06T17:27:17Z",
+      "groupSnapshotID": 1,
+      "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-06T17:27:17Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 1,
+          "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+          "name": "2016-04-06T17:27:17Z",
+          "snapshotID": 4,
+          "snapshotUUID": "03563c5e-51c4-4e3b-a256-a4d0e6b7959d",
+          "status": "done",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "2016-04-06T17:27:17Z",
+      "status": "done"
+    },
+    "groupSnapshotID": 3,
+    "members": [
+      {
+        "checksum": "0x0",
+        "snapshotID": 2,
+        "snapshotUUID": "719b162c-e170-4d80-b4c7-1282ed88f4e1",
+        "volumeID": 2
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

@@ -1,0 +1,191 @@
+---
+permalink: api/reference_element_api_startbulkvolumeread.html 
+sidebar: sidebar 
+keywords: volume,read,session,start,starting,bulk,startbulkvolumeread 
+summary: Mit der Methode StartBulkVolumeRead können Sie eine Sitzung zum Lesen eines Massenvolumens auf einem bestimmten Volumen starten. 
+---
+= StartBulkVolumeRead
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `StartBulkVolumeRead` Methode zum Starten einer Sitzung zum Massenlesen eines bestimmten Datenträgers.
+
+Auf einem Volume können maximal zwei Bulk-Volume-Prozesse gleichzeitig ausgeführt werden.  Beim Initialisieren der Sitzung werden Daten von einem SolidFire Speichervolume gelesen, um auf einem externen Sicherungsmedium gespeichert zu werden.  Auf die externen Daten wird über einen Webserver zugegriffen, der auf einem Element-Speicherknoten läuft.  Die Serverinteraktionsinformationen für den externen Datenzugriff werden von einem Skript übermittelt, das auf dem Speichersystem ausgeführt wird.
+
+Zu Beginn eines Massenlesevorgangs wird eine Momentaufnahme des Datenträgers erstellt, die nach Abschluss des Lesevorgangs gelöscht wird.  Sie können auch einen Snapshot des Volumes lesen, indem Sie die ID des Snapshots als Parameter eingeben.  Beim Lesen eines vorherigen Snapshots erstellt das System keinen neuen Snapshot des Volumes und löscht auch nicht den vorherigen Snapshot, wenn der Lesevorgang abgeschlossen ist.
+
+
+NOTE: Dieser Prozess erstellt einen neuen Snapshot, falls die ID eines vorhandenen Snapshots nicht angegeben wird.  Snapshots können erstellt werden, wenn der Cluster-Füllstand Stufe 2 oder 3 erreicht hat.  Snapshots werden nicht erstellt, wenn der Cluster-Füllstand Stufe 4 oder 5 erreicht hat.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Format
+ a| 
+Das Format der Volumendaten.  Kann entweder das eine oder das andere sein:
+
+* `uncompressed`Jedes Byte des Volumens wird unkomprimiert zurückgegeben.
+* `native`: Es werden undurchsichtige Daten zurückgegeben, die kleiner sind und bei einem nachfolgenden Massenschreibvorgang effizienter gespeichert und geschrieben werden können.
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Volume-ID
+ a| 
+Die ID des zu lesenden Datenträgers.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Snapshot-ID
+ a| 
+Die ID eines zuvor erstellten Snapshots, der für das Lesen großer Datenmengen verwendet wurde.  Wird keine ID eingegeben, wird eine Momentaufnahme des aktuell aktiven Volume-Images erstellt.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Skript
+ a| 
+Der Name eines ausführbaren Skripts.  Wird kein Skriptname angegeben, sind der Schlüssel und die URL erforderlich, um auf die Element-Speicherknoten zuzugreifen.  Das Skript wird auf dem primären Knoten ausgeführt, und der Schlüssel sowie die URL werden an das Skript zurückgegeben, damit der lokale Webserver kontaktiert werden kann.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+scriptParameters
+ a| 
+JSON-Parameter, die an das Skript übergeben werden sollen.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat. link:reference_element_api_attributes.html["Mehr erfahren"].
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+asyncHandle
+ a| 
+Die ID des asynchronen Prozesses, dessen Abschluss überprüft werden soll.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Schlüssel
+ a| 
+Undurchsichtiger Schlüssel zur eindeutigen Identifizierung der Sitzung.
+ a| 
+Schnur
+
+
+
+ a| 
+URL
+ a| 
+URL für den Zugriff auf den Webserver des Knotens.
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "StartBulkVolumeRead",
+   "params": {
+      "volumeID" : 5,
+      "format"  : "native",
+      "snapshotID" : 2
+   },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+      "id" : 1,
+   "result" : {
+      "asyncHandle" : 1,
+      "key" : "11eed8f086539205beeaadd981aad130",
+      "url" : "https://127.0.0.1:44000/"
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

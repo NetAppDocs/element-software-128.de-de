@@ -1,0 +1,83 @@
+---
+permalink: concepts/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: element, solidfire, cluster, what is, authoritative  cluster, rule of thirds, stranded capacity, storage efficiency, storage cluster quorum 
+summary: Ein Cluster ist das Herzstück eines SolidFire -Speichersystems und besteht aus einer Sammlung von Knoten.  Um die Speichereffizienzvorteile von SolidFire nutzen zu können, müssen Sie mindestens vier Knoten in einem Cluster haben.  Ein Cluster erscheint im Netzwerk als eine einzige logische Gruppe und kann dann als Blockspeicher angesprochen werden. 
+---
+= Cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Cluster ist das Herzstück eines SolidFire -Speichersystems und besteht aus einer Sammlung von Knoten.  Um die Speichereffizienzvorteile von SolidFire nutzen zu können, müssen Sie mindestens vier Knoten in einem Cluster haben.  Ein Cluster erscheint im Netzwerk als eine einzige logische Gruppe und kann dann als Blockspeicher angesprochen werden.
+
+Beim Erstellen eines neuen Clusters wird ein Knoten als Kommunikationsinhaber für den Cluster initialisiert und die Netzwerkkommunikation für jeden Knoten im Cluster eingerichtet.  Dieser Vorgang wird für jeden neuen Cluster nur einmal durchgeführt.  Sie können einen Cluster über die Element-Benutzeroberfläche oder die API erstellen.
+
+Sie können einen Cluster skalieren, indem Sie zusätzliche Knoten hinzufügen.  Beim Hinzufügen eines neuen Knotens kommt es zu keiner Unterbrechung des Dienstes, und der Cluster nutzt automatisch die Leistung und Kapazität des neuen Knotens.
+
+Administratoren und Hosts können über virtuelle IP-Adressen auf den Cluster zugreifen.  Jeder Knoten im Cluster kann die virtuellen IP-Adressen hosten.  Die Management Virtual IP (MVIP) ermöglicht die Clusterverwaltung über eine 1GbE-Verbindung, während die Storage Virtual IP (SVIP) den Hostzugriff auf den Speicher über eine 10GbE-Verbindung ermöglicht.  Diese virtuellen IP-Adressen ermöglichen konsistente Verbindungen unabhängig von der Größe oder Zusammensetzung eines SolidFire Clusters.  Wenn ein Knoten, der eine virtuelle IP-Adresse hostet, ausfällt, übernimmt ein anderer Knoten im Cluster die Hosting der virtuellen IP-Adresse.
+
+
+NOTE: Ab Element Version 11.0 können Knoten mit IPv4-, IPv6- oder beiden Adressen für ihr Managementnetzwerk konfiguriert werden.  Dies gilt sowohl für Speicherknoten als auch für Verwaltungsknoten, mit Ausnahme des Verwaltungsknotens 11.3 und höher, der IPv6 nicht unterstützt.  Bei der Erstellung eines Clusters kann nur eine einzige IPv4- oder IPv6-Adresse für den MVIP verwendet werden, und der entsprechende Adresstyp muss auf allen Knoten konfiguriert sein.
+
+.Mehr zu Clustern
+* <<Autoritative Speichercluster>>
+* <<Drittelregel>>
+* <<Ungenutzte Kapazität>>
+* <<Speichereffizienz>>
+* <<Speichercluster-Quorum>>
+
+
+
+
+== Autoritative Speichercluster
+
+Der autoritative Speichercluster ist der Speichercluster, den NetApp Hybrid Cloud Control zur Authentifizierung von Benutzern verwendet.
+
+Wenn Ihr Management-Knoten nur über einen Speichercluster verfügt, dann ist dieser der autoritative Cluster.  Wenn Ihr Management-Knoten über zwei oder mehr Speichercluster verfügt, wird einer dieser Cluster als autoritativer Cluster festgelegt, und nur Benutzer dieses Clusters können sich bei NetApp Hybrid Cloud Control anmelden.  Um herauszufinden, welcher Cluster der maßgebliche Cluster ist, können Sie Folgendes verwenden: `GET /mnode/about` API.  In der Antwort wird die IP-Adresse in der `token_url` Das Feld ist die Management Virtual IP Address (MVIP) des autoritativen Speicherclusters.  Wenn Sie versuchen, sich als Benutzer, der nicht zum autoritativen Cluster gehört, bei NetApp Hybrid Cloud Control anzumelden, schlägt der Anmeldeversuch fehl.
+
+Viele Funktionen von NetApp Hybrid Cloud Control sind für die Zusammenarbeit mit mehreren Speicherclustern ausgelegt, jedoch gibt es Einschränkungen bei der Authentifizierung und Autorisierung.  Die Einschränkung bei der Authentifizierung und Autorisierung besteht darin, dass der Benutzer des autoritativen Clusters Aktionen auf anderen Clustern ausführen kann, die mit NetApp Hybrid Cloud Control verbunden sind, selbst wenn er kein Benutzer auf den anderen Speicherclustern ist.
+
+Bevor Sie mit der Verwaltung mehrerer Speichercluster fortfahren, sollten Sie sicherstellen, dass die auf den autoritativen Clustern definierten Benutzer auch auf allen anderen Speicherclustern mit denselben Berechtigungen definiert sind.  Sie können Benutzer über dielink:../storage/concept_system_manage_manage_cluster_administrator_users.html["Element-Software-Benutzeroberfläche"] Die
+
+Sehenlink:../mnode/task_mnode_manage_storage_cluster_assets.html["Speichercluster-Assets erstellen und verwalten"] Weitere Informationen zur Arbeit mit Management-Node-Speichercluster-Assets finden Sie hier.
+
+
+
+== Drittelregel
+
+Wenn Sie verschiedene Speicherknotentypen in einem NetApp SolidFire -Speichercluster mischen, darf kein einzelner Speicherknoten mehr als 33 % der gesamten Speicherclusterkapazität enthalten.
+
+
+
+== Ungenutzte Kapazität
+
+Wenn ein neu hinzugefügter Knoten mehr als 50 Prozent der gesamten Clusterkapazität ausmacht, wird ein Teil der Kapazität dieses Knotens unbrauchbar gemacht ("gestrandet"), damit er der Kapazitätsregel entspricht.  Dies bleibt so lange der Fall, bis zusätzliche Speicherkapazität geschaffen wird.  Wird ein sehr großer Knoten hinzugefügt, der ebenfalls gegen die Kapazitätsregel verstößt, so ist der zuvor gestrandete Knoten nicht mehr gestrandet, während der neu hinzugefügte Knoten gestrandet wird.  Um dies zu vermeiden, sollten Kapazitäten immer paarweise addiert werden.  Wenn ein Knoten ausfällt, wird ein entsprechender Clusterfehler ausgelöst.
+
+
+
+== Speichereffizienz
+
+Netapp SolidFire -Speichercluster nutzen Deduplizierung, Komprimierung und Thin Provisioning, um den für die Speicherung eines Volumes benötigten physischen Speicherplatz zu reduzieren.
+
+* *Kompression*
++
+Durch Komprimierung wird der für ein Volume benötigte physische Speicherplatz reduziert, indem Datenblöcke in Komprimierungsgruppen zusammengefasst werden, von denen jede als einzelner Block gespeichert wird.
+
+* *Deducation*
++
+Durch das Verwerfen doppelter Datenblöcke wird der für ein Volume benötigte physische Speicherplatz reduziert.
+
+* *Thin Provisioning*
++
+Ein Thin-Provisioned Volume oder LUN ist ein Volume, für das kein Speicherplatz im Voraus reserviert wird.  Stattdessen wird der Speicherplatz dynamisch zugewiesen, je nach Bedarf.  Freier Speicherplatz wird dem Speichersystem wieder zur Verfügung gestellt, wenn Daten im Volume oder der LUN gelöscht werden.
+
+
+
+
+
+== Speichercluster-Quorum
+
+Die Element-Software erstellt aus ausgewählten Knoten einen Speichercluster, der eine replizierte Datenbank der Clusterkonfiguration verwaltet.  Für die Aufrechterhaltung des Quorums und damit der Ausfallsicherheit des Clusters müssen mindestens drei Knoten am Cluster-Ensemble teilnehmen.

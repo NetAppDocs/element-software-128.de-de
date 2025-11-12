@@ -1,0 +1,31 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshots.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, retention, policies, group, snapshots 
+summary: SnapMirror -Labels legen die Aufbewahrungsrichtlinie für Snapshots auf dem SnapMirror Endpunkt fest.  Sie können Snapshots mit Labels versehen und Snapshots gruppieren. 
+---
+= SnapMirror Labels zu Snapshots hinzufügen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror -Labels legen die Aufbewahrungsrichtlinie für Snapshots auf dem SnapMirror Endpunkt fest.  Sie können Snapshots mit Labels versehen und Snapshots gruppieren.
+
+Sie können die verfügbaren Bezeichnungen in einem vorhandenen SnapMirror Beziehungsdialogfeld oder im NetApp ONTAP System Manager anzeigen.
+
+
+IMPORTANT: Wenn Sie einem Gruppen-Snapshot ein Label hinzufügen, werden alle vorhandenen Labels einzelner Snapshots überschrieben.
+
+.Was du brauchst
+* SnapMirror ist auf dem Cluster aktiviert.
+* Das Label, das Sie hinzufügen möchten, existiert bereits in ONTAP.
+
+
+.Schritte
+. Klicken Sie auf *Datenschutz* > *Schnappschüsse* oder *Gruppen-Schnappschüsse*.
+. Klicken Sie auf das Symbol *Aktionen* für den Snapshot oder Gruppen-Snapshot, dem Sie eine SnapMirror Bezeichnung hinzufügen möchten.
+. Geben Sie im Dialogfeld *Schnappschuss bearbeiten* Text in das Feld * SnapMirror * ein.  Die Bezeichnung muss mit einer Regelbezeichnung in der Richtlinie übereinstimmen, die auf die SnapMirror -Beziehung angewendet wird.
+. Klicken Sie auf *Änderungen speichern*.
+

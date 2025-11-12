@@ -1,0 +1,21 @@
+---
+permalink: storage/concept_intro_persistent_volumes.html 
+sidebar: sidebar 
+keywords: persistent volumes, what are persistent volumes 
+summary: Persistente Volumes ermöglichen es, Konfigurationsdaten des Management-Knotens auf einem bestimmten Speichercluster anstatt lokal auf einer VM zu speichern, sodass die Daten im Falle eines Verlusts oder einer Entfernung des Management-Knotens erhalten bleiben können.  Persistente Volumes sind eine optionale, aber empfohlene Konfiguration für Management-Knoten. 
+---
+= Persistente Datenträger
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Persistente Volumes ermöglichen es, Konfigurationsdaten des Management-Knotens auf einem bestimmten Speichercluster anstatt lokal auf einer VM zu speichern, sodass die Daten im Falle eines Verlusts oder einer Entfernung des Management-Knotens erhalten bleiben können.  Persistente Volumes sind eine optionale, aber empfohlene Konfiguration für Management-Knoten.
+
+Beim Bereitstellen eines neuen Management-Knotens ist in den Installations- und Upgrade-Skripten eine Option zum Aktivieren persistenter Volumes enthalten.  Persistente Volumes sind Volumes auf einem Element-Software-basierten Speichercluster, die Konfigurationsinformationen des Management-Knotens für die Host-Management-Knoten-VM enthalten, die über die Lebensdauer der VM hinaus bestehen bleiben.  Wenn der Management-Knoten verloren geht, kann eine Ersatz-Management-Knoten-VM die Verbindung wiederherstellen und die Konfigurationsdaten der verloren gegangenen VM wiederherstellen.
+
+Die Funktionalität für persistente Volumes erstellt, sofern sie während der Installation oder des Upgrades aktiviert ist, automatisch mehrere Volumes auf dem zugewiesenen Cluster, deren Namen mit NetApp-HCI- vorangestellt werden.  Diese Volumes können, wie alle Element-Software-basierten Volumes, je nach Präferenz und Installation über die Element-Software-Weboberfläche, das NetApp Element Plug-in für vCenter Server oder die API angezeigt werden.  Persistente Volumes müssen über eine iSCSI-Verbindung zum Management-Knoten betriebsbereit sein, um aktuelle Konfigurationsdaten zu erhalten, die für die Wiederherstellung verwendet werden können.
+
+
+IMPORTANT: Persistente Volumes, die mit Verwaltungsdiensten verknüpft sind, werden während der Installation oder des Upgrades erstellt und einem neuen Konto zugewiesen.  Wenn Sie persistente Volumes verwenden, dürfen Sie die Volumes oder das zugehörige Konto weder ändern noch löschen.

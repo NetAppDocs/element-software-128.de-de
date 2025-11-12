@@ -1,0 +1,609 @@
+---
+permalink: api/reference_element_api_network_bonded_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'Das Netzwerkobjekt \(bonded interfaces\) enthält Konfigurationsinformationen für gebündelte Netzwerkschnittstellen auf einem Speicherknoten.  Sie können die Methoden GetConfig und GetNetworkConfig verwenden, um diese Informationen für einen Speicherknoten zu erhalten.' 
+---
+= Netzwerk (verbundene Schnittstellen)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Netzwerkobjekt (gebündelte Schnittstellen) enthält Konfigurationsinformationen für gebündelte Netzwerkschnittstellen auf einem Speicherknoten.  Sie können die `GetConfig` Und `GetNetworkConfig` Methoden, um diese Informationen für einen Speicherknoten zu erhalten.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Adresse
+ a| 
+Die diesem Interface auf dem Knoten zugewiesene IPv4-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+addressV6
+ a| 
+Die der Bond1G-Schnittstelle auf dem Knoten zugewiesene IPv6-Verwaltungsadresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Verzögerung bei der Anleihenauflösung
+ a| 
+Wartezeit in Millisekunden, bevor ein Slave nach Erkennung eines Verbindungsfehlers deaktiviert wird.
+ a| 
+Schnur
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+Die Konfiguration der MAC-Adresse der Netzwerkschnittstelle.
+ a| 
+Schnur
+
+
+
+ a| 
+Bond-Miimon
+ a| 
+Die Frequenz in Millisekunden, mit der der MII-Verbindungsstatus auf Verbindungsfehler überprüft wird.
+ a| 
+Schnur
+
+
+
+ a| 
+Bindungsmodus
+ a| 
+Der Bindungsmodus. Mögliche Werte:
+
+* AktivPassiv (Standard)
+* ALB
+* LACP (Empfohlen)
+
+ a| 
+Schnur
+
+
+
+ a| 
+primäre Anleihenauswahl
+ a| 
+Legt fest, wann der primäre Bond-Slave als aktiver Slave ausgewählt wird. Mögliche Werte:
+
+* Stets
+* Besser
+* Versagen
+
+ a| 
+Schnur
+
+
+
+ a| 
+Leibeigene
+ a| 
+Die Liste der Slave-Schnittstellen für die Verbindung.
+ a| 
+Schnur
+
+
+
+ a| 
+bond-lacp_rate
+ a| 
+Wenn der Anleihemodus LACP ist, kann sich der Zinssatz auf einen der folgenden Werte ändern:
+
+* LACP Fast (Standard)
+* LACP Langsam
+
+ a| 
+Schnur
+
+
+
+ a| 
+Bond-Up-Verzögerung
+ a| 
+Die Wartezeit in Millisekunden, bevor ein Slave nach Erkennung einer Verbindung aktiviert wird.
+ a| 
+Schnur
+
+
+
+ a| 
+DNS-Nameserver
+ a| 
+Eine Liste der für Domain Name Services verwendeten Adressen, getrennt durch Komma oder Leerzeichen.
+ a| 
+Schnur
+
+
+
+ a| 
+DNS-Suche
+ a| 
+Eine durch Leerzeichen oder Kommas getrennte Liste von DNS-Suchdomänen.
+ a| 
+Schnur
+
+
+
+ a| 
+Familie
+ a| 
+Adressfamilie, die die Schnittstelle verwenden soll.  Aktuell wird "inet" für IPv4 unterstützt.
+ a| 
+Schnur
+
+
+
+ a| 
+Tor
+ a| 
+Die IPv4-Router-Netzwerkadresse, die zum Senden von Datenverkehr aus dem lokalen Netzwerk verwendet wird.
+ a| 
+Schnur
+
+
+
+ a| 
+gatewayV6
+ a| 
+Die IPv6-Router-Netzwerkadresse, die zum Senden von Datenverkehr aus dem lokalen Bond1G-Netzwerk verwendet wird.
+ a| 
+Schnur
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+Die Subnetzpräfixlänge für statische Routen vom Typ "net" für IPv6-Datenverkehr im Bond1G-Netzwerk.
+ a| 
+Schnur
+
+
+
+ a| 
+MAC-Adresse
+ a| 
+Die tatsächliche MAC-Adresse, die der Schnittstelle zugewiesen ist und vom Netzwerk überwacht wird.
+ a| 
+Schnur
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+Die vom Hersteller der Schnittstelle zugewiesene unveränderliche MAC-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Verfahren
+ a| 
+Die Methode, die zur Konfiguration der Schnittstelle verwendet wird. Mögliche Werte:
+
+* Loopback: Wird verwendet, um die IPv4-Loopback-Schnittstelle zu definieren.
+* Manual: Wird verwendet, um Schnittstellen zu definieren, die nicht automatisch konfiguriert werden.
+* dhcp: Kann verwendet werden, um eine IP-Adresse per DHCP zu beziehen.
+* static: Wird verwendet, um Ethernet-Schnittstellen mit statisch zugewiesenen IPv4-Adressen zu definieren.
+
+ a| 
+Schnur
+
+
+
+ a| 
+MTU
+ a| 
+Die größte Paketgröße (in Bytes), die die Schnittstelle übertragen kann.  Muss mindestens 1500 sein; maximal 9000 werden unterstützt.
+ a| 
+Schnur
+
+
+
+ a| 
+Netzmaske
+ a| 
+Die Bitmaske, die das Subnetz für die Schnittstelle angibt.
+ a| 
+Schnur
+
+
+
+ a| 
+Netzwerk
+ a| 
+Gibt an, wo der IP-Adressbereich basierend auf der Netzmaske beginnt.
+ a| 
+Schnur
+
+
+
+ a| 
+Routen
+ a| 
+Durch Kommas getrenntes Array von Routenzeichenfolgen, die auf die Routingtabelle angewendet werden sollen.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+Status
+ a| 
+Der Zustand der Schnittstelle. Mögliche Werte:
+
+* Unten: Die Schnittstelle ist inaktiv.
+* Nach oben: Die Schnittstelle ist bereit, hat aber keine Verbindung.
+* UpAndRunning: Die Schnittstelle ist bereit und eine Verbindung wurde hergestellt.
+
+ a| 
+Schnur
+
+
+
+ a| 
+symmetrische Routenregeln
+ a| 
+Die auf dem Knoten konfigurierten symmetrischen Routing-Regeln.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+upAndRunning
+ a| 
+Zeigt an, ob die Schnittstelle bereit ist und eine Verbindung besteht.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+virtuelles Netzwerk-Tag
+ a| 
+Die virtuelle Netzwerkkennung der Schnittstelle (VLAN-Tag).
+ a| 
+Schnur
+
+|===
+
+
+== Mitgliedsmodifikatorbarkeit und Knotenzustände
+
+Diese Tabelle gibt an, ob die Objektparameter in jedem möglichen Knotenzustand geändert werden können oder nicht.
+
+|===
+
+
+| Mitgliedsname | Verfügbarer Zustand | Status ausstehend | Aktiver Zustand 
+
+
+ a| 
+Adresse
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Nein
+
+
+
+ a| 
+addressV6
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Nein
+
+
+
+ a| 
+Verzögerung bei der Anleihenauflösung
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+bond-fail_over_mac
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+Bond-Miimon
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+Bindungsmodus
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+primäre Anleihenauswahl
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+Leibeigene
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+bond-lacp_rate
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+Bond-Up-Verzögerung
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+DNS-Nameserver
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+DNS-Suche
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+Familie
+ a| 
+Nein
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+ a| 
+Tor
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+gatewayV6
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+ipV6PrefixLength
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+MAC-Adresse
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+Verfahren
+ a| 
+Nein
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+ a| 
+MTU
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+Netzmaske
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+Netzwerk
+ a| 
+Nein
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+ a| 
+Routen
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+Status
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+symmetrische Routenregeln
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+upAndRunning
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+virtuelles Netzwerk-Tag
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+

@@ -1,0 +1,193 @@
+---
+permalink: api/reference_element_api_setprotectiondomainlayout.html 
+sidebar: sidebar 
+keywords: layout,custom,protection domain,protection domains,setting protection domains 
+summary: Mit der Methode SetProtectionDomainLayout können Sie Knoten benutzerdefinierten Schutzdomänen zuweisen. 
+---
+= SetProtectionDomainLayout
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `SetProtectionDomainLayout` Methode zum Zuordnen von Knoten zu benutzerdefinierten Schutzdomänen.
+
+Es müssen Informationen für alle aktiven Knoten im Cluster bereitgestellt werden; für inaktive Knoten dürfen keine Informationen bereitgestellt werden.  Alle Knoten in einem bestimmten Chassis müssen derselben benutzerdefinierten Schutzdomäne zugewiesen werden.  Für alle Knoten muss derselbe protectionDomainType angegeben werden. Nicht benutzerdefinierte protectionDomainTypes, wie z. B. Knoten und Chassis, sollten nicht angegeben werden.  Wenn eine dieser Optionen angegeben wird, werden die benutzerdefinierten Schutzdomänen ignoriert und ein entsprechender Fehler zurückgegeben.
+
+
+NOTE: Benutzerdefinierte Schutzdomänen werden bei den folgenden Konfigurationen nicht unterstützt:
+
+* Speichercluster mit gemeinsam genutzten Chassis
+* Zwei-Knoten-Speichercluster
+
+
+Die Methode gibt einen Fehler zurück, wenn sie auf Speicherclustern mit diesen Konfigurationen verwendet wird.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Schutzdomänenlayout
+ a| 
+Informationen zur Schutzdomäne für jeden Knoten.
+ a| 
+JSON-Liste vonlink:reference_element_api_nodeprotectiondomains.html["Knotenschutzdomänen"] Objekte.
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schutzdomänenlayout
+ a| 
+Liste der Knoten, jeweils mit den zugehörigen Schutzdomänen.
+ a| 
+JSON-Liste vonlink:reference_element_api_nodeprotectiondomains.html["Knotenschutzdomänen"] Objekte.
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "SetProtectionDomainLayout",
+  "params": {
+    "protectionDomainLayout": [
+      {
+        "nodeID": 1,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 2,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 3,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 4,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+
+{
+  "id": 1,
+  "result": {
+    "protectionDomainLayout": [
+      {
+        "nodeID": 1,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR2914008D",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 2,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR291500EA",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-1",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 3,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR291500C3",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      },
+      {
+        "nodeID": 4,
+        "protectionDomains": [
+          {
+            "protectionDomainName": "QTFCR291400E6",
+            "protectionDomainType": "chassis"
+          },
+          {
+            "protectionDomainName": "Rack-2",
+            "protectionDomainType": "custom"
+          }
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+12,0

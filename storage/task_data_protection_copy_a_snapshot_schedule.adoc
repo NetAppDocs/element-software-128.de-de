@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_protection_copy_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, copy, maintain, schedule attributes 
+summary: Sie können einen Zeitplan kopieren und seine aktuellen Attribute beibehalten. 
+---
+= Snapshot-Zeitplan kopieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Zeitplan kopieren und seine aktuellen Attribute beibehalten.
+
+. Klicken Sie auf *Datenschutz* > *Zeitpläne*.
+. Klicken Sie auf das Aktionssymbol für den Zeitplan, den Sie kopieren möchten.
+. Klicken Sie im daraufhin angezeigten Menü auf *Kopie erstellen*.
++
+Das Dialogfeld *Zeitplan erstellen* wird angezeigt und enthält die aktuellen Attribute des Zeitplans.
+
+. *Optional:* Geben Sie einen Namen und aktualisierte Attribute für den neuen Zeitplan ein.
+. Klicken Sie auf *Zeitplan erstellen*.
+

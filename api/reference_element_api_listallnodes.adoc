@@ -1,0 +1,120 @@
+---
+permalink: api/reference_element_api_listallnodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,node,nodes,all,listallnodes 
+summary: Mit der Methode ListAllNodes können Sie die aktiven und ausstehenden Knoten im Cluster auflisten. 
+---
+= Alle Knoten auflisten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListAllNodes` Methode zum Auflisten aktiver und ausstehender Knoten im Cluster.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Knoten
+ a| 
+Liste der Objekte, die die aktiven Knoten im Cluster beschreiben.
+ a| 
+xref:reference_element_api_node.adoc[Knoten]
+
+
+
+ a| 
+ausstehende aktive Knoten
+ a| 
+Liste der Objekte, die die noch ausstehenden aktiven Knoten für den Cluster beschreiben.
+ a| 
+xref:reference_element_api_pendingactivenode.adoc[ausstehender aktiver Knoten]Array
+
+
+
+ a| 
+ausstehende Knoten
+ a| 
+Liste der Objekte, die die ausstehenden Knoten für den Cluster beschreiben.
+ a| 
+xref:reference_element_api_pendingnode.adoc[ausstehender Knoten]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListAllNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"nodes": [
+			{
+				"associatedFServiceID": 0,
+				"associatedMasterServiceID": 1,
+				"attributes": {},
+				"chassisName": "CT5TV12",
+				"cip": "10.1.1.1",
+				"cipi": "Bond10G",
+				"fibreChannelTargetPortGroup": null,
+				"mip": "10.1.1.1",
+				"mipi": "Bond1G",
+				"name": "NLABP0704",
+				"nodeID": 1,
+				"nodeSlot": "",
+				"platformInfo": {
+					"chassisType": "R620",
+					"cpuModel": "Intel",
+					"nodeMemoryGB": 72,
+					"nodeType": "SF3010",
+					"platformConfigVersion": "0.0.0.0"
+				},
+				"sip": "10.1.1.1",
+				"sipi": "Bond10G",
+				"softwareVersion": "11.0",
+				"uuid": "4C4C4544-0054",
+				"virtualNetworks": []
+			}
+		],
+		"pendingActiveNodes": [],
+		"pendingNodes": []
+	}
+}
+----
+
+
+== Neu seit Version
+
+9,6

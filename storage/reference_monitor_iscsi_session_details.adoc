@@ -1,0 +1,66 @@
+---
+permalink: storage/reference_monitor_iscsi_session_details.html 
+sidebar: sidebar 
+keywords: iscsi sessions, monitor 
+summary: Sie können Informationen über die mit dem Cluster verbundenen iSCSI-Sitzungen anzeigen. 
+---
+= iSCSI-Sitzungsdetails
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Informationen über die mit dem Cluster verbundenen iSCSI-Sitzungen anzeigen.
+
+Die folgende Liste beschreibt die Informationen, die Sie über die iSCSI-Sitzungen finden können:
+
+* *Knoten*
++
+Der Knoten, der die primäre Metadatenpartition für das Volume hostet.
+
+* *Konto*
++
+Der Name des Kontos, dem das Volumen gehört.  Wenn der Wert leer ist, wird ein Bindestrich (-) angezeigt.
+
+* *Volumen*
++
+Der auf dem Knoten identifizierte Datenträgername.
+
+* *Volume-ID*
++
+ID des mit dem Ziel-IQN verknüpften Volumens.
+
+* *Initiator-ID*
++
+Eine vom System generierte ID für den Initiator.
+
+* *Initiator-Alias*
++
+Ein optionaler Name für den Initiator, der das Auffinden des Initiators in einer langen Liste erleichtert.
+
+* *Initiator-IP*
++
+Die IP-Adresse des Endpunkts, der die Sitzung initiiert.
+
+* *Initiator IQN*
++
+Der IQN des Endpunkts, der die Sitzung initiiert.
+
+* *Ziel-IP*
++
+Die IP-Adresse des Knotens, auf dem das Volume gehostet wird.
+
+* *Ziel-IQN*
++
+Der IQN des Volumens.
+
+* *KERL*
++
+Der CHAP-Algorithmus für eine iSCSI-Sitzung.  Wird kein CHAP-Algorithmus verwendet, wird ein Bindestrich (-) angezeigt.  Verfügbar ab Element 12.8.
+
+* *Erstellt am*
++
+Datum, an dem die Sitzung eingerichtet wurde.
+
+

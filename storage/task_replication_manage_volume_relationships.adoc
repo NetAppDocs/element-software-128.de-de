@@ -1,0 +1,23 @@
+---
+permalink: storage/task_replication_manage_volume_relationships.html 
+sidebar: sidebar 
+keywords: volume pairing reversal, volume pair, replication 
+summary: Sie können Volume-Beziehungen auf vielfältige Weise verwalten, z. B. durch Anhalten der Replikation, Umkehren der Volume-Paarung, Ändern des Replikationsmodus, Löschen eines Volume-Paares oder Löschen eines Cluster-Paares. 
+---
+= Volumenbeziehungen verwalten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Volume-Beziehungen auf vielfältige Weise verwalten, z. B. durch Anhalten der Replikation, Umkehren der Volume-Paarung, Ändern des Replikationsmodus, Löschen eines Volume-Paares oder Löschen eines Cluster-Paares.
+
+
+
+== Weitere Informationen
+
+* xref:task_replication_pause_replication.adoc[Replikation pausieren]
+* xref:task_replication_change_the_mode.adoc[Ändern Sie den Replikationsmodus.]
+* xref:task_replication_delete_volume_pairs.adoc[Datenträgerpaare löschen]
+

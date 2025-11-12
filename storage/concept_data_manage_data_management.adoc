@@ -1,0 +1,79 @@
+---
+permalink: storage/concept_data_manage_data_management.html 
+sidebar: sidebar 
+keywords: virtual volumes, volumes, manage 
+summary: 'Die Daten in einem Cluster, auf dem die Element-Software ausgeführt wird, können Sie über die Registerkarte „Verwaltung“ in der Element-Benutzeroberfläche verwalten.  Zu den verfügbaren Cluster-Management-Funktionen gehören das Erstellen und Verwalten von Datenvolumes, Benutzerkonten, Volume-Zugriffsgruppen, Initiatoren und Quality of Service (QoS)-Richtlinien.' 
+---
+= Erfahren Sie mehr über die Verwaltung von Volumen und virtuellen Volumen.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Daten in einem Cluster, auf dem die Element-Software ausgeführt wird, können Sie über die Registerkarte „Verwaltung“ in der Element-Benutzeroberfläche verwalten.  Zu den verfügbaren Cluster-Management-Funktionen gehören das Erstellen und Verwalten von Datenvolumes, Volume-Zugriffsgruppen, Initiatoren und Quality-of-Service-Richtlinien (QoS).
+
+
+
+== Arbeiten mit Volumina
+
+Das SolidFire -System stellt Speicherplatz mithilfe von Volumes bereit.  Volumes sind Blockgeräte, auf die über das Netzwerk von iSCSI- oder Fibre-Channel-Clients zugegriffen wird.  Auf der Seite „Volumes“ im Menüband „Verwaltung“ können Sie Volumes auf einem Knoten erstellen, ändern, klonen und löschen.  Sie können auch Statistiken über Datenvolumen, Bandbreite und E/A-Auslastung einsehen.
+
+link:../storage/concept_data_manage_volumes_quality_of_service_policies.html["Lernen Sie, wie Sie mit Volumen arbeiten."]
+
+
+
+== Arbeiten mit virtuellen Volumen
+
+Mit der Element-Benutzeroberfläche können Sie Informationen anzeigen und Aufgaben für virtuelle Volumes und die zugehörigen Speichercontainer, Protokollendpunkte, Bindungen und Hosts ausführen.
+
+Das NetApp Element Software-Speichersystem wird standardmäßig mit deaktivierter Virtual Volumes (VVols)-Funktion ausgeliefert.  Sie müssen einmalig die vSphere VVol-Funktionalität manuell über die Element-Benutzeroberfläche aktivieren.
+
+Nach Aktivierung der VVol-Funktionalität erscheint in der Benutzeroberfläche eine Registerkarte „VVols“, die VVols-bezogene Überwachungs- und eingeschränkte Verwaltungsoptionen bietet.  Darüber hinaus fungiert eine speicherseitige Softwarekomponente namens VASA Provider als Speichererkennungsdienst für vSphere.  Die meisten VVols-Befehle, wie z. B. das Erstellen, Klonen und Bearbeiten von VVols, werden von einem vCenter Server oder ESXi-Host initiiert und vom VASA Provider in Element-APIs für das Element-Software-Speichersystem übersetzt.  Befehle zum Erstellen, Löschen und Verwalten von Speichercontainern sowie zum Löschen virtueller Volumes können über die Element-Benutzeroberfläche initiiert werden.
+
+Die meisten Konfigurationen, die für die Nutzung der Virtual Volumes-Funktionalität mit Element-Software-Speichersystemen erforderlich sind, werden in vSphere vorgenommen.  Im _VMware vSphere Virtual Volumes for SolidFire Storage Configuration Guide_ erfahren Sie, wie Sie den VASA-Provider in vCenter registrieren, VVol-Datenspeicher erstellen und verwalten sowie den Speicher anhand von Richtlinien verwalten.
+
+
+NOTE: Bei Element 12.5 und älteren Versionen dürfen Sie nicht mehr als einen NetApp Element VASA-Provider bei einer einzelnen vCenter-Instanz registrieren.  Wird ein zweiter NetApp Element VASA-Provider hinzugefügt, sind alle VVOL-Datenspeicher nicht mehr zugänglich.
+
+
+NOTE: Die VASA-Unterstützung für mehrere vCenter-Server ist als Upgrade-Patch verfügbar, wenn Sie bereits einen VASA-Anbieter bei Ihrem vCenter-Server registriert haben.  Zum Installieren laden Sie die VASA39 .tar.gz-Datei von der Website herunter. https://mysupport.netapp.com/products/element_software/VASA39/index.html["NetApp Software-Downloads"] Besuchen Sie den Standort und befolgen Sie die Anweisungen im Manifest.  Der NetApp Element VASA-Provider verwendet ein NetApp Zertifikat.  Mit diesem Patch wird das Zertifikat von vCenter unverändert verwendet, um die Nutzung mehrerer vCenter-Instanzen für VASA und VVols zu unterstützen.  Das Zertifikat darf nicht verändert werden.  Benutzerdefinierte SSL-Zertifikate werden von VASA nicht unterstützt.
+
+link:../storage/task_data_manage_vvol_enable_virtual_volumes.html["Erfahren Sie mehr über die Arbeit mit virtuellen Volumen."]
+
+
+
+== Arbeiten mit Volumenzugriffsgruppen und Initiatoren
+
+Sie können iSCSI-Initiatoren oder Fibre-Channel-Initiatoren verwenden, um auf die in Volume-Zugriffsgruppen definierten Volumes zuzugreifen.
+
+Sie können Zugriffsgruppen erstellen, indem Sie iSCSI-Initiator-IQNs oder Fibre-Channel-WWPNs in einer Sammlung von Volumes zuordnen.  Jeder IQN, den Sie einer Zugriffsgruppe hinzufügen, kann auf jedes Volume in der Gruppe zugreifen, ohne dass eine CHAP-Authentifizierung erforderlich ist.
+
+Es gibt zwei Arten von CHAP-Authentifizierungsmethoden:
+
+* CHAP-Authentifizierung auf Kontoebene: Sie können die CHAP-Authentifizierung für das Konto zuweisen.
+* CHAP-Authentifizierung auf Initiatorebene: Sie können eindeutige CHAP-Ziele und Geheimnisse für bestimmte Initiatoren zuweisen, ohne an einen einzigen CHAP über ein einzelnes Konto gebunden zu sein.  Diese CHAP-Authentifizierung auf Initiatorebene ersetzt die Anmeldeinformationen auf Kontoebene.
+
+
+Optional können Sie mit pro-Initiator CHAP die Autorisierung des Initiators und die CHAP-Authentifizierung pro Initiator erzwingen.  Diese Optionen können pro Initiator definiert werden, und eine Zugriffsgruppe kann eine Mischung von Initiatoren mit unterschiedlichen Optionen enthalten.
+
+Jeder WWPN, den Sie einer Zugriffsgruppe hinzufügen, ermöglicht den Zugriff auf das Fibre Channel-Netzwerk für die Volumes in der Zugriffsgruppe.
+
+
+NOTE: Zugriffsgruppen für Datenträger unterliegen folgenden Beschränkungen:
+
+* In einer Zugriffsgruppe sind maximal 64 IQNs oder WWPNs zulässig.
+* Eine Zugriffsgruppe kann aus maximal 2000 Datenträgern bestehen.
+* Ein IQN oder WWPN kann nur einer Zugriffsgruppe angehören.
+* Ein einzelner Band kann maximal vier Zugriffsgruppen angehören.
+
+
+link:../storage/task_data_manage_vol_access_group_create_a_volume_access_group.html["Erfahren Sie mehr über die Arbeit mit Volumenzugriffsgruppen und Initiatoren."]
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

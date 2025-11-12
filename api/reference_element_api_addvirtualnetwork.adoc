@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_addvirtualnetwork.html 
+sidebar: sidebar 
+keywords: addvirtualnetwork,cluster,add,adding,virtual,network 
+summary: Mit der Methode AddVirtualNetwork können Sie ein neues virtuelles Netzwerk zu einer Clusterkonfiguration hinzufügen. 
+---
+= Virtuelles Netzwerk hinzufügen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `AddVirtualNetwork` Methode zum Hinzufügen eines neuen virtuellen Netzwerks zu einer Clusterkonfiguration.
+
+Beim Hinzufügen eines virtuellen Netzwerks wird für jeden Knoten eine Schnittstelle erstellt, und jede Schnittstelle benötigt eine virtuelle Netzwerk-IP-Adresse.  Die Anzahl der IP-Adressen, die Sie als Parameter für diese API-Methode angeben, muss gleich oder größer als die Anzahl der Knoten im Cluster sein.  Das System stellt virtuelle Netzwerkadressen in großen Mengen bereit und weist sie automatisch einzelnen Knoten zu.  Sie müssen den Knoten keine virtuellen Netzwerkadressen manuell zuweisen.
+
+
+NOTE: Die Methode AddVirtualNetwork wird nur zum Erstellen eines neuen virtuellen Netzwerks verwendet.  Wenn Sie Änderungen an einem bestehenden virtuellen Netzwerk vornehmen möchten, verwenden Sie diexref:reference_element_api_modifyvirtualnetwork.adoc[ModifyVirtualNetwork] Verfahren.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Adressblöcke
+ a| 
+Einzigartiger Bereich von IP-Adressen, der in das virtuelle Netzwerk aufgenommen werden soll.  Erforderliche Elemente für das Objekt:
+
+* Start: Der Beginn des IP-Adressbereichs.  (Zeichenkette)
+* Größe: Die Anzahl der in den Block aufzunehmenden IP-Adressen.  (ganze Zahl)
+
+ a| 
+JSON-Objektarray
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Tor
+ a| 
+Die IP-Adresse eines Gateways des virtuellen Netzwerks.  Dieser Parameter ist nur gültig, wenn der Namespace-Parameter auf „true“ gesetzt ist.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Name
+ a| 
+Ein benutzerdefinierter Name für das neue virtuelle Netzwerk.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Namensraum
+ a| 
+Wenn auf „true“ gesetzt, wird die Funktionalität der routbaren Speicher-VLANs aktiviert, indem ein Namespace und das darin enthaltene virtuelle Netzwerk erstellt und konfiguriert werden.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Netzmaske
+ a| 
+Eine eindeutige Netzwerkmaske für das zu erstellende virtuelle Netzwerk.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+VIP
+ a| 
+Eindeutige Speicher-IP-Adresse für das zu erstellende virtuelle Netzwerk.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+virtuelles Netzwerk-Tag
+ a| 
+Ein eindeutiges virtuelles Netzwerk-Tag (VLAN-Tag).  Unterstützte Werte sind 1 bis 4094.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+*Hinweis:* Die Parameter des virtuellen Netzwerks müssen für jedes virtuelle Netzwerk eindeutig sein, wenn Sie den Namespace auf „false“ setzen.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+virtuelle Netzwerk-ID
+ a| 
+Die virtuelle Netzwerk-ID des neuen virtuellen Netzwerks.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "AddVirtualNetwork",
+  "params": {
+    "virtualNetworkTag": 2010,
+    "name": "network1",
+    "addressBlocks" : [
+        { "start": "192.86.5.1", "size": 10 },
+        { "start": "192.86.5.50", "size": 20 }
+    ],
+    "netmask" : "255.255.192.0",
+    "gateway" : "10.0.1.254",
+    "svip" : "192.86.5.200",
+    "attributes" : {}
+    "namespace" : true
+  },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "virtualNetworkID": 5
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

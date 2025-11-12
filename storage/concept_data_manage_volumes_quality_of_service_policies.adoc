@@ -1,0 +1,83 @@
+---
+permalink: storage/concept_data_manage_volumes_quality_of_service_policies.html 
+sidebar: sidebar 
+keywords: qos policies, manage, volumes, create, edit, delete 
+summary: 'Eine Quality of Service (QoS)-Richtlinie ermöglicht es Ihnen, eine standardisierte Servicequalitätseinstellung zu erstellen und zu speichern, die auf viele Volumes angewendet werden kann.  Auf der Seite „QoS-Richtlinien“ auf der Registerkarte „Verwaltung“ können Sie QoS-Richtlinien erstellen, bearbeiten und löschen.' 
+---
+= Richtlinien zur Servicequalität verwalten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Eine Quality-of-Service-Richtlinie (QoS) ermöglicht es Ihnen, eine standardisierte Servicequalitätseinstellung zu erstellen und zu speichern, die auf viele Volumes angewendet werden kann.  Auf der Seite „QoS-Richtlinien“ auf der Registerkarte „Verwaltung“ können Sie QoS-Richtlinien erstellen, bearbeiten und löschen.
+
+
+NOTE: Wenn Sie QoS-Richtlinien verwenden, sollten Sie auf einem Volume keine benutzerdefinierten QoS-Einstellungen verwenden.  Benutzerdefinierte QoS-Einstellungen überschreiben und passen die QoS-Richtlinienwerte für die Volumen-QoS-Einstellungen an.
+
+https://www.youtube.com/embed/q9VCBRDtrnI?rel=0["NetApp Video: SolidFire -Richtlinien zur Servicequalität"]
+
+Sehenlink:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["Leistung und Servicequalität"] .
+
+* Erstellen Sie eine QoS-Richtlinie
+* Bearbeiten einer QoS-Richtlinie
+* Löschen einer QoS-Richtlinie
+
+
+
+
+== Erstellen Sie eine QoS-Richtlinie
+
+Sie können QoS-Richtlinien erstellen und diese beim Erstellen von Volumes anwenden.
+
+. Wählen Sie *Verwaltung* > *QoS-Richtlinien*.
+. Klicken Sie auf *QoS-Richtlinie erstellen*.
+. Geben Sie den *Richtliniennamen* ein.
+. Geben Sie die Werte für **Min IOPS**, *Max IOPS* und *Burst IOPS* ein.
+. Klicken Sie auf *QoS-Richtlinie erstellen*.
+
+
+
+
+== Bearbeiten einer QoS-Richtlinie
+
+Sie können den Namen einer bestehenden QoS-Richtlinie ändern oder die mit der Richtlinie verknüpften Werte bearbeiten.  Die Änderung einer QoS-Richtlinie wirkt sich auf alle mit dieser Richtlinie verbundenen Volumes aus.
+
+. Wählen Sie *Verwaltung* > *QoS-Richtlinien*.
+. Klicken Sie auf das Aktionssymbol für die QoS-Richtlinie, die Sie bearbeiten möchten.
+. Im daraufhin angezeigten Menü wählen Sie **Bearbeiten**.
+. Ändern Sie im Dialogfeld *QoS-Richtlinie bearbeiten* die folgenden Eigenschaften nach Bedarf:
++
+** Richtlinienname
+** Min IOPS
+** Maximale IOPS
+** Burst IOPS
+
+
+. Klicken Sie auf *Änderungen speichern*.
+
+
+
+
+== Löschen einer QoS-Richtlinie
+
+Sie können eine QoS-Richtlinie löschen, wenn sie nicht mehr benötigt wird.  Wenn Sie eine QoS-Richtlinie löschen, behalten alle mit der Richtlinie verknüpften Volumes die QoS-Einstellungen bei, werden aber nicht mehr mit einer Richtlinie verknüpft.
+
+
+NOTE: Wenn Sie stattdessen ein Volume von einer QoS-Richtlinie trennen möchten, können Sie die QoS-Einstellungen für dieses Volume auf benutzerdefiniert ändern.
+
+. Wählen Sie *Verwaltung* > *QoS-Richtlinien*.
+. Klicken Sie auf das Aktionssymbol für die QoS-Richtlinie, die Sie löschen möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Löschen*.
+. Bestätigen Sie die Aktion.
+
+
+
+
+== Weitere Informationen
+
+* link:task_data_manage_volumes_remove_a_qos_policy_association_of_a_volume.html["Entfernen Sie die QoS-Richtlinienzuordnung eines Volumes"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

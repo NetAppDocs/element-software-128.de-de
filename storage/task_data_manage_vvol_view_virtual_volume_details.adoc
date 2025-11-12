@@ -1,0 +1,86 @@
+---
+permalink: storage/task_data_manage_vvol_view_virtual_volume_details.html 
+sidebar: sidebar 
+keywords: virtual volumes, view details vvols, vvols performance activity, vSphere 
+summary: In der Element-Benutzeroberfläche können Sie die Informationen zu allen aktiven virtuellen Volumes im Cluster einsehen.  Sie können auch die Leistungsaktivität für jedes virtuelle Volume anzeigen, einschließlich Eingabe, Ausgabe, Durchsatz, Latenz, Warteschlangenlänge und Volume-Informationen. 
+---
+= Details zum virtuellen Volumen anzeigen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In der Element-Benutzeroberfläche können Sie die Informationen zu allen aktiven virtuellen Volumes im Cluster einsehen.  Sie können auch die Leistungsaktivität für jedes virtuelle Volume anzeigen, einschließlich Eingabe, Ausgabe, Durchsatz, Latenz, Warteschlangenlänge und Volume-Informationen.
+
+.Was du brauchst
+* Sie hätten die VVols-Funktionalität in der Element-Benutzeroberfläche für den Cluster aktivieren sollen.
+* Sie hätten einen zugehörigen Speichercontainer erstellen sollen.
+* Sie sollten Ihren vSphere-Cluster so konfiguriert haben, dass er die Element-Software-VVols-Funktionalität nutzt.
+* Sie sollten mindestens eine VM in vSphere erstellt haben.
+
+
+.Schritte
+. Klicken Sie auf *VVols* > *Virtuelle Volumes*.
++
+Es werden die Informationen zu allen aktiven virtuellen Volumes angezeigt.
+
+. Klicken Sie auf das Symbol *Aktionen* für das virtuelle Volume, das Sie überprüfen möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Details anzeigen*.
+
+
+
+
+== Details
+
+Die Seite „Virtuelle Volumes“ auf der Registerkarte „VVols“ liefert Informationen zu jedem aktiven virtuellen Volume im Cluster, wie z. B. Volume-ID, Snapshot-ID, übergeordnete virtuelle Volume-ID und virtuelle Volume-ID.
+
+* *Volume-ID*: Die ID des zugrunde liegenden Volumes.
+* *Snapshot-ID*: Die ID des zugrunde liegenden Volume-Snapshots.  Der Wert ist 0, wenn das virtuelle Volume keinen SolidFire -Snapshot darstellt.
+* *Übergeordnete virtuelle Volume-ID*: Die virtuelle Volume-ID des übergeordneten virtuellen Volumes.  Besteht die ID nur aus Nullen, ist das virtuelle Volume unabhängig und hat keine Verbindung zu einem übergeordneten Volume.
+* *Virtuelle Volume-ID*: Die UUID des virtuellen Volumes.
+* *Name*: Der Name, der dem virtuellen Volume zugewiesen wurde.
+* *Speichercontainer*: Der Speichercontainer, dem das virtuelle Volume gehört.
+* *Gastbetriebssystemtyp*: Das dem virtuellen Volume zugeordnete Betriebssystem.
+* *Typ des virtuellen Datenträgers*: Der Typ des virtuellen Datenträgers: Konfiguration, Daten, Arbeitsspeicher, Auslagerungsdatei oder Sonstige.
+* *Zugriff*: Die dem virtuellen Volume zugewiesenen Lese- und Schreibberechtigungen.
+* *Größe*: Die Größe des virtuellen Volumes in GB oder GiB.
+* *Snapshots*: Die Anzahl der zugehörigen Snapshots.  Klicken Sie auf die Zahl, um zu den Details des Snapshots zu gelangen.
+* *Min IOPS*: Die minimale IOPS-QoS-Einstellung des virtuellen Volumes.
+* *Max IOPS*: Die maximale IOPS-QoS-Einstellung des virtuellen Volumes.
+* *Burst IOPS*: Die maximale Burst-QoS-Einstellung des virtuellen Volumes.
+* *VMW_VmID*: Die Informationen in den mit "VMW_" gekennzeichneten Feldern werden von VMware definiert.
+* *Erstellungszeitpunkt*: Der Zeitpunkt, zu dem die Erstellung des virtuellen Volumes abgeschlossen wurde.
+
+
+
+
+== Details zu einzelnen virtuellen Volumen
+
+Die Seite „Virtuelle Volumes“ auf der Registerkarte „VVols“ bietet die folgenden Informationen zu virtuellen Volumes, wenn Sie ein einzelnes virtuelles Volume auswählen und dessen Details anzeigen.
+
+* *VMW_XXX*: Die Informationen in den mit "VMW_" gekennzeichneten Feldern werden von VMware definiert.
+* *Übergeordnete virtuelle Volume-ID*: Die virtuelle Volume-ID des übergeordneten virtuellen Volumes.  Besteht die ID nur aus Nullen, ist das virtuelle Volume unabhängig und hat keine Verbindung zu einem übergeordneten Volume.
+* *Virtuelle Volume-ID*: Die UUID des virtuellen Volumes.
+* *Typ des virtuellen Datenträgers*: Der Typ des virtuellen Datenträgers: Konfiguration, Daten, Arbeitsspeicher, Auslagerungsdatei oder Sonstige.
+* *Volume-ID*: Die ID des zugrunde liegenden Volumes.
+* *Zugriff*: Die dem virtuellen Volume zugewiesenen Lese- und Schreibberechtigungen.
+* *Kontoname*: Name des Kontos, auf dem sich das Volume befindet.
+* *Zugriffsgruppen*: Zugehörige Datenträgerzugriffsgruppen.
+* *Gesamtvolumen*: Gesamte bereitgestellte Kapazität in Bytes.
+* *Nicht-Null-Blöcke*: Gesamtzahl der 4-KiB-Blöcke mit Daten nach Abschluss der letzten Garbage Collection.
+* *Null Blöcke*: Gesamtzahl der 4-KiB-Blöcke ohne Daten nach Abschluss der letzten Garbage-Collection-Operation.
+* *Snapshots*: Die Anzahl der zugehörigen Snapshots.  Klicken Sie auf die Zahl, um zu den Details des Snapshots zu gelangen.
+* *Min IOPS*: Die minimale IOPS-QoS-Einstellung des virtuellen Volumes.
+* *Max IOPS*: Die maximale IOPS-QoS-Einstellung des virtuellen Volumes.
+* *Burst IOPS*: Die maximale Burst-QoS-Einstellung des virtuellen Volumes.
+* *512 aktivieren*: Da virtuelle Volumes immer die 512-Byte-Blockgrößenemulation verwenden, ist der Wert immer ja.
+* *Verbundene Volumes*: Zeigt an, ob ein Volume gepaart ist.
+* *Erstellungszeitpunkt*: Der Zeitpunkt, zu dem die Erstellung des virtuellen Volumes abgeschlossen wurde.
+* *Blockgröße*: Größe der Blöcke im Volumen.
+* *Nicht ausgerichtete Schreibvorgänge*: Bei 512e-Volumes die Anzahl der Schreibvorgänge, die nicht an einer 4k-Sektorgrenze stattfanden.  Eine hohe Anzahl nicht ausgerichteter Schreibvorgänge könnte auf eine fehlerhafte Partitionsausrichtung hinweisen.
+* *Nicht ausgerichtete Lesevorgänge*: Bei 512e-Volumes die Anzahl der Lesevorgänge, die nicht an einer 4k-Sektorgrenze stattfanden.  Eine hohe Anzahl nicht ausgerichteter Lesevorgänge könnte auf eine fehlerhafte Partitionsausrichtung hinweisen.
+* *scsiEUIDeviceID*: Weltweit eindeutige SCSI-Gerätekennung für das Volume im EUI-64-basierten 16-Byte-Format.
+* *scsiNAADeviceID*: Weltweit eindeutige SCSI-Gerätekennung für das Volume im NAA IEEE Registered Extended Format.
+* *Attribute*: Liste von Name-Wert-Paaren im JSON-Objektformat.
+

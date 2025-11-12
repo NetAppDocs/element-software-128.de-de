@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot.html 
+sidebar: sidebar 
+keywords: snapshot, delete, volume snapshot, storage cluster, remove snapshot 
+summary: Sie können einen Volume-Snapshot aus einem Speichercluster löschen, auf dem die Element-Software ausgeführt wird.  Wenn Sie einen Snapshot löschen, wird dieser vom System sofort entfernt. 
+---
+= Löschen eines Snapshots
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Volume-Snapshot aus einem Speichercluster löschen, auf dem die Element-Software ausgeführt wird.  Wenn Sie einen Snapshot löschen, wird dieser vom System sofort entfernt.
+
+Sie können Snapshots löschen, die vom Quellcluster repliziert werden.  Wenn ein Snapshot gerade mit dem Zielcluster synchronisiert wird, wenn Sie ihn löschen, wird die Synchronisierungsreplikation abgeschlossen und der Snapshot wird aus dem Quellcluster gelöscht.  Der Snapshot wird nicht aus dem Zielcluster gelöscht.
+
+Sie können auch Snapshots löschen, die vom Zielcluster auf das Ziel repliziert wurden.  Der gelöschte Snapshot wird in einer Liste gelöschter Snapshots auf dem Zielsystem gespeichert, bis das System erkennt, dass Sie den Snapshot auf dem Quellcluster gelöscht haben.  Wenn das Zielsystem erkennt, dass Sie den Quell-Snapshot gelöscht haben, stoppt es die Replikation des Snapshots.
+
+Wenn Sie einen Snapshot aus dem Quellcluster löschen, ist der Snapshot des Zielclusters davon nicht betroffen (umgekehrt gilt das Gleiche auch).
+
+. Klicken Sie auf *Datenschutz* > *Schnappschüsse*.
+. Klicken Sie auf das Symbol *Aktionen* für den Snapshot, den Sie löschen möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Löschen*.
+. Bestätigen Sie die Aktion.
+

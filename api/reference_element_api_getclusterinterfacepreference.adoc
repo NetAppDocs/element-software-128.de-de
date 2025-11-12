@@ -1,0 +1,96 @@
+---
+permalink: api/reference_element_api_getclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,preference,get,getting,getclusterinterfacepreference 
+summary: Die Methode GetClusterInterfacePreference ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, Informationen über eine bestehende Cluster-Schnittstellenpräferenz zu erhalten.  Diese Methode ist nur für den internen Gebrauch bestimmt. 
+---
+= GetClusterInterfacePreference
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `GetClusterInterfacePreference` Das Verfahren ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, Informationen über eine bestehende Cluster-Schnittstellenpräferenz zu erhalten.  Diese Methode ist nur für den internen Gebrauch bestimmt.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Name
+ a| 
+Der Name der Cluster-Schnittstelleneinstellung.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Präferenz
+ a| 
+Name und Wert der angeforderten Cluster-Schnittstellenpräferenz.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "GetClusterInterfacePreference",
+	"params": {
+		"name": "prefname"
+		},
+	"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"preference": {
+			"name": "prefname",
+			"value": "testvalue"
+		}
+	}
+}
+----
+
+
+== Neu seit Version
+
+11,0

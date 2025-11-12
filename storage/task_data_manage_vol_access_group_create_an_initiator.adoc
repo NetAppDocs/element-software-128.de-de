@@ -1,0 +1,53 @@
+---
+permalink: storage/task_data_manage_vol_access_group_create_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, create, fc, iscsi, aliases, chap 
+summary: Sie können iSCSI- oder Fibre-Channel-Initiatoren erstellen und ihnen optional Aliase zuweisen. 
+---
+= Einen Initiator erstellen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können iSCSI- oder Fibre-Channel-Initiatoren erstellen und ihnen optional Aliase zuweisen.
+
+Sie können CHAP-Attribute basierend auf dem Initiator auch über einen API-Aufruf zuweisen.  Um pro Initiator einen CHAP-Kontonamen und Anmeldeinformationen hinzuzufügen, müssen Sie Folgendes verwenden: `CreateInitiator` API-Aufruf zum Entfernen und Hinzufügen von CHAP-Zugriffen und -Attributen.  Der Initiatorzugriff kann auf ein oder mehrere VLANs beschränkt werden, indem eine oder mehrere virtuelle Netzwerk-IDs über die `CreateInitiators` Und `ModifyInitiators` API-Aufrufe.  Wenn keine virtuellen Netzwerke angegeben sind, kann der Initiator auf alle Netzwerke zugreifen.
+
+Für Details siehe die API-Referenzinformationen. link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"]
+
+.Schritte
+. Klicken Sie auf *Management* > *Initiatoren*.
+. Klicken Sie auf *Initiator erstellen*.
+. Führen Sie die folgenden Schritte aus, um einen einzelnen Initiator oder mehrere Initiatoren zu erstellen:
++
+[cols="25,75"]
+|===
+| Option | Schritte 
+
+
+ a| 
+Einen einzelnen Initiator erstellen
+ a| 
+.. Klicken Sie auf *Einzelnen Initiator erstellen*.
+.. Geben Sie den IQN oder WWPN für den Initiator im Feld *IQN/WWPN* ein.
+.. Geben Sie im Feld *Alias* einen aussagekräftigen Namen für den Initiator ein.
+.. Klicken Sie auf *Initiator erstellen*.
+
+
+
+
+ a| 
+Mehrere Initiatoren erstellen
+ a| 
+.. Klicken Sie auf *Massen-Initiatoren erstellen*.
+.. Geben Sie eine Liste von IQNs oder WWPNs in das Textfeld ein.
+.. Klicken Sie auf *Initiatoren hinzufügen*.
+.. Wählen Sie einen Initiator aus der Ergebnisliste aus und klicken Sie auf das entsprechende Symbol "Hinzufügen" in der Spalte *Alias*, um einen Alias für den Initiator hinzuzufügen.
+.. Klicken Sie auf das Häkchen, um den neuen Alias zu bestätigen.
+.. Klicken Sie auf *Initiatoren erstellen*.
+
+
+|===
+

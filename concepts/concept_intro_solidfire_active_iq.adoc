@@ -1,0 +1,33 @@
+---
+permalink: concepts/concept_intro_solidfire_active_iq.html 
+sidebar: sidebar 
+keywords: solidfire, active, iq, activeiq, tool, aiq 
+summary: Active IQ ist ein webbasiertes Tool, das kontinuierlich aktualisierte historische Ansichten von clusterweiten Daten bietet.  Sie können Benachrichtigungen für bestimmte Ereignisse, Schwellenwerte oder Kennzahlen einrichten.  Active IQ ermöglicht es Ihnen, die Systemleistung und -kapazität zu überwachen und sich über den Zustand des Clusters auf dem Laufenden zu halten. 
+---
+= SolidFire Active IQ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://activeiq.solidfire.com["SolidFire Active IQ"^]ist ein webbasiertes Tool, das kontinuierlich aktualisierte historische Ansichten von clusterweiten Daten bereitstellt.  Sie können Benachrichtigungen für bestimmte Ereignisse, Schwellenwerte oder Kennzahlen einrichten.  SolidFire Active IQ ermöglicht es Ihnen, die Systemleistung und -kapazität zu überwachen und sich über den Zustand des Clusters auf dem Laufenden zu halten.
+
+Folgende Informationen zu Ihrem System finden Sie in SolidFire Active IQ:
+
+* Anzahl der Knoten und Status der Knoten: betriebsbereit, offline oder fehlerhaft
+* Grafische Darstellung der CPU-, Speichernutzung und Knotendrosselung
+* Details zum Knoten, wie Seriennummer, Steckplatz im Gehäuse, Modell und Version der auf dem Speicherknoten ausgeführten NetApp Element -Software
+* CPU- und speicherbezogene Informationen zu den virtuellen Maschinen
+
+
+Um mehr über SolidFire Active IQ zu erfahren, siehe https://docs.netapp.com/us-en/solidfire-active-iq/index.html["SolidFire Active IQ Dokumentation"^] Die
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp Supportseite > Tools für Active IQ"^]
+

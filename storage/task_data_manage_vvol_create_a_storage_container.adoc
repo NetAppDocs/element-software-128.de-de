@@ -1,0 +1,36 @@
+---
+permalink: storage/task_data_manage_vvol_create_a_storage_container.html 
+sidebar: sidebar 
+keywords: storage container, create 
+summary: Sie können Speichercontainer in der Element-Benutzeroberfläche erstellen und diese in vCenter wiederfinden.  Sie müssen mindestens einen Speichercontainer erstellen, um mit der Bereitstellung von VVol-gestützten virtuellen Maschinen beginnen zu können. 
+---
+= Erstellen Sie einen Aufbewahrungsbehälter
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Speichercontainer in der Element-Benutzeroberfläche erstellen und diese in vCenter wiederfinden.  Sie müssen mindestens einen Speichercontainer erstellen, um mit der Bereitstellung von VVol-gestützten virtuellen Maschinen beginnen zu können.
+
+Sie haben die VVols-Funktionalität in der Element-Benutzeroberfläche für den Cluster aktiviert.
+
+. Wählen Sie *VVols* > *Speichercontainer*.
+. Klicken Sie auf die Schaltfläche *Speicherbehälter erstellen*.
+. Geben Sie die Informationen zum Speichercontainer im Dialogfeld *Neuen Speichercontainer erstellen* ein:
++
+.. Geben Sie einen Namen für den Aufbewahrungsbehälter ein.
+.. Konfigurieren Sie Initiator- und Zielgeheimnisse für CHAP.
++
+
+TIP: Lassen Sie die Felder für die CHAP-Einstellungen leer, um Geheimnisse automatisch zu generieren.
+
+.. Klicken Sie auf die Schaltfläche *Speichercontainer erstellen*.
+
+
+. Überprüfen Sie, ob der neue Speichercontainer in der Liste auf der Registerkarte *Speichercontainer* angezeigt wird.
++
+
+NOTE: Da eine NetApp Element -Konto-ID automatisch erstellt und dem Speichercontainer zugewiesen wird, ist es nicht notwendig, ein Konto manuell zu erstellen.
+
+

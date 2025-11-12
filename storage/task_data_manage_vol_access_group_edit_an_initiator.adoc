@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vol_access_group_edit_an_initiator.html 
+sidebar: sidebar 
+keywords: initiator, edit, change alias, chap, credentials 
+summary: Sie können den Alias eines bestehenden Initiators ändern oder einen Alias hinzufügen, falls noch keiner existiert. 
+---
+= Bearbeiten Sie einen Initiator
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Alias eines bestehenden Initiators ändern oder einen Alias hinzufügen, falls noch keiner existiert.
+
+Um pro Initiator einen CHAP-Kontonamen und Anmeldeinformationen hinzuzufügen, müssen Sie Folgendes verwenden: `ModifyInitiator` API-Aufruf zum Entfernen und Hinzufügen von CHAP-Zugriffen und -Attributen.
+
+Sehenlink:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"] .
+
+.Schritte
+. Klicken Sie auf *Management* > *Initiatoren*.
+. Klicken Sie auf das Aktionssymbol für den Initiator, den Sie bearbeiten möchten.
+. Klicken Sie auf *Bearbeiten*.
+. Geben Sie im Feld *Alias* einen neuen Alias für den Initiator ein.
+. Klicken Sie auf *Änderungen speichern*.
+

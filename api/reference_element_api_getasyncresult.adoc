@@ -1,0 +1,223 @@
+---
+permalink: api/reference_element_api_getasyncresult.html 
+sidebar: sidebar 
+keywords: async,asynchronous,results,result,get,getting,GetAsyncResult 
+summary: Mit GetAsyncResult können Sie das Ergebnis asynchroner Methodenaufrufe abrufen.  Manche Methodenaufrufe benötigen etwas Zeit zur Ausführung und sind möglicherweise noch nicht abgeschlossen, wenn das System die erste Antwort sendet.  Um den Status oder das Ergebnis des Methodenaufrufs zu erhalten, verwenden Sie GetAsyncResult, um den von der Methode zurückgegebenen asyncHandle-Wert abzufragen. 
+---
+= GetAsyncResult
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `GetAsyncResult` um das Ergebnis asynchroner Methodenaufrufe abzurufen.  Manche Methodenaufrufe benötigen etwas Zeit zur Ausführung und sind möglicherweise noch nicht abgeschlossen, wenn das System die erste Antwort sendet.  Um den Status oder das Ergebnis des Methodenaufrufs zu erhalten, verwenden Sie `GetAsyncResult` den von der Methode zurückgegebenen Wert von asyncHandle abfragen.
+
+`GetAsyncResult`Gibt den Gesamtstatus der Operation (in Bearbeitung, abgeschlossen oder Fehler) in standardisierter Weise zurück, wobei die tatsächlich zurückgegebenen Daten vom ursprünglichen Methodenaufruf abhängen und die Rückgabedaten bei jeder Methode dokumentiert sind.
+
+Wenn der Parameter keepResult fehlt oder false ist, wird das asyncHandle inaktiv, sobald das Ergebnis zurückgegeben wird, und spätere Abfrageversuche dieses asyncHandle führen zu einem Fehler.  Sie können den asyncHandle für zukünftige Abfragen aktiv halten, indem Sie den Parameter keepResult auf true setzen.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+asyncHandle
+ a| 
+Ein Wert, der vom ursprünglichen asynchronen Methodenaufruf zurückgegeben wurde.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+keepResult
+ a| 
+Wenn dies zutrifft, entfernt GetAsyncResult das asynchrone Ergebnis bei der Rückgabe nicht, sodass zukünftige Abfragen an dieses AsyncHandle möglich sind.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Status
+ a| 
+Status des asynchronen Methodenaufrufs. Mögliche Werte:
+
+* Ausführung: Die Methode wird noch ausgeführt.
+* abgeschlossen: Die Methode ist abgeschlossen und das Ergebnis oder der Fehler ist verfügbar.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Ergebnis
+ a| 
+Wenn die asynchrone Methode erfolgreich abgeschlossen wurde, ist dies das Ergebnis der asynchronen Operation.  Wenn der asynchrone Vorgang fehlgeschlagen ist, ist dieses Element nicht vorhanden.
+ a| 
+Schnur
+
+
+
+ a| 
+Fehler
+ a| 
+Wenn der Status „abgeschlossen“ ist und die asynchrone Methode fehlgeschlagen ist, enthält dieses Element die Fehlerdetails.  Wenn die asynchrone Operation erfolgreich war, ist dieses Element nicht vorhanden.
+ a| 
+Schnur
+
+
+
+ a| 
+Ergebnistyp
+ a| 
+Die Art der Operation, die der asynchrone Methodenaufruf ausführt oder ausgeführt hat.
+ a| 
+Schnur
+
+
+
+ a| 
+Details
+ a| 
+Wenn der Status „Wird ausgeführt“ lautet, enthält dieses Element Informationen, die für die aktuelle Ausführung der Methode relevant sind.  Wenn die asynchrone Methode nicht ausgeführt wird, ist dieses Element nicht vorhanden.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Erstellungszeit
+ a| 
+Die Uhrzeit, zu der die asynchrone Methode aufgerufen wurde, im Format UTC+0.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+letzte Aktualisierungszeit
+ a| 
+Der Zeitpunkt, zu dem der Status der asynchronen Methode zuletzt aktualisiert wurde, im Format UTC+0.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+|===
+*Hinweis:* Der Rückgabewert von GetAsyncResult ist im Wesentlichen eine verschachtelte Version der Standard-JSON-Antwort mit einem zusätzlichen Statusfeld.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetAsyncResult",
+  "params": {
+      "asyncHandle" : 389
+},
+"id" : 1
+}
+----
+
+
+== Antwortbeispiel: Methodenfehler
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "error": {
+      "code": 500,
+      "message": "DBClient operation requested on a non-existent path at [/asyncresults/1]",
+      "name": "xDBNoSuchPath"
+   },
+   "id": 1
+}
+----
+Wenn "response" das JSON-Antwortobjekt des GetAsyncResult-Aufrufs wäre, dann würde "response.error" einem Fehler der GetAsyncResult-Methode selbst entsprechen (z. B. der Abfrage eines nicht existierenden asyncHandle).
+
+
+
+== Antwortbeispiel: Fehler bei asynchroner Aufgabe
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T02:05:53Z",
+     "error": {
+       "bvID": 1,
+       "message": "Bulk volume job failed",
+       "name": "xBulkVolumeScriptFailure",
+       "volumeID": 34
+     },
+     "lastUpdateTime": "2016-01-21T02:06:56Z",
+     "resultType": "BulkVolume",
+     "status": "complete"
+   }
+}
+----
+Der Wert "`response.result.error`" entspricht einem Fehlerergebnis des ursprünglichen Methodenaufrufs.
+
+
+
+== Antwortbeispiel: Erfolg bei asynchroner Aufgabe
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "createTime": "2016-01-01T22:29:18Z",
+     "lastUpdateTime": "2016-01-01T22:45:51Z",
+     "result": {
+       "cloneID": 25,
+       "message": "Clone complete.",
+       "volumeID": 47
+     },
+     "resultType": "Clone",
+     "status": "complete"
+   }
+}
+----
+Der Wert "`response.result.result`" ist der Rückgabewert des ursprünglichen Methodenaufrufs, falls der Aufruf erfolgreich abgeschlossen wurde.
+
+
+
+== Neu seit Version
+
+9,6

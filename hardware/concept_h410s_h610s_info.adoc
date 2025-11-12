@@ -1,0 +1,31 @@
+---
+permalink: hardware/concept_h410s_h610s_info.html 
+sidebar: sidebar 
+keywords: h410s, h610s, hardware installation, hardware maintenance 
+summary: Hier finden Sie Informationen zur Installation und Wartung von Speicherknoten der H-Serie. 
+---
+= Hardwareinformationen zu H410S und H610S
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Hier finden Sie Informationen zur Installation und Wartung von Speicherknoten der H-Serie.
+
+Hier finden Sie die Links zu den Installations- und Wartungshinweisen:
+
+* link:task_h410s_h610s_install.html["Installieren Sie Speicherknoten der H-Serie"^]
+* link:task_h410s_repl.html["Ersetzen Sie einen H410S-Knoten"^]
+* link:task_h610s_repl.html["Ersetzen Sie einen H610S-Knoten"^]
+* link:task_hseries_driverepl.html["Laufwerke ersetzen"^]
+* link:task_psu_repl.html["Netzteil austauschen"^]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

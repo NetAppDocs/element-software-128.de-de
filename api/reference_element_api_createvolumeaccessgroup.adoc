@@ -1,0 +1,178 @@
+---
+permalink: api/reference_element_api_createvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,groups,group,create,creating,CreateVolumeAccessGroup 
+summary: Mit CreateVolumeAccessGroup können Sie eine neue Volume-Zugriffsgruppe erstellen.  Beim Erstellen der Volume-Zugriffsgruppe müssen Sie ihr einen Namen geben und können optional Initiatoren und Volumes eingeben. 
+---
+= CreateVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `CreateVolumeAccessGroup` um eine neue Datenträgerzugriffsgruppe zu erstellen.  Beim Erstellen der Volume-Zugriffsgruppe müssen Sie ihr einen Namen geben und können optional Initiatoren und Volumes eingeben.
+
+Jeder Initiator-IQN, den Sie der Volume-Zugriffsgruppe hinzufügen, kann ohne CHAP-Authentifizierung auf jedes Volume in der Gruppe zugreifen.
+
+
+NOTE: Geklonte Volumes erben die Zugehörigkeit zu den Volume-Zugriffsgruppen nicht vom Quellvolume.
+
+Beachten Sie Folgendes beim Erstellen von Datenträgerzugriffsgruppen:
+
+* Eine Volume-Zugriffsgruppe kann bis zu 64 Initiator-IQNs enthalten.
+* Ein Initiator kann nur einer Volume-Zugriffsgruppe angehören.
+* Eine Volume-Zugriffsgruppe kann bis zu 2000 Volumes enthalten.
+* Jede Datenträgerzugriffsgruppe kann maximal vier Datenträgerzugriffsgruppen angehören.
+
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Initiatoren
+ a| 
+Liste der Initiator-IDs oder -Namen (IQNs und WWPNs), die in die Volume-Zugriffsgruppe aufgenommen werden sollen.  Wenn Sie eine Liste von Initiatornamen übergeben, werden die Initiatoren erstellt, sofern sie noch nicht existieren.  Wenn Sie eine Liste von Initiator-IDs übergeben, gibt die Methode einen Fehler zurück, falls einer der Initiatoren noch nicht existiert.  Die Übergabe von Initiatornamen ist veraltet; verwenden Sie nach Möglichkeit Initiator-IDs.
+ a| 
+Ganzzahl-Array oder Zeichenketten-Array (veraltet)
+ a| 
+ a| 
+Nein
+
+
+
+ a| 
+Name
+ a| 
+Name der Datenträgerzugriffsgruppe.  Es ist nicht erforderlich, dass es einzigartig ist, aber empfehlenswert.  Muss zwischen 1 und 64 Zeichen lang sein.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Bände
+ a| 
+Liste der Volume-IDs, die in die Volume-Zugriffsgruppe aufgenommen werden sollen.
+ a| 
+Ganzzahl-Array
+ a| 
+ a| 
+Nein
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+{}
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+volumeAccessGroup
+ a| 
+Ein Objekt, das Informationen über die neu erstellte Datenträgerzugriffsgruppe enthält.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]
+
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Die ID der neu erstellten Datenträgerzugriffsgruppe.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "CreateVolumeAccessGroup",
+   "params": {
+      "name": "myaccessgroup",
+      "initiators": ["iqn.1993-08.org.debian: 01: a31b1d799d5c"],
+      "volumes": [327],
+      "attributes": {}
+   }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [],
+      "initiatorIDs": [
+        95
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian: 01: a31b1d799d5c"
+      ],
+      "name": "myaccessgroup",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        327
+      ]
+    },
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getasyncresult.adoc[GetAsyncResult]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+* xref:reference_element_api_modifyvolume.adoc[Lautstärke ändern]
+

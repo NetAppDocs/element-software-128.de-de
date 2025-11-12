@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_keyproviderkmip.html 
+sidebar: sidebar 
+keywords: key provider,KMIP,keys 
+summary: 'Das Objekt keyProviderKmip beschreibt einen Key Management Interoperability Protocol (KMIP)-Schlüsselanbieter.  Ein Schlüsselanbieter ist sowohl ein Mechanismus als auch ein Speicherort zum Abrufen von Authentifizierungsschlüsseln zur Verwendung mit Clusterfunktionen wie der Verschlüsselung ruhender Daten.' 
+---
+= keyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Objekt keyProviderKmip beschreibt einen Key Management Interoperability Protocol (KMIP)-Schlüsselanbieter.  Ein Schlüsselanbieter ist sowohl ein Mechanismus als auch ein Speicherort zum Abrufen von Authentifizierungsschlüsseln zur Verwendung mit Clusterfunktionen wie der Verschlüsselung ruhender Daten.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+keyProviderID
+ a| 
+Die ID des KMIP-Schlüsselanbieters.  Dies ist ein eindeutiger Wert, der vom Cluster bei der Erstellung des Schlüsselanbieters zugewiesen wird und nicht geändert werden kann.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+keyProviderIsActive
+ a| 
+Trifft zu, wenn der KMIP-Schlüsselanbieter aktiv ist.  Ein Provider gilt als aktiv, wenn noch ausstehende Schlüssel vorhanden sind, die zwar erstellt, aber noch nicht gelöscht wurden und daher vermutlich noch in Gebrauch sind.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+keyProviderName
+ a| 
+Der Name des KMIP-Schlüsselanbieters.
+ a| 
+Schnur
+
+
+
+ a| 
+SchlüsselServerIDs
+ a| 
+Eine wichtige Server-ID, die diesem Anbieter zugeordnet ist.  Der Server muss hinzugefügt werden, bevor dieser Anbieter aktiv werden kann.  Der Server kann nicht entfernt werden, solange dieser Anbieter aktiv ist.  Pro Anbieter wird nur eine Server-ID unterstützt.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+kmipCapabilities
+ a| 
+Die Funktionen dieses KMIP-Schlüsselanbieters, einschließlich Details zur zugrunde liegenden Bibliothek, FIPS-Konformität, SSL-Anbieter usw.
+ a| 
+Schnur
+
+|===

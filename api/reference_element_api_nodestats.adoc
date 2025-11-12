@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: Das nodeStats-Objekt enthält übergeordnete Aktivitätsmessungen für einen Knoten.  Mit den API-Methoden GetNodeStats und ListNodeStats können Sie einige oder alle nodeStats-Objekte abrufen. 
+---
+= Knotenstatistik
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das nodeStats-Objekt enthält übergeordnete Aktivitätsmessungen für einen Knoten.  Sie können die `GetNodeStats` Und `ListNodeStats` API-Methoden zum Abrufen einiger oder aller nodeStats-Objekte.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+zählen
+ a| 
+Die Gesamtzahl der Stichproben im nodeStats-Objekt.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+CPU
+ a| 
+CPU-Auslastung in %.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+CPU Gesamt
+ a| 
+Monoton steigender Wert der CPU-Auslastung.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+cBytesIn
+ a| 
+Bytes werden über die Clusterschnittstelle empfangen.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+cBytesOut
+ a| 
+Bytes werden über die Clusterschnittstelle ausgegeben.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+sBytesIn
+ a| 
+Bytes werden über die Speicherschnittstelle eingelesen.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+sBytesOut
+ a| 
+Bytes werden über die Speicherschnittstelle ausgegeben.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+mBytesIn
+ a| 
+Bytes werden über die Management-Schnittstelle eingegeben.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+mBytesOut
+ a| 
+Bytes werden über die Management-Schnittstelle ausgegeben.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Netzwerknutzungscluster
+ a| 
+Netzwerkauslastung (in %) der Cluster-Netzwerkschnittstelle.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+NetzwerknutzungSpeicher
+ a| 
+Netzwerkauslastung (in %) der Speichernetzwerkschnittstelle.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Knotenwärme
+ a| 
+Informationen zur Knotenauslastung.  Verfügbar ab Element 12.8.  Mitglieder:
+
+* primaryTotalHeat: Durchschnittliche Gesamt-IOPS des Knotens / Konfigurierte IOPS des Knotens über 24 Stunden
+* recentPrimaryTotalHeat: Durchschnittliche Gesamt-IOPS des Knotens / konfigurierte IOPS des Knotens über eine Stunde
+* recentTotalHeat: Durchschnittliche Gesamt-IOPS des Knotens / Konfigurierte IOPS des Knotens über eine Stunde
+* totalHeat: Durchschnittliche Gesamt-IOPS des Knotens / Konfigurierte IOPS des Knotens über 24 Stunden
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+LeselatenzUSecGesamt
+ a| 
+Monoton steigender Wert der Gesamtzeit, die für Leseoperationen am Knoten aufgewendet wird.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Leseoperationen
+ a| 
+Monoton steigender Wert der gesamten Leseoperationen eines Knotens.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+Histogrammdaten zur Veranschaulichung der Auslastung der einzelnen Servicebereiche im Zeitverlauf.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Zeitstempel
+ a| 
+Die aktuelle Uhrzeit im UTC+0-Format.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+verwendeter Speicher
+ a| 
+Gesamtspeichernutzung in Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+SchreiblatenzUSecTotal
+ a| 
+Monoton steigender Wert der Gesamtzeit, die für Schreibvorgänge auf dem Knoten aufgewendet wird.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Schreibvorgänge
+ a| 
+Monoton steigender Wert der gesamten Schreibvorgänge auf einem Knoten.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getnodestats.adoc[GetNodeStats]
+* xref:reference_element_api_listnodestats.adoc[ListNodeStats]
+

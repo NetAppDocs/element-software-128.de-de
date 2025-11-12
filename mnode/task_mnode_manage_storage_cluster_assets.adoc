@@ -1,0 +1,252 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_manage_storage_cluster_assets.html 
+summary: Über die REST-API-Benutzeroberfläche können Sie Assets des Management-Node-Speicherclusters hinzufügen, entfernen und ändern. 
+keywords: netapp, mnode, management node, rest api, Element, assets 
+---
+= Speichercluster-Assets erstellen und verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können neue Speichercluster-Assets zum Verwaltungsknoten hinzufügen, die gespeicherten Anmeldeinformationen für bekannte Speichercluster-Assets bearbeiten und Speichercluster-Assets vom Verwaltungsknoten mithilfe der REST-API löschen.
+
+.Was du brauchst
+* Stellen Sie sicher, dass auf Ihrem Speichercluster die NetApp Element Software Version 11.3 oder höher läuft.
+* Stellen Sie sicher, dass Sie einen Management-Knoten mit Version 11.3 oder höher bereitgestellt haben.
+
+
+.Optionen für die Verwaltung von Speichercluster-Assets
+Wählen Sie eine der folgenden Optionen:
+
+* <<Abrufen der Installations-ID und der Cluster-ID eines Speichercluster-Assets>>
+* <<Fügen Sie ein neues Speichercluster-Asset hinzu.>>
+* <<Bearbeiten Sie die gespeicherten Anmeldeinformationen für ein Speichercluster-Asset.>>
+* <<Löschen eines Speichercluster-Assets>>
+
+
+
+
+== Abrufen der Installations-ID und der Cluster-ID eines Speichercluster-Assets
+
+Sie können die Installations-ID und die ID des Speicherclusters über die REST-API abrufen.  Sie benötigen die Installations-ID, um ein neues Speichercluster-Asset hinzuzufügen, und die Cluster-ID, um ein bestimmtes Speichercluster-Asset zu ändern oder zu löschen.
+
+.Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Inventarisierungsdienst zu, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von eingeben. `/inventory/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *GET /installations*.
+. Wählen Sie *Ausprobieren*.
+. Wählen Sie *Ausführen*.
++
+Die API gibt eine Liste aller bekannten Installationen zurück.
+
+. Speichern Sie den Wert aus dem Antworttext des Codes 200 in der `id` Feld, das Sie in der Liste der Installationen finden können.  Dies ist die Installations-ID. Beispiel:
++
+[listing, subs="+quotes"]
+----
+"installations": [
+    {
+      *"id": "1234a678-12ab-35dc-7b4a-1234a5b6a7ba",*
+      "name": "my-sf-installation",
+      "_links": {
+        "collection": "https://localhost/inventory/1/installations",
+        "self": "https://localhost/inventory/1/installations/1234a678-12ab-35dc-7b4a-1234a5b6a7ba"
+      }
+    }
+  ]
+----
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Speicherdienst zu, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von eingeben. `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *GET /clusters*.
+. Wählen Sie *Ausprobieren*.
+. Geben Sie die zuvor gespeicherte Installations-ID in das folgende Feld ein: `installationId` Parameter.
+. Wählen Sie *Ausführen*.
++
+Die API gibt eine Liste aller bekannten Speichercluster in dieser Installation zurück.
+
+. Ermitteln Sie anhand des Antworttextes des Codes 200 den korrekten Speichercluster und speichern Sie den Wert im Cluster. `storageId` Feld.  Dies ist die Speichercluster-ID.
+
+
+
+
+== Fügen Sie ein neues Speichercluster-Asset hinzu.
+
+Mit der REST-API können Sie ein oder mehrere neue Speichercluster-Assets zum Management-Knoteninventar hinzufügen.  Wenn Sie ein neues Speichercluster-Asset hinzufügen, wird dieses automatisch beim Verwaltungsknoten registriert.
+
+.Was du brauchst
+* Sie haben kopiert<<Abrufen der Installations-ID und der Cluster-ID eines Speichercluster-Assets,Speichercluster-ID und Installations-ID>> für beliebige Speichercluster, die Sie hinzufügen möchten.
+* Wenn Sie mehr als einen Speicherknoten hinzufügen, haben Sie die Einschränkungen deslink:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["Autoritativer Cluster"] und Unterstützung für mehrere Speichercluster.
++
+
+NOTE: Alle im autoritativen Cluster definierten Benutzer sind auch in allen anderen mit der NetApp Hybrid Cloud Control-Instanz verbundenen Clustern als Benutzer definiert.
+
+
+
+.Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Speicherdienst zu, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von eingeben. `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *POST /clusters*.
+. Wählen Sie *Ausprobieren*.
+. Geben Sie die Informationen des neuen Speicherclusters in den folgenden Parametern im Feld *Anfragetext* ein:
++
+[listing]
+----
+{
+  "installationId": "a1b2c34d-e56f-1a2b-c123-1ab2cd345d6e",
+  "mvip": "10.0.0.1",
+  "password": "admin",
+  "userId": "admin"
+}
+----
++
+|===
+| Parameter | Typ | Beschreibung 
+
+
+| `installationId` | Schnur | Die Installation, in die der neue Speichercluster integriert werden soll.  Geben Sie die zuvor gespeicherte Installations-ID in dieses Feld ein. 
+
+
+| `mvip` | Schnur | Die IPv4-Management-Virtual-IP-Adresse (MVIP) des Speicherclusters. 
+
+
+| `password` | Schnur | Das Passwort, das zur Kommunikation mit dem Speichercluster verwendet wird. 
+
+
+| `userId` | Schnur | Die Benutzer-ID, die zur Kommunikation mit dem Speichercluster verwendet wird (der Benutzer muss über Administratorrechte verfügen). 
+|===
+. Wählen Sie *Ausführen*.
++
+Die API gibt ein Objekt zurück, das Informationen über das neu hinzugefügte Speichercluster-Asset enthält, wie z. B. Name, Version und IP-Adressinformationen.
+
+
+
+
+
+== Bearbeiten Sie die gespeicherten Anmeldeinformationen für ein Speichercluster-Asset.
+
+Sie können die gespeicherten Anmeldeinformationen bearbeiten, die der Verwaltungsknoten für die Anmeldung an einem Speichercluster verwendet.  Der von Ihnen ausgewählte Benutzer muss über Cluster-Administratorrechte verfügen.
+
+
+NOTE: Stellen Sie sicher, dass Sie die folgenden Schritte befolgt haben:<<Abrufen der Installations-ID und der Cluster-ID eines Speichercluster-Assets>> bevor wir fortfahren.
+
+.Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Speicherdienst zu, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von eingeben. `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *PUT /clusters/{storageId}*.
+. Wählen Sie *Ausprobieren*.
+. Fügen Sie die zuvor kopierte Speichercluster-ID in das folgende Feld ein: `storageId` Parameter.
+. Ändern Sie einen oder beide der folgenden Parameter im Feld *Anfragetext*:
++
+[listing]
+----
+{
+  "password": "adminadmin",
+  "userId": "admin"
+}
+----
++
+|===
+| Parameter | Typ | Beschreibung 
+
+
+| `password` | Schnur | Das Passwort, das zur Kommunikation mit dem Speichercluster verwendet wird. 
+
+
+| `userId` | Schnur | Die Benutzer-ID, die zur Kommunikation mit dem Speichercluster verwendet wird (der Benutzer muss über Administratorrechte verfügen). 
+|===
+. Wählen Sie *Ausführen*.
+
+
+
+
+== Löschen eines Speichercluster-Assets
+
+Sie können ein Storage-Cluster-Asset löschen, wenn der Storage-Cluster nicht mehr in Betrieb ist.  Wenn Sie ein Speichercluster-Asset entfernen, wird es automatisch vom Management-Knoten abgemeldet.
+
+
+NOTE: Stellen Sie sicher, dass Sie die folgenden Schritte befolgt haben:<<Abrufen der Installations-ID und der Cluster-ID eines Speichercluster-Assets>> bevor wir fortfahren.
+
+.Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Speicherdienst zu, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von eingeben. `/storage/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *DELETE /clusters/{storageId}*.
+. Wählen Sie *Ausprobieren*.
+. Geben Sie die zuvor kopierte Speichercluster-ID in das Feld ein. `storageId` Parameter.
+. Wählen Sie *Ausführen*.
++
+Im Erfolgsfall liefert die API eine leere Antwort.
+
+
+
+[discrete]
+== Weitere Informationen
+
+* link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["Autoritativer Cluster"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

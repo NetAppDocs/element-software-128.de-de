@@ -1,0 +1,69 @@
+---
+permalink: storage/concept_system_manage_drives_managing_drives.html 
+sidebar: sidebar 
+keywords: drives, manage, cluster, element ui, remove drives 
+summary: Jeder Knoten enthält ein oder mehrere physische Laufwerke, die zur Speicherung eines Teils der Daten des Clusters verwendet werden.  Der Cluster nutzt die Kapazität und Leistung des Laufwerks, nachdem das Laufwerk erfolgreich in den Cluster integriert wurde.  Sie können die Element-Benutzeroberfläche zur Verwaltung von Laufwerken verwenden. 
+---
+= Laufwerke verwalten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Jeder Knoten enthält ein oder mehrere physische Laufwerke, die zur Speicherung eines Teils der Daten des Clusters verwendet werden.  Der Cluster nutzt die Kapazität und Leistung des Laufwerks, nachdem das Laufwerk erfolgreich in den Cluster integriert wurde.  Sie können die Element-Benutzeroberfläche zur Verwaltung von Laufwerken verwenden.
+
+
+
+== Laufwerksdetails
+
+Die Seite „Laufwerke“ auf der Registerkarte „Cluster“ bietet eine Liste der aktiven Laufwerke im Cluster.  Sie können die Seite filtern, indem Sie eine der Registerkarten „Aktiv“, „Verfügbar“, „Entfernen“, „Löschen“ oder „Fehlgeschlagen“ auswählen.
+
+Bei der ersten Initialisierung eines Clusters ist die Liste der aktiven Laufwerke leer.  Sie können Laufwerke hinzufügen, die keinem Cluster zugewiesen sind und auf der Registerkarte „Verfügbar“ aufgeführt werden, nachdem ein neuer SolidFire -Cluster erstellt wurde.
+
+Die folgenden Elemente werden in der Liste der aktiven Laufwerke angezeigt.
+
+* *Laufwerks-ID*
++
+Die dem Laufwerk zugewiesene fortlaufende Nummer.
+
+* *Knoten-ID*
++
+Die Knotennummer, die beim Hinzufügen des Knotens zum Cluster vergeben wird.
+
+* *Knotenname*
++
+Der Name des Knotens, der das Laufwerk beherbergt.
+
+* *Slot*
++
+Die Steckplatznummer, an der sich das Laufwerk physisch befindet.
+
+* *Kapazität*
++
+Die Größe des Laufwerks in GB.
+
+* *Seriennummer*
++
+Die Seriennummer des Laufwerks.
+
+* *Verbleibender Verschleiß*
++
+Die Verschleißzustandsanzeige.
+
++
+Das Speichersystem meldet den ungefähren Verschleißgrad, der auf jedem Solid-State-Drive (SSD) zum Schreiben und Löschen von Daten noch verfügbar ist.  Ein Laufwerk, das 5 Prozent seiner vorgesehenen Schreib- und Löschzyklen verbraucht hat, weist noch einen Restverschleiß von 95 Prozent auf.  Das System aktualisiert die Informationen zum Laufwerksverschleiß nicht automatisch; Sie können die Seite aktualisieren oder schließen und neu laden, um die Informationen zu aktualisieren.
+
+* *Typ*
++
+Die Art des Laufwerks.  Der Typ kann entweder Block oder Metadaten sein.
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

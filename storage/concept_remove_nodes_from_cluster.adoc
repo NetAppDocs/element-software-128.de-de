@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_remove_nodes_from_cluster.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: Sie können Knoten aus einem Cluster entfernen, um Wartungsarbeiten durchzuführen oder sie auszutauschen.  Sie sollten die NetApp Element UI oder API verwenden, um Knoten zu entfernen, bevor Sie sie offline nehmen. 
+---
+= Knoten aus einem Cluster entfernen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Knoten aus einem Cluster entfernen, um Wartungsarbeiten durchzuführen oder sie auszutauschen.  Sie sollten die NetApp Element UI oder API verwenden, um Knoten zu entfernen, bevor Sie sie offline nehmen.
+
+Die Vorgehensweise zum Entfernen von Speicherknoten wird im Folgenden im Überblick dargestellt:
+
+* Stellen Sie sicher, dass im Cluster ausreichend Kapazität vorhanden ist, um eine Kopie der Daten auf dem Knoten zu erstellen.
+* Entfernen Sie Laufwerke aus dem Cluster mithilfe der Benutzeroberfläche oder der RemoveDrives-API-Methode.
++
+Dies führt dazu, dass das System Daten von den Laufwerken des Knotens auf andere Laufwerke im Cluster migriert.  Die Dauer dieses Prozesses hängt davon ab, wie viele Daten migriert werden müssen.
+
+* Entfernen Sie den Knoten aus dem Cluster.
+
+
+Beachten Sie bitte folgende Punkte, bevor Sie einen Knoten aus- oder einschalten:
+
+* Das Abschalten von Knoten und Clustern birgt Risiken, wenn es nicht ordnungsgemäß durchgeführt wird.
++
+Das Herunterfahren eines Knotens sollte unter Anleitung des NetApp -Supports erfolgen.
+
+* Wenn ein Knoten unter irgendeinem Herunterfahrzustand länger als 5,5 Minuten ausgefallen ist, beginnt Double Helix mit dem Schreiben einzelner replizierter Blöcke auf einen anderen Knoten, um die Daten zu replizieren.  Wenden Sie sich in diesem Fall an den NetApp Support, um Hilfe bei der Analyse des ausgefallenen Knotens zu erhalten.
+* Um einen Knoten sicher neu zu starten oder herunterzufahren, können Sie den Shutdown-API-Befehl verwenden.
+* Wenn sich ein Knoten im ausgefallenen oder ausgeschalteten Zustand befindet, müssen Sie sich an den NetApp Support wenden, bevor Sie ihn wieder online schalten können.
+* Sobald ein Knoten wieder online ist, müssen Sie die Laufwerke wieder zum Cluster hinzufügen, je nachdem, wie lange er außer Betrieb war.
+
+
+
+
+== Weitere Informationen
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["Austausch eines defekten SolidFire -Chassis"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["Austausch eines defekten Knotens der H600S-Serie"]

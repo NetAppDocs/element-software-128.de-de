@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_initializesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: snapmirror,relationship,relationships,initialize,initializing,initializesnapmirrorrelationship 
+summary: Die Element-Software-Weboberfläche verwendet die Methode InitializeSnapMirrorRelationship, um das Zielvolume in einer SnapMirror -Beziehung zu initialisieren, indem eine erste Basislinienübertragung zwischen Clustern durchgeführt wird. 
+---
+= InitializeSnapMirrorRelationship
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `InitializeSnapMirrorRelationship` Methode zur Initialisierung des Zielvolumes in einer SnapMirror -Beziehung durch Durchführung einer initialen Basislinienübertragung zwischen Clustern.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die ID des entfernten ONTAP Systems.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Zielvolumen
+ a| 
+Das Zielvolumen in der SnapMirror Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+maxTransferRate
+ a| 
+Gibt die maximale Datenübertragungsrate zwischen den Volumes in Kilobyte pro Sekunde an.  Der Standardwert 0 bedeutet unbegrenzte Bandbreite und ermöglicht es der SnapMirror -Beziehung, die verfügbare Netzwerkbandbreite voll auszunutzen.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Snap-Spiegelbeziehung
+ a| 
+Informationen zur initialisierten SnapMirror Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[Snap-Spiegelbeziehung]
+
+|===
+
+
+== Neu seit Version
+
+10,1

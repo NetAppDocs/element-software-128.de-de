@@ -1,0 +1,62 @@
+---
+permalink: concepts/concept_solidfire_concepts_vvols.html 
+sidebar: sidebar 
+keywords: netapp, vvol, virtual volume, storage container, protocol endpoint, vcp, vcenter, element 
+summary: 'vSphere Virtual Volumes ist ein Speicherparadigma für VMware, das einen Großteil der Speicherverwaltung für vSphere vom Speichersystem zu VMware vCenter verlagert.  Mit virtuellen Volumes (vVols) können Sie Speicherplatz entsprechend den Anforderungen einzelner virtueller Maschinen zuweisen.' 
+---
+= Virtuelle Volumes (vVols)
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+vSphere Virtual Volumes ist ein Speicherparadigma für VMware, das einen Großteil der Speicherverwaltung für vSphere vom Speichersystem zu VMware vCenter verlagert.  Mit virtuellen Volumes (vVols) können Sie Speicherplatz entsprechend den Anforderungen einzelner virtueller Maschinen zuweisen.
+
+
+
+== Bindungen
+
+Der NetApp Element -Cluster wählt einen optimalen Protokollendpunkt aus, erstellt eine Bindung, die den ESXi-Host und das virtuelle Volume mit dem Protokollendpunkt verknüpft, und gibt die Bindung an den ESXi-Host zurück.  Nach der Bindung kann der ESXi-Host E/A-Operationen mit dem gebundenen virtuellen Volume durchführen.
+
+
+
+== Protokollendpunkte
+
+VMware ESXi-Hosts verwenden logische E/A-Proxys, sogenannte Protokollendpunkte, zur Kommunikation mit virtuellen Volumes.  ESXi-Hosts binden virtuelle Volumes an Protokollendpunkte, um E/A-Operationen durchzuführen.  Wenn eine virtuelle Maschine auf dem Host eine E/A-Operation durchführt, leitet der zugehörige Protokollendpunkt die E/A an das virtuelle Volume weiter, mit dem sie gekoppelt ist.
+
+Protokollendpunkte in einem NetApp Element -Cluster fungieren als SCSI-administrative logische Einheiten.  Jeder Protokollendpunkt wird automatisch vom Cluster erstellt.  Für jeden Knoten in einem Cluster wird ein entsprechender Protokollendpunkt erstellt.  Ein Cluster mit vier Knoten verfügt beispielsweise über vier Protokollendpunkte.
+
+iSCSI ist das einzige von der NetApp Element Software unterstützte Protokoll.  Das Fibre Channel-Protokoll wird nicht unterstützt.  Protokollendpunkte können von einem Benutzer weder gelöscht noch geändert werden, sind keinem Konto zugeordnet und können keiner Volume-Zugriffsgruppe hinzugefügt werden.
+
+
+
+== Lagerbehälter
+
+Speichercontainer sind logische Konstrukte, die NetApp Element -Konten zugeordnet sind und für Berichtswesen und Ressourcenzuweisung verwendet werden.  Sie bündeln die Rohspeicherkapazität oder aggregieren die Speicherkapazitäten, die das Speichersystem virtuellen Volumes bereitstellen kann.  Ein in vSphere erstellter VVol-Datenspeicher wird einem einzelnen Speichercontainer zugeordnet.  Ein einzelner Speichercontainer verfügt standardmäßig über alle verfügbaren Ressourcen des NetApp Element Clusters.  Wenn eine detailliertere Steuerung für Mandantenfähigkeit erforderlich ist, können mehrere Speichercontainer erstellt werden.
+
+Speichercontainer funktionieren wie herkömmliche Konten und können sowohl virtuelle als auch herkömmliche Volumes enthalten.  Es werden maximal vier Speichercontainer pro Cluster unterstützt.  Für die Nutzung der VVols-Funktionalität ist mindestens ein Speichercontainer erforderlich.  Sie können Speichercontainer in vCenter während der Erstellung von VVols ermitteln.
+
+
+
+== VASA-Anbieter
+
+Damit vSphere die vVol-Funktion im NetApp Element -Cluster erkennt, muss der vSphere-Administrator den NetApp Element VASA Provider bei vCenter registrieren.  Der VASA-Provider ist der Out-of-Band-Steuerungspfad zwischen vSphere und dem Element-Cluster.  Es ist verantwortlich für die Ausführung von Anfragen an den Element-Cluster im Auftrag von vSphere, wie z. B. das Erstellen von VMs, das Bereitstellen von VMs für vSphere und das Bekanntgeben von Speicherkapazitäten für vSphere.
+
+Der VASA-Provider läuft als Teil des Cluster-Masters in der Element-Software.  Der Cluster-Master ist ein hochverfügbarer Dienst, der bei Bedarf auf jeden beliebigen Knoten im Cluster ausweicht.  Wenn der Cluster-Master ausfällt, wird der VASA-Provider mitverschoben, wodurch eine hohe Verfügbarkeit für den VASA-Provider gewährleistet wird.  Alle Bereitstellungs- und Speicherverwaltungsaufgaben nutzen den VASA-Provider, der alle erforderlichen Änderungen am Element-Cluster vornimmt.
+
+
+NOTE: Bei Element 12.5 und älteren Versionen dürfen Sie nicht mehr als einen NetApp Element VASA-Provider bei einer einzelnen vCenter-Instanz registrieren.  Wird ein zweiter NetApp Element VASA-Provider hinzugefügt, sind alle VVOL-Datenspeicher nicht mehr zugänglich.
+
+
+NOTE: Die VASA-Unterstützung für bis zu 10 vCenter-Instanzen ist als Upgrade-Patch verfügbar, sofern Sie bereits einen VASA-Anbieter bei Ihrem vCenter registriert haben.  Zur Installation folgen Sie den Anweisungen im VASA39-Manifest und laden Sie die .tar.gz-Datei von der Website herunter.link:https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/vasa39["NetApp Software-Downloads"^] Website.  Der NetApp Element VASA-Provider verwendet ein NetApp Zertifikat.  Mit diesem Patch wird das Zertifikat von vCenter unverändert verwendet, um die Nutzung mehrerer vCenter-Instanzen für VASA und VVols zu unterstützen.  Das Zertifikat darf nicht verändert werden.  Benutzerdefinierte SSL-Zertifikate werden von VASA nicht unterstützt.
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

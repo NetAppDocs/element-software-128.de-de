@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_removenodes.html 
+sidebar: sidebar 
+keywords: node,nodes,cluster,remove,removing,removenodes 
+summary: Mit RemoveNodes können Sie einen oder mehrere Knoten entfernen, die nicht mehr am Cluster teilnehmen sollen. 
+---
+= Knoten entfernen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `RemoveNodes` einen oder mehrere Knoten zu entfernen, die nicht mehr am Cluster teilnehmen sollen.
+
+Bevor Sie einen Knoten entfernen, müssen Sie alle Laufwerke, die der Knoten enthält, mit dem entsprechenden Befehl entfernen. `RemoveDrives` Verfahren.  Sie können einen Knoten erst entfernen, wenn `RemoveDrives` Der Vorgang ist abgeschlossen und alle Daten wurden vom Knoten migriert.  Nach dem Entfernen eines Knotens registriert sich dieser als ausstehender Knoten.  Sie können den Knoten entweder wieder hinzufügen oder ihn abschalten (durch das Abschalten des Knotens wird dieser aus der Liste der ausstehenden Knoten entfernt).
+
+
+
+== Entfernung des Cluster-Masterknotens
+
+Wenn Sie verwenden `RemoveNodes` Beim Entfernen des Cluster-Masterknotens kann es vorkommen, dass die Methode eine Zeitüberschreitung verursacht, bevor eine Antwort zurückgegeben wird.  Falls der Methodenaufruf zum Entfernen des Knotens fehlschlägt, führen Sie den Methodenaufruf erneut durch.  Beachten Sie, dass Sie, wenn Sie den Cluster-Masterknoten zusammen mit anderen Knoten entfernen, einen separaten Aufruf verwenden sollten, um den Cluster-Masterknoten allein zu entfernen.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+ignoreEnsembleToleranceChange
+ a| 
+Änderungen an der Knotenausfalltoleranz des Ensembles werden beim Entfernen von Knoten ignoriert.
+
+Wenn der Speichercluster Datensicherungsmechanismen verwendet, die den Ausfall mehrerer Knoten tolerieren, und das Entfernen der Knoten die Ausfalltoleranz des gesamten Clusters verringern würde, schlägt das Entfernen der Knoten normalerweise mit einem Fehler fehl.  Sie können diesen Parameter auf „true“ setzen, um die Ensemble-Toleranzprüfung zu deaktivieren, sodass die Knotenentfernung erfolgreich ist.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Knoten
+ a| 
+Liste der NodeIDs der zu entfernenden Knoten.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "RemoveNodes",
+   "params": {
+     "nodes"  : [3,4,5]
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1
+  "result" : {},
+}
+----
+
+
+== Neu seit Version
+
+9,6

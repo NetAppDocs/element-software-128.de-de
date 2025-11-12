@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_ldapconfiguration.html 
+sidebar: sidebar 
+keywords: object,objects,ldapConfiguration 
+summary: Das ldapConfiguration-Objekt enthält Informationen über die LDAP-Konfiguration auf dem Speichersystem.  LDAP-Informationen können Sie mit der GetLdapConfiguration-API-Methode abrufen. 
+---
+= LDAP-Konfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das ldapConfiguration-Objekt enthält Informationen über die LDAP-Konfiguration auf dem Speichersystem.  Sie können LDAP-Informationen mit dem `GetLdapConfiguration` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+authType
+ a| 
+Legt fest, welche Benutzerauthentifizierungsmethode verwendet werden soll. Mögliche Werte:
+
+* DirectBind
+* SearchAndBind
+
+ a| 
+Schnur
+
+
+
+ a| 
+ermöglicht
+ a| 
+Gibt an, ob das System für LDAP konfiguriert ist oder nicht. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+groupSearchBaseDN
+ a| 
+Der Basis-DN des Baums, um die Gruppensuche zu starten (das System führt von hier aus eine Teilbaumsuche durch).
+ a| 
+Schnur
+
+
+
+ a| 
+GruppensucheBenutzerdefinierter Filter
+ a| 
+Der verwendete benutzerdefinierte Suchfilter.
+ a| 
+Schnur
+
+
+
+ a| 
+Gruppensuchetyp
+ a| 
+Steuert den standardmäßig verwendeten Gruppensuchfilter. Mögliche Werte:
+
+* NoGroups: Keine Gruppenunterstützung.
+* ActiveDirectory: Verschachtelte Mitgliedschaft aller AD-Gruppen eines Benutzers.
+* MemberDN: MemberDN-Stilgruppen (einstufig).
+
+ a| 
+Schnur
+
+
+
+ a| 
+searchBindDN
+ a| 
+Ein vollständig qualifizierter DN, mit dem man sich anmelden kann, um eine LDAP-Suche für den Benutzer durchzuführen (erfordert Lesezugriff auf das LDAP-Verzeichnis).
+ a| 
+Schnur
+
+
+
+ a| 
+Server-URIs
+ a| 
+Eine durch Kommas getrennte Liste von LDAP-Server-URIs (zum Beispiel, `ldap://1.2.3.4` Und `ldaps://1.2.3.4:123` .)
+ a| 
+Schnur
+
+
+
+ a| 
+userDNTemplate
+ a| 
+Eine Zeichenkette, die zur Bildung eines vollständig qualifizierten Benutzer-DN verwendet wird.
+ a| 
+Schnur
+
+
+
+ a| 
+userSearchBaseDN
+ a| 
+Der Basis-DN des Baums, der als Ausgangspunkt für die Suche dient (von hier aus wird eine Teilbaumsuche durchgeführt).
+ a| 
+Schnur
+
+
+
+ a| 
+Benutzer-Suchfilter
+ a| 
+Der verwendete LDAP-Filter.
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_getldapconfiguration.adoc[GetLdapConfiguration]

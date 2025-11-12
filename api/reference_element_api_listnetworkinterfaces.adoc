@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_listnetworkinterfaces.html 
+sidebar: sidebar 
+keywords: network,interface,interfaces,list,listing,listnetworkinterfaces 
+summary: Mit der Methode ListNetworkInterfaces können Sie Informationen zu jeder Netzwerkschnittstelle eines Knotens auflisten.  Diese API-Methode ist für die Verwendung auf einzelnen Knoten vorgesehen; für den Zugriff auf einzelne Knoten ist eine Benutzer-ID- und Passwortauthentifizierung erforderlich.  Sie können diese Methode jedoch auf dem Cluster verwenden, wenn dem Parameter force im Methodenaufruf der Wert true zugewiesen wird.  Wenn der Parameter auf dem Cluster verwendet wird, werden alle Schnittstellen aufgelistet. 
+---
+= ListNetworkInterfaces
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListNetworkInterfaces` Methode zum Auflisten von Informationen über jede Netzwerkschnittstelle eines Knotens.  Diese API-Methode ist für die Verwendung auf einzelnen Knoten vorgesehen; für den Zugriff auf einzelne Knoten ist eine Benutzer-ID- und Passwortauthentifizierung erforderlich.  Sie können diese Methode jedoch auf dem Cluster verwenden, wenn dem Parameter force im Methodenaufruf der Wert true zugewiesen wird.  Wenn der Parameter auf dem Cluster verwendet wird, werden alle Schnittstellen aufgelistet.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Gewalt
+ a| 
+Mögliche Werte:
+
+* true: Es werden Informationen über alle Netzwerkschnittstellen im Cluster zurückgegeben.
+* Falsch: Es werden keine Informationen zurückgegeben.
+
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schnittstellen
+ a| 
+Eine Liste der Konfigurationsinformationen für jede Netzwerkschnittstelle des Speicherknotens (oder des gesamten Speicherclusters, falls force = `true` ).
+ a| 
+xref:reference_element_api_networkinterface.adoc[Netzwerkschnittstelle]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+"method": "ListNetworkInterfaces",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"nodes": [
+			{
+				"nodeID": 1,
+				"result": {
+					"interfaces": [
+						{
+							"address": "10.117.80.32",
+							"addressV6": "::",
+							"broadcast": "10.117.95.255",
+							"macAddress": "90:b1:1c:42:e0:1a",
+							"mtu": 9000,
+							"name": "Bond10G",
+							"namespace": false,
+							"netmask": "255.255.240.0",
+							"status": "UpAndRunning",
+							"type": "BondMaster",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "10.117.64.32",
+							"addressV6": "::",
+							"broadcast": "10.117.79.255",
+							"macAddress": "90:b1:1c:42:e0:1e",
+							"mtu": 1500,
+							"name": "Bond1G",
+							"namespace": false,
+							"netmask": "255.255.240.0",
+							"status": "UpAndRunning",
+							"type": "BondMaster",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "0.0.0.0",
+							"addressV6": "::",
+							"broadcast": "0.0.0.0",
+							"macAddress": "90:b1:1c:42:e0:1a",
+							"mtu": 9000,
+							"name": "eth0",
+							"namespace": false,
+							"netmask": "0.0.0.0",
+							"status": "UpAndRunning",
+							"type": "BondSlave",
+							"virtualNetworkTag": 0
+						},
+						{
+							"address": "127.0.0.1",
+							"addressV6": "::",
+							"broadcast": "0.0.0.0",
+							"macAddress": "00:00:00:00:00:00",
+							"mtu": 0,
+							"name": "lo",
+							"namespace": false,
+							"netmask": "0.0.0.0",
+							"status": "UpAndRunning",
+							"type": "Loopback",
+							"virtualNetworkTag": 0
+						}
+					]
+				}
+			}
+		]
+	}
+}
+----
+
+
+== Neu seit Version
+
+9,6

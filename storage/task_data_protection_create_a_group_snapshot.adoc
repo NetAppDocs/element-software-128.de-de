@@ -1,0 +1,44 @@
+---
+permalink: storage/task_data_protection_create_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot, create, volumes, schedule, automate group snapshots 
+summary: Sie können einen Snapshot einer Gruppe von Volumes erstellen und auch einen Zeitplan für Gruppen-Snapshots erstellen, um Gruppen-Snapshots zu automatisieren.  Ein einzelner Gruppen-Snapshot kann konsistent bis zu 32 Volumes gleichzeitig erfassen. 
+---
+= Erstellen eines Gruppen-Snapshots
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Snapshot einer Gruppe von Volumes erstellen und auch einen Zeitplan für Gruppen-Snapshots erstellen, um Gruppen-Snapshots zu automatisieren.  Ein einzelner Gruppen-Snapshot kann konsistent bis zu 32 Volumes gleichzeitig erfassen.
+
+.Schritte
+. Klicken Sie auf *Verwaltung* > *Volumes*.
+. Verwenden Sie die Kontrollkästchen, um mehrere Datenträger für eine Gruppe von Datenträgern auszuwählen.
+. Klicken Sie auf *Massenaktionen*.
+. Klicken Sie auf *Gruppen-Snapshot*.
+. Geben Sie im Dialogfeld „Gruppen-Snapshot von Volumes erstellen“ einen neuen Gruppen-Snapshot-Namen ein.
+. *Optional:* Aktivieren Sie das Kontrollkästchen *Jedes Gruppen-Snapshot-Mitglied bei der Replikation berücksichtigen, wenn gekoppelt*, um sicherzustellen, dass jeder Snapshot bei der Replikation erfasst wird, wenn das übergeordnete Volume gekoppelt wird.
+. Wählen Sie eine Aufbewahrungsoption für den Gruppen-Snapshot aus:
++
+** Klicken Sie auf *Für immer behalten*, um den Snapshot auf unbestimmte Zeit im System zu speichern.
+** Klicken Sie auf *Aufbewahrungsdauer festlegen* und wählen Sie mithilfe der Datums-Drehfelder eine Zeitspanne aus, für die das System den Snapshot aufbewahrt.
+
+
+. Um eine einzelne, sofortige Momentaufnahme zu erstellen, führen Sie die folgenden Schritte aus:
++
+.. Klicken Sie auf *Jetzt Gruppenfoto aufnehmen*.
+.. Klicken Sie auf *Gruppen-Snapshot erstellen*.
+
+
+. Um die Erstellung des Snapshots zu einem späteren Zeitpunkt zu planen, führen Sie die folgenden Schritte aus:
++
+.. Klicken Sie auf *Gruppen-Snapshot-Zeitplan erstellen*.
+.. Geben Sie einen *neuen Terminnamen* ein.
+.. Wählen Sie einen *Zeitplantyp* aus der Liste aus.
+.. *Optional:* Aktivieren Sie das Kontrollkästchen *Wiederkehrender Zeitplan*, um den geplanten Snapshot regelmäßig zu wiederholen.
+.. Klicken Sie auf *Zeitplan erstellen*.
+
+
+

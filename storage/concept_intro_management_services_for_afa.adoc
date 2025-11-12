@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_management_services_for_afa.html 
+sidebar: sidebar 
+keywords: management services, aff 
+summary: Die Management-Services bieten zentrale und erweiterte Verwaltungsfunktionen für SolidFire All-Flash-Speicher.  Diese Dienste umfassen die Telemetrie, Protokollierung und Service-Updates des Active IQ Systems sowie den QoSSIOC-Dienst für das Element-Plug-in für vCenter. 
+---
+= Managementdienste für SolidFire All-Flash-Speicher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Management-Services bieten zentrale und erweiterte Verwaltungsfunktionen für SolidFire All-Flash-Speicher.  Diese Dienste umfassen die Telemetrie, Protokollierung und Service-Updates des Active IQ Systems sowie den QoSSIOC-Dienst für das Element-Plug-in für vCenter.

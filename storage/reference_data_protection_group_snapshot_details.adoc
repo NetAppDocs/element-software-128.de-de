@@ -1,0 +1,59 @@
+---
+permalink: storage/reference_data_protection_group_snapshot_details.html 
+sidebar: sidebar 
+keywords: snapshots, group snapshots, volumes, replication 
+summary: Die Seite „Gruppen-Snapshots“ auf der Registerkarte „Datenschutz“ bietet Informationen zu den Gruppen-Snapshots. 
+---
+= Details zur Gruppen-Snapshot
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Seite „Gruppen-Snapshots“ auf der Registerkarte „Datenschutz“ bietet Informationen zu den Gruppen-Snapshots.
+
+* *AUSWEIS*
++
+Die vom System generierte ID für den Gruppen-Snapshot.
+
+* *UUID*
++
+Die eindeutige ID des Gruppen-Snapshots.
+
+* *Name*
++
+Benutzerdefinierter Name für den Gruppen-Snapshot.
+
+* *Zeit schaffen*
++
+Der Zeitpunkt, zu dem der Gruppen-Snapshot erstellt wurde.
+
+* *Status*
++
+Der aktuelle Status des Snapshots. Mögliche Werte:
+
++
+** Vorbereitung: Der Snapshot wird für die Verwendung vorbereitet und ist noch nicht beschreibbar.
+** Fertig: Dieser Snapshot wurde vollständig vorbereitet und ist nun verwendbar.
+** Aktiv: Der Snapshot ist der aktive Branch.
+
+
+* *# Bände*
++
+Die Anzahl der Bände in der Gruppe.
+
+* *Aufbewahren bis*
++
+Tag und Uhrzeit, zu der der Schnappschuss gelöscht wird.
+
+* *Remote-Replikation*
++
+Anzeige, ob der Snapshot für die Replikation auf einen entfernten SolidFire Cluster aktiviert ist oder nicht. Mögliche Werte:
+
++
+** Aktiviert: Der Snapshot ist für die Remote-Replikation aktiviert.
+** Deaktiviert: Der Snapshot ist nicht für die Remote-Replikation aktiviert.
+
+
+

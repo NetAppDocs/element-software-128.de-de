@@ -1,0 +1,113 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicy.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicy 
+summary: Das snapMirrorPolicy-Objekt enthält Informationen über eine SnapMirror -Richtlinie, die auf einem ONTAP -System gespeichert ist. 
+---
+= Snap-Mirror-Richtlinie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das snapMirrorPolicy-Objekt enthält Informationen über eine SnapMirror -Richtlinie, die auf einem ONTAP -System gespeichert ist.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die ID des Ziel- ONTAP Systems.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Richtlinienname
+ a| 
+Der eindeutige Name, der der Police zugewiesen wurde.
+ a| 
+Schnur
+
+
+
+ a| 
+Richtlinientyp
+ a| 
+Die Art der Police. Mögliche Werte:
+
+* async_mirror
+* Spiegelgewölbe
+
+ a| 
+Schnur
+
+
+
+ a| 
+Kommentar
+ a| 
+Eine für Menschen lesbare Beschreibung, die mit der SnapMirror -Richtlinie verknüpft ist.
+ a| 
+Schnur
+
+
+
+ a| 
+Transferpriorität
+ a| 
+Die Priorität, mit der eine SnapMirror Übertragung ausgeführt wird. Mögliche Werte:
+
+* normal: Die Standardpriorität.  Diese Transfers werden vor den meisten anderen Transfers mit niedriger Priorität eingeplant.
+* niedrig: Diese Überweisungen haben die niedrigste Priorität und werden nach den meisten Überweisungen mit normaler Priorität eingeplant.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Richtlinienregeln
+ a| 
+Eine Liste von Objekten, die die Richtlinienregeln beschreiben.
+ a| 
+xref:reference_element_api_snapmirrorpolicyrule.adoc[Snap-Spiegel-Richtlinienregel]Array
+
+
+
+ a| 
+totalKeepCount
+ a| 
+Die Gesamtzahl der Aufbewahrungsfristen für alle Regeln in der Richtlinie.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Gesamtregeln
+ a| 
+Die Gesamtzahl der Regeln in der Richtlinie.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+vserverName
+ a| 
+Der Name des Vservers für die SnapMirror Richtlinie.
+ a| 
+Schnur
+
+|===

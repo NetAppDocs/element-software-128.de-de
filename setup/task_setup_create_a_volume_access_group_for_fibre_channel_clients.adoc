@@ -1,0 +1,43 @@
+---
+permalink: setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Volume-Zugriffsgruppen ermöglichen die Kommunikation zwischen Fibre-Channel-Clients und Volumes auf einem SolidFire Speichersystem.  Durch die Zuordnung von Fibre Channel-Client-Initiatoren (WWPN) zu den Volumes in einer Volume-Zugriffsgruppe wird eine sichere Daten-E/A zwischen einem Fibre Channel-Netzwerk und einem SolidFire -Volume ermöglicht.' 
+---
+= Erstellen Sie eine Volume-Zugriffsgruppe für Fibre Channel-Clients.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Volume-Zugriffsgruppen ermöglichen die Kommunikation zwischen Fibre-Channel-Clients und Volumes auf einem SolidFire Speichersystem.  Durch die Zuordnung von Fibre Channel Client Initiators (WWPN) zu den Volumes in einer Volume Access Group wird eine sichere Daten-E/A zwischen einem Fibre Channel Netzwerk und einem SolidFire Volume ermöglicht.
+
+Sie können auch iSCSI-Initiatoren zu einer Volume-Zugriffsgruppe hinzufügen; dadurch erhalten die Initiatoren Zugriff auf dieselben Volumes in der Volume-Zugriffsgruppe.
+
+.Schritte
+. Klicken Sie auf *Verwaltung* > *Zugriffsgruppen*.
+. Klicken Sie auf *Zugriffsgruppe erstellen*.
+. Geben Sie im Feld *Name* einen Namen für die Datenträgerzugriffsgruppe ein.
+. Wählen Sie die Fibre Channel-Initiatoren aus der Liste *Unbound Fibre Channel Initiators* aus und fügen Sie sie hinzu.
++
+
+NOTE: Sie können Initiatoren zu einem späteren Zeitpunkt hinzufügen oder löschen.
+
+. *Optional:* Wählen Sie einen iSCSI-Initiator aus der Liste *Initiatoren* aus und fügen Sie ihn hinzu.
+. Um Datenträger an die Zugriffsgruppe anzuhängen, führen Sie die folgenden Schritte aus:
++
+.. Wählen Sie ein Volume aus der Liste *Volumes* aus.
+.. Klicken Sie auf *Volume anschließen*.
+
+
+. Klicken Sie auf *Zugriffsgruppe erstellen*.
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

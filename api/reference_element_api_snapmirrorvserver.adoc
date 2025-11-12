@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_snapmirrorvserver.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVserver 
+summary: 'Das snapMirrorVserver-Objekt enthält Informationen über die Storage Virtual Machines (oder Vserver) im Ziel ONTAP Cluster.' 
+---
+= snapMirrorVserver
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das snapMirrorVserver-Objekt enthält Informationen über die Storage Virtual Machines (oder Vserver) im Ziel ONTAP Cluster.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die ID des Ziel- ONTAP Systems.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+vserverName
+ a| 
+Der Name des Vservers.
+ a| 
+Schnur
+
+
+
+ a| 
+vserverType
+ a| 
+Der Typ des Vservers. Mögliche Werte:
+
+* Daten
+* Administrator
+* System
+* Knoten
+
+ a| 
+Schnur
+
+
+
+ a| 
+vserverSubtype
+ a| 
+Der Subtyp des Vservers. Mögliche Werte:
+
+* Standard
+* dp_destination
+* Daten
+* sync_source
+* sync_destination
+
+ a| 
+Schnur
+
+
+
+ a| 
+rootVolume
+ a| 
+Das Root-Volume des Vservers.
+ a| 
+Schnur
+
+
+
+ a| 
+rootVolumeAggregate
+ a| 
+Das Aggregat, auf dem das Root-Volume erstellt wird.
+ a| 
+Schnur
+
+
+
+ a| 
+vserverAggregateInfo
+ a| 
+Ein Array von snapMirrorVserverAggregateInfo-Objekten.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Admin-Status
+ a| 
+Der detaillierte administrative Status des Vservers. Mögliche Werte:
+
+* läuft
+* gestoppt
+* beginnend
+* Anhalten
+* Initialisierung
+* Löschen
+
+ a| 
+Schnur
+
+
+
+ a| 
+Betriebszustand
+ a| 
+Der grundlegende Betriebszustand des Vservers. Mögliche Werte:
+
+* läuft
+* gestoppt
+
+ a| 
+Schnur
+
+|===

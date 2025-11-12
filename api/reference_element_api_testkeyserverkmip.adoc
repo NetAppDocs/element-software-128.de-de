@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_testkeyserverkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,testing,test 
+summary: 'Mit der Methode TestKeyServerKmip können Sie testen, ob der angegebene KMIP-Schlüsselserver (Key Management Interoperability Protocol) erreichbar ist und normal funktioniert.' 
+---
+= TestKeyServerKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `TestKeyServerKmip` Methode zum Testen, ob der angegebene KMIP-Schlüsselserver (Key Management Interoperability Protocol) erreichbar ist und normal funktioniert.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+SchlüsselServerID
+ a| 
+Die ID des zu testenden KMIP-Schlüsselservers.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.  Der Test gilt als erfolgreich, wenn keine Fehler zurückgegeben werden.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "TestKeyServerKmip",
+  "params": {
+    "keyServerID": 15
+  },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+    }
+----
+
+
+== Neu seit Version
+
+11,7

@@ -1,0 +1,165 @@
+---
+permalink: api/reference_element_api_deletevolumes.html 
+sidebar: sidebar 
+keywords: volumes,volume,delete,deleting,multiple,DeleteVolumes 
+summary: 'Mit der Methode DeleteVolumes können Sie mehrere (bis zu 500) aktive Volumes zum Löschen markieren.  Wenn ein Datenträger markiert ist, wird er nach Ablauf des Bereinigungsintervalls endgültig gelöscht.' 
+---
+= DeleteVolumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DeleteVolumes` Methode zum Markieren mehrerer (bis zu 500) aktiver Datenträger zur Löschung.  Wenn ein Datenträger markiert ist, wird er nach Ablauf des Bereinigungsintervalls endgültig gelöscht.
+
+Nach dem Aufruf zum Löschen von Volumes werden alle aktiven iSCSI-Verbindungen zu den Volumes sofort beendet, und es werden keine weiteren Verbindungen zugelassen, solange sich die Volumes in diesem Zustand befinden.  Ein markiertes Volume wird bei Zielermittlungsanfragen nicht zurückgegeben.
+
+Snapshots eines zum Löschen markierten Volumes sind davon nicht betroffen.  Die Snapshots werden so lange gespeichert, bis das Volume vollständig aus dem System entfernt wird.  Wenn ein Datenträger zur Löschung markiert ist und gerade ein Massenlese- oder Massenschreibvorgang ausgeführt wird, wird der Massenlese- oder Massenschreibvorgang gestoppt.
+
+Wenn die zu löschenden Volumes mit einem anderen Volume gekoppelt sind, wird die Replikation zwischen den gekoppelten Volumes angehalten und es werden keine Daten zwischen ihnen übertragen, solange sie sich im gelöschten Zustand befinden.  Die Remote-Volumes, mit denen die gelöschten Volumes gekoppelt waren, wechseln in den Zustand „PausedMisconfigured“, und es werden keine Daten mehr an sie oder von den gelöschten Volumes gesendet.  Solange die gelöschten Datenträger nicht endgültig entfernt sind, können sie wiederhergestellt und Datentransfers fortgesetzt werden.  Wenn die gelöschten Volumes aus dem System entfernt werden, wechseln die Volumes, mit denen sie gekoppelt waren, in den Zustand „StoppedMisconfigured“ und der Volume-Kopplungsstatus wird aufgehoben.  Die gelöschten Bände sind dauerhaft nicht mehr verfügbar.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter.
+
+
+NOTE: Mindestens einer der folgenden Parameter ist erforderlich, und Sie dürfen nur einen der Parameter verwenden (sie schließen sich alle gegenseitig aus).
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Volume-IDs
+ a| 
+Die Liste der IDs der Datenträger, die aus dem System gelöscht werden sollen.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Siehe Anmerkung.
+
+
+
+ a| 
+volumeAccessGroupIDs
+ a| 
+Eine Liste der Datenträgerzugriffsgruppen-IDs.  Alle Datenträger aus allen in dieser Liste angegebenen Datenträgerzugriffsgruppen werden aus dem System gelöscht.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Siehe Anmerkung.
+
+
+
+ a| 
+Konto-IDs
+ a| 
+Eine Liste der Konto-IDs.  Alle Datenträger dieser Konten werden aus dem System gelöscht.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Siehe Anmerkung.
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Bände
+ a| 
+Informationen zum neu gelöschten Volume.
+ a| 
+xref:reference_element_api_volume.adoc[Volumen]
+
+
+
+ a| 
+Kurve
+ a| 
+Die Kurve ist eine Menge von Schlüssel-Wert-Paaren.  Die Schlüssel sind die E/A-Größen in Bytes.  Die Werte stellen die Kosten für die Durchführung einer IOP bei einer bestimmten I/O-Größe dar.  Die Kurve wird relativ zu einer 4096 Byte großen Operation bei 100 IOPS berechnet.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "DeleteVolumes",
+   "params": {
+      "accountIDs" : [1, 2, 3]
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+
+{
+  "id" : 1,
+  "result": {
+    "volumes" : [ {
+      "access": "readWrite",
+      "accountID": 1,
+      "attributes": {},
+      "blockSize": 4096,
+      "createTime": "2015-03-06T18:50:56Z",
+      "deleteTime": "",
+      "enable512e": False,
+      "iqn": "iqn.2010-01.com.solidfire:pzsr.vclient-030-v00001.1",
+      "name": "vclient-030-v00001",
+      "qos": {
+        "burstIOPS": 15000,
+        "burstTime": 60,
+        "curve": {},
+        "maxIOPS": 15000,
+        "minIOPS": 100
+      },
+      "purgeTime": "",
+      "sliceCount": 1,
+      "scsiEUIDeviceID": "707a737200000001f47acc0100000000",
+      "scsiNAADeviceID": "6f47acc100000000707a737200000001",
+      "status": "active",
+      "totalSize": 10000003072,
+      "virtualVolumeID": 5,
+      "volumeAccessGroups": [],
+      "volumePairs": [],
+      "volumeID": 1
+    } ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

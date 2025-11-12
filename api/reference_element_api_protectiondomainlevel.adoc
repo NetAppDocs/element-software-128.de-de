@@ -1,0 +1,56 @@
+---
+permalink: api/reference_element_api_protectiondomainlevel.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainLevel 
+summary: Das protectionDomainLevel-Objekt enthält Informationen über die aktuellen Toleranz- und Resilienzstufen des Speicherclusters.  Die Toleranzwerte geben an, inwieweit der Cluster im Falle eines Fehlers weiterhin Daten lesen und schreiben kann, und die Resilienzwerte geben an, inwieweit der Cluster in der Lage ist, sich nach einem oder mehreren Fehlern innerhalb seiner zugehörigen Schutzdomäne automatisch selbst zu reparieren. 
+---
+= Schutzdomänenebene
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das protectionDomainLevel-Objekt enthält Informationen über die aktuellen Toleranz- und Resilienzstufen des Speicherclusters.  Die Toleranzwerte geben an, inwieweit der Cluster im Falle eines Fehlers weiterhin Daten lesen und schreiben kann, und die Resilienzwerte geben an, inwieweit der Cluster in der Lage ist, sich nach einem oder mehreren Fehlern innerhalb seiner zugehörigen Schutzdomäne automatisch selbst zu reparieren.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schutzdomänentyp
+ a| 
+Die Art der Schutzdomäne, die die damit verbundene Toleranz und Widerstandsfähigkeit aufweist. Mögliche Werte:
+
+* Knoten: Ein beliebiger einzelner Knoten.
+* Chassis: Ein einzelner Knoten oder alle Speicherknoten in einem einzigen Chassis.
+* benutzerdefiniert: Alle Speicherknoten in einer einzigen, vom Kunden definierten Schutzdomäne.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Elastizität
+ a| 
+Die aktuelle Widerstandsfähigkeit dieses Clusters aus der Perspektive dieses Schutzdomänentyps.
+ a| 
+xref:reference_element_api_protectiondomainresiliency.adoc[Schutzdomänenresilienz]
+
+
+
+ a| 
+Toleranz
+ a| 
+Die aktuelle Toleranz dieses Clusters aus der Perspektive dieses Schutzdomänentyps.
+ a| 
+xref:reference_element_api_protectiondomaintolerance.adoc[Schutzdomänentoleranz]
+
+|===

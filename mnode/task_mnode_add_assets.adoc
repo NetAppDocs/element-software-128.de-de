@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_add_assets.html 
+summary: Sie können der Management-Knotenkonfiguration über die REST-API-Benutzeroberfläche ein Controller-Asset hinzufügen. 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= Fügen Sie dem Verwaltungsknoten ein Controller-Asset hinzu.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können der Management-Knotenkonfiguration über die REST-API-Benutzeroberfläche ein Controller-Asset hinzufügen.
+
+Möglicherweise müssen Sie ein Asset hinzufügen, wenn Sie Ihre Installation kürzlich skaliert haben und neue Assets nicht automatisch zu Ihrer Konfiguration hinzugefügt wurden.  Verwenden Sie diese APIs, um Assets hinzuzufügen, die kürzlich zu Ihrer Installation hinzugefügt wurden.
+
+.Was du brauchst
+* Auf Ihrem Cluster läuft die NetApp Element Software 11.3 oder höher.
+* Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+* Sie haben in vCenter eine neue NetApp HCC-Rolle erstellt, um die Ansicht der Management-Knotendienste auf NetApp-Assets zu beschränken.  Sehenlink:task_mnode_create_netapp_hcc_role_vcenter.html["Erstellen Sie eine NetApp HCC-Rolle in vCenter"]
+
+
+.Schritte
+. Ermitteln Sie die Basis-Asset-ID für die Installation:
++
+.. Öffnen Sie die REST-API-Benutzeroberfläche des Inventardienstes auf dem Verwaltungsknoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` Die
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Fenster.
+
+
+.. Wählen Sie in der REST-API-Benutzeroberfläche *GET /installations* aus.
+.. Wählen Sie *Ausprobieren*.
+.. Wählen Sie *Ausführen*.
+.. Kopieren Sie aus dem Antworttext des Codes 200 den `id` für die Installation.
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: Ihre Installation verfügt über eine Basis-Asset-Konfiguration, die während der Installation oder des Upgrades erstellt wurde.
+
+.. Wählen Sie in der REST-API-Benutzeroberfläche *GET /installations/{id}* aus.
+.. Wählen Sie *Ausprobieren*.
+.. Fügen Sie die Installations-Asset-ID in das Feld *id* ein.
+.. Wählen Sie *Ausführen*.
+.. Kopieren und speichern Sie die Cluster-Controller-ID aus der Antwort.(`"controllerId"` ) zur Verwendung in einem späteren Schritt.
+
+
+. Um einem bestehenden Basis-Asset ein Controller-Sub-Asset hinzuzufügen, wählen Sie Folgendes aus:
++
+[listing]
+----
+POST /assets/{asset_id}/controllers
+----
++
+.. Öffnen Sie die Benutzeroberfläche der mNode-Dienst-REST-API auf dem Management-Knoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` Die
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Fenster.
+
+
+.. Wählen Sie *POST /assets/{asset_id}/controllers*.
+.. Wählen Sie *Ausprobieren*.
+.. Geben Sie die übergeordnete Basis-Asset-ID im Feld *asset_id* ein.
+.. Fügen Sie die erforderlichen Werte zur Nutzlast hinzu.
+.. Wählen Sie *Ausführen*.
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

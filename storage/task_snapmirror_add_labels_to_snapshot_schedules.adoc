@@ -1,0 +1,55 @@
+---
+permalink: storage/task_snapmirror_add_labels_to_snapshot_schedules.html 
+sidebar: sidebar 
+keywords: element, ui, snapmirror, labels, schedules, policies 
+summary: Sie können SnapMirror Labels zu Snapshot-Zeitplänen hinzufügen, um sicherzustellen, dass eine SnapMirror -Richtlinie angewendet wird.  Sie können die verfügbaren Bezeichnungen in einem vorhandenen SnapMirror Beziehungsdialogfeld oder im NetAppONTAP System Manager anzeigen. 
+---
+= SnapMirror Labels zu Snapshot-Zeitplänen hinzufügen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können SnapMirror Labels zu Snapshot-Zeitplänen hinzufügen, um sicherzustellen, dass eine SnapMirror -Richtlinie angewendet wird.  Sie können die verfügbaren Bezeichnungen in einem vorhandenen SnapMirror Beziehungsdialogfeld oder im NetAppONTAP System Manager anzeigen.
+
+.Was du brauchst
+* SnapMirror muss auf Clusterebene aktiviert sein.
+* Das Label, das Sie hinzufügen möchten, existiert bereits in ONTAP.
+
+
+.Schritte
+. Klicken Sie auf *Datenschutz* > *Zeitpläne*.
+. Fügen Sie einem Zeitplan auf eine der folgenden Arten eine SnapMirror -Beschriftung hinzu:
++
+[cols="25,75"]
+|===
+| Option | Schritte 
+
+
+ a| 
+Einen neuen Zeitplan erstellen
+ a| 
+.. Wählen Sie *Zeitplan erstellen*.
+.. Geben Sie alle weiteren relevanten Details ein.
+.. Wählen Sie *Zeitplan erstellen*.
+
+
+
+
+ a| 
+Änderung des bestehenden Zeitplans
+ a| 
+.. Klicken Sie auf das Symbol *Aktionen* für den Zeitplan, dem Sie eine Bezeichnung hinzufügen möchten, und wählen Sie *Bearbeiten*.
+.. Geben Sie im daraufhin angezeigten Dialogfeld Text in das Feld * SnapMirror Label* ein.
+.. Wählen Sie *Änderungen speichern*.
+
+
+|===
+
+
+
+
+== Weitere Informationen
+
+xref:task_data_protection_create_a_snapshot_schedule.adoc[Erstellen Sie einen Snapshot-Zeitplan]

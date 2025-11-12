@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_setntpinfo.html 
+sidebar: sidebar 
+keywords: ntp,info,set,setting,setntpinfo 
+summary: Mit der Methode SetNtpInfo können Sie NTP auf Clusterknoten konfigurieren.  Die über diese Schnittstelle festgelegten Werte gelten für alle Knoten im Cluster.  Wenn ein NTP-Broadcast-Server regelmäßig Zeitinformationen in Ihrem Netzwerk sendet, können Sie optional Knoten als Broadcast-Clients konfigurieren. 
+---
+= SetNtpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `SetNtpInfo` Methode zur Konfiguration von NTP auf Clusterknoten.  Die über diese Schnittstelle festgelegten Werte gelten für alle Knoten im Cluster.  Wenn ein NTP-Broadcast-Server regelmäßig Zeitinformationen in Ihrem Netzwerk sendet, können Sie optional Knoten als Broadcast-Clients konfigurieren.
+
+
+
+== Parameter
+
+
+NOTE: Verwenden Sie unbedingt NTP-Server, die sich innerhalb Ihres Netzwerks befinden, und nicht die standardmäßig installierten Server.
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Server
+ a| 
+Liste der NTP-Server, die jeder Knoten-NTP-Konfiguration hinzugefügt werden sollen.
+ a| 
+Zeichenketten-Array
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Broadcast-Client
+ a| 
+Aktiviert jeden Knoten im Cluster als Broadcast-Client.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "SetNtpInfo",
+   "params": {
+     "servers"  : [
+       "ntpserver1.example.org",
+       "ntpserver2.example.org",
+       "ntpserver3.example.org"
+     ],
+     "broadcastclient" : false
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "id" : 1,
+    "result" : {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

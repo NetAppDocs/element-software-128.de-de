@@ -1,0 +1,110 @@
+---
+permalink: api/reference_element_api_authsessioninfo.html 
+sidebar: sidebar 
+keywords: objects,object,authSessionInfo 
+summary: Das authSessionInfo-Objekt enthält Informationen über eine Authentifizierungssitzung. 
+---
+= authSessionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `authSessionInfo` Das Objekt enthält Informationen über eine Authentifizierungssitzung.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+`accessGroupList`
+ a| 
+Liste der Zugriffsgruppen für den Benutzer.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+`authMethod`
+ a| 
+Die Art der Berechtigung, die der Cluster-Administratorbenutzer besitzt. Mögliche Werte:
+
+* LDAP - Authentifizierung über LDAP.
+* Cluster – Authentifizierung über einen Benutzernamen und ein Passwort, die in der Clusterdatenbank gespeichert sind.
+* IdP – Authentifizierung über einen Drittanbieter-Identitätsanbieter.
+
+ a| 
+Schnur
+
+
+
+ a| 
+`clusterAdminIDs`
+ a| 
+Liste der mit dieser Sitzung verknüpften Cluster-AdminID(s).  Bei Sitzungen, die mit LDAP oder einem Drittanbieter-Identitätsanbieter (IdP) zusammenhängen, handelt es sich um eine aggregierte Liste der übereinstimmenden Cluster-AdminIDs, die dieser Sitzung zugeordnet sind.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+`finalTimeout`
+ a| 
+Zeitpunkt, zu dem die Sitzung ungültig wird. Dieser Wert wird bei der Erstellung der Sitzung festgelegt und kann nicht geändert werden.
+ a| 
+Schnur
+
+
+
+ a| 
+`idpConfigVersion`
+ a| 
+IdP-Konfigurationsversion zum Zeitpunkt der Sitzungserstellung.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`lastAccessTimeout`
+ a| 
+Zeitpunkt, zu dem die Sitzung aufgrund von Inaktivität ungültig wird. Dieser Wert wird bei jedem Zugriff auf die Sitzung neu gesetzt, bis die Sitzung aufgrund des finalTimeout ungültig wird.
+ a| 
+Schnur
+
+
+
+ a| 
+`sessionCreationTime`
+ a| 
+Zeitpunkt der Sitzungserstellung.
+ a| 
+Schnur
+
+
+
+ a| 
+`sessionID`
+ a| 
+UUID für diese Sitzung.
+ a| 
+UUID
+
+
+
+ a| 
+`username`
+ a| 
+Benutzername dieser Sitzung.  Bei Sitzungen im Zusammenhang mit LDAP handelt es sich dabei um den LDAP-DN des Benutzers.  Bei Sitzungen, die mit einem Drittanbieter-IdP verknüpft sind, handelt es sich dabei um ein beliebiges Name-Wert-Paar, das für die Überwachung von Vorgängen innerhalb der Sitzung verwendet wird.  Es muss nicht unbedingt mit dem Namen eines Cluster-Administrators im Cluster übereinstimmen.  Zum Beispiel eine SAML Subject NameID, die jedoch durch die Konfiguration des IdP und den resultierenden Inhalt der SAML-Assertion bestimmt wird.
+ a| 
+Schnur
+
+|===

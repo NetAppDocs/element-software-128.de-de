@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_session_fibre_channel.html 
+sidebar: sidebar 
+keywords: object,objects,session 
+summary: Das Sitzungsobjekt enthält Informationen über jede Fibre Channel-Sitzung, die für den Cluster sichtbar ist, und über die Zielports, auf denen sie sichtbar ist.  Diese Informationen können Sie mit der API-Methode ListFibreChannelSessions abrufen. 
+---
+= Sitzung (Fibre Channel)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Sitzungsobjekt enthält Informationen über jede Fibre Channel-Sitzung, die für den Cluster sichtbar ist, und über die Zielports, auf denen sie sichtbar ist.  Diese Informationen können Sie mit dem/der/dem abrufen. `ListFibreChannelSessions` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+InitiatorWWPN
+ a| 
+Der weltweite Portname (WWPN) des Initiators, der am Zielport angemeldet ist.
+ a| 
+Schnur
+
+
+
+ a| 
+Knoten-ID
+ a| 
+Der Knoten, dem die Fibre-Channel-Sitzung gehört.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Initiator
+ a| 
+Informationen zum Serverinitiator dieser Fibre-Channel-Sitzung.  Mitglieder:
+
+* Alias: Der dem Initiator zugewiesene Benutzername.
+* Attribute: Die Attribute dieses Initiators.
+* initiatorID: Die ID dieses Initiators.
+* initiatorName: Der Name dieses Initiators.
+* volumeAccessGroups: Eine Liste der Datenträgerzugriffsgruppen, die diesem Initiator zugeordnet sind.
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Service-ID
+ a| 
+Die Dienst-ID des Zielports, der an dieser Sitzung beteiligt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+targetWWPN
+ a| 
+Der WWPN des an dieser Sitzung beteiligten Zielports.
+ a| 
+Schnur
+
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Die ID der Volume-Zugriffsgruppe, zu der der Initiator-WWPN gehört.  Wenn dieser Wert keiner Datenträgerzugriffsgruppe angehört, ist er null.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listfibrechannelsessions.adoc[ListFibreChannelSessions]

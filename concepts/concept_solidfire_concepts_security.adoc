@@ -1,0 +1,80 @@
+---
+permalink: concepts/concept_solidfire_concepts_security.html 
+sidebar: sidebar 
+keywords: solidfire security, element security, encryption at rest, software encryption at rest, external key management, fips 140-2, mfa 
+summary: Bei der Verwendung der NetApp Element Software werden Ihre Daten durch branchenübliche Sicherheitsprotokolle geschützt. 
+---
+= Sicherheit
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie Ihr SolidFire All-Flash-Speichersystem verwenden, sind Ihre Daten durch branchenübliche Sicherheitsprotokolle geschützt.
+
+
+
+== Verschlüsselung ruhender Daten (Hardware)
+
+Alle Laufwerke in den Speicherknoten sind zur Verschlüsselung fähig und nutzen die AES 256-Bit-Verschlüsselung auf Laufwerksebene.  Jedes Laufwerk verfügt über einen eigenen Verschlüsselungsschlüssel, der bei der ersten Initialisierung des Laufwerks erstellt wird.  Wenn Sie die Verschlüsselungsfunktion aktivieren, wird ein clusterweites Passwort erstellt, und Teile dieses Passworts werden dann an alle Knoten im Cluster verteilt.  Kein einzelner Knoten speichert das vollständige Passwort.  Das Passwort wird dann verwendet, um den gesamten Zugriff auf die Laufwerke zu schützen.  Das Passwort wird zum Entsperren des Laufwerks benötigt und danach nur noch, wenn die Stromversorgung des Laufwerks unterbrochen oder das Laufwerk gesperrt wird.
+
+link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Aktivierung der Hardwareverschlüsselungsfunktion im Ruhezustand"^]hat keinen Einfluss auf die Leistung oder Effizienz des Clusters.  Wird ein verschlüsseltes Laufwerk oder ein verschlüsselter Knoten mithilfe der Element API oder der Element UI aus der Clusterkonfiguration entfernt, wird die Verschlüsselung ruhender Daten auf den Laufwerken deaktiviert.  Nach dem Ausbau des Laufwerks kann dieses mithilfe des sicheren Löschprogramms gelöscht werden. `SecureEraseDrives` API-Methode.  Wird ein physisches Laufwerk oder ein Knoten zwangsweise entfernt, bleiben die Daten durch das clusterweite Passwort und die individuellen Verschlüsselungsschlüssel des Laufwerks geschützt.
+
+
+
+== Verschlüsselung ruhender Daten (Software)
+
+Eine weitere Art der Verschlüsselung ruhender Daten, die Software-Verschlüsselung ruhender Daten, ermöglicht die Verschlüsselung aller Daten, die auf SSDs in einem Speichercluster geschrieben werden. link:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Wenn aktiviert"^] Es verschlüsselt alle geschriebenen Daten und entschlüsselt alle gelesenen Daten automatisch in der Software.  Die Softwareverschlüsselung ruhender Daten spiegelt die Hardware-Implementierung von Self-Encrypting Drive (SED) wider, um Datensicherheit auch ohne SED zu gewährleisten.
+
+
+WARNING: Bei SolidFire All-Flash-Speicherclustern muss die Softwareverschlüsselung ruhender Daten während der Clustererstellung aktiviert werden und kann nach der Clustererstellung nicht mehr deaktiviert werden.
+
+Sowohl software- als auch hardwarebasierte Verschlüsselung ruhender Daten kann unabhängig voneinander oder in Kombination miteinander verwendet werden.
+
+
+
+== Externes Schlüsselmanagement
+
+Sie können die Element-Software so konfigurieren, dass sie einen KMIP-kompatiblen Schlüsselverwaltungsdienst (KMS) eines Drittanbieters zur Verwaltung der Verschlüsselungsschlüssel des Speicherclusters verwendet.  Wenn Sie diese Funktion aktivieren, wird der clusterweite Laufwerkszugriffspasswort-Verschlüsselungsschlüssel des Speicherclusters von einem von Ihnen angegebenen KMS verwaltet.
+
+Element kann die folgenden Schlüsselverwaltungsdienste nutzen:
+
+* Gemalto SafeNet KeySecure
+* SafeNet AT KeySecure
+* HyTrust KeyControl
+* Vormetric Data Security Manager
+* IBM Security Key Lifecycle Manager
+
+
+Weitere Informationen zur Konfiguration der externen Schlüsselverwaltung finden Sie unterlink:../storage/concept_system_manage_key_get_started_with_external_key_management.html["die ersten Schritte zur externen Schlüsselverwaltung"] Dokumentation.
+
+
+
+== Multi-Faktor-Authentifizierung
+
+Die Multi-Faktor-Authentifizierung (MFA) ermöglicht es Ihnen, von Benutzern zu verlangen, mehrere Arten von Nachweisen vorzulegen, um sich beim Anmelden an der NetApp Element Web-UI oder der Storage-Node-UI zu authentifizieren.  Sie können Element so konfigurieren, dass bei der Integration mit Ihrem bestehenden Benutzerverwaltungssystem und Identitätsanbieter nur Multi-Faktor-Authentifizierung akzeptiert wird.  Element kann so konfiguriert werden, dass es sich in einen bestehenden SAML 2.0-Identitätsanbieter integriert, der mehrere Authentifizierungsmethoden erzwingen kann, wie z. B. Passwort und SMS, Passwort und E-Mail oder andere Methoden.
+
+Sie können die Multi-Faktor-Authentifizierung mit gängigen SAML 2.0-kompatiblen Identitätsanbietern (IdPs) wie Microsoft Active Directory Federation Services (ADFS) und Shibboleth kombinieren.
+
+Informationen zur Konfiguration der Multi-Faktor-Authentifizierung finden Sie unter link:../storage/task_system_manage_mfa_set_up_multi_factor_authentication.html["die Multi-Faktor-Authentifizierung aktivieren"] Dokumentation.
+
+
+
+== FIPS 140-2 für HTTPS und Verschlüsselung ruhender Daten
+
+NetApp SolidFire -Speichercluster unterstützen eine Verschlüsselung, die den Anforderungen des Federal Information Processing Standard (FIPS) 140-2 für kryptografische Module entspricht.  Sie können die FIPS 140-2-Konformität auf Ihrem SolidFire -Cluster sowohl für die HTTPS-Kommunikation als auch für die Laufwerksverschlüsselung aktivieren.
+
+Wenn Sie den FIPS 140-2-Betriebsmodus auf Ihrem Cluster aktivieren, aktiviert der Cluster das NetApp Cryptographic Security Module (NCSM) und nutzt die FIPS 140-2 Level 1-zertifizierte Verschlüsselung für die gesamte Kommunikation über HTTPS mit der NetApp Element UI und API.  Sie verwenden die `EnableFeature` Element API mit der `fips` Parameter zur Aktivierung der FIPS 140-2 HTTPS-Verschlüsselung.  Auf Speicherclustern mit FIPS-kompatibler Hardware können Sie mithilfe von FIPS auch die FIPS-Laufwerksverschlüsselung für ruhende Daten aktivieren. `EnableFeature` Element API mit der `FipsDrives` Parameter.
+
+Weitere Informationen zur Vorbereitung eines neuen Speicherclusters für die FIPS 140-2-Verschlüsselung finden Sie unterlink:../storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["Erstellen Sie einen Cluster, der FIPS-Laufwerke unterstützt."] Die
+
+Weitere Informationen zur Aktivierung von FIPS 140-2 auf einem bestehenden, vorbereiteten Cluster finden Sie unterlink:../api/reference_element_api_enablefeature.html["die EnableFeature Element API"] Die
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

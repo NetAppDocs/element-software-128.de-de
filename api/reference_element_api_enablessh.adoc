@@ -1,0 +1,67 @@
+---
+permalink: api/reference_element_api_enablessh.html 
+sidebar: sidebar 
+keywords: SSH,enable,enabling,single,node,EnableSSH 
+summary: Mit der EnableSsh-Methode können Sie den SSH-Dienst für einen einzelnen Knoten aktivieren.  Diese Methode hat keinen Einfluss auf die clusterweite SSH-Timeout-Dauer und befreit den Knoten nicht von der Deaktivierung von SSH durch das globale SSH-Timeout. 
+---
+= EnableSsh
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `EnableSsh` Methode zum Aktivieren des Secure Shell (SSH)-Dienstes für einen einzelnen Knoten.  Diese Methode hat keinen Einfluss auf die clusterweite SSH-Timeout-Dauer und befreit den Knoten nicht von der Deaktivierung von SSH durch das globale SSH-Timeout.
+
+
+
+== Parameter
+
+Diese Methode hat keinen Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+ermöglicht
+ a| 
+Der Status des SSH-Dienstes für diesen Knoten.
+ a| 
+boolescher Wert
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "EnableSsh",
+  "params": {
+     },
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {"enabled": true}
+}
+----

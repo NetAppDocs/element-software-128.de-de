@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_volume_snapshot_api_methods.html 
+sidebar: sidebar 
+keywords: volume,snapshot,API,method 
+summary: Die Element Software Volume Snapshot API-Methoden ermöglichen die Verwaltung von Volume-Snapshots.  Mit den Methoden der Volume Snapshot API können Sie Volume Snapshots erstellen, ändern, klonen und löschen. 
+---
+= Methoden der Volume-Snapshot-API
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Element Software Volume Snapshot API-Methoden ermöglichen die Verwaltung von Volume-Snapshots.  Mit den Methoden der Volume Snapshot API können Sie Volume Snapshots erstellen, ändern, klonen und löschen.
+
+* xref:concept_element_api_snapshots_overview.adoc[Momentaufnahmen – Übersicht]
+* xref:reference_element_api_creategroupsnapshot.adoc[Gruppen-Snapshot erstellen]
+* xref:reference_element_api_createschedule.adoc[Zeitplan erstellen]
+* xref:reference_element_api_createsnapshot.adoc[Schnappschuss erstellen]
+* xref:reference_element_api_deletegroupsnapshot.adoc[Gruppen-Snapshot löschen]
+* xref:reference_element_api_deletesnapshot.adoc[Snapshot löschen]
+* xref:reference_element_api_getschedule.adoc[Termin abrufen]
+* xref:reference_element_api_listgroupsnapshots.adoc[ListGroupSnapshots]
+* xref:reference_element_api_listschedules.adoc[Zeitpläne auflisten]
+* xref:reference_element_api_listsnapshots.adoc[ListSnapshots]
+* xref:reference_element_api_modifygroupsnapshot.adoc[Gruppen-Snapshot ändern]
+* xref:reference_element_api_modifyschedule.adoc[Zeitplan ändern]
+* xref:reference_element_api_modifysnapshot.adoc[Snapshot bearbeiten]
+* xref:reference_element_api_rollbacktogroupsnapshot.adoc[RollbackToGroupSnapshot]
+* xref:reference_element_api_rollbacktosnapshot.adoc[Auf Snapshot zurücksetzen]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

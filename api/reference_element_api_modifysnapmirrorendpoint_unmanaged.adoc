@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_modifysnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapmirror,endpoint,modifysnapmirrorendpoint 
+summary: Die Element-Software verwendet diese Version der ModifySnapMirrorEndpoint-Methode, um die Attribute für den Namen des Speicherclusters oder die IP-Adresse eines nicht verwalteten SnapMirror Endpunkts zu ändern.  Nicht verwaltete Endpunkte können nicht über die Element SnapMirror APIs verwaltet werden.  Sie müssen mit ONTAP -Managementsoftware oder APIs verwaltet werden. 
+---
+= ModifySnapMirrorEndpoint (nicht verwaltet)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Element-Software verwendet diese Version der `ModifySnapMirrorEndpoint` Methode zum Ändern der Attribute für den Namen des Speicherclusters oder die IP-Adresse eines nicht verwalteten SnapMirror Endpunkts.  Nicht verwaltete Endpunkte können nicht über die Element SnapMirror APIs verwaltet werden.  Sie müssen mit ONTAP -Managementsoftware oder APIs verwaltet werden.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+
+
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+SnapMirrorEndpointID
+ a| 
+Der zu modifizierende SnapMirror Endpunkt.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Clustername
+ a| 
+Der neue Name des Endpunkts.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+IP-Adressen
+ a| 
+Die neue Liste der IP-Adressen für einen Cluster von ONTAP -Speichersystemen, die mit diesem Element-Speichercluster kommunizieren sollen.
+ a| 
+Zeichenketten-Array
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+SnapMirrorEndpunkt
+ a| 
+Informationen zum modifizierten SnapMirror Endpunkt.
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[SnapMirrorEndpunkt]
+
+|===
+
+
+== Neu seit Version
+
+10,3

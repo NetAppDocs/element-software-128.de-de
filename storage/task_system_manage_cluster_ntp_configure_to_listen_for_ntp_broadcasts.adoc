@@ -1,0 +1,38 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_configure_to_listen_for_ntp_broadcasts.html 
+sidebar: sidebar 
+keywords: ntp, broadcasts, server, config, server list, broadcast client 
+summary: 'Durch die Verwendung des Broadcast-Modus können Sie jeden Knoten in einem Cluster anweisen, im Netzwerk auf NTP-Broadcast-Nachrichten (Network Time Protocol) von einem bestimmten Server zu achten.' 
+---
+= Konfigurieren Sie den Cluster so, dass er auf NTP-Broadcasts lauscht.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Durch die Verwendung des Broadcast-Modus können Sie jeden Knoten in einem Cluster anweisen, im Netzwerk auf NTP-Broadcast-Nachrichten (Network Time Protocol) von einem bestimmten Server zu achten.
+
+Das NTP wird verwendet, um Uhren über ein Netzwerk zu synchronisieren.  Die Anbindung an einen internen oder externen NTP-Server sollte Teil der initialen Cluster-Einrichtung sein.
+
+.Was du brauchst
+* Sie benötigen Cluster-Administratorrechte, um diese Einstellung zu konfigurieren.
+* Sie müssen einen NTP-Server in Ihrem Netzwerk als Broadcast-Server konfigurieren.
+
+
+.Schritte
+. Klicken Sie auf *Cluster* > *Einstellungen*.
+. Tragen Sie den oder die NTP-Server, die den Broadcast-Modus verwenden, in die Serverliste ein.
+. Unter „Einstellungen für das Netzwerkzeitprotokoll“ wählen Sie *Ja*, um einen Broadcast-Client zu verwenden.
+. Um den Broadcast-Client einzustellen, geben Sie im Feld *Server* den NTP-Server ein, den Sie im Broadcast-Modus konfiguriert haben.
+. Klicken Sie auf *Änderungen speichern*.
+
+
+
+
+== Weitere Informationen
+
+* link:../storage/task_system_manage_cluster_ntp_configure.html["Konfigurieren Sie die Network Time Protocol-Server, die der Cluster abfragen soll."]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

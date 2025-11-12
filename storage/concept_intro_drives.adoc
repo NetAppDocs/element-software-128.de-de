@@ -1,0 +1,30 @@
+---
+permalink: storage/concept_intro_drives.html 
+sidebar: sidebar 
+keywords: drives, physical drives, cluster data, storage node, volume metadata, block drives, clusters 
+summary: Ein Speicherknoten enthält ein oder mehrere physische Laufwerke, die zum Speichern eines Teils der Daten für den Cluster verwendet werden.  Der Cluster nutzt die Kapazität und Leistung des Laufwerks, nachdem das Laufwerk erfolgreich in den Cluster integriert wurde. 
+---
+= Laufwerke
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Speicherknoten enthält ein oder mehrere physische Laufwerke, die zum Speichern eines Teils der Daten für den Cluster verwendet werden.  Der Cluster nutzt die Kapazität und Leistung des Laufwerks, nachdem das Laufwerk erfolgreich in den Cluster integriert wurde.
+
+Ein Speicherknoten enthält zwei Arten von Laufwerken:
+
+* *Volume-Metadatenlaufwerke*
++
+Diese Laufwerke speichern komprimierte Informationen, die jedes Volume, jeden Klon oder jeden Snapshot innerhalb eines Clusters definieren.  Die Gesamtkapazität des Metadaten-Laufwerks im System bestimmt die maximale Speichermenge, die als Volumes bereitgestellt werden kann.  Die maximal bereitstellbare Speicherkapazität ist unabhängig davon, wie viele Daten tatsächlich auf den Blocklaufwerken des Clusters gespeichert sind.  Volume-Metadaten-Laufwerke speichern Daten redundant über einen Cluster hinweg mithilfe des Double-Helix-Datenschutzes.
+
++
+
+NOTE: In einigen Systemereignisprotokollen und Fehlermeldungen werden Volume-Metadatenlaufwerke als Slice-Laufwerke bezeichnet.
+
+* *Blocklaufwerke*
++
+Diese Laufwerke speichern die komprimierten, deduplizierten Datenblöcke für Serveranwendungsvolumes.  Blocklaufwerke machen den Großteil der Speicherkapazität des Systems aus.  Die Mehrzahl der Leseanfragen für bereits auf dem SolidFire -Cluster gespeicherte Daten sowie Anfragen zum Schreiben von Daten erfolgen auf den Blocklaufwerken.  Die Gesamtspeicherkapazität des Blocklaufwerks im System bestimmt die maximale Datenmenge, die unter Berücksichtigung der Effekte von Komprimierung, Thin Provisioning und Deduplizierung gespeichert werden kann.
+
+

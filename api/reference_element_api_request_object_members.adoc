@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_request_object_members.html 
+sidebar: sidebar 
+keywords: request,object,members 
+summary: 'Jede API-Anfrage der Element-Software besteht aus folgenden grundlegenden Bestandteilen:' 
+---
+= Mitglieder des Anforderungsobjekts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Jede API-Anfrage der Element-Software besteht aus folgenden grundlegenden Bestandteilen:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Verfahren
+ a| 
+Name der aufzurufenden Methode.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Parameter
+ a| 
+Objekt, das die Parameter der aufgerufenen Methode enthält.  Benannte Parameter sind erforderlich.  Positionsargumente (übergeben als Array) sind nicht zulässig.
+ a| 
+JSON-Objekt
+ a| 
+{}
+ a| 
+Nein
+
+
+
+ a| 
+Ausweis
+ a| 
+Die im Ergebnis zurückgegebene Kennung dient dazu, die Anfrage der Antwort zuzuordnen.
+ a| 
+Zeichenkette oder Ganzzahl
+ a| 
+{}
+ a| 
+Nein
+
+|===

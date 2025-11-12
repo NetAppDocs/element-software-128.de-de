@@ -1,0 +1,54 @@
+---
+permalink: storage/reference_data_manage_accounts_account_details.html 
+sidebar: sidebar 
+keywords: account, volumes 
+summary: Die Seite „Konten“ auf der Registerkarte „Verwaltung“ bietet Informationen zu jedem Konto im System, wie z. B. ID, Benutzername und Effizienzdetails für die jedem Konto zugewiesenen Volumen. 
+---
+= Kontodetails
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Seite „Konten“ auf der Registerkarte „Verwaltung“ bietet Informationen zu jedem Konto im System, wie z. B. ID, Benutzername und Effizienzdetails für die jedem Konto zugewiesenen Volumen.
+
+* *AUSWEIS*
++
+Die vom System generierte ID für das Konto.
+
+* *Benutzername*
++
+Der Name, der dem Konto bei seiner Erstellung gegeben wurde.
+
+* *Status*
++
+Der Status des Kontos. Mögliche Werte:
+
++
+** aktiv: Ein aktives Konto.
+** gesperrt: Ein gesperrtes Konto.
+** entfernt: Ein Konto, das gelöscht und endgültig entfernt wurde.
+
+
+* *Aktive Volumen*
++
+Die Anzahl der dem Konto zugewiesenen aktiven Volumen.
+
+* *Kompression*
++
+Der Komprimierungseffizienz-Score für die dem Konto zugewiesenen Volumen.
+
+* *Deducation*
++
+Der Effizienzwert der Deduplizierung für die dem Konto zugeordneten Datenträger.
+
+* *Thin Provisioning*
++
+Der Thin-Provisioning-Effizienzwert für die dem Konto zugewiesenen Volumes.
+
+* *Gesamteffizienz*
++
+Die Gesamteffizienzbewertung für die dem Konto zugeordneten Volumina.
+
+

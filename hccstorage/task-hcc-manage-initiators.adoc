@@ -1,0 +1,143 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-initiators.html 
+summary: Erfahren Sie, wie Sie Initiatoren hinzufügen, erstellen und verwalten, die die Kommunikation zwischen externen Clients und Element-Speichervolumes ermöglichen. 
+keywords: netapp, initiator, storage, element, access group 
+---
+= Initiatoren erstellen und verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwendenlink:../concepts/concept_solidfire_concepts_initiators.html["Initiatoren"] für den Zugriff auf die Volumina über CHAP anstatt über ein Konto.  Sie können Initiatoren erstellen und löschen sowie ihnen benutzerfreundliche Aliase geben, um die Administration und den Zugriff auf das Volumen zu vereinfachen.  Wenn Sie einer Volume-Zugriffsgruppe einen Initiator hinzufügen, ermöglicht dieser Initiator den Zugriff auf alle Volumes in der Gruppe.
+
+.Was du brauchst
+* Sie verfügen über Cluster-Administratorrechte.
+* Sie haben Ihre Management-Services auf mindestens Version 2.17 aktualisiert.  Die Initiatorverwaltung von NetApp Hybrid Cloud Control ist in früheren Service-Bundle-Versionen nicht verfügbar.
+
+
+.Optionen
+* <<Einen Initiator erstellen>>
+* <<Initiatoren zu einer Volume-Zugriffsgruppe hinzufügen>>
+* <<Initiator-Alias ändern>>
+* <<Initiatoren löschen>>
+
+
+
+
+== Einen Initiator erstellen
+
+Sie können iSCSI- oder Fibre-Channel-Initiatoren erstellen und ihnen optional Aliase zuweisen.
+
+.Informationen zu diesem Vorgang
+Das akzeptierte Format eines Initiator-IQN ist `iqn.yyyy-mm` wobei y und m Ziffern sind, gefolgt von einem Text, der nur Ziffern, Kleinbuchstaben und einen Punkt enthalten darf.(`.` ), Dickdarm(`:` ) oder Bindestrich(`-` ).  Ein Beispiel für das Format sieht wie folgt aus:
+
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
+Das akzeptierte Format eines Fibre Channel Initiator WWPN ist `:Aa:bB:CC:dd:11:22:33:44` oder `AabBCCdd11223344` Die  Ein Beispiel für das Format sieht wie folgt aus:
+
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Erweitern Sie im Dashboard den Namen Ihres Speicherclusters im linken Navigationsmenü.
+. Wählen Sie *Volumes* aus.
+. Wählen Sie die Registerkarte *Initiatoren*.
+. Wählen Sie die Schaltfläche *Initiatoren erstellen*.
++
+|===
+| Option | Schritte 
+
+
+| Erstellen Sie einen oder mehrere Initiatoren  a| 
+.. Geben Sie den IQN oder WWPN für den Initiator im Feld *IQN/WWPN* ein.
+.. Geben Sie im Feld *Alias* einen aussagekräftigen Namen für den Initiator ein.
+.. (Optional) Wählen Sie *Initiator hinzufügen*, um neue Initiatorfelder zu öffnen, oder verwenden Sie stattdessen die Option zum Erstellen mehrerer Initiatoren.
+.. Wählen Sie *Initiatoren erstellen*.
+
+
+
+
+| Massenerstellungsinitiatoren  a| 
+.. Wählen Sie *Massenhaftes Hinzufügen von IQNs/WWPNs*.
+.. Geben Sie eine Liste von IQNs oder WWPNs in das Textfeld ein.  Jeder IQN oder WWPN muss durch Komma oder Leerzeichen getrennt oder in einer eigenen Zeile stehen.
+.. Wählen Sie *IQNs/WWPNs hinzufügen*.
+.. (Optional) Jedem Initiator einen eindeutigen Alias hinzufügen.
+.. Entfernen Sie alle Initiatoren aus der Liste, die möglicherweise bereits in der Installation vorhanden sind.
+.. Wählen Sie *Initiatoren erstellen*.
+
+
+|===
+
+
+
+
+== Initiatoren zu einer Volume-Zugriffsgruppe hinzufügen
+
+Sie können einer Volume-Zugriffsgruppe Initiatoren hinzufügen.  Wenn Sie einer Volume-Zugriffsgruppe einen Initiator hinzufügen, ermöglicht dieser Initiator den Zugriff auf alle Volumes in dieser Volume-Zugriffsgruppe.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Erweitern Sie im Dashboard den Namen Ihres Speicherclusters im linken Navigationsmenü.
+. Wählen Sie *Volumes* aus.
+. Wählen Sie die Registerkarte *Initiatoren*.
+. Wählen Sie einen oder mehrere Initiatoren aus, die Sie hinzufügen möchten.
+. Wählen Sie *Aktionen > Zu Zugriffsgruppe hinzufügen*.
+. Wählen Sie die Zugriffsgruppe aus.
+. Bestätigen Sie Ihre Änderungen, indem Sie *Initiator hinzufügen* auswählen.
+
+
+
+
+== Initiator-Alias ändern
+
+Sie können den Alias eines bestehenden Initiators ändern oder einen Alias hinzufügen, falls noch keiner existiert.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Erweitern Sie im Dashboard den Namen Ihres Speicherclusters im linken Navigationsmenü.
+. Wählen Sie *Volumes* aus.
+. Wählen Sie die Registerkarte *Initiatoren*.
+. Erweitern Sie in der Spalte *Aktionen* das Optionsmenü für den Initiator.
+. Wählen Sie *Bearbeiten*.
+. Nehmen Sie gegebenenfalls die erforderlichen Änderungen am Alias vor oder fügen Sie einen neuen Alias hinzu.
+. Wählen Sie *Speichern*.
+
+
+
+
+== Initiatoren löschen
+
+Sie können einen oder mehrere Initiatoren löschen.  Wenn Sie einen Initiator löschen, entfernt das System ihn aus allen zugehörigen Datenträgerzugriffsgruppen.  Alle Verbindungen, die den Initiator verwenden, bleiben so lange gültig, bis die Verbindung zurückgesetzt wird.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Erweitern Sie im Dashboard den Namen Ihres Speicherclusters im linken Navigationsmenü.
+. Wählen Sie *Volumes* aus.
+. Wählen Sie die Registerkarte *Initiatoren*.
+. Einen oder mehrere Initiatoren löschen:
++
+.. Wählen Sie einen oder mehrere Initiatoren aus, die Sie löschen möchten.
+.. Wählen Sie *Aktionen > Löschen*.
+.. Bestätigen Sie den Löschvorgang und wählen Sie *Ja*.
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* link:../concepts/concept_solidfire_concepts_initiators.html["Erfahren Sie mehr über Initiatoren"]
+* link:../concepts/concept_solidfire_concepts_volume_access_groups.html["Erfahren Sie mehr über Volumenzugriffsgruppen"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

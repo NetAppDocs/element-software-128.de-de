@@ -1,0 +1,54 @@
+---
+permalink: api/concept_element_api_multitenant_networking_api_methods.html 
+sidebar: sidebar 
+keywords: multitenant,network,networking,api,prerequisites,requirements,virtual,tenant 
+summary: Multitenant-Netzwerkfunktionen in Element-Speicherclustern ermöglichen es, den Datenverkehr zwischen mehreren Clients, die sich in separaten logischen Netzwerken befinden, ohne Layer-3-Routing mit einem Element-Speichercluster zu verbinden. 
+---
+= Multitenant-Netzwerk-API-Methoden
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Multitenant-Netzwerkfunktionen in Element-Speicherclustern ermöglichen es, den Datenverkehr zwischen mehreren Clients, die sich in separaten logischen Netzwerken befinden, ohne Layer-3-Routing mit einem Element-Speichercluster zu verbinden.
+
+Die Verbindungen zum Speichercluster werden im Netzwerk-Stack durch VLAN-Tagging getrennt.
+
+
+
+== Voraussetzungen für die Einrichtung eines mandantenfähigen virtuellen Netzwerks
+
+* Sie müssen den Block von Client-Netzwerk-IP-Adressen identifiziert haben, der den virtuellen Netzwerken auf den Speicherknoten zugewiesen werden soll.
+* Sie müssen eine Client-Speichernetzwerk-IP-Adresse (SVIP) identifiziert haben, die als Endpunkt für den gesamten Speicherdatenverkehr verwendet werden soll.
+
+
+
+
+== Reihenfolge der Operationen in virtuellen Netzwerken
+
+. Verwenden Sie die AddVirtualNetwork-Methode, um die eingegebenen IP-Adressen in großen Mengen bereitzustellen.
++
+Nach dem Hinzufügen eines virtuellen Netzwerks führt der Cluster automatisch die folgenden Schritte aus:
+
++
+** Jeder Speicherknoten erzeugt eine virtuelle Netzwerkschnittstelle.
+** Jedem Speicherknoten wird eine VLAN-Adresse zugewiesen, die über den virtuellen SVIP geroutet werden kann.
+** Die VLAN-IP-Adressen bleiben auf jedem Knoten auch nach einem Neustart erhalten.
+
+
+. Sobald die virtuelle Netzwerkschnittstelle und die VLAN-Adressen zugewiesen wurden, können Sie den Client-Netzwerkverkehr dem virtuellen SVIP zuweisen.
+
+
+
+
+== Weitere Informationen
+
+* xref:concept_element_api_virtual_network_naming_conventions.adoc[Namenskonventionen für virtuelle Netzwerke]
+* xref:reference_element_api_addvirtualnetwork.adoc[Virtuelles Netzwerk hinzufügen]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[ModifyVirtualNetwork]
+* xref:reference_element_api_listvirtualnetworks.adoc[ListVirtualNetworks]
+* xref:reference_element_api_removevirtualnetwork.adoc[Virtuelles Netzwerk entfernen]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

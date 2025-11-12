@@ -1,0 +1,27 @@
+---
+permalink: storage/concept_contact_netapp_support.html 
+sidebar: sidebar 
+keywords: contact,support 
+summary: Wenn Sie Hilfe benötigen oder Fragen oder Anmerkungen zu NetApp -Produkten haben, wenden Sie sich bitte an den NetApp Support. 
+---
+= Kontaktieren Sie den NetApp Support.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie Hilfe benötigen oder Fragen oder Anmerkungen zu NetApp -Produkten haben, wenden Sie sich bitte an den NetApp Support.
+
+* Web:
++
+http://mysupport.netapp.com["mysupport.netapp.com"]
+
+* Telefon:
++
+** 888.4.NETAPP (888.463.8277) (USA und Kanada)
+** 00.800.44.638277 (EMEA/Europa)
+** +800.800.80.800 (Asien/Pazifik)
+
+
+

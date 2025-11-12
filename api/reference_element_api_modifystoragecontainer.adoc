@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_modifystoragecontainer.html 
+sidebar: sidebar 
+keywords: virtual,volume,storage,container,vvol,modify,modifying,change,changing,edit,editing 
+summary: Mit der Methode ModifyStorageContainer können Sie Änderungen an einem vorhandenen virtuellen Volume-Speichercontainer vornehmen. 
+---
+= ModifyStorageContainer
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ModifyStorageContainer` Methode zum Vornehmen von Änderungen an einem bestehenden virtuellen Speichercontainer.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+
+
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Speichercontainer-ID
+ a| 
+Die eindeutige ID des zu ändernden virtuellen Volume-Speichercontainers.
+ a| 
+UUID
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Initiatorgeheimnis
+ a| 
+Das neue Geheimnis für die CHAP-Authentifizierung für den Initiator.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Zielgeheimnis
+ a| 
+Das neue Geheimnis für die CHAP-Authentifizierung für das Zielsystem.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Lagerbehälter
+ a| 
+Informationen zum neu erstellten Speichercontainer.
+ a| 
+xref:reference_element_api_storagecontainer.adoc[Lagerbehälter]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ModifyStorageContainer",
+    "params": {
+      "storageContainerID": "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1",
+      "targetSecret": "O,IM;tOQdn9$JJ*8"
+    },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "storageContainer": {
+      "accountID": 8,
+      "initiatorSecret": "T$|5TO>2IY5sk4@k",
+      "name": "doctest1",
+      "protocolEndpointType": "SCSI",
+      "status": "active",
+      "storageContainerID": "6c95e24f-9f0b-4793-affb-5a4bc6c3d7e1",
+      "targetSecret": "O,IM;tOQdn9$JJ*8"
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

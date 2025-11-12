@@ -1,0 +1,18 @@
+---
+permalink: storage/concept-element-replication-workflow.html 
+sidebar: sidebar 
+keywords: workflow, replication, element, ontap, cli 
+summary: Unabhängig davon, ob Sie Daten von Element nach ONTAP oder von ONTAP nach Element replizieren, müssen Sie einen Job-Zeitplan konfigurieren, eine Richtlinie festlegen und die Beziehung erstellen und initialisieren.  Sie können eine Standardrichtlinie oder eine benutzerdefinierte Richtlinie verwenden. 
+---
+= Workflow für die Replikation zwischen Element und ONTAP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unabhängig davon, ob Sie Daten von Element nach ONTAP oder von ONTAP nach Element replizieren, müssen Sie einen Job-Zeitplan konfigurieren, eine Richtlinie festlegen und die Beziehung erstellen und initialisieren.  Sie können eine Standardrichtlinie oder eine benutzerdefinierte Richtlinie verwenden.
+
+Der Workflow setzt voraus, dass Sie die in der Liste aufgeführten Voraussetzungen erfüllt haben.link:element-replication-index.html#prerequisites["Voraussetzungen"] Die  Vollständige Hintergrundinformationen zu den SnapMirror -Richtlinien, einschließlich Hinweisen zur Auswahl der richtigen Richtlinie, finden Sie unterlink:https://docs.netapp.com/us-en/ontap/data-protection-disaster-recovery/index.html["Datenschutzübersicht"^] Die
+
+image:solidfire-to-ontap-backup-workflow.gif["Solidfire-zu- ONTAP Workflow"]

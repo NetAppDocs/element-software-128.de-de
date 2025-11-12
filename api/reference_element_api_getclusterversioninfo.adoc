@@ -1,0 +1,185 @@
+---
+permalink: api/reference_element_api_getclusterversioninfo.html 
+sidebar: sidebar 
+keywords: cluster,version,info,get,getting,getclusterversioninfo 
+summary: Mit der Methode GetClusterVersionInfo können Sie Informationen über die Element-Softwareversion abrufen, die auf jedem Knoten im Cluster ausgeführt wird.  Diese Methode liefert auch Informationen über Knoten, die sich aktuell im Prozess der Softwareaktualisierung befinden. 
+---
+= GetClusterVersionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetClusterVersionInfo` Methode zum Abrufen von Informationen über die Element-Softwareversion, die auf jedem Knoten im Cluster ausgeführt wird.  Diese Methode liefert auch Informationen über Knoten, die sich aktuell im Prozess der Softwareaktualisierung befinden.
+
+
+
+== Mitglieder des Cluster-Versionsinformationsobjekts
+
+Diese Methode besitzt die folgenden Objektmember:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Knoten-ID
+ a| 
+ID des Knotens.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+nodeInternalRevision
+ a| 
+Interne Softwareversion des Knotens.
+ a| 
+Schnur
+
+
+
+ a| 
+nodeVersion
+ a| 
+Softwareversion des Knotens.
+ a| 
+Schnur
+
+|===
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+clusterAPIVersion
+ a| 
+Die aktuelle API-Version im Cluster.
+ a| 
+Schnur
+
+
+
+ a| 
+Clusterversion
+ a| 
+Version der Element-Software, die aktuell auf dem Cluster ausgeführt wird.
+ a| 
+Schnur
+
+
+
+ a| 
+clusterVersionInfo
+ a| 
+Liste der Knoten im Cluster mit Versionsinformationen für jeden Knoten.
+ a| 
+JSON-Objektarray
+
+
+
+ a| 
+ausstehende Clusterversion
+ a| 
+Falls vorhanden, handelt es sich um die Version, auf die die Cluster-Software aktuell aktualisiert oder zurückgesetzt wird.
+ a| 
+Schnur
+
+
+
+ a| 
+softwareVersionInfo
+ a| 
+Der Status eines Upgrades.  Objektmitglieder:
+
+* aktuelle Version:
++
+Die aktuelle Softwareversion auf einem Knoten.
+
+* nodeID: ID des Knotens, der von currentVersion auf pendingVersion aktualisiert wird.  Dieses Feld hat den Wert 0 (Null), wenn kein Upgrade durchgeführt wird.
+* Paketname: Name des zu installierenden Softwarepakets.
+* pendingVersion: Die Version der zu installierenden Software.
+* startTime: Datum und Uhrzeit des Installationsbeginns im Format UTC+0.
+
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetClusterVersionInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+   "clusterAPIVersion": "6.0",
+   "clusterVersion": "6.1382",
+   "clusterVersionInfo": [
+   {
+      "nodeID": 1,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 2,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 3,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   },
+   {
+      "nodeID": 4,
+      "nodeInternalRevision": "BuildType=Release Element=carbon Release=carbon ReleaseShort=carbon Version=6.1382 sfdev=6.28 Repository=dev Revision=061511b1e7fb BuildDate=2014-05-28T18:26:45MDT",
+      "nodeVersion": "6.1382"
+   }
+ ],
+   "softwareVersionInfo": {
+      "currentVersion": "6.1382",
+      "nodeID": 0,
+      "packageName": "",
+      "pendingVersion": "6.1382",
+      "startTime": ""
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

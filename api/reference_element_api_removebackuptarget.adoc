@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_removebackuptarget.html 
+sidebar: sidebar 
+keywords: backup,target,targets,remove,delete,removing,deleting,removebackuptarget 
+summary: Mit der Methode RemoveBackupTarget können Sie Sicherungsziele entfernen. 
+---
+= RemoveBackupTarget
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RemoveBackupTarget` Methode zum Entfernen von Sicherungszielen.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+backupTargetID
+ a| 
+Eindeutige Ziel-ID des zu entfernenden Ziels.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "RemoveBackupTarget",
+   "params": {
+        "backupTargetID" : 1
+   },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

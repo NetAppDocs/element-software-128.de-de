@@ -1,0 +1,25 @@
+---
+permalink: storage/task_replication_pause_replication.html 
+sidebar: sidebar 
+keywords: replication, pause, volume pairs 
+summary: Sie können die Replikation manuell pausieren, wenn Sie die E/A-Verarbeitung für kurze Zeit unterbrechen müssen.  Möglicherweise möchten Sie die Replikation pausieren, wenn es zu einem plötzlichen Anstieg der E/A-Verarbeitung kommt und Sie die Verarbeitungslast reduzieren möchten. 
+---
+= Replikation pausieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Replikation manuell pausieren, wenn Sie die E/A-Verarbeitung für kurze Zeit unterbrechen müssen.  Möglicherweise möchten Sie die Replikation pausieren, wenn es zu einem plötzlichen Anstieg der E/A-Verarbeitung kommt und Sie die Verarbeitungslast reduzieren möchten.
+
+. Wählen Sie *Datenschutz* > *Volume-Paare*.
+. Klicken Sie auf das Aktionssymbol für das Lautsprecherpaar.
+. Klicken Sie auf *Bearbeiten*.
+. Im Bereich *Volume-Paar bearbeiten* kann der Replikationsprozess manuell angehalten werden.
++
+
+IMPORTANT: Durch das manuelle Anhalten oder Fortsetzen der Volumenreplikation wird die Datenübertragung unterbrochen bzw. fortgesetzt.  Stellen Sie sicher, dass Sie diese Änderungen an beiden Standorten koordiniert haben.
+
+. Klicken Sie auf *Änderungen speichern*.
+

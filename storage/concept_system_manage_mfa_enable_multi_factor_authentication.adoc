@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_system_manage_mfa_enable_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: saml, idp, mfa, enable 
+summary: 'Die Multi-Faktor-Authentifizierung (MFA) nutzt einen Drittanbieter-Identitätsanbieter (IdP) über die Security Assertion Markup Language (SAML), um Benutzersitzungen zu verwalten.  Die Multi-Faktor-Authentifizierung (MFA) ermöglicht es Administratoren, bei Bedarf zusätzliche Authentifizierungsfaktoren zu konfigurieren, wie beispielsweise Passwort und SMS oder Passwort und E-Mail-Nachricht.' 
+---
+= Aktivieren Sie die Multi-Faktor-Authentifizierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Multi-Faktor-Authentifizierung (MFA) nutzt einen Drittanbieter-Identitätsanbieter (IdP) über die Security Assertion Markup Language (SAML), um Benutzersitzungen zu verwalten.  Die Multi-Faktor-Authentifizierung (MFA) ermöglicht es Administratoren, bei Bedarf zusätzliche Authentifizierungsfaktoren zu konfigurieren, wie beispielsweise Passwort und SMS oder Passwort und E-Mail-Nachricht.

@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_system_configuration_getnodefipsdrivesreport.html 
+sidebar: sidebar 
+keywords: individual,fips,feature,support,info,report,get,getting,getnodefipsdrivesreport,drive 
+summary: Mit der Methode GetNodeFipsDrivesReport können Sie den Status der FIPS 140-2-Laufwerkverschlüsselungsfähigkeit eines einzelnen Knotens im Speichercluster überprüfen.  Diese Methode muss auf einem einzelnen Speicherknoten ausgeführt werden. 
+---
+= GetNodeFipsDrivesReport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetNodeFipsDrivesReport` Methode zur Überprüfung des FIPS 140-2-Verschlüsselungsstatus eines einzelnen Knotens im Speichercluster.  Diese Methode muss auf einem einzelnen Speicherknoten ausgeführt werden.
+
+
+
+== Parameter
+
+Diese Methode hat keinen Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+fipsDrives
+ a| 
+Ein JSON-Objekt, das den Status der FIPS 140-2-Funktionsunterstützung für diesen Knoten enthält. Mögliche Werte:
+
+* Keine Angabe: Der Knoten ist nicht FIPS-fähig.
+* Teilweise: Der Knoten ist FIPS-fähig, aber nicht alle Laufwerke im Knoten sind FIPS-Laufwerke.
+* Bereit: Der Knoten ist FIPS-fähig und alle Laufwerke im Knoten sind FIPS-Laufwerke (oder es sind keine Laufwerke vorhanden).
+
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetNodeFipsDrivesReport",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "fipsDrives": "None"
+    }
+}
+----
+
+
+== Neu seit Version
+
+11,5

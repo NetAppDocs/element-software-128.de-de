@@ -1,0 +1,67 @@
+---
+permalink: storage/concept_troubleshoot_basic_mdss_drive_troubleshooting.html 
+sidebar: sidebar 
+keywords: mdss drives, troubleshoot, multi-drive slice service 
+summary: 'Sie können Metadaten- (oder Slice-)Laufwerke wiederherstellen, indem Sie sie dem Cluster wieder hinzufügen, falls eines oder beide Metadaten-Laufwerke ausfallen.  Sie können die Wiederherstellungsoperation in der NetApp Element -Benutzeroberfläche durchführen, wenn die MDSS-Funktion auf dem Knoten bereits aktiviert ist.' 
+---
+= Grundlegende Fehlerbehebung bei MDSS-Laufwerken
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Metadaten- (oder Slice-)Laufwerke wiederherstellen, indem Sie sie dem Cluster wieder hinzufügen, falls eines oder beide Metadaten-Laufwerke ausfallen.  Sie können die Wiederherstellungsoperation in der NetApp Element -Benutzeroberfläche durchführen, wenn die MDSS-Funktion auf dem Knoten bereits aktiviert ist.
+
+Wenn eines oder beide Metadatenlaufwerke in einem Knoten ausfallen, wird der Slice-Dienst heruntergefahren und die Daten beider Laufwerke werden auf andere Laufwerke im Knoten gesichert.
+
+Die folgenden Szenarien beschreiben mögliche Fehlerszenarien und geben grundlegende Empfehlungen zur Behebung des Problems:
+
+
+
+== System-Slice-Laufwerk fällt aus
+
+* In diesem Szenario wird Slot 2 überprüft und in den verfügbaren Zustand zurückversetzt.
+* Das System-Slice-Laufwerk muss neu befüllt werden, bevor der Slice-Dienst wieder online geschaltet werden kann.
+* Sie sollten das System-Slice-Laufwerk austauschen. Sobald das System-Slice-Laufwerk verfügbar ist, sollten Sie es zusammen mit dem Laufwerk in Steckplatz 2 gleichzeitig einbauen.
+
+
+
+NOTE: Das Laufwerk kann nicht einzeln als Metadatenlaufwerk in Steckplatz 2 hinzugefügt werden.  Sie müssen beide Laufwerke gleichzeitig wieder an den Knoten anschließen.
+
+
+
+== Steckplatz 2 schlägt fehl
+
+* In diesem Szenario wird das System-Slice-Laufwerk überprüft und wieder in den verfügbaren Zustand versetzt.
+* Sie sollten Steckplatz 2 durch einen Ersatzsteckplatz ersetzen. Sobald Steckplatz 2 frei ist, fügen Sie gleichzeitig das Systemlaufwerk und das Laufwerk aus Steckplatz 2 hinzu.
+
+
+
+
+== Systemlaufwerk und Steckplatz 2 fallen aus
+
+* Sie sollten sowohl das Systemlaufwerk als auch Steckplatz 2 durch ein Ersatzlaufwerk ersetzen.  Sobald beide Laufwerke verfügbar sind, fügen Sie gleichzeitig das System-Slice-Laufwerk und das Slot-2-Laufwerk hinzu.
+
+
+
+
+== Operationsreihenfolge
+
+* Ersetzen Sie das defekte Laufwerk durch ein Ersatzlaufwerk (ersetzen Sie beide Laufwerke, wenn beide defekt sind).
+* Fügen Sie die Laufwerke wieder zum Cluster hinzu, sobald sie wieder bestückt und verfügbar sind.
+
+
+
+
+== Vorgänge überprüfen
+
+* Überprüfen Sie, ob die Laufwerke in Steckplatz 0 (oder intern) und Steckplatz 2 in der Liste der aktiven Laufwerke als Metadatenlaufwerke gekennzeichnet sind.
+* Prüfen Sie, ob der gesamte Slice-Balancing-Vorgang abgeschlossen ist (mindestens 30 Minuten lang dürfen keine weiteren Meldungen über verschobene Slices im Ereignisprotokoll vorhanden sein).
+
+
+
+
+== Weitere Informationen
+
+xref:task_troubleshoot_add_mdss_drives.adoc[MDSS-Laufwerke hinzufügen]

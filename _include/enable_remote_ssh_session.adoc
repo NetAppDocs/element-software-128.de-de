@@ -1,0 +1,38 @@
+= 
+:allow-uri-read: 
+
+
+Sie können einen TCP-Port für eine SSH-Reverse-Tunnel-Verbindung mit dem NetApp -Support öffnen.  Diese Verbindung ermöglicht es dem NetApp -Support, sich in Ihren Management-Knoten einzuloggen.
+
+.Bevor Sie beginnen
+* Bei Managementdiensten ab Version 2.18 ist die Möglichkeit des Fernzugriffs auf dem Managementknoten standardmäßig deaktiviert.  Informationen zur Aktivierung der Fernzugriffsfunktionalität finden Sie unter https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["SSH-Funktionalität auf dem Management-Knoten verwalten"] Die
+* Wenn sich Ihr Management-Knoten hinter einem Proxy-Server befindet, sind die folgenden TCP-Ports in der sshd.config-Datei erforderlich:
++
+[cols="15,25,60"]
+|===
+| TCP-Port | Beschreibung | Verbindungsrichtung 
+
+
+| 443 | API-Aufrufe/HTTPS für Reverse-Port-Weiterleitung über einen offenen Support-Tunnel zur Web-UI | Managementknoten zu Speicherknoten 
+
+
+| 22 | SSH-Anmeldezugriff | Managementknoten zu Speicherknoten oder von Speicherknoten zu Managementknoten 
+|===
+
+
+.Schritte
+* Melden Sie sich an Ihrem Management-Knoten an und öffnen Sie eine Terminal-Sitzung.
+* Geben Sie auf Aufforderung Folgendes ein:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
+* Um den Remote-Support-Tunnel zu schließen, geben Sie Folgendes ein:
++
+`rst --killall`
+
+* (Optional) Deaktivieren https://docs.netapp.com/us-en/element-software/mnode/task_mnode_ssh_management.html["Fernzugriffsfunktionalität"] wieder.
++
+
+NOTE: SSH bleibt auf dem Management-Knoten aktiviert, solange Sie es nicht deaktivieren.  Die SSH-fähige Konfiguration bleibt auf dem Management-Knoten auch nach Updates und Upgrades erhalten, bis sie manuell deaktiviert wird.
+
+

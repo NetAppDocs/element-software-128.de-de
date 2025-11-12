@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_basic_interface_refresh_rate_impacted_by_cluster_load.html 
+sidebar: sidebar 
+keywords: data refresh interval, cluster, interval controls, API requests, heavy load cluster, cluster credentials 
+summary: Abhängig von den API-Antwortzeiten passt der Cluster möglicherweise automatisch das Datenaktualisierungsintervall für bestimmte Bereiche der NetApp Element -Softwareseite an, die Sie gerade anzeigen. 
+---
+= Die Aktualisierungsrate der Schnittstelle wird durch die Clusterlast beeinflusst.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Abhängig von den API-Antwortzeiten passt der Cluster möglicherweise automatisch das Datenaktualisierungsintervall für bestimmte Bereiche der NetApp Element -Softwareseite an, die Sie gerade anzeigen.
+
+Das Aktualisierungsintervall wird auf den Standardwert zurückgesetzt, wenn Sie die Seite in Ihrem Browser neu laden.  Das aktuelle Aktualisierungsintervall können Sie durch Klicken auf den Clusternamen oben rechts auf der Seite einsehen.  Beachten Sie, dass das Intervall steuert, wie oft API-Anfragen gestellt werden, nicht wie schnell die Daten vom Server zurückkommen.
+
+Bei hoher Auslastung eines Clusters kann es vorkommen, dass API-Anfragen von der Element-Benutzeroberfläche in eine Warteschlange gestellt werden.  In seltenen Fällen, wenn die Systemantwort erheblich verzögert ist, beispielsweise aufgrund einer langsamen Netzwerkverbindung in Verbindung mit einem ausgelasteten Cluster, kann es vorkommen, dass Sie von der Element-Benutzeroberfläche abgemeldet werden, wenn das System nicht schnell genug auf die in der Warteschlange befindlichen API-Anfragen reagiert.  Falls Sie auf den Abmeldebildschirm weitergeleitet werden, können Sie sich nach dem Schließen einer etwaigen anfänglichen Browser-Authentifizierungsaufforderung erneut anmelden.  Wenn Sie zur Übersichtsseite zurückkehren, werden Sie möglicherweise zur Eingabe der Cluster-Zugangsdaten aufgefordert, falls diese nicht von Ihrem Browser gespeichert wurden.

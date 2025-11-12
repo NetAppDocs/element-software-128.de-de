@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_initiator.html 
+sidebar: sidebar 
+keywords: object,objects,initiator 
+summary: Das Initiatorobjekt enthält Informationen über einen iSCSI- oder Fibre-Channel-Initiator.  Ein Initiatorobjekt kann IQN- oder WWPN-Kennungen enthalten.  Mit der Methode ListInitiators können Sie eine Liste aller im System bekannten Initiatoren abrufen.  Sie verwenden Initiatorobjekte, um den SCSI-Initiatorzugriff auf eine Gruppe von Volumes über Volumezugriffsgruppen zu konfigurieren.  Ein Initiator kann jeweils nur Mitglied einer Datenträgerzugriffsgruppe sein.  Sie können den Initiatorzugriff auf ein oder mehrere VLANs beschränken, indem Sie eine oder mehrere virtuelle Netzwerk-IDs mithilfe der Methoden CreateInitiators und ModifyInitiators angeben.  Wenn Sie keine virtuellen Netzwerke angeben, kann der Initiator auf alle Netzwerke zugreifen. 
+---
+= Initiator
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Initiatorobjekt enthält Informationen über einen iSCSI- oder Fibre-Channel-Initiator.  Ein Initiatorobjekt kann IQN- oder WWPN-Kennungen enthalten.  Sie können die `ListInitiators` Methode zum Abrufen einer Liste aller im System bekannten Initiatoren.  Sie verwenden Initiatorobjekte, um den SCSI-Initiatorzugriff auf eine Gruppe von Volumes über Volumezugriffsgruppen zu konfigurieren.  Ein Initiator kann jeweils nur Mitglied einer Datenträgerzugriffsgruppe sein.  Sie können den Initiatorzugriff auf ein oder mehrere VLANs beschränken, indem Sie eine oder mehrere virtuelle Netzwerk-IDs angeben. `CreateInitiators` Und `ModifyInitiators` Methoden.  Wenn Sie keine virtuellen Netzwerke angeben, kann der Initiator auf alle Netzwerke zugreifen.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+alias
+ a| 
+Der gegebenenfalls dem Initiator zugewiesene Benutzername.
+ a| 
+Schnur
+
+
+
+ a| 
+Attribute
+ a| 
+Ein Satz von JSON-Attributen, die diesem Initiator zugewiesen sind.  Das Leerzeichen ist leer, wenn keine Attribute zugewiesen sind.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+chapUsername
+ a| 
+Der eindeutige CHAP-Benutzername für diesen Initiator.
+ a| 
+Schnur
+
+
+
+ a| 
+Initiator-ID
+ a| 
+Die numerische Kennung des Initiators.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Initiatorname
+ a| 
+Der Initiatorname im IQN- oder WWPN-Format.
+ a| 
+Schnur
+
+
+
+ a| 
+Initiatorgeheimnis
+ a| 
+Das CHAP-Geheimnis, das zur Authentifizierung des Initiators verwendet wird.
+ a| 
+Schnur
+
+
+
+ a| 
+benötigtKapitel
+ a| 
+Trifft zu, wenn CHAP für diesen Initiator erforderlich ist.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+Zielgeheimnis
+ a| 
+Das CHAP-Geheimnis, das zur Authentifizierung des Ziels verwendet wird (bei Verwendung der gegenseitigen CHAP-Authentifizierung).
+ a| 
+Schnur
+
+
+
+ a| 
+virtuelleNetzwerk-IDs
+ a| 
+Die Liste der virtuellen Netzwerk-IDs, die diesem Initiator zugeordnet sind.  Wenn ein oder mehrere definiert sind, kann sich dieser Initiator nur in den angegebenen virtuellen Netzwerken anmelden.  Wenn keine virtuellen Netzwerke definiert sind, kann sich dieser Initiator in alle Netzwerke einloggen.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+volumeAccessGroups
+ a| 
+Eine Liste der Volume-Zugriffsgruppen-IDs, zu denen dieser Initiator gehört.
+ a| 
+Ganzzahl-Array
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listinitiators.adoc[Listeninitiatoren]

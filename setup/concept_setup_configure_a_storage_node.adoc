@@ -1,0 +1,106 @@
+---
+permalink: setup/concept_setup_configure_a_storage_node.html 
+sidebar: sidebar 
+keywords: configuring node,configure storage node,configuring using TUI,configuring using node UI 
+summary: Sie müssen die einzelnen Knoten konfigurieren, bevor Sie sie einem Cluster hinzufügen können.  Nachdem Sie einen Knoten in einer Rack-Einheit installiert, verkabelt und eingeschaltet haben, können Sie die Netzwerkeinstellungen des Knotens über die Benutzeroberfläche des Knotens oder die Benutzeroberfläche des Knotenterminals konfigurieren. 
+---
+= Konfigurieren eines Speicherknotens
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen die einzelnen Knoten konfigurieren, bevor Sie sie einem Cluster hinzufügen können.  Nachdem Sie einen Knoten in einer Rack-Einheit installiert und verkabelt und ihn eingeschaltet haben, können Sie die Netzwerkeinstellungen des Knotens über die Benutzeroberfläche pro Knoten oder die Terminalbenutzeroberfläche (TUI) des Knotens konfigurieren.  Stellen Sie sicher, dass Sie über die notwendigen Netzwerkkonfigurationsinformationen für den Knoten verfügen, bevor Sie fortfahren.
+
+Es gibt zwei Möglichkeiten zur Konfiguration von Speicherknoten:
+
+* <<Konfigurieren Sie einen Speicherknoten über die Benutzeroberfläche pro Knoten.,Benutzeroberfläche pro Knoten>>: Verwenden Sie die Benutzeroberfläche pro Knoten. (`https://<node_management_IP>:442`) um die Knotennetzwerkeinstellungen zu konfigurieren.
+* <<Konfigurieren Sie einen Speicherknoten mithilfe der TUI.,TUI>>: Verwenden Sie die Benutzeroberfläche des Knotenterminals (TUI), um den Knoten zu konfigurieren.
+
+
+Ein Knoten mit per DHCP zugewiesenen IP-Adressen kann nicht zu einem Cluster hinzugefügt werden.  Sie können die DHCP-IP-Adresse verwenden, um den Knoten in der knotenspezifischen Benutzeroberfläche, der TUI oder der API initial zu konfigurieren.  Während dieser Erstkonfiguration können Sie statische IP-Adressinformationen hinzufügen, um den Knoten einem Cluster hinzuzufügen.
+
+Nach der Erstkonfiguration können Sie über die Management-IP-Adresse des Knotens auf diesen zugreifen.  Anschließend können Sie die Knoteneinstellungen ändern, ihn einem Cluster hinzufügen oder den Knoten verwenden, um einen Cluster zu erstellen.  Sie können einen neuen Knoten auch mithilfe der Element-Software-API-Methoden konfigurieren.
+
+
+NOTE: Ab Element Version 11.0 können Knoten mit IPv4-, IPv6- oder beiden Adressen für ihr Managementnetzwerk konfiguriert werden.  Dies gilt sowohl für Speicherknoten als auch für Verwaltungsknoten, mit Ausnahme des Verwaltungsknotens 11.3 und höher, der IPv6 nicht unterstützt.  Beim Erstellen eines Clusters kann nur eine einzige IPv4- oder IPv6-Adresse für den MVIP verwendet werden, und der entsprechende Adresstyp muss auf allen Knoten konfiguriert sein.
+
+
+
+== Konfigurieren Sie einen Speicherknoten über die Benutzeroberfläche pro Knoten.
+
+Sie können die Knoten über die Benutzeroberfläche pro Knoten konfigurieren.
+
+.Informationen zu diesem Vorgang
+* Sie können den Knoten so konfigurieren, dass er entweder eine IPv4- oder eine IPv6-Adresse hat.
+* Sie benötigen die in der TUI angezeigte DHCP-Adresse, um auf einen Knoten zuzugreifen.  Sie können keine DHCP-Adressen verwenden, um einen Knoten zu einem Cluster hinzuzufügen.
++
+
+IMPORTANT: Sie sollten die Management- (Bond1G) und Speicherschnittstellen (Bond10G) für separate Subnetze konfigurieren.  Bond1G- und Bond10G-Schnittstellen, die für dasselbe Subnetz konfiguriert sind, verursachen Routing-Probleme, wenn Speicherdatenverkehr über die Bond1G-Schnittstelle gesendet wird.  Falls Sie für Management- und Speicherdatenverkehr dasselbe Subnetz verwenden müssen, konfigurieren Sie den Managementdatenverkehr manuell so, dass er die Bond10G-Schnittstelle verwendet.  Dies können Sie für jeden Knoten über die Seite *Cluster-Einstellungen* der Benutzeroberfläche des jeweiligen Knotens durchführen.
+
+
+
+.Schritte
+. Geben Sie in einem Browserfenster die DHCP-IP-Adresse eines Knotens ein.
++
+Sie müssen die Erweiterung hinzufügen. `:442` um auf den Knoten zuzugreifen; zum Beispiel `https://172.25.103.6:442`Die
+
++
+Der Reiter *Netzwerkeinstellungen* öffnet sich mit dem Abschnitt *Bond1G*.
+
+. Rufen Sie die 1G-Management-Netzwerkeinstellungen auf.
+. Klicken Sie auf *Änderungen übernehmen*.
+. Klicken Sie auf *Bond10G*, um die Einstellungen für das 10G-Speichernetzwerk anzuzeigen.
+. Rufen Sie die 10G-Speichernetzwerkeinstellungen auf.
+. Klicken Sie auf *Änderungen übernehmen*.
+. Klicken Sie auf *Cluster-Einstellungen*.
+. Geben Sie den Hostnamen für das 10G-Netzwerk ein.
+. Geben Sie den Clusternamen ein.
++
+
+IMPORTANT: Dieser Name muss der Konfiguration aller Knoten hinzugefügt werden, bevor ein Cluster erstellt werden kann.  Alle Knoten in einem Cluster müssen identische Clusternamen haben.  Clusternamen unterscheiden Groß- und Kleinschreibung.
+
+. Klicken Sie auf *Änderungen übernehmen*.
+
+
+
+
+== Konfigurieren Sie einen Speicherknoten mithilfe der TUI.
+
+Sie können die Terminal-Benutzeroberfläche (TUI) verwenden, um die Erstkonfiguration für neue Knoten durchzuführen.
+
+Sie sollten die Bond1G (Management)- und Bond10G (Storage)-Schnittstellen für separate Subnetze konfigurieren.  Wenn Bond1G- und Bond10G-Schnittstellen für dasselbe Subnetz konfiguriert sind, kommt es zu Routing-Problemen, wenn Speicherdatenverkehr über die Bond1G-Schnittstelle gesendet wird.  Falls Sie für Management- und Speicherdatenverkehr dasselbe Subnetz verwenden müssen, konfigurieren Sie den Managementdatenverkehr manuell so, dass er die Bond10G-Schnittstelle verwendet.  Dies können Sie für jeden Knoten über die Seite *Cluster* > *Knoten* der Element-Benutzeroberfläche durchführen.
+
+.Schritte
+. Schließen Sie eine Tastatur und einen Monitor an den Knoten an und schalten Sie den Knoten anschließend ein.
++
+Das NetApp Storage Hauptmenü der TUI wird auf dem Terminal tty1 angezeigt.
+
++
+
+NOTE: Wenn der Knoten Ihren Konfigurationsserver nicht erreichen kann, zeigt die TUI eine Fehlermeldung an.  Überprüfen Sie Ihre Serververbindung oder die Netzwerkverbindung, um den Fehler zu beheben.
+
+. Wählen Sie *Netzwerk* > *Netzwerkkonfiguration*.
++
+
+TIP: Drücken Sie die Pfeiltasten nach oben oder unten, um im Menü zu navigieren.  Um zu einer anderen Schaltfläche oder von den Schaltflächen zu den Feldern zu gelangen, drücken Sie die *Tabulatortaste*.  Um zwischen den Feldern zu navigieren, verwenden Sie die Pfeiltasten nach oben oder unten.
+
+. Wählen Sie *Bond1G (Management)* oder *Bond10G (Storage)*, um die 1G- und 10G-Netzwerkeinstellungen für den Knoten zu konfigurieren.
+. Drücken Sie für die Felder „Bindungsmodus“ und „Status“ die *Tabulatortaste*, um die Schaltfläche „Hilfe“ auszuwählen und die verfügbaren Optionen anzuzeigen.
++
+Alle Knoten in einem Cluster müssen identische Clusternamen haben.  Clusternamen unterscheiden Groß- und Kleinschreibung.  Wenn im Netzwerk ein DHCP-Server mit verfügbaren IP-Adressen läuft, wird die 1GbE-Adresse im Adressfeld angezeigt.
+
+. Drücken Sie die *Tabulatortaste*, um die Schaltfläche *OK* auszuwählen und die Änderungen zu speichern.
++
+Der Knoten wird in den Status „Ausstehend“ versetzt und kann einem bestehenden Cluster oder einem neuen Cluster hinzugefügt werden.
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

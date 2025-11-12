@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_setnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,set,setting,node,setnetworkconfig 
+summary: Mit der Methode SetNetworkConfig können Sie die Netzwerkkonfiguration für einen Knoten festlegen.  Um die aktuellen Netzwerkeinstellungen eines Knotens anzuzeigen, führen Sie die API-Methode GetNetworkConfig aus. 
+---
+= SetNetworkConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `SetNetworkConfig` Methode zum Festlegen der Netzwerkkonfiguration für einen Knoten.  Um die aktuellen Netzwerkeinstellungen eines Knotens anzuzeigen, führen Sie folgenden Befehl aus: `GetNetworkConfig` API-Methode.
+
+
+
+== Parameter
+
+VORSICHT:
+
+Das Ändern des Bindungsmodus eines Knotens kann einen vorübergehenden Verlust der Netzwerkverbindung verursachen.
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Netzwerk
+ a| 
+Ein Objekt, das zu ändernde Knotennetzwerkeinstellungen enthält.  Sie müssen lediglich die Felder, die Sie ändern möchten, als Attribute in diesem Parameter hinzufügen.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[Netzwerk (alle Schnittstellen)]
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Netzwerk
+ a| 
+Die neue und aktuelle Netzwerkkonfiguration für den Knoten.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[Netzwerk (alle Schnittstellen)]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "SetNetworkConfig",
+		"params": {
+			"network": {
+				"Bond10G": {
+					"bond-mode": "ALB"
+				},
+				"Bond1G": {
+					"netmask": "255.255.224.0"
+				},
+				"eth0": {
+					"method": "bond"
+				},
+				"lo": {
+					"method": "loopback"
+				}
+			}
+		}
+}
+----
+
+
+== Antwortbeispiel
+
+Die Antwort dieser Methode ist dieselbe wie die Antwort der Methode GetNetworkConfig.  Die Methode zeigt alle Elemente jedes Objekts an und enthält die neuen Werte für alle geänderten Elemente.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[GetNetworkConfig]
+

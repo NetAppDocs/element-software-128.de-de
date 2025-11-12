@@ -1,0 +1,195 @@
+---
+permalink: api/reference_element_api_network_ethernet_interfaces.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: 'Das Netzwerkobjekt (Ethernet-Schnittstellen) enthält Konfigurationsinformationen für einzelne Ethernet-Schnittstellen.  Sie können die Methoden GetConfig und GetNetworkConfig verwenden, um diese Informationen für einen Speicherknoten zu erhalten.' 
+---
+= Netzwerk (Ethernet-Schnittstellen)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Netzwerkobjekt (Ethernet-Schnittstellen) enthält Konfigurationsinformationen für einzelne Ethernet-Schnittstellen.  Sie können die `GetConfig` Und `GetNetworkConfig` Methoden, um diese Informationen für einen Speicherknoten zu erhalten.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Bond-Master
+ a| 
+Gibt an, welcher Bonded-Schnittstelle diese physikalische Schnittstelle als Bond-Slave beigetreten ist.
+ a| 
+Schnur
+
+
+
+ a| 
+Familie
+ a| 
+Adressfamilie, die die Schnittstelle verwenden soll.  Aktuell wird "inet" für IPv4 unterstützt.
+ a| 
+Schnur
+
+
+
+ a| 
+MAC-Adresse
+ a| 
+Die tatsächliche MAC-Adresse, die der Schnittstelle zugewiesen ist und vom Netzwerk überwacht wird.
+ a| 
+Schnur
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+Die vom Hersteller der Schnittstelle zugewiesene unveränderliche MAC-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Verfahren
+ a| 
+Die Methode, die zur Konfiguration der Schnittstelle verwendet wird. Mögliche Werte:
+
+* loopback: Wird verwendet, um die IPv4-Loopback-Schnittstelle zu definieren.
+* Manual: Wird verwendet, um Schnittstellen zu definieren, die nicht automatisch konfiguriert werden.
+* dhcp: Kann verwendet werden, um eine IP-Adresse per DHCP zu beziehen.
+* static: Wird verwendet, um Ethernet-Schnittstellen mit statisch zugewiesenen IPv4-Adressen zu definieren.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Status
+ a| 
+Der Zustand der Schnittstelle. Mögliche Werte:
+
+* Unten: Die Schnittstelle ist inaktiv.
+* Nach oben: Die Schnittstelle ist bereit, hat aber keine Verbindung.
+* UpAndRunning: Die Schnittstelle ist bereit und eine Verbindung wurde hergestellt.
+
+ a| 
+Schnur
+
+
+
+ a| 
+upAndRunning
+ a| 
+Zeigt an, ob die Schnittstelle bereit ist und eine Verbindung besteht.
+ a| 
+boolescher Wert
+
+|===
+
+
+== Mitgliedsmodifikatorbarkeit und Knotenzustände
+
+Diese Tabelle gibt an, ob die Objektparameter in jedem möglichen Knotenzustand geändert werden können oder nicht.
+
+|===
+
+
+| Parametername | Verfügbarer Zustand | Status ausstehend | Aktiver Zustand 
+
+
+ a| 
+Bond-Master
+ a| 
+Nein
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+ a| 
+Familie
+ a| 
+Nein
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+ a| 
+MAC-Adresse
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+macAddressPermanent
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+
+
+ a| 
+Verfahren
+ a| 
+Nein
+ a| 
+Nein
+ a| 
+Nein
+
+
+
+ a| 
+Status
+ a| 
+Ja
+ a| 
+Ja
+ a| 
+Ja
+
+
+
+ a| 
+upAndRunning
+ a| 
+Vom System konfiguriert
+ a| 
+k. A.
+ a| 
+k. A.
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getconfig.adoc[GetConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+

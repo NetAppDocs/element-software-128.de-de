@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_listsnapshots.html 
+sidebar: sidebar 
+keywords: snapshot,snapshots,list,listing,attributes,listsnapshots 
+summary: Mit ListSnapshots können Sie die Attribute jedes einzelnen Snapshots des Volumes abrufen. 
+---
+= ListSnapshots
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `ListSnapshots` Die Attribute jedes auf dem Volume erstellten Snapshots zurückzugeben.
+
+Informationen über Snapshots, die sich auf dem Zielcluster befinden, werden auf dem Quellcluster angezeigt, wenn diese Methode vom Quellcluster aus aufgerufen wird.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Volume-ID
+ a| 
+Ruft Snapshots für ein Volume ab.  Wird keine Volume-ID angegeben, werden alle Snapshots aller Volumes zurückgegeben.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Snapshot-ID
+ a| 
+Ruft Informationen zu einer einzelnen Snapshot-ID ab.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Momentaufnahmen
+ a| 
+Informationen zu jedem Snapshot für jedes Volume.  Wird keine Volume-ID angegeben, werden alle Snapshots aller Volumes zurückgegeben.  Snapshots, die zu einer Gruppe gehören, werden mit einer Gruppen-ID zurückgegeben.
+ a| 
+xref:reference_element_api_snapshot.adoc[Schnappschuss]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListSnapshots",
+   "params": {
+             "volumeID": "1"
+       },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshots": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2015-05-08T13:15:00Z",
+          "enableRemoteReplication": true,
+          "expirationReason": "None",
+          "expirationTime": "2015-05-08T21:15:00Z",
+          "groupID": 0,
+          "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+          "name": "Hourly",
+          "remoteStatuses": [
+              {
+                "remoteStatus": "Present",
+                "volumePairUUID": "237e1cf9-fb4a-49de-a089-a6a9a1f0361e"
+              }
+         ],
+          "snapshotID": 572,
+          "snapshotUUID": "efa98e40-cb36-4c20-a090-a36c48296c14",
+          "status": "done",
+          "totalSize": 10000269312,
+          "volumeID": 1
+        }
+      ]
+    }
+  }
+----
+
+
+== Neu seit Version
+
+9,6

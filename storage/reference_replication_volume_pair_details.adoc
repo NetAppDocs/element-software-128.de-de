@@ -1,0 +1,71 @@
+---
+permalink: storage/reference_replication_volume_pair_details.html 
+sidebar: sidebar 
+keywords: volume pairs, replication, data protection 
+summary: Die Seite „Volume-Paare“ auf der Registerkarte „Datenschutz“ bietet Informationen über Volumes, die bereits gepaart wurden oder gerade gepaart werden.  Das System zeigt Kopplungs- und Fortschrittsmeldungen in der Spalte „Volume-Status“ an. 
+---
+= Details zum Volumenpaar
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Seite „Volume-Paare“ auf der Registerkarte „Datenschutz“ bietet Informationen über Volumes, die bereits gepaart wurden oder gerade gepaart werden.  Das System zeigt Kopplungs- und Fortschrittsmeldungen in der Spalte „Volume-Status“ an.
+
+* *AUSWEIS*
++
+Systemgenerierte ID für das Volume.
+
+* *Name*
++
+Der Name, der dem Band bei seiner Erstellung gegeben wurde.  Datenträgernamen dürfen bis zu 223 Zeichen lang sein und die Ziffern az, 0-9 und Bindestriche (-) enthalten.
+
+* *Konto*
++
+Name des dem Volumen zugeordneten Kontos.
+
+* *Lautstärkestatus*
++
+Replikationsstatus des Volumes
+
+* *Snapshot-Status*
++
+Status des Snapshot-Volumes.
+
+* *Modus*
++
+Die clientseitige Schreibreplikationsmethode.  Folgende Werte sind möglich:
+
++
+** Asynchron
+** Nur Momentaufnahme
+** Synchronisieren
+
+
+* *Richtung*
++
+Die Richtung der Volumendaten:
+
++
+** Symbol für die Quelllautstärke (image:../media/source_icon_for_volume_pairs.png["Zeigt an, dass Daten in ein Ziel außerhalb des Clusters geschrieben werden."] ) zeigt an, dass Daten an ein Ziel außerhalb des Clusters geschrieben werden.
+** Ziel-Lautstärkesymbol (image:../media/target_icon_for_volume_pairs.png["Symbol, das anzeigt, dass Daten von einer externen Quelle auf das lokale Volume geschrieben werden."] ) bedeutet, dass Daten von einer externen Quelle auf das lokale Volume geschrieben werden.
+
+
+* *Asynchrone Verzögerung*
++
+Zeitspanne seit der letzten Synchronisierung des Volumes mit dem Remote-Cluster.  Wenn kein passendes Volume vorhanden ist, ist der Wert null.
+
+* *Remote-Cluster*
++
+Name des Remote-Clusters, auf dem sich das Volume befindet.
+
+* *Remote-Volume-ID*
++
+Volume-ID des Volumes auf dem Remote-Cluster.
+
+* *Name des Remote-Volumes*
++
+Name, der dem Remote-Volume bei seiner Erstellung gegeben wurde.
+
+

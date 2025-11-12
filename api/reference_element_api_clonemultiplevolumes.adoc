@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_clonemultiplevolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,clone,cloning,multiple,CloneMultipleVolumes 
+summary: Mit der Methode CloneMultipleVolumes können Sie eine Kopie einer Gruppe bestimmter Volumes erstellen.  Sie können einer Gruppe von mehreren Volumes einen einheitlichen Satz von Eigenschaften zuweisen, wenn diese zusammen geklont werden. 
+---
+= Mehrere Volumes klonen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `CloneMultipleVolumes` Methode zum Erstellen eines Klons einer Gruppe bestimmter Volumes.  Sie können einer Gruppe von mehreren Volumes einen einheitlichen Satz von Eigenschaften zuweisen, wenn diese zusammen geklont werden.
+
+Bevor Sie den Parameter groupSnapshotID zum Klonen der Volumes in einem Gruppen-Snapshot verwenden, müssen Sie zuerst den Gruppen-Snapshot mit folgendem Befehl erstellen:xref:reference_element_api_creategroupsnapshot.adoc[Gruppen-Snapshot erstellen] API-Methode oder Web-UI.  Die Verwendung von groupSnapshotID ist beim Klonen mehrerer Volumes optional.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Zugang
+ a| 
+Neue Standardzugriffsmethode für die neuen Volumes, sofern diese nicht durch im Volume-Array übergebene Informationen überschrieben wird.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+SnapMirrorReplication aktivieren
+ a| 
+Ermittelt, ob das Volume für die Replikation mit SnapMirror Endpunkten verwendet werden kann. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Gruppen-Snapshot-ID
+ a| 
+ID des Gruppen-Snapshots, der als Grundlage für den Klon verwendet werden soll.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+neueKonto-ID
+ a| 
+Neue Konto-ID für die Volumes, sofern diese nicht durch Informationen im Volumes-Array überschrieben wird.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Bände
+ a| 
+Zusammenstellung der von Ihnen für die neuen Bände festgelegten Mitglieder.  Mitglieder:
+
+* volumeID: (Erforderlich)
+* Zugriff: (Optional) Kann einer der folgenden Werte sein: readOnly, readWrite, locked oder replicationTarget.
+* Attribute: (Optional) Liste von Name-Wert-Paaren im JSON-Objektformat.
+* Name: (Optional) Neuer Name für den Klon.
+* newAccountID: (Optional) Konto-ID für die neuen Volumes.
+* newSize: (Optional) Gesamtgröße des Volumes in Bytes.  Die Größe wird auf das nächste Megabyte aufgerundet.
+
+
+Werden optionale Elemente nicht angegeben, werden die Werte von den Quellvolumes übernommen.
+ a| 
+JSON-Objektarray
+ a| 
+Keine
+ a| 
+Ja (Volume-ID)
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+asyncHandle
+ a| 
+Ein Wert, der von einem asynchronen Methodenaufruf zurückgegeben wird.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Gruppenklon-ID
+ a| 
+Eindeutige ID des neuen Gruppenklons.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Mitglieder
+ a| 
+Liste der Volume-IDs für die Quell- und Ziel-Volume-Paare.
+ a| 
+JSON-Objektarray
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "CloneMultipleVolumes",
+   "params": {
+       "volumes": [
+           {
+              "volumeID": 5
+              "name":"foxhill",
+              "access":"readOnly"
+              },
+           {
+              "volumeID": 18
+              },
+           {
+             "volumeID": 20
+              }
+     ]
+   },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 12,
+    "groupCloneID": 4,
+    "members": [
+     {
+      "srcVolumeID": 5,
+      "volumeID": 29
+     },
+     {
+      "srcVolumeID": 18,
+      "volumeID": 30
+     },
+     {
+      "srcVolumeID": 20,
+      "volumeID": 31
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

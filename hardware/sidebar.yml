@@ -1,0 +1,36 @@
+---
+section: hardware
+title: Hardware installieren und warten
+entries:
+- title: Hardwareinformationen zu H410S und H610S
+  entries:
+  - title: Installieren Sie H410S- und H610S-Knoten.
+    url: "/hardware/task_h410s_h610s_install.html"
+  - title: Ersetzen Sie einen H410S-Knoten
+    url: "/hardware/task_h410s_repl.html"
+  - title: Ersetzen Sie einen H610S-Knoten
+    url: "/hardware/task_h610s_repl.html"
+  - title: Laufwerke ersetzen
+    url: "/hardware/task_hseries_driverepl.html"
+  - title: Netzteil austauschen
+    url: "/hardware/task_psu_repl.html"
+- title: Hardwareinformationen der SF-Serie
+  entries:
+  - title: Ersetzen Sie ein Chassis
+    url: "/hardware/task_sfseries_chassisrepl.html"
+  - title: Laufwerke ersetzen
+    url: "/hardware/task_sfseries_driverepl.html"
+  - title: Netzteil austauschen
+    url: "/hardware/task_sfseries_psurepl.html"
+- title: Informationen zum Werksimage
+  entries:
+  - title: Konfigurieren Sie das Return-to-Werkseinstellungen-Image
+    url: "/hardware/concept_rtfi_configure.html"
+  - title: RTFI-Bereitstellungs- und Installationsoptionen
+    url: "/hardware/task_rtfi_deployment_and_install_options.html"
+  - title: Der RTFI-Prozess
+    url: "/hardware/task_rtfi_process.html"
+  - title: RTFI-Optionsmenü
+    url: "/hardware/task_rtfi_options_menu.html"
+- title: Unterstützte Firmware-Versionen für Speicherknoten
+  url: "/hardware/fw_storage_nodes.html"

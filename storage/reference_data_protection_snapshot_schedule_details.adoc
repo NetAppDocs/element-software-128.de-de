@@ -1,0 +1,57 @@
+---
+permalink: storage/reference_data_protection_snapshot_schedule_details.html 
+sidebar: sidebar 
+keywords: snapshots, snapshot schedules 
+summary: Auf der Seite Datenschutz > Zeitpläne können Sie in der Liste der Snapshot-Zeitpläne die folgenden Informationen einsehen. 
+---
+= Momentaufnahme des Zeitplans
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Auf der Seite Datenschutz > Zeitpläne können Sie in der Liste der Snapshot-Zeitpläne die folgenden Informationen einsehen.
+
+* *AUSWEIS*
++
+Die vom System generierte ID für den Snapshot.
+
+* *Typ*
++
+Die Art des Zeitplans.  Aktuell wird nur der Snapshot-Typ unterstützt.
+
+* *Name*
++
+Der Name, der dem Zeitplan bei seiner Erstellung gegeben wurde.  Snapshot-Zeitplannamen dürfen bis zu 223 Zeichen lang sein und die Zeichen az, 0-9 und Bindestrich (-) enthalten.
+
+* *Frequenz*
++
+Die Häufigkeit, mit der der Zeitplan ausgeführt wird.  Die Frequenz kann in Stunden und Minuten, Wochen oder Monaten eingestellt werden.
+
+* *Wiederkehrend*
++
+Angabe, ob der Zeitplan nur einmal oder in regelmäßigen Abständen ausgeführt werden soll.
+
+* *Manuell pausiert*
++
+Anzeige, ob der Zeitplan manuell pausiert wurde oder nicht.
+
+* *Volume-IDs*
++
+Die ID des Datenträgers, den der Zeitplan bei seiner Ausführung verwenden wird.
+
+* *Letzter Lauf*
++
+Der Fahrplan wurde zuletzt ausgeführt.
+
+* *Status der letzten Ausführung*
++
+Das Ergebnis der letzten Zeitplanausführung. Mögliche Werte:
+
++
+** Erfolg
+** Versagen
+
+
+

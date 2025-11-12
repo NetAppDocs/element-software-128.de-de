@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_schedule_a_snapshot_task.html 
+sidebar: sidebar 
+keywords: snapshot, schedule, volume snapshots, group snapshots 
+summary: Sie können Daten auf einem Volume oder einer Gruppe von Volumes schützen, indem Sie die Erstellung von Volume-Snapshots in festgelegten Intervallen planen.  Sie können entweder Einzelvolume-Snapshots oder Gruppen-Snapshots zur automatischen Ausführung planen. 
+---
+= Planen Sie eine Momentaufnahme
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Daten auf einem Volume oder einer Gruppe von Volumes schützen, indem Sie die Erstellung von Volume-Snapshots in festgelegten Intervallen planen.  Sie können entweder Einzelvolume-Snapshots oder Gruppen-Snapshots zur automatischen Ausführung planen.
+
+Wenn Sie einen Snapshot-Zeitplan konfigurieren, können Sie zwischen Zeitintervallen wählen, die auf Wochentagen oder Monatstagen basieren.  Sie können auch die Tage, Stunden und Minuten vor dem nächsten Snapshot angeben.  Die resultierenden Snapshots können auf einem entfernten Speichersystem gespeichert werden, wenn das Volume repliziert wird.
+
+
+
+== Weitere Informationen
+
+* xref:task_data_protection_create_a_snapshot_schedule.adoc[Erstellen Sie einen Snapshot-Zeitplan]
+* xref:task_data_protection_edit_a_snapshot_schedule.adoc[Bearbeiten eines Snapshot-Zeitplans]
+* xref:task_data_protection_delete_a_snapshot_schedule.adoc[Einen Snapshot-Zeitplan löschen]
+* xref:task_data_protection_copy_a_snapshot_schedule.adoc[Snapshot-Zeitplan kopieren]
+

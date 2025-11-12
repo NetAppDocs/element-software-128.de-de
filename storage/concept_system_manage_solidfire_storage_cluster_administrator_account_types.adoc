@@ -1,0 +1,27 @@
+---
+permalink: storage/concept_system_manage_solidfire_storage_cluster_administrator_account_types.html 
+sidebar: sidebar 
+keywords: user types, account, cluster, access active nodes, per-node UI 
+summary: 'In einem Speichercluster, auf dem die NetApp Element -Software ausgeführt wird, können zwei Arten von Administratorkonten existieren: das primäre Cluster-Administratorkonto und ein Cluster-Administratorkonto.' 
+---
+= Arten von Administratorkonten für Speichercluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In einem Speichercluster, auf dem die NetApp Element -Software ausgeführt wird, können zwei Arten von Administratorkonten existieren: das primäre Cluster-Administratorkonto und ein Cluster-Administratorkonto.
+
+* *Primäres Cluster-Administratorkonto*
++
+Dieses Administratorkonto wird bei der Erstellung des Clusters angelegt.  Dieses Konto ist das primäre Administratorkonto mit dem höchsten Zugriffsniveau auf den Cluster.  Dieses Konto ist vergleichbar mit einem Root-Benutzer in einem Linux-System.  Sie können das Passwort für dieses Administratorkonto ändern.
+
+* *Cluster-Administratorkonto*
++
+Sie können einem Cluster-Administratorkonto einen begrenzten administrativen Zugriff gewähren, um bestimmte Aufgaben innerhalb eines Clusters auszuführen.  Die jedem Cluster-Administratorkonto zugewiesenen Anmeldeinformationen werden zur Authentifizierung von API- und Element-UI-Anfragen innerhalb des Speichersystems verwendet.
+
+
+
+
+NOTE: Um über die Benutzeroberfläche pro Knoten auf aktive Knoten in einem Cluster zuzugreifen, ist ein lokales (nicht-LDAP-)Cluster-Administratorkonto erforderlich.  Für den Zugriff auf einen Knoten, der noch nicht Teil eines Clusters ist, werden keine Kontodaten benötigt.

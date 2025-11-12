@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemeresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeResiliency 
+summary: 'Das protectionSchemeResiliency-Objekt enthält Informationen darüber, ob ein Speichercluster für ein bestimmtes Schutzschema sich nach einem oder mehreren Fehlern innerhalb seines zugehörigen protectionDomainType automatisch selbst reparieren kann.  Ein Speichercluster gilt als wiederhergestellt, wenn er auch bei Ausfall eines einzelnen Speicherknotens weiterhin Daten lesen und schreiben kann (ein Zustand, der als Knotentoleranz bezeichnet wird).' 
+---
+= Resilienz des Schutzsystems
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das protectionSchemeResiliency-Objekt enthält Informationen darüber, ob ein Speichercluster für ein bestimmtes Schutzschema sich nach einem oder mehreren Fehlern innerhalb seines zugehörigen protectionDomainType automatisch selbst reparieren kann.  Ein Speichercluster gilt als wiederhergestellt, wenn er auch nach dem Ausfall eines einzelnen Speicherknotens weiterhin Daten lesen und schreiben kann (ein Zustand, der als Knotentoleranz bezeichnet wird).
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schutzsystem
+ a| 
+Das aktuelle Schutzsystem dieses Speicherclusters.  Der einzig mögliche Wert ist Doppelhelix.
+ a| 
+Schnur
+
+
+
+ a| 
+nachhaltigeFehlerFürBlockdaten
+ a| 
+Die vorhergesagte Anzahl gleichzeitiger Ausfälle, die auftreten können, ohne dass die Fähigkeit zur automatischen Wiederherstellung in einen Zustand der Knotentoleranz für Daten verloren geht.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+nachhaltigeFehlerFürMetadaten
+ a| 
+Die vorhergesagte Anzahl gleichzeitiger Ausfälle, die auftreten können, ohne dass die Fähigkeit zur automatischen Wiederherstellung in einen Zustand der Knotentoleranz für Metadaten verloren geht.
+ a| 
+ganze Zahl
+
+|===

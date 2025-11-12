@@ -1,0 +1,117 @@
+---
+permalink: api/reference_element_api_getclustercapacity.html 
+sidebar: sidebar 
+keywords: cluster,capacity,getting,get,measurements,measure,deduplication,GetClusterCapacity 
+summary: Mit GetClusterCapacity können Sie allgemeine Kapazitätsmessungen für einen gesamten Speichercluster abrufen.  Diese Methode gibt Felder zurück, mit denen Sie die in der Element-Weboberfläche angezeigten Effizienzraten berechnen können.  Sie können die Effizienzberechnungen in Skripten verwenden, um die Effizienzraten für Thin Provisioning, Deduplizierung, Komprimierung und die Gesamteffizienz zurückzugeben. 
+---
+= GetClusterCapacity
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetClusterCapacity` um hochrangige Kapazitätsmessungen für einen gesamten Speichercluster zurückzugeben.  Diese Methode gibt Felder zurück, mit denen Sie die in der Element-Weboberfläche angezeigten Effizienzraten berechnen können.  Sie können die Effizienzberechnungen in Skripten verwenden, um die Effizienzraten für Thin Provisioning, Deduplizierung, Komprimierung und die Gesamteffizienz zurückzugeben.
+
+
+
+== Effizienzberechnungen
+
+Verwenden Sie die folgenden Gleichungen zur Berechnung von Thin Provisioning, Deduplizierung und Komprimierung.  Diese Gleichungen gelten für Element 8.2 und spätere Elemente.
+
+* thinProvisioningFactor = (nonZeroBlocks + zeroBlocks) / nonZeroBlocks
+* Deduplikationsfaktor = (nonZeroBlocks + snapshotNonZeroBlocks) / uniqueBlocks
+* Komprimierungsfaktor = (eindeutige Blöcke * 4096) / (belegter Speicherplatz für eindeutige Blöcke * 0,93)
+
+
+
+
+== Berechnung des Gesamtwirkungsgrades
+
+Verwenden Sie die folgende Gleichung, um die Gesamteffizienz des Clusters unter Verwendung der Ergebnisse der Effizienzberechnungen für Thin Provisioning, Deduplizierung und Komprimierung zu berechnen.
+
+* Effizienzfaktor = Thin-Provisioning-Faktor * Deduplizierungsfaktor * Komprimierungsfaktor
+
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Clusterkapazität
+ a| 
+Kapazitätsmessungen für den Speichercluster.
+ a| 
+xref:reference_element_api_clustercapacity.adoc[Clusterkapazität]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetClusterCapacity",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "clusterCapacity": {
+      "activeBlockSpace": 236015557096,
+      "activeSessions": 20,
+      "averageIOPS": 0,
+      "clusterRecentIOSize": 0,
+      "currentIOPS": 0,
+      "maxIOPS": 150000,
+      "maxOverProvisionableSpace": 259189767127040,
+      "maxProvisionedSpace": 51837953425408,
+      "maxUsedMetadataSpace": 404984011161,
+      "maxUsedSpace": 12002762096640,
+      "nonZeroBlocks": 310080350,
+      "peakActiveSessions": 20,
+      "peakIOPS": 0,
+      "provisionedSpace": 1357931085824,
+      "snapshotNonZeroBlocks": 0,
+      "timestamp": "2016-10-17T21:24:36Z",
+      "totalOps": 1027407650,
+      "uniqueBlocks": 108180156,
+      "uniqueBlocksUsedSpace": 244572686901,
+      "usedMetadataSpace": 8745762816,
+      "usedMetadataSpaceInSnapshots": 8745762816,
+      "usedSpace": 244572686901,
+      "zeroBlocks": 352971938
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

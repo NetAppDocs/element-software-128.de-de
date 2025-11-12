@@ -1,0 +1,200 @@
+---
+permalink: api/reference_element_api_hardwareinfo.html 
+sidebar: sidebar 
+keywords: object,objects,hardwareInfo 
+summary: Das hardwareInfo-Objekt enthält detaillierte Informationen über die Hardware und den Status jedes Knotens im Cluster.  Diese Informationen können Sie mit der GetHardwareInfo-API-Methode abrufen. 
+---
+= Hardwareinformationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das hardwareInfo-Objekt enthält detaillierte Informationen über die Hardware und den Status jedes Knotens im Cluster.  Diese Informationen können Sie mit dem/der/dem abrufen. `GetHardwareInfo` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Board-Seriennummer
+ a| 
+Die Seriennummer der DMI-Platine.
+ a| 
+Schnur
+
+
+
+ a| 
+Bus
+ a| 
+Informationen zum Medienbus des Motherboards.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Chassis-Seriennummer
+ a| 
+Die Seriennummer des Chassis.
+ a| 
+Schnur
+
+
+
+ a| 
+Laufwerkshardware
+ a| 
+Eine Liste mit Informationen zu jedem Laufwerk im Knoten.
+ a| 
+JSON-Objektarray
+
+
+
+ a| 
+Fibre-Channel-Anschlüsse
+ a| 
+Eine Liste der Fibre-Channel-Ports am Knoten.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+hardwareConfig
+ a| 
+Informationen zur Peripheriekonfiguration des Motherboards.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+kernelCrashDumpState
+ a| 
+Die Crash-Dump-Konfiguration des Betriebssystemkerns.
+ a| 
+Schnur
+
+
+
+ a| 
+Erinnerung
+ a| 
+Informationen zur Firmware und zum Systemspeicher.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Netzwerk
+ a| 
+Beschreibungen der Hardware der einzelnen Netzwerkschnittstellen des Knotens.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Netzwerkschnittstellen
+ a| 
+Der Status der Netzwerkschnittstellen des Knotens.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Knotensteckplatz
+ a| 
+Bei HCI-Plattformen der Buchstabe, der dem Chassis-Steckplatz entspricht, in dem sich dieser Knoten befindet ("A", "B", "C" oder "D").  Für Speicherplattformen ist dieser Wert null.
+ a| 
+Schnur
+
+
+
+ a| 
+NVRAM
+ a| 
+NVRAM Statistiken für den Knoten.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Herkunft
+ a| 
+Der Hersteller des Motherboards.
+ a| 
+Schnur
+
+
+
+ a| 
+Plattform
+ a| 
+Eine Beschreibung der Chassis-Plattform.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Seriennummer
+ a| 
+Die Seriennummer des Produkts.
+ a| 
+Schnur
+
+
+
+ a| 
+Lagerung
+ a| 
+Informationen zum Speichercontroller.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Systemspeicher
+ a| 
+Informationen zur Speichernutzung und Leistung des Betriebssystems.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+System
+ a| 
+Der Typ des Knotenchassis.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+uuid
+ a| 
+Die eindeutige ID des Knotens.
+ a| 
+UUID
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_gethardwareinfo.adoc[Hardwareinformationen abrufen]

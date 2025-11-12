@@ -1,0 +1,93 @@
+---
+permalink: storage/reference_per_node_network_settings_details.html 
+sidebar: sidebar 
+keywords: network settings, per-node UI, storage node, ui 
+summary: Sie können die Netzwerkeinstellungen des Speicherknotens ändern, um dem Knoten einen neuen Satz von Netzwerkattributen zuzuweisen. 
+---
+= Netzwerkdetails aus der Benutzeroberfläche pro Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Netzwerkeinstellungen des Speicherknotens ändern, um dem Knoten einen neuen Satz von Netzwerkattributen zuzuweisen.
+
+Die Netzwerkeinstellungen eines Speicherknotens können Sie auf der Seite *Netzwerkeinstellungen* einsehen, nachdem Sie sich beim Knoten angemeldet haben. (`https://<node_IP>:442/hcc/node/network-settings`). Sie können entweder die Einstellungen *Bond1G* (Verwaltung) oder *Bond10G* (Speicherung) auswählen. Die folgende Liste beschreibt die Einstellungen, die Sie ändern können, wenn sich ein Speicherknoten im Status „Verfügbar“, „Ausstehend“ oder „Aktiv“ befindet:
+
+* *Verfahren*
++
+Die Methode, die zur Konfiguration der Schnittstelle verwendet wird.  Mögliche Methoden:
+
++
+** loopback: Wird verwendet, um die IPv4-Loopback-Schnittstelle zu definieren.
+** Manual: Wird verwendet, um Schnittstellen zu definieren, für die standardmäßig keine Konfiguration erfolgt.
+** dhcp: Wird verwendet, um eine IP-Adresse über DHCP zu beziehen.
+** static: Wird verwendet, um Ethernet-Schnittstellen mit statisch zugewiesenen IPv4-Adressen zu definieren.
+
+
+* *Verbindungsgeschwindigkeit*
++
+Die von der virtuellen Netzwerkkarte ausgehandelte Geschwindigkeit.
+
+* *IPv4-Adresse*
++
+Die IPv4-Adresse für das eth0-Netzwerk.
+
+* *IPv4-Subnetzmaske*
++
+Adressunterteilungen des IPv4-Netzwerks.
+
+* *IPv4-Gateway-Adresse*
++
+Router-Netzwerkadresse zum Senden von Paketen aus dem lokalen Netzwerk.
+
+* *IPv6-Adresse*
++
+Die IPv6-Adresse für das eth0-Netzwerk.
+
+* *IPv6-Gateway-Adresse*
++
+Router-Netzwerkadresse zum Senden von Paketen aus dem lokalen Netzwerk.
+
+* *MTU*
++
+Größte Paketgröße, die ein Netzwerkprotokoll übertragen kann.  Muss größer oder gleich 1500 sein.  Wenn Sie eine zweite Speicher-Netzwerkkarte hinzufügen, sollte der Wert 9000 betragen.
+
+* *DNS-Server*
++
+Netzwerkschnittstelle zur Clusterkommunikation.
+
+* *Suchdomänen*
++
+Suche nach weiteren, dem System zur Verfügung stehenden MAC-Adressen.
+
+* *Bindungsmodus*
++
+Kann einer der folgenden Modi sein:
+
++
+** AktivPassiv (Standard)
+** ALB
+** LACP
+
+
+* *Status*
++
+Mögliche Werte:
+
++
+** UpAndRunning
+** Runter
+** Hoch
+
+
+* *Virtual Network Tag*
++
+Das Tag wurde bei der Erstellung des virtuellen Netzwerks zugewiesen.
+
+* *Routen*
++
+Statische Routen zu bestimmten Hosts oder Netzwerken über die zugehörige Schnittstelle, für deren Verwendung die Routen konfiguriert sind.
+
+

@@ -1,0 +1,263 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_recover.html 
+summary: Sie können einen Management-Knoten für Ihren Cluster, auf dem die NetApp Element -Software ausgeführt wird, wiederherstellen und erneut bereitstellen.  Je nach Konfiguration müssen Sie möglicherweise die Authentifizierung für den Management-Knoten neu konfigurieren. 
+keywords: netapp, element, management node, mnode, disaster recovery, redeploy, VM 
+---
+= Wiederherstellen eines Verwaltungsknotens
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Management-Knoten für Ihren Cluster, auf dem die NetApp Element -Software läuft, manuell wiederherstellen und neu bereitstellen, wenn Ihr vorheriger Management-Knoten persistente Volumes verwendet hat.
+
+Sie können eine neue OVA-Datei bereitstellen und ein Redeploy-Skript ausführen, um Konfigurationsdaten von einem zuvor installierten Management-Knoten mit Version 11.3 oder höher abzurufen.
+
+.Was du brauchst
+* Auf Ihrem vorherigen Management-Knoten lief die NetApp Element Softwareversion 11.3 oder höher.link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Persistente Datenträger"] Funktionalität aktiviert.
+* Sie kennen den MVIP und SVIP des Clusters, der die persistenten Volumes enthält.
+* Auf Ihrem Cluster läuft die NetApp Element Software 11.3 oder höher.
+* Ihre Installation verwendet IPv4.  Der Management-Knoten 11.3 unterstützt IPv6 nicht.
+* Sie haben die Berechtigung, Software von der NetApp Support-Website herunterzuladen.
+* Sie haben den für Ihre Plattform korrekten Management-Knoten-Image-Typ identifiziert:
++
+[cols="30,30"]
+|===
+| Plattform | Installationsbildtyp 
+
+
+| Microsoft Hyper-V | .iso 
+
+
+| KVM | .iso 
+
+
+| VMware vSphere | .iso, .ova 
+
+
+| Citrix XenServer | .iso 
+
+
+| OpenStack | .iso 
+|===
+
+
+.Schritte
+. <<Laden Sie die ISO- oder OVA-Datei herunter und stellen Sie die VM bereit.>>
+. <<Netzwerk konfigurieren>>
+. <<Zeitsynchronisierung konfigurieren>>
+. <<Konfigurieren Sie den Verwaltungsknoten>>
+
+
+
+
+== Laden Sie die ISO- oder OVA-Datei herunter und stellen Sie die VM bereit.
+
+. Laden Sie die OVA- oder ISO-Datei für Ihre Installation von der folgenden Webseite herunter: https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["Element Software"^] Seite auf der NetApp Support-Website.
++
+.. Wählen Sie *Neueste Version herunterladen* und akzeptieren Sie die EULA.
+.. Wählen Sie das Management-Node-Image aus, das Sie herunterladen möchten.
+
+
+. Wenn Sie die OVA-Datei heruntergeladen haben, befolgen Sie diese Schritte:
++
+.. Die OVA-Datei bereitstellen.
+.. Wenn sich Ihr Speichercluster in einem separaten Subnetz von Ihrem Management-Knoten (eth0) befindet und Sie persistente Volumes verwenden möchten, fügen Sie der VM im Speichersubnetz einen zweiten Netzwerkschnittstellencontroller (NIC) hinzu (z. B. eth1) oder stellen Sie sicher, dass das Management-Netzwerk zum Speichernetzwerk routen kann.
+
+
+. Wenn Sie die ISO-Datei heruntergeladen haben, befolgen Sie diese Schritte:
++
+.. Erstellen Sie eine neue 64-Bit-VM auf Ihrem Hypervisor mit folgender Konfiguration:
++
+*** Sechs virtuelle CPUs
+*** 24 GB RAM
+*** 400 GB virtuelle Festplatte, Thin Provisioning
+*** Eine virtuelle Netzwerkschnittstelle mit Internetzugang und Zugriff auf den Speicher-MVIP.
+*** (Optional für SolidFire All-Flash-Speicher) Eine virtuelle Netzwerkschnittstelle mit Management-Netzwerkzugriff auf den Speichercluster.  Wenn sich Ihr Speichercluster in einem separaten Subnetz von Ihrem Management-Knoten (eth0) befindet und Sie persistente Volumes verwenden möchten, fügen Sie der VM im Speichersubnetz (eth1) einen zweiten Netzwerkschnittstellencontroller (NIC) hinzu oder stellen Sie sicher, dass das Management-Netzwerk zum Speichernetzwerk routen kann.
++
+
+IMPORTANT: Schalten Sie die virtuelle Maschine nicht ein, bevor Sie im weiteren Verlauf dieses Verfahrens den entsprechenden Schritt ausführen.
+
+
+
+.. Binden Sie die ISO-Datei an die virtuelle Maschine an und starten Sie den Computer vom .iso-Installationsabbild.
++
+
+NOTE: Die Installation eines Management-Knotens mithilfe des Images kann zu einer Verzögerung von 30 Sekunden führen, bevor der Startbildschirm erscheint.
+
+
+
+. Schalten Sie die virtuelle Maschine für den Management-Knoten nach Abschluss der Installation ein.
+
+
+
+
+== Netzwerk konfigurieren
+
+. Erstellen Sie mithilfe der Terminal-Benutzeroberfläche (TUI) einen Verwaltungsknoten-Administratorbenutzer.
++
+
+TIP: Um durch die Menüoptionen zu navigieren, drücken Sie die Pfeiltasten nach oben oder unten.  Drücken Sie die Tabulatortaste, um durch die Schaltflächen zu navigieren.  Um von den Schaltflächen zu den Feldern zu wechseln, drücken Sie die Tabulatortaste.  Um zwischen den Feldern zu navigieren, drücken Sie die Pfeiltasten nach oben oder unten.
+
+. Konfigurieren Sie das Management-Knotennetzwerk (eth0).
++
+
+NOTE: Falls Sie eine zusätzliche Netzwerkkarte benötigen, um den Speicherdatenverkehr zu isolieren, beachten Sie die Anweisungen zur Konfiguration einer weiteren Netzwerkkarte:link:task_mnode_install_add_storage_NIC.html["Konfigurieren eines Speichernetzwerkschnittstellencontrollers (NIC)"] Die
+
+
+
+
+
+== Zeitsynchronisierung konfigurieren
+
+. Überprüfen Sie, ob die Zeit zwischen dem Management-Knoten und dem Speichercluster mithilfe von NTP synchronisiert ist:
+
+
+
+NOTE: Ab Element 12.3.1 werden die Teilschritte (a) bis (e) automatisch ausgeführt.  Für Management-Knoten 12.3.1 oder höher fahren Sie mit folgendem fort:<<substep_f_recover_config_time_sync,Teilschritt (f)>> um die Zeitsynchronisierungskonfiguration abzuschließen.
+
+. Melden Sie sich über SSH oder die vom Hypervisor bereitgestellte Konsole am Management-Knoten an.
+. Stoppt NTPD:
++
+[listing]
+----
+sudo service ntpd stop
+----
+. Bearbeiten Sie die NTP-Konfigurationsdatei `/etc/ntp.conf` :
++
+.. Kommentieren Sie die Standardserver aus.(`server 0.gentoo.pool.ntp.org` ) durch Hinzufügen eines `#` vor jedem einzelnen.
+.. Fügen Sie für jeden hinzuzufügenden Standardzeitserver eine neue Zeile hinzu. Die Standardzeitserver müssen dieselben NTP-Server sein, die auf dem Speichercluster verwendet werden, den Sie auch verwenden werden. link:task_mnode_recover.html#configure-the-management-node["späterer Schritt"]Die
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. Speichern Sie die Konfigurationsdatei nach Abschluss der Arbeiten.
+
+
+. Erzwinge eine NTP-Synchronisierung mit dem neu hinzugefügten Server.
++
+[listing]
+----
+sudo ntpd -gq
+----
+. NTPD neu starten.
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_recover_config_time_sync]]Deaktivieren der Zeitsynchronisierung mit dem Host über den Hypervisor (im Folgenden ein VMware-Beispiel):
++
+
+NOTE: Wenn Sie den mNode in einer anderen Hypervisor-Umgebung als VMware einsetzen, beispielsweise aus dem .iso-Image in einer Openstack-Umgebung, konsultieren Sie die Hypervisor-Dokumentation für die entsprechenden Befehle.
+
++
+.. Periodische Zeitsynchronisierung deaktivieren:
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. Den aktuellen Status des Dienstes anzeigen und bestätigen:
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. Überprüfen Sie in vSphere, ob die `Synchronize guest time with host` Das Kontrollkästchen ist in den VM-Optionen deaktiviert.
++
+
+NOTE: Aktivieren Sie diese Option nicht, wenn Sie zukünftig Änderungen an der VM vornehmen.
+
+
+
+
+
+
+NOTE: Bearbeiten Sie den NTP-Server nicht mehr, nachdem Sie die Zeitsynchronisierung abgeschlossen haben, da dies Auswirkungen auf den NTP-Server hat, wenn Sie den Befehl ausführen. <<step_6_recover_mnode_redeploy,Befehl zum erneuten Bereitstellen>> auf dem Management-Knoten.
+
+
+
+== Konfigurieren Sie den Verwaltungsknoten
+
+. Erstellen Sie ein temporäres Zielverzeichnis für die Inhalte des Management-Services-Bundles:
++
+[listing]
+----
+mkdir -p /sf/etc/mnode/mnode-archive
+----
+. Laden Sie das Management-Services-Bundle (Version 2.15.28 oder höher), das zuvor auf dem vorhandenen Management-Knoten installiert war, herunter und speichern Sie es im `/sf/etc/mnode/` Verzeichnis.
+. Extrahieren Sie das heruntergeladene Paket mit dem folgenden Befehl und ersetzen Sie dabei den Wert in den eckigen Klammern [ ] (einschließlich der Klammern) durch den Namen der Paketdatei:
++
+[listing]
+----
+tar -C /sf/etc/mnode -xvf /sf/etc/mnode/[management services bundle file]
+----
+. Extrahieren Sie die resultierende Datei nach `/sf/etc/mnode-archive` Verzeichnis:
++
+[listing]
+----
+tar -C /sf/etc/mnode/mnode-archive -xvf /sf/etc/mnode/services_deploy_bundle.tar.gz
+----
+. Erstellen Sie eine Konfigurationsdatei für Konten und Volumes:
++
+[listing]
+----
+echo '{"trident": true, "mvip": "[mvip IP address]", "account_name": "[persistent volume account name]"}' | sudo tee /sf/etc/mnode/mnode-archive/management-services-metadata.json
+----
++
+.. Ersetzen Sie für jeden der folgenden erforderlichen Parameter den Wert in den eckigen Klammern [ ] (einschließlich der Klammern selbst):
++
+*** *[mvip IP address]*: Die Management-Virtual-IP-Adresse des Speicherclusters. Konfigurieren Sie den Verwaltungsknoten mit demselben Speichercluster, den Sie während link:task_mnode_recover.html#configure-time-sync["NTP-Serverkonfiguration"]Die
+*** *[Name des persistenten Volume-Kontos]*: Der Name des Kontos, das allen persistenten Volumes in diesem Speichercluster zugeordnet ist.
+
+
+
+
+
+
+[[step_6_recover_mnode_redeploy]]
+. Konfigurieren und führen Sie den Befehl „management node redeploy“ aus, um eine Verbindung zu persistenten Volumes herzustellen, die auf dem Cluster gehostet werden, und um Dienste mit den vorherigen Konfigurationsdaten des Management-Knotens zu starten:
++
+
+NOTE: Sie werden zur Eingabe von Passwörtern in einem sicheren Fenster aufgefordert.  Wenn sich Ihr Cluster hinter einem Proxy-Server befindet, müssen Sie die Proxy-Einstellungen so konfigurieren, dass Sie ein öffentliches Netzwerk erreichen können.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode --mnode_admin_user [username]
+----
++
+.. Ersetzen Sie den Wert in den eckigen Klammern [ ] (einschließlich der Klammern) durch den Benutzernamen des Administratorkontos des Verwaltungsknotens.  Dies ist wahrscheinlich der Benutzername des Benutzerkontos, mit dem Sie sich am Verwaltungsknoten angemeldet haben.
++
+
+NOTE: Sie können den Benutzernamen hinzufügen oder sich vom Skript nach den Informationen fragen lassen.
+
+.. Führe die `redeploy-mnode` Befehl.  Das Skript zeigt eine Erfolgsmeldung an, wenn die erneute Bereitstellung abgeschlossen ist.
+.. Wenn Sie über den vollqualifizierten Domänennamen (FQDN) des Systems auf Element-Webschnittstellen (z. B. den Management-Knoten oder NetApp Hybrid Cloud Control) zugreifen,link:../upgrade/task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["Authentifizierung für den Verwaltungsknoten neu konfigurieren"] Die
+
+
+
+
+
+IMPORTANT: SSH-Funktionalität, die Folgendes bietetlink:task_mnode_enable_remote_support_connections.html["NetApp Support Remote Support Tunnel (RST) Sitzungszugriff"] ist standardmäßig deaktiviert auf Management-Knoten, auf denen Management-Dienste ab Version 2.18 ausgeführt werden.  Falls Sie die SSH-Funktionalität auf dem Management-Knoten zuvor aktiviert hatten, müssen Sie möglicherweiselink:task_mnode_ssh_management.html["SSH erneut deaktivieren"] auf dem wiederhergestellten Managementknoten.
+
+[discrete]
+== Weitere Informationen finden Sie hier.
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["Persistente Datenträger"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

@@ -1,0 +1,38 @@
+---
+permalink: api/reference_element_api_cluster_pairing_order_of_operations.html 
+sidebar: sidebar 
+keywords: cluster,pairing,pair,order,operations,clusters 
+summary: Bevor die Remote-Replikation genutzt werden kann, muss eine Verbindung zwischen zwei Speicherclustern, auf denen die Element-Software läuft, hergestellt werden. 
+---
+= Reihenfolge der Clusterpaarung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor die Remote-Replikation genutzt werden kann, muss eine Verbindung zwischen zwei Speicherclustern, auf denen die Element-Software läuft, hergestellt werden.
+
+Verwenden Sie die folgenden API-Methoden, um eine Clusterverbindung herzustellen:
+
+* xref:reference_element_api_startclusterpairing.adoc[Clusterpaarung starten]:
++
+Diese API-Methode erstellt und gibt einen Kopplungsschlüssel zurück, der zum Aufbau eines Clusterpaares verwendet wird.  Der Schlüssel ist kodiert und enthält Informationen, die zur Herstellung von Kommunikationsverbindungen zwischen Clustern verwendet werden.  Ein einzelner Cluster kann mit bis zu vier anderen Clustern gepaart werden.  Allerdings muss für jedes Clusterpaar ein neuer Schlüssel generiert werden.  Derxref:reference_element_api_startclusterpairing.adoc[Clusterpaarung starten] Die Methode generiert bei jedem Aufruf einen neuen Schlüssel.  Verwenden Sie jeden einzelnen Schlüssel mit demxref:reference_element_api_completeclusterpairing.adoc[CompleteClusterPairing] Methode zur Paarung jedes zusätzlichen Clusters.
+
++
+
+NOTE: Aus Sicherheitsgründen sollte der Kopplungsschlüssel nicht per E-Mail an andere Benutzer gesendet werden.  Der Schlüssel enthält einen Benutzernamen und ein Passwort.
+
+* xref:reference_element_api_completeclusterpairing.adoc[CompleteClusterPairing]:
++
+Diese Methode verwendet den mit dem erstellten Kopplungsschlüssel.xref:reference_element_api_startclusterpairing.adoc[Clusterpaarung starten] API-Methode zum Erstellen eines Clusterpaares.  Stellen Sie diexref:reference_element_api_completeclusterpairing.adoc[CompleteClusterPairing] API-Methode mit dem Parameter clusterPairingKey zum Ziel.  Der Ursprungscluster ist der Cluster, der den Schlüssel erstellt hat.
+
+
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_startclusterpairing.adoc[Clusterpaarung starten]
+* xref:reference_element_api_completeclusterpairing.adoc[CompleteClusterPairing]
+

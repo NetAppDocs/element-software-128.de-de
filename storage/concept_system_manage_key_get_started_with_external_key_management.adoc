@@ -1,0 +1,28 @@
+---
+permalink: storage/concept_system_manage_key_get_started_with_external_key_management.html 
+sidebar: sidebar 
+keywords: kmip, master key, key management, encryption at rest, software encryption at rest, ekm, ak, eks, seds 
+summary: 'Externes Schlüsselmanagement (EKM) ermöglicht die sichere Verwaltung von Authentifizierungsschlüsseln (AK) in Verbindung mit einem externen Schlüsselserver außerhalb des Clusters (EKS).  Die AKs werden verwendet, um selbstverschlüsselnde Laufwerke (SEDs) zu sperren und zu entsperren, wenn die Verschlüsselung ruhender Daten auf dem Cluster aktiviert ist.' 
+---
+= Erste Schritte zur externen Schlüsselverwaltung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Externes Schlüsselmanagement (EKM) ermöglicht die sichere Verwaltung von Authentifizierungsschlüsseln (AK) in Verbindung mit einem externen Schlüsselserver (EKS) außerhalb des Clusters.  Die AKs werden verwendet, um selbstverschlüsselnde Laufwerke (SEDs) zu sperren und zu entsperren, wennlink:../concepts/concept_solidfire_concepts_security.html["Verschlüsselung im Ruhezustand"] ist auf dem Cluster aktiviert.  Das EKS gewährleistet die sichere Generierung und Speicherung der AKs.  Der Cluster nutzt das Key Management Interoperability Protocol (KMIP), ein von OASIS definiertes Standardprotokoll, um mit dem EKS zu kommunizieren.
+
+* link:task_system_manage_key_set_up_external_key_management.html["Externes Management einrichten"]
+* link:task_system_manage_rekey_software_ear_master_key.html["Rekey-Software-Verschlüsselung ruhender Masterschlüssel"]
+* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys["Unzugängliche oder ungültige Authentifizierungsschlüssel wiederherstellen"]
+* link:concept_system_manage_key_external_key_management_api_commands.html["API-Befehle für die externe Schlüsselverwaltung"]
+
+
+[discrete]
+== Weitere Informationen
+
+* link:../api/reference_element_api_createcluster.html["Die CreateCluster-API kann verwendet werden, um die Softwareverschlüsselung ruhender Daten zu aktivieren."]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

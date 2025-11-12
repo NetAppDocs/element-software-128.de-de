@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_system_manage_nodes_manage_nodes.html 
+sidebar: sidebar 
+keywords: nodes, manage, cluster, capacity rule, pairs, stranded nodes 
+summary: Sie können SolidFire -Speicher und Fibre-Channel-Knoten über die Seite „Knoten“ im Cluster-Tab verwalten. 
+---
+= Knoten verwalten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können SolidFire -Speicher und Fibre-Channel-Knoten über die Seite „Knoten“ im Cluster-Tab verwalten.
+
+Wenn ein neu hinzugefügter Knoten mehr als 50 Prozent der gesamten Clusterkapazität ausmacht, wird ein Teil der Kapazität dieses Knotens unbrauchbar gemacht ("gestrandet"), damit er der Kapazitätsregel entspricht.  Dies bleibt so lange der Fall, bis zusätzlicher Speicherplatz geschaffen wird.  Wird ein sehr großer Knoten hinzugefügt, der ebenfalls gegen die Kapazitätsregel verstößt, so ist der zuvor gestrandete Knoten nicht mehr gestrandet, während der neu hinzugefügte Knoten gestrandet wird.  Um dies zu vermeiden, sollten Kapazitäten immer paarweise addiert werden.  Wenn ein Knoten ausfällt, wird ein entsprechender Clusterfehler ausgelöst.
+
+
+
+== Weitere Informationen
+
+xref:task_system_manage_nodes_adding_a_node_to_a_cluster.adoc[Füge einem Cluster einen Knoten hinzu.]

@@ -1,0 +1,43 @@
+---
+permalink: storage/task_system_manage_cluster_volume_load_balancing.html 
+sidebar: sidebar 
+keywords: cluster, volume, volumes, load, balancing, actual, IOPS 
+summary: Ab Element 12.8 können Sie die Volume-Lastverteilung aktivieren, um Volumes auf Basis der tatsächlichen IOPS jedes Volumes über die Knoten hinweg zu verteilen, anstatt der in der QoS-Richtlinie konfigurierten minimalen IOPS. 
+---
+= Volumenlastausgleich aktivieren und deaktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab Element 12.8 können Sie Volume Load Balancing verwenden, um Volumes auf Knoten basierend auf den tatsächlichen IOPS jedes Volumes anstatt der in der QoS-Richtlinie konfigurierten minimalen IOPS zu verteilen.  Sie können die Volume Load Balancing-Funktion, die standardmäßig deaktiviert ist, über die Element-Benutzeroberfläche oder die API aktivieren und deaktivieren.
+
+.Schritte
+. Wählen Sie *Cluster* > *Einstellungen*.
+. Ändern Sie im Abschnitt „Clusterspezifisch“ den Status für die Volumenlastverteilung:
++
+[role="tabbed-block"]
+====
+.Volumenlastausgleich aktivieren
+--
+Wählen Sie *Lastverteilung auf Basis der tatsächlichen IOPS aktivieren* und bestätigen Sie Ihre Auswahl.
+
+--
+.Lastverteilung für Volumes deaktivieren:
+--
+Wählen Sie *Lastverteilung auf Basis tatsächlicher IOPS deaktivieren* und bestätigen Sie Ihre Auswahl.
+
+--
+====
+. Optional können Sie unter *Berichterstellung* > *Übersicht* die Statusänderung für Saldo auf Basis tatsächlicher IOPS bestätigen.  Möglicherweise müssen Sie in den Cluster-Health-Informationen nach unten scrollen, um den Status anzuzeigen.
+
+
+
+
+== Weitere Informationen
+
+* link:../api/reference_element_api_enablefeature.html["Aktivieren Sie den Volumenlastausgleich über die API."]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablefeature.html["Deaktivieren Sie die Volumenlastverteilung über die API."]
+* link:../hccstorage/task-hcc-qos-policies.html["Volumen-QoS-Richtlinien erstellen und verwalten"]
+

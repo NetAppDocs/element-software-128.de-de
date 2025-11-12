@@ -1,0 +1,24 @@
+---
+permalink: storage/task_troubleshoot_add_mdss_drives.html 
+sidebar: sidebar 
+keywords: mdss, add, multi-drive slice service 
+summary: 'Sie können ein zweites Metadatenlaufwerk auf einem SolidFire -Knoten hinzufügen, indem Sie das Blocklaufwerk in Steckplatz 2 in ein Slice-Laufwerk umwandeln.  Dies wird durch Aktivierung der Multi-Drive Slice Service (MDSS)-Funktion erreicht.  Um diese Funktion zu aktivieren, müssen Sie sich an den NetApp -Support wenden.' 
+---
+= MDSS-Laufwerke hinzufügen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein zweites Metadatenlaufwerk auf einem SolidFire -Knoten hinzufügen, indem Sie das Blocklaufwerk in Steckplatz 2 in ein Slice-Laufwerk umwandeln.  Dies wird durch die Aktivierung der Multi-Drive Slice Service (MDSS)-Funktion erreicht.  Um diese Funktion zu aktivieren, müssen Sie sich an den NetApp -Support wenden.
+
+Um ein Slice-Laufwerk in den verfügbaren Zustand zu versetzen, muss möglicherweise ein defektes Laufwerk durch ein neues oder Ersatzlaufwerk ersetzt werden.  Sie müssen das System-Slice-Laufwerk gleichzeitig mit dem Laufwerk für Steckplatz 2 hinzufügen.  Wenn Sie versuchen, das Slot-2-Laufwerk allein oder vor dem System-Slice-Laufwerk hinzuzufügen, wird das System einen Fehler erzeugen.
+
+. Klicken Sie auf *Cluster* > *Laufwerke*.
+. Klicken Sie auf *Verfügbar*, um die Liste der verfügbaren Laufwerke anzuzeigen.
+. Wählen Sie die hinzuzufügenden Slice-Laufwerke aus.
+. Klicken Sie auf *Massenaktionen*.
+. Klicken Sie auf *Hinzufügen*.
+. Prüfen Sie auf der Registerkarte *Aktive Laufwerke*, ob die Laufwerke hinzugefügt wurden.
+

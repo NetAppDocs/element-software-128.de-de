@@ -1,0 +1,46 @@
+---
+permalink: storage/task_replication_pair_cluster_using_pairing_key.html 
+sidebar: sidebar 
+keywords: remote replication, pairing key, pairing clusters 
+summary: Wenn Sie über Cluster-Administratorrechte für einen lokalen Cluster, aber nicht für den Remote-Cluster verfügen, können Sie die Cluster mithilfe eines Kopplungsschlüssels koppeln.  Auf einem lokalen Cluster wird ein Kopplungsschlüssel generiert und anschließend sicher an einen Clusteradministrator an einem entfernten Standort gesendet, um eine Verbindung herzustellen und die Clusterkopplung für die Echtzeitreplikation abzuschließen. 
+---
+= Cluster mithilfe eines Paarungsschlüssels koppeln
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie über Cluster-Administratorrechte für einen lokalen Cluster, aber nicht für den Remote-Cluster verfügen, können Sie die Cluster mithilfe eines Kopplungsschlüssels koppeln.  Auf einem lokalen Cluster wird ein Kopplungsschlüssel generiert und anschließend sicher an einen Clusteradministrator an einem entfernten Standort gesendet, um eine Verbindung herzustellen und die Clusterkopplung für die Echtzeitreplikation abzuschließen.
+
+. Wählen Sie im lokalen Cluster *Datenschutz* > *Clusterpaare*.
+. Klicken Sie auf *Cluster koppeln*.
+. Klicken Sie auf *Start Pairing* und anschließend auf *Nein*, um anzugeben, dass Sie keinen Zugriff auf den Remote-Cluster haben.
+. Klicken Sie auf *Schlüssel generieren*.
++
+
+NOTE: Diese Aktion generiert einen Textschlüssel für die Kopplung und erstellt ein nicht konfiguriertes Clusterpaar auf dem lokalen Cluster.  Wenn Sie den Vorgang nicht abschließen, müssen Sie das Clusterpaar manuell löschen.
+
+. Kopieren Sie den Cluster-Pairing-Schlüssel in Ihre Zwischenablage.
+. Stellen Sie sicher, dass der Kopplungsschlüssel dem Clusteradministrator am entfernten Clusterstandort zugänglich ist.
++
+
+NOTE: Der Cluster-Pairing-Schlüssel enthält eine Version des MVIP, Benutzernamen, Passwort und Datenbankinformationen, um Volume-Verbindungen für die Remote-Replikation zu ermöglichen.  Dieser Schlüssel sollte sicher behandelt und nicht so gespeichert werden, dass ein versehentlicher oder ungesicherter Zugriff auf den Benutzernamen oder das Passwort möglich ist.
+
++
+
+IMPORTANT: Verändern Sie keines der Zeichen im Kopplungsschlüssel.  Der Schlüssel wird ungültig, wenn er verändert wird.
+
+. Wählen Sie auf dem Remote-Cluster *Datenschutz* > *Clusterpaare*.
+. Klicken Sie auf *Cluster koppeln*.
+. Klicken Sie auf *Kopplung abschließen* und geben Sie den Kopplungsschlüssel in das Feld *Kopplungsschlüssel* ein (Einfügen wird empfohlen).
+. Klicken Sie auf *Kopplung abschließen*.
+
+
+
+
+== Weitere Informationen
+
+* xref:task_replication_pair_cluster_using_mvip.adoc[Paarcluster mithilfe von MVIP]
+* https://www.youtube.com/watch?v=1ljHAd1byC8&feature=youtu.be["Clusterpaarung mithilfe eines Clusterpaarungsschlüssels (Video)"]
+

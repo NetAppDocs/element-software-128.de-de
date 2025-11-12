@@ -1,0 +1,35 @@
+---
+permalink: storage/task_system_manage_snmp_configure_an_snmp_requestor.html 
+sidebar: sidebar 
+keywords: SNMP requestor, config, enable, disable, snmp requests 
+summary: Wenn SNMP Version 2 aktiviert ist, können Sie einen Anforderer aktivieren oder deaktivieren und Anforderer so konfigurieren, dass sie autorisierte SNMP-Anfragen empfangen. 
+---
+= Konfigurieren Sie einen SNMP-Anforderer
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn SNMP Version 2 aktiviert ist, können Sie einen Anforderer aktivieren oder deaktivieren und Anforderer so konfigurieren, dass sie autorisierte SNMP-Anfragen empfangen.
+
+. Klicken Sie auf Menü:Cluster[SNMP].
+. Klicken Sie unter *Allgemeine SNMP-Einstellungen* auf *Ja*, um SNMP zu aktivieren.
+. Wählen Sie in der Liste *Version* die Option *Version 2* aus.
+. Geben Sie im Abschnitt *Anforderer* die *Community-Zeichenfolge* und die *Netzwerk*-Informationen ein.
++
+
+NOTE: Standardmäßig ist die Community-Zeichenfolge „public“ und das Netzwerk „localhost“.  Sie können diese Standardeinstellungen ändern.
+
+. *Optional:* Um einen weiteren Anforderer hinzuzufügen, klicken Sie auf *Anforderer hinzufügen* und geben Sie die *Community-Zeichenfolge* und die *Netzwerk*-Informationen ein.
+. Klicken Sie auf *Änderungen speichern*.
+
+
+
+
+== Weitere Informationen
+
+* xref:task_system_manage_snmp_configure_snmp_traps.adoc[SNMP-Traps konfigurieren]
+* xref:task_system_manage_snmp_view_managed_object_data.adoc[Anzeigen von Daten verwalteter Objekte mithilfe von Managementinformationsdatenbankdateien]
+

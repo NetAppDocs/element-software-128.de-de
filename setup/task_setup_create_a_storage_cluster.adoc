@@ -1,0 +1,75 @@
+---
+permalink: setup/task_setup_create_a_storage_cluster.html 
+sidebar: sidebar 
+keywords:  
+summary: Sie können einen Speichercluster erstellen, nachdem Sie alle einzelnen Knoten konfiguriert haben.  Wenn Sie einen Cluster erstellen, wird automatisch ein Cluster-Administrator-Benutzerkonto für Sie angelegt.  Der Cluster-Administrator hat die Berechtigung, alle Cluster-Attribute zu verwalten und kann weitere Cluster-Administratorkonten erstellen. 
+---
+= Erstellen Sie einen Speichercluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Speichercluster erstellen, nachdem Sie alle einzelnen Knoten konfiguriert haben.  Wenn Sie einen Cluster erstellen, wird automatisch ein Cluster-Administrator-Benutzerkonto für Sie angelegt.  Der Cluster-Administrator hat die Berechtigung, alle Cluster-Attribute zu verwalten und kann weitere Cluster-Administratorkonten erstellen.
+
+.Was du brauchst
+* Sie haben den Management-Knoten installiert.
+* Sie haben alle einzelnen Knoten konfiguriert.
+
+
+.Informationen zu diesem Vorgang
+Bei der Konfiguration neuer Knoten werden jedem Knoten 1G- oder 10G-Management-IP-Adressen (MIP) zugewiesen.  Sie müssen eine der während der Konfiguration erstellten Knoten-IP-Adressen verwenden, um die Seite „Neuen Cluster erstellen“ zu öffnen.  Die von Ihnen verwendete IP-Adresse hängt von dem Netzwerk ab, das Sie für die Clusterverwaltung ausgewählt haben.
+
+[IMPORTANT]
+====
+Wenn Sie clusterweit aktivieren möchtenlink:../concepts/concept_solidfire_concepts_security.html#encryption-at-rest-software["Softwareverschlüsselung im Ruhezustand"] Bei SolidFire All-Flash-Speicherclustern muss dies während der Clustererstellung erfolgen.  Ab Element 12.5 müssen Sie die Softwareverschlüsselung ruhender Daten während der Clustererstellung in der Benutzeroberfläche „Cluster erstellen“ aktivieren.  Für Element 12.3.x und ältere Versionen müssen Sie den Cluster mit folgender Methode erstellen:link:../api/reference_element_api_createcluster.html["CreateCluster"] API-Methode und ändern Sie den Parameter enableSoftwareEncryptionAtRest auf `true` Die  Sobald die Softwareverschlüsselung ruhender Daten auf dem Cluster aktiviert ist, kann sie nicht mehr deaktiviert werden.  Du kannstlink:../storage/task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["aktivieren und deaktivieren"] Hardwarebasierte Verschlüsselung ruhender Daten nach der Clustererstellung.
+
+====
+[NOTE]
+====
+Bei der Erstellung eines neuen Clusters sollten Sie Folgendes beachten:
+
+* Wenn Sie Speicherknoten verwenden, die sich in einem gemeinsam genutzten Chassis befinden, sollten Sie die Entwicklung eines Ausfallschutzes auf Chassis-Ebene mithilfe der Schutzdomänenfunktion in Betracht ziehen.
+* Wenn kein gemeinsam genutztes Chassis verwendet wird, können Sie ein benutzerdefiniertes Schutzdomänenlayout definieren.
+
+
+====
+.Schritte
+. Geben Sie in einem Browserfenster Folgendes ein: `\https://MIP:443` , wobei MIP die IP-Adresse des Management-Knotens ist.
+. Geben Sie unter „Neuen Cluster erstellen“ die folgenden Informationen ein:
++
+** Management VIP: Routingfähige virtuelle IP-Adresse im 1GbE- oder 10GbE-Netzwerk für Netzwerkverwaltungsaufgaben.
++
+
+NOTE: Sie können einen neuen Cluster mit IPv4- oder IPv6-Adressierung erstellen.
+
+** iSCSI (Speicher) VIP: Virtuelle IP-Adresse im 10GbE-Netzwerk für Speicher- und iSCSI-Erkennung.
++
+
+NOTE: MVIP, SVIP oder Clustername können nach der Erstellung des Clusters nicht mehr geändert werden.
+
+** Benutzername: Der primäre Clusteradministrator-Benutzername für den authentifizierten Zugriff auf den Cluster.  Sie müssen den Benutzernamen zur späteren Verwendung speichern.
++
+
+NOTE: Für Benutzernamen und Passwort können Sie Groß- und Kleinbuchstaben, Sonderzeichen und Zahlen verwenden.
+
+** Passwort: Passwort für den authentifizierten Zugriff auf den Cluster.  Sie müssen das Passwort zur späteren Verwendung speichern.  Der bidirektionale Datenschutz ist standardmäßig aktiviert.  Diese Einstellung kann nicht geändert werden.
+
+
+. Lesen Sie die Endbenutzer-Lizenzvereinbarung und wählen Sie *Ich stimme zu*.
+. *Optional*: Stellen Sie in der Knotenliste sicher, dass die Kontrollkästchen für Knoten, die nicht in den Cluster aufgenommen werden sollen, nicht ausgewählt sind.
+. Wählen Sie *Cluster erstellen*.
++
+Das System benötigt je nach Anzahl der Knoten im Cluster mehrere Minuten, um den Cluster zu erstellen.  In einem korrekt konfigurierten Netzwerk sollte ein kleiner Cluster aus fünf Knoten weniger als eine Minute benötigen.  Nach der Erstellung des Clusters wird das Fenster „Neuen Cluster erstellen“ zur MVIP-URL-Adresse des Clusters weitergeleitet und zeigt die Element-Benutzeroberfläche an.
+
+
+
+
+
+== Weitere Informationen
+
+* link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

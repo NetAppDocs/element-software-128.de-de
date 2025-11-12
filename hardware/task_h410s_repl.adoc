@@ -1,0 +1,245 @@
+---
+permalink: hardware/task_h410s_repl.html 
+sidebar: sidebar 
+keywords: h410s, replacement, node replacement, maintenance 
+summary: Ein Speicherknoten sollte ausgetauscht werden, wenn ein CPU-Ausfall vorliegt, Probleme mit der Radian-Karte bestehen, andere Probleme mit dem Motherboard auftreten oder wenn sich der Knoten nicht einschalten lässt.  Die Anweisungen gelten für H410S-Speicherknoten. 
+---
+= Ersetzen Sie einen H410S-Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Speicherknoten sollte ausgetauscht werden, wenn ein CPU-Ausfall vorliegt, Probleme mit der Radian-Karte bestehen, andere Probleme mit dem Motherboard auftreten oder wenn sich der Knoten nicht einschalten lässt.  Die Anweisungen gelten für H410S-Speicherknoten.
+
+Alarme in der NetApp Element Software-Benutzeroberfläche warnen Sie, wenn ein Speicherknoten ausfällt.  Sie sollten die Element-Benutzeroberfläche verwenden, um die Seriennummer (Service-Tag) des ausgefallenen Knotens zu erhalten.  Sie benötigen diese Informationen, um den ausgefallenen Knoten im Cluster zu lokalisieren.
+
+Hier sehen Sie die Rückseite eines 2HE-Chassis (zwei Höheneinheiten) mit vier Speicherknoten:
+
+image::hci_stornode_rear.gif[Diese Abbildung zeigt das Vier-Knoten-Chassis mit vier Speicherknoten.]
+
+Hier sehen Sie die Vorderansicht eines Vier-Knoten-Chassis mit H410S-Knoten, auf der die den einzelnen Knoten entsprechenden Einschübe zu sehen sind:
+
+image::hci_stor_node_ssd_bays.gif[Zeigt die Einschübe, die jedem Knoten in einem Vier-Knoten-Chassis mit H410S-Knoten zugeordnet sind.]
+
+.Was du brauchst
+* Sie haben festgestellt, dass Ihr Speicherknoten defekt ist und ersetzt werden muss.
+* Sie haben einen Ersatzspeicherknoten erhalten.
+* Sie besitzen ein ESD-Armband (elektrostatische Entladung) oder haben andere antistatische Schutzmaßnahmen getroffen.
+* Sie haben jedes Kabel, das mit dem Speicherknoten verbunden ist, beschriftet.
+
+
+Hier ein allgemeiner Überblick über die einzelnen Schritte:
+
+* <<Bereiten Sie den Austausch des Knotens vor.>>
+* <<Tauschen Sie den Knoten im Gehäuse aus.>>
+* <<Fügen Sie den Knoten dem Cluster hinzu.>>
+
+
+
+
+== Bereiten Sie den Austausch des Knotens vor.
+
+Bevor Sie den Ersatzknoten installieren, sollten Sie den fehlerhaften Speicherknoten ordnungsgemäß über die NetApp Element Software-Benutzeroberfläche aus dem Cluster entfernen.  Dies ist möglich, ohne dass es zu einer Unterbrechung des Dienstes kommt.  Sie sollten die Seriennummer des defekten Speicherknotens über die Element-Benutzeroberfläche ermitteln und mit der Seriennummer auf dem Aufkleber auf der Rückseite des Knotens vergleichen.
+
+.Schritte
+. Wählen Sie in der Element-Benutzeroberfläche *Cluster* > *Laufwerke* aus.
+. Entfernen Sie die Laufwerke aus dem Knoten mit einer der folgenden Methoden:
++
+[cols="2*"]
+|===
+| Option | Schritte 
+
+
+ a| 
+Einzelne Laufwerke entfernen
+ a| 
+.. Klicken Sie auf *Aktionen* für das Laufwerk, das Sie entfernen möchten.
+.. Klicken Sie auf *Entfernen*.
+
+
+
+
+ a| 
+Um mehrere Laufwerke zu entfernen
+ a| 
+.. Wählen Sie alle Laufwerke aus, die Sie entfernen möchten, und klicken Sie auf *Massenaktionen*.
+.. Klicken Sie auf *Entfernen*.
+
+
+|===
+. Wählen Sie *Cluster* > *Knoten*.
+. Notieren Sie sich die Seriennummer (Service-Tag) des defekten Knotens.  Sie sollten diese mit der Seriennummer auf dem Aufkleber auf der Rückseite des Knotens vergleichen.
+. Nachdem Sie die Seriennummer notiert haben, entfernen Sie den Knoten wie folgt aus dem Cluster:
++
+.. Wählen Sie die Schaltfläche *Aktionen* für den Knoten aus, den Sie entfernen möchten.
+.. Wählen Sie *Entfernen*.
+
+
+
+
+
+
+== Tauschen Sie den Knoten im Gehäuse aus.
+
+Nachdem Sie den fehlerhaften Knoten mithilfe der NetApp Element Software-Benutzeroberfläche aus dem Cluster entfernt haben, können Sie den Knoten physisch aus dem Gehäuse entnehmen.  Sie sollten den Ersatzknoten in denselben Steckplatz im Gehäuse einbauen, aus dem Sie den defekten Knoten entfernt haben.
+
+.Schritte
+. Tragen Sie vor Beginn der Arbeiten antistatische Schutzkleidung.
+. Packen Sie den neuen Speicherknoten aus und stellen Sie ihn auf eine ebene Fläche in der Nähe des Gehäuses.
++
+Bewahren Sie das Verpackungsmaterial auf, wenn Sie den defekten Knoten an NetApp zurücksenden.
+
+. Kennzeichnen Sie jedes Kabel, das an der Rückseite des Speicherknotens angeschlossen ist und das Sie entfernen möchten.
++
+Nach der Installation des neuen Speicherknotens sollten Sie die Kabel in die ursprünglichen Anschlüsse einstecken.
+
++
+Hier ist ein Bild, das die Rückseite eines Speicherknotens zeigt:
+
++
+image::../media/hci_isi_storage_cabling.png[Diese Abbildung zeigt die Verkabelung des Speicherknotens.]
+
++
+[cols="2*"]
+|===
+| Hafen | Details 
+
+
+ a| 
+Port A
+ a| 
+1/10GbE RJ45-Anschluss
+
+
+
+ a| 
+Hafen B
+ a| 
+1/10GbE RJ45-Anschluss
+
+
+
+ a| 
+Port C
+ a| 
+10/25GbE SFP+ oder SFP28 Port
+
+
+
+ a| 
+Port D
+ a| 
+10/25GbE SFP+ oder SFP28 Port
+
+
+
+ a| 
+IPMI
+ a| 
+1/10GbE RJ45-Anschluss
+
+|===
+. Trennen Sie alle Kabel vom Speicherknoten.
+. Ziehen Sie den Nockenhebel auf der rechten Seite des Knotens nach unten und ziehen Sie den Knoten mithilfe beider Nockenhebel heraus.
++
+Der Nockenhebel, den man nach unten zieht, ist mit einem Pfeil versehen, der die Bewegungsrichtung anzeigt.  Der andere Nockenhebel bewegt sich nicht und dient dazu, Ihnen beim Herausziehen des Knotens zu helfen.
+
++
+image::../media/hci_stor_node_camhandles.gif[In dieser Abbildung]
+
++
+[cols="2*"]
+|===
+| Artikel | Beschreibung 
+
+
+ a| 
+1
+ a| 
+Mit dem Nockengriff können Sie den Knoten herausziehen.
+
+
+
+ a| 
+2
+ a| 
+Den Nockengriff, den man herunterzieht, bevor man den Knoten herauszieht.
+
+|===
++
+
+NOTE: Stützen Sie den Knoten mit beiden Händen ab, wenn Sie ihn aus dem Gehäuse ziehen.
+
+. Platzieren Sie den Knoten auf einer ebenen Fläche.
++
+Sie müssen den Knoten verpacken und an NetApp zurücksenden.
+
+. Installieren Sie den Ersatzknoten im gleichen Steckplatz im Gehäuse.
++
+
+IMPORTANT: Achten Sie darauf, beim Einschieben des Knotens in das Gehäuse keine übermäßige Kraft anzuwenden.
+
+. Nehmen Sie die Laufwerke aus dem entfernten Knoten und setzen Sie sie in den neuen Knoten ein.
+. Schließen Sie die Kabel wieder an die Anschlüsse an, von denen Sie sie ursprünglich getrennt haben.
++
+Die Etiketten, die sich beim Abklemmen der Kabel noch darauf befanden, werden Ihnen als Orientierung dienen.
+
++
+[NOTE]
+====
+.. Wenn die Lüftungsschlitze an der Rückseite des Gehäuses durch Kabel oder Etiketten blockiert sind, kann dies aufgrund von Überhitzung zu vorzeitigem Bauteilausfall führen.
+.. Drücken Sie die Kabel nicht mit Gewalt in die Anschlüsse; Sie könnten die Kabel, die Anschlüsse oder beides beschädigen.
+
+
+====
++
+
+TIP: Stellen Sie sicher, dass der Ersatzknoten auf die gleiche Weise verkabelt ist wie die anderen Knoten im Gehäuse.
+
+. Drücken Sie den Knopf an der Vorderseite des Geräts, um es einzuschalten.
+
+
+
+
+== Fügen Sie den Knoten dem Cluster hinzu.
+
+Wenn Sie einen Knoten zum Cluster hinzufügen oder neue Laufwerke in einem vorhandenen Knoten installieren, werden die Laufwerke automatisch als verfügbar registriert.  Sie müssen die Laufwerke dem Cluster entweder über die Element-Benutzeroberfläche oder die API hinzufügen, bevor sie am Cluster teilnehmen können.
+
+Die Softwareversionen auf den einzelnen Knoten eines Clusters müssen kompatibel sein.  Wenn Sie einen Knoten zu einem Cluster hinzufügen, installiert der Cluster bei Bedarf die Clusterversion der Element-Software auf dem neuen Knoten.
+
+.Schritte
+. Wählen Sie *Cluster* > *Knoten*.
+. Wählen Sie *Ausstehend*, um die Liste der ausstehenden Knoten anzuzeigen.
+. Führen Sie einen der folgenden Schritte aus:
++
+** Um einzelne Knoten hinzuzufügen, wählen Sie das Symbol *Aktionen* für den Knoten aus, den Sie hinzufügen möchten.
+** Um mehrere Knoten hinzuzufügen, wählen Sie die Kontrollkästchen der hinzuzufügenden Knoten aus und klicken Sie dann auf *Massenaktionen*.
++
+
+NOTE: Falls auf dem hinzuzufügenden Knoten eine andere Version der Element-Software installiert ist als die auf dem Cluster laufende Version, aktualisiert der Cluster den Knoten asynchron auf die auf dem Cluster-Master laufende Version der Element-Software.  Nach der Aktualisierung des Knotens fügt er sich automatisch dem Cluster hinzu.  Während dieses asynchronen Prozesses befindet sich der Knoten in einem `pendingActive` Zustand.
+
+
+
+. Wählen Sie *Hinzufügen*.
++
+Der Knoten erscheint in der Liste der aktiven Knoten.
+
+. Wählen Sie in der Element-Benutzeroberfläche *Cluster* > *Laufwerke* aus.
+. Wählen Sie *Verfügbar*, um die Liste der verfügbaren Laufwerke anzuzeigen.
+. Führen Sie einen der folgenden Schritte aus:
++
+** Um einzelne Laufwerke hinzuzufügen, wählen Sie das Symbol *Aktionen* für das Laufwerk aus, das Sie hinzufügen möchten, und wählen Sie dann *Hinzufügen*.
+** Um mehrere Laufwerke hinzuzufügen, wählen Sie die Kontrollkästchen der hinzuzufügenden Laufwerke aus, wählen Sie *Massenaktionen* und anschließend *Hinzufügen*.
+
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

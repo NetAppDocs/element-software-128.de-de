@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_resumesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: ResumeSnapMirrorRelationship,resume,SnapMirror,relationship,resuming 
+summary: Die Web-Benutzeroberfläche der Element-Software verwendet die Methode ResumeSnapMirrorRelationship, um zukünftige Übertragungen für eine ruhende SnapMirror Beziehung zu ermöglichen. 
+---
+= ResumeSnapMirrorRelationship
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `ResumeSnapMirrorRelationship` Methode zur Ermöglichung zukünftiger Übertragungen für eine ruhende SnapMirror Beziehung.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die Endpunkt-ID des entfernten ONTAP -Speichersystems, das mit dem Element-Speichercluster kommuniziert.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Zielvolumen
+ a| 
+Das Zielvolumen in der SnapMirror Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Snap-Spiegelbeziehung
+ a| 
+Ein Objekt, das Informationen über die wiederhergestellte SnapMirror -Beziehung enthält.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[Snap-Spiegelbeziehung]
+
+|===
+
+
+== Neu seit Version
+
+10,1

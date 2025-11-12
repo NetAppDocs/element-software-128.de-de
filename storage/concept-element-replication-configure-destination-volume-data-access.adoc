@@ -1,0 +1,19 @@
+---
+permalink: storage/concept-element-replication-configure-destination-volume-data-access.html 
+sidebar: sidebar 
+keywords: ontap, cli, configure, destination, volume, data access 
+summary: Nachdem das Zielvolume beschreibbar gemacht wurde, muss das Volume für den Datenzugriff konfiguriert werden.  SAN-Hosts können auf die Daten des Zielvolumes zugreifen, bis das Quellvolume reaktiviert wird. 
+---
+= Konfigurieren Sie das Zielvolume für den Datenzugriff
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem das Zielvolume beschreibbar gemacht wurde, muss das Volume für den Datenzugriff konfiguriert werden.  SAN-Hosts können auf die Daten des Zielvolumes zugreifen, bis das Quellvolume reaktiviert wird.
+
+. Ordnen Sie die Element-LUN der entsprechenden Initiatorgruppe zu.
+. Erstellen Sie iSCSI-Sitzungen von den SAN-Host-Initiatoren zu den SAN-LIFs.
+. Führen Sie auf dem SAN-Client einen erneuten Speicherscan durch, um die angeschlossene LUN zu erkennen.
+

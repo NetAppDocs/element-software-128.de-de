@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_getsnmptrapinfo.html 
+sidebar: sidebar 
+keywords: snmp,trap,get,getting,info,getsnmptrapinfo 
+summary: Mit der Methode GetSnmpTrapInfo können Sie aktuelle SNMP-Trap-Konfigurationsinformationen abrufen. 
+---
+= GetSnmpTrapInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetSnmpTrapInfo` Methode zum Abrufen aktueller SNMP-Trap-Konfigurationsinformationen.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+trapRecipients
+ a| 
+Liste der Hosts, die die vom Cluster generierten Traps empfangen sollen.
+ a| 
+xref:reference_element_api_snmptraprecipient.adoc[snmpTrapRecipient]Array
+
+
+
+ a| 
+clusterFaultTrapsEnabled
+ a| 
+Der Wert „true“ bedeutet, dass eine „solidFireClusterFaultNotification“ so konfiguriert ist, dass sie an die Liste der Trap-Empfänger gesendet wird, wenn ein Clusterfehler protokolliert wird.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+clusterFaultResolvedTrapsEnabled
+ a| 
+Der Wert „true“ bedeutet, dass eine „solidFireClusterFaultResolvedNotification“ so konfiguriert ist, dass sie an die Liste der Trap-Empfänger gesendet wird, wenn ein Clusterfehler behoben ist.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+clusterEventTrapsEnabled
+ a| 
+Der Wert „true“ bedeutet, dass eine „solidFireClusterEventNotification“ so konfiguriert ist, dass sie an die Liste der Trap-Empfänger gesendet wird, wenn ein Cluster-Ereignis protokolliert wird.
+ a| 
+boolescher Wert
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method":"GetSnmpTrapInfo"
+   "params":{},
+   "id":1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "clusterEventTrapsEnabled": true,
+    "clusterFaultResolvedTrapsEnabled": true,
+    "clusterFaultTrapsEnabled": true,
+    "trapRecipients": [
+     {
+      "community": "public",
+      "host": "192.168.151.60",
+      "port": 162
+     },
+     {
+      "community": "solidfireAlerts",
+      "host": "NetworkMonitor",
+      "port": 162
+     },
+     {
+      "community": "wakeup",
+      "host": "PhoneHomeAlerter",
+      "port": 1008
+     }
+   ]
+ }
+}
+----
+
+
+== Neu seit Version
+
+9,6

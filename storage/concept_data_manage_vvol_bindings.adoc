@@ -1,0 +1,16 @@
+---
+permalink: storage/concept_data_manage_vvol_bindings.html 
+sidebar: sidebar 
+keywords: bindings, vvols, bound virtual volumes 
+summary: Um E/A-Operationen mit einem virtuellen Volume durchzuführen, muss ein ESXi-Host das virtuelle Volume zuerst einbinden. 
+---
+= Lerne mehr über Bindungen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um E/A-Operationen mit einem virtuellen Volume durchzuführen, muss ein ESXi-Host das virtuelle Volume zuerst einbinden.
+
+Der SolidFire -Cluster wählt einen optimalen Protokollendpunkt aus, erstellt eine Bindung, die den ESXi-Host und das virtuelle Volume mit dem Protokollendpunkt verknüpft, und gibt die Bindung an den ESXi-Host zurück.  Nach der Bindung kann der ESXi-Host E/A-Operationen mit dem gebundenen virtuellen Volume durchführen.

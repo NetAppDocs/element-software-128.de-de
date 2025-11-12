@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_createbackuptarget.html 
+sidebar: sidebar 
+keywords: create,creating,backup,target,CreateBackupTarget 
+summary: Mit CreateBackupTarget können Sie Sicherungszielinformationen erstellen und speichern, sodass Sie diese nicht jedes Mal neu eingeben müssen, wenn eine Sicherung erstellt wird. 
+---
+= CreateBackupTarget
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `CreateBackupTarget` um Sicherungszielinformationen zu erstellen und zu speichern, sodass Sie diese nicht jedes Mal neu eingeben müssen, wenn eine Sicherung erstellt wird.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Name
+ a| 
+Name für das Sicherungsziel.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Ja (kann aber leer sein)
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+backupTargetID
+ a| 
+Dem neuen Sicherungsziel wurde eine eindeutige Kennung zugewiesen.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "CreateBackupTarget",
+   "params": {
+      "name": "mytargetbackup"
+   },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+      "backupTargetID": 1
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

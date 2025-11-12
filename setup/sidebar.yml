@@ -1,0 +1,37 @@
+---
+section: setup
+title: Lager einrichten
+entries:
+- title: Erfahren Sie mehr über die Einrichtung von Speichersystemen.
+  url: "/setup/concept_setup_overview.html"
+- title: Richten Sie einen Cluster mit Speicherknoten ein.
+  entries:
+  - title: Konfigurieren eines Speicherknotens
+    url: "/setup/concept_setup_configure_a_storage_node.html"
+  - title: Erstellen Sie einen Speichercluster
+    url: "/setup/task_setup_create_a_storage_cluster.html"
+  - title: Melden Sie sich bei der Element-Software-Benutzeroberfläche an.
+    url: "/setup/task_post_deploy_access_the_element_software_user_interface.html"
+  - title: Fügen Sie dem Cluster Laufwerke hinzu.
+    url: "/setup/task_setup_add_drives_to_a_cluster.html"
+- title: Richten Sie einen Cluster mit Fibre-Channel-Knoten ein.
+  entries:
+  - title: Konfigurieren eines Fibre-Channel-Knotens
+    url: "/setup/concept_setup_fc_configure_a_fibre_channel_node.html"
+  - title: Erstellen Sie einen neuen Cluster mit Fibre-Channel-Knoten.
+    url: "/setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html"
+  - title: Fügen Sie einem Cluster Fibre-Channel-Knoten hinzu.
+    url: "/setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html"
+  - title: Zonen für Fibre-Channel-Knoten einrichten
+    url: "/setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html"
+  - title: Erstellen Sie eine Volume-Zugriffsgruppe für Fibre Channel-Clients.
+    url: "/setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html"
+- title: Ermitteln Sie, welche SolidFire -Komponenten installiert werden sollen.
+  url: "/setup/task_setup_determine_which_solidfire_components_to_install.html"
+- title: Richten Sie einen Verwaltungsknoten ein.
+  url: "/setup/task_setup_gh_redirect_set_up_a_management_node.html"
+- title: Konfiguration des Zugriffs auf die Web-Benutzeroberfläche für vollqualifizierte
+    Domänennamen
+  url: "/setup/task_setup_configure_fqdn_web_ui_access.html"
+- title: Wie geht es weiter?
+  url: "/setup/concept_setup_whats_next.html"

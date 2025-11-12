@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_updatesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,update,updating,destination,volume,updatesnapmirrorrelationship 
+summary: Die Web-Benutzeroberfläche der Element-Software verwendet die Methode UpdateSnapMirrorRelationship, um das Zielvolume in einer SnapMirror -Beziehung zu einem aktuellen Spiegel des Quellvolumes zu machen. 
+---
+= SnapMirrorRelation aktualisieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `UpdateSnapMirrorRelationship` Methode, um das Zielvolume in einer SnapMirror -Beziehung zu einem aktuellen Spiegel des Quellvolumes zu machen.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die Endpunkt-ID des entfernten ONTAP -Speichersystems, das mit dem Element-Speichercluster kommuniziert.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Zielvolumen
+ a| 
+Das Zielvolumen in der SnapMirror Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeinfo]
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+maxTransferRate
+ a| 
+Gibt die maximale Datenübertragungsrate zwischen den Volumes in Kilobyte pro Sekunde an.  Der Standardwert 0 bedeutet unbegrenzte Bandbreite und ermöglicht es der SnapMirror -Beziehung, die verfügbare Netzwerkbandbreite voll auszunutzen.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Snap-Spiegelbeziehung
+ a| 
+Ein Objekt, das Informationen über die aktualisierte SnapMirror -Beziehung enthält.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[Snap-Spiegelbeziehung]
+
+|===
+
+
+== Neu seit Version
+
+10,1

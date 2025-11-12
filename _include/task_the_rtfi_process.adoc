@@ -1,0 +1,99 @@
+= Führen Sie den RTFI-Prozess durch.
+:allow-uri-read: 
+
+
+Sie können den Prozess „Return to Factory Image“ (RTFI) starten, indem Sie über Textkonsolen-Eingaben, die vor dem Systemstart angezeigt werden, mit dem Knoten interagieren.
+
+
+WARNING: Der RTFI-Prozess ist datenzerstörend und löscht sicher alle Daten und Konfigurationsdetails vom Knoten und installiert ein neues Betriebssystem.  Stellen Sie sicher, dass der für den RTFI-Prozess verwendete Knoten nicht als Teil eines Clusters aktiv ist.
+
+image::../media/rtfi_warning.PNG[SolidFire Warnung vor dem Fortfahren]
+
+Der RTFI-Prozess führt folgende übergeordnete Operationen durch:
+
+. Startet die Installation nach Bestätigung durch den Benutzer und validiert das Image.
+. Entsperrt alle Laufwerke auf einem Knoten.
+. Validiert und flasht die Firmware.
+. Überprüft die Hardware.
+. Testet Hardware.
+. Sicheres Löschen aller ausgewählten Laufwerke.
+. Partitioniert das Stammlaufwerk und erstellt Dateisysteme.
+. Mountet und entpackt das Image.
+. Konfiguriert den Hostnamen, die Netzwerkverbindung (Dynamic Host Configuration Protocol), die Standardclusterkonfiguration und den GRUB-Bootloader.
+. Stoppt alle Dienste, sammelt Protokolle und startet das System neu.
+
+
+Informationen zur Konfiguration Ihres Knotens nach erfolgreichem Abschluss des RTFI-Prozesses finden Sie unter https://docs.netapp.com/us-en/element-software/index.html["Dokumentation für Ihre Element-Softwareversion"^] Die  Nachdem ein Knoten den RTFI-Prozess erfolgreich abgeschlossen hat, wechselt er standardmäßig in den Zustand _verfügbar_ (nicht konfiguriert).
+
+
+
+== Führen Sie den RTFI-Prozess durch.
+
+Gehen Sie wie folgt vor, um die Element-Software auf Ihrem SolidFire -Knoten wiederherzustellen.
+
+Informationen zum Erstellen eines USB-Sticks oder zur Verwendung des BMC für den RTFI-Prozess finden Sie unterxref:task_rtfi_deployment_and_install_options.adoc[RTFI-Bereitstellungs- und Installationsoptionen] Die
+
+.Bevor Sie beginnen
+Bitte vergewissern Sie sich, dass Sie die folgenden Anforderungen erfüllen:
+
+* Sie haben Zugriff auf eine Konsole für den SolidFire -Knoten.
+* Der Knoten, auf dem Sie den RTFI-Prozess durchführen, ist eingeschaltet und mit einem Netzwerk verbunden.
+* Der Knoten, auf dem Sie den RTFI-Prozess durchführen, ist nicht Teil eines aktiven Clusters.
+* Sie haben Zugriff auf bootfähige Installationsmedien, die das Image der für Ihre Konfiguration relevanten Element-Softwareversion enthalten.
+
+
+Wenden Sie sich an den NetApp -Support, falls Sie vor der Durchführung des RTFI-Prozesses Bedenken haben.
+
+.Schritte
+. Schließen Sie einen Monitor und eine Tastatur an die Rückseite des Knotens an oder stellen Sie eine Verbindung zur BMC IP-Benutzeroberfläche her und rufen Sie die *iKVM/HTML5*-Konsole über die Registerkarte *Fernsteuerung* in der Benutzeroberfläche auf.
+. Stecken Sie einen USB-Stick mit einem geeigneten Bild in einen der beiden USB-Steckplätze auf der Rückseite des Geräts.
+. Schalten Sie den Knoten ein oder setzen Sie ihn auf die Werkseinstellungen zurück.  Wählen Sie während des Hochfahrens das Startgerät durch Drücken von *F11* aus:
++
+
+NOTE: Sie müssen *F11* mehrmals schnell hintereinander drücken, da der Bildschirm „Boot Device“ schnell durchläuft.
+
+. Markieren Sie im Menü zur Auswahl des Startgeräts die Option USB.
++
+Die angezeigten Optionen hängen von der Marke des verwendeten USB-Anschlusses ab.
+
++
+[NOTE]
+====
+Falls keine USB-Geräte angezeigt werden, rufen Sie das BIOS auf, überprüfen Sie, ob USB in der Bootreihenfolge aufgeführt ist, starten Sie den Computer neu und versuchen Sie es erneut.
+
+Sollte das Problem dadurch nicht behoben werden, rufen Sie das BIOS auf, navigieren Sie zum Reiter *Speichern und Beenden*, wählen Sie *Auf optimierte Standardeinstellungen zurücksetzen*, bestätigen und speichern Sie die Einstellungen und starten Sie den Computer neu.
+
+====
+. Es wird eine Liste der Bilder angezeigt, die sich auf dem markierten USB-Gerät befinden.  Wählen Sie die gewünschte Version aus und drücken Sie die Eingabetaste, um den RTFI-Prozess zu starten.
++
+Der Name der RTFI-Bildelement-Software und die Versionsnummer werden angezeigt.
+
+. Bei der ersten Eingabeaufforderung werden Sie darüber informiert, dass der Prozess alle Daten vom Knoten entfernt und dass diese Daten nach Beginn des Prozesses nicht wiederhergestellt werden können.  Geben Sie *Ja* ein, um zu beginnen.
++
+
+WARNING: Nach dem Start des Prozesses werden alle Daten und Konfigurationsdetails dauerhaft vom Knoten gelöscht.  Wenn Sie nicht fortfahren, werden Sie weitergeleitet zuxref:task_rtfi_options_menu.html[RTFI-Optionsmenü] Die
+
++
+
+NOTE: Wenn Sie die Konsole während des RTFI-Prozesses beobachten möchten, können Sie die Tasten *ALT+F8* drücken, um in den ausführlichen Konsolenmodus zu wechseln.  Drücken Sie *ALT+F7*, um zur primären Benutzeroberfläche zurückzukehren.
+
+. Geben Sie *Nein* ein, wenn Sie aufgefordert werden, umfangreiche Hardwaretests durchzuführen, es sei denn, Sie haben Grund, einen Hardwarefehler zu vermuten, oder werden von NetApp Support angewiesen, die Tests durchzuführen.
++
+Eine Meldung signalisiert, dass der RTFI-Prozess abgeschlossen ist, und das System schaltet sich aus.
+
+. Entfernen Sie gegebenenfalls alle bootfähigen Installationsmedien, nachdem der Knoten ausgeschaltet wurde.
++
+Der Knoten ist nun bereit, eingeschaltet und konfiguriert zu werden.  Siehe die https://docs.netapp.com/us-en/element-software/setup/concept_setup_overview.html["Element-Software-Einrichtungs-Speicherdokumentation"^] um den Speicherknoten zu konfigurieren.
+
++
+Falls während des RTFI-Prozesses eine Fehlermeldung aufgetreten ist, siehexref:task_rtfi_options_menu.html[RTFI-Optionsmenü] Die
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

@@ -1,0 +1,36 @@
+---
+permalink: storage/task_data_protection_restore_volume_from_backup_on_openstack_swift.html 
+sidebar: sidebar 
+keywords: volume restore, openstack swift object store 
+summary: Sie können ein Volume aus einer Sicherung auf einem OpenStack Swift-Objektspeicher wiederherstellen. 
+---
+= Wiederherstellen eines Volumes aus einer Sicherung auf einem OpenStack Swift-Objektspeicher
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein Volume aus einer Sicherung auf einem OpenStack Swift-Objektspeicher wiederherstellen.
+
+. Klicken Sie auf *Berichterstellung* > *Ereignisprotokoll*.
+. Suchen Sie das Sicherungsereignis, das die Sicherung erstellt hat, die Sie wiederherstellen müssen.
+. Klicken Sie in der Spalte *Details* für die Veranstaltung auf *Details anzeigen*.
+. Kopieren Sie die Manifestinformationen in Ihre Zwischenablage.
+. Klicken Sie auf *Verwaltung* > *Volumes*.
+. Klicken Sie auf das Aktionssymbol für das Volume, das Sie wiederherstellen möchten.
+. Klicken Sie im daraufhin angezeigten Menü auf *Wiederherstellen von*.
+. Im Dialogfeld *Integrierte Wiederherstellung* wählen Sie unter *Wiederherstellen von* die Option *Swift* aus.
+. Wählen Sie unter *Datenformat* die Option aus, die dem Backup entspricht:
++
+** *Nativ*: Ein komprimiertes Format, das nur von SolidFire -Speichersystemen gelesen werden kann.
+** *Unkomprimiert*: Ein unkomprimiertes Format, das mit anderen Systemen kompatibel ist.
+
+
+. Geben Sie im Feld *URL* eine URL ein, über die auf den Objektspeicher zugegriffen werden soll.
+. Geben Sie im Feld *Benutzername* einen Benutzernamen für das Konto ein.
+. Geben Sie den Authentifizierungsschlüssel für das Konto im Feld *Authentifizierungsschlüssel* ein.
+. Geben Sie im Feld *Container* den Namen des Containers ein, in dem die Sicherung gespeichert ist.
+. Fügen Sie die Manifestinformationen in das Feld *Manifest* ein.
+. Klicken Sie auf *Schreiben starten*.
+

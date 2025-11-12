@@ -1,0 +1,187 @@
+---
+permalink: api/reference_element_api_fault.html 
+sidebar: sidebar 
+keywords: object,objects,fault 
+summary: Das Fehlerobjekt enthält Informationen über Fehler, die im Cluster erkannt wurden.  Die Methode ListClusterFaults gibt Clusterfehlerinformationen zurück. 
+---
+= Fehler
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Fehlerobjekt enthält Informationen über Fehler, die im Cluster erkannt wurden.  Der `ListClusterFaults` Die Methode gibt Clusterfehlerinformationen zurück.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+blockUpgrade
+ a| 
+Der Fehler verhindert ein Upgrade. Mögliche Werte:
+
+* Richtig: Der Fehler verhindert ein Upgrade.
+* Falsch: Der Fehler blockiert kein Upgrade.
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+Clusterfehler-ID
+ a| 
+Die eindeutige ID, die jedem Clusterfehler zugeordnet ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Code
+ a| 
+Der Fehlercode für den festgestellten spezifischen Fehler.  Weitere Details finden Sie unter Cluster-Fehlercodes.
+ a| 
+Schnur
+
+
+
+ a| 
+Daten
+ a| 
+Zusätzliche fehlerspezifische Informationen.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+date
+ a| 
+Die aktuelle Uhrzeit im UTC+0-Format.
+ a| 
+ISO 8601-Zeichenkette
+
+
+
+ a| 
+Details
+ a| 
+Die Fehlerbeschreibung mit weiteren Details.
+ a| 
+Schnur
+
+
+
+ a| 
+Laufwerk-ID
+ a| 
+Die erste Laufwerks-ID in der Liste der Laufwerks-IDs.  Wenn die Liste der Laufwerks-IDs leer ist (was bedeutet, dass keine Fehler im Zusammenhang mit Laufwerken gemeldet wurden), ist dieser Wert 0.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Laufwerks-IDs
+ a| 
+Eine Liste der DriveID-Werte für die Laufwerke, auf die sich dieser Fehler bezieht.  Eingeschlossen für Fehler im Zusammenhang mit Laufwerken.  Falls keines vorhanden ist, handelt es sich um ein leeres Array.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+nodeHardwareFaultID
+ a| 
+Die Kennung, die einem Hardwarefehler im Cluster zugewiesen ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Knoten-ID
+ a| 
+Die Knoten-ID des Knotens, auf den sich dieser Fehler bezieht.  Bei Knoten- und Laufwerksfehlern enthalten, ansonsten auf 0 gesetzt.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+gelöst
+ a| 
+Der Fehler wurde behoben. Mögliche Werte:
+
+* wahr: Der Fehler wird nicht mehr erkannt.
+* Falsch: Der Fehler besteht weiterhin.
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+gelöstDatum
+ a| 
+Datum und Uhrzeit der Fehlerbehebung.
+ a| 
+ISO 8601-Zeichenkette
+
+
+
+ a| 
+Service-ID
+ a| 
+Der mit dem Fehler verbundene Dienst.  Dieser Wert ist "0" (Null), wenn der Fehler nicht mit einem Dienst in Verbindung steht.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+severity
+ a| 
+Die Schwere des Fehlers. Mögliche Werte:
+
+* Warnung: Ein kleineres Problem.  Der Cluster ist funktionsfähig und Upgrades sind auf diesem Schweregrad zulässig.
+* Fehler: Ein Fehler, der im Allgemeinen keine Auswirkungen auf den Dienst haben sollte (mit Ausnahme möglicher Leistungseinbußen oder eines Verlusts der Hochverfügbarkeit).  Einige Funktionen sind möglicherweise deaktiviert.
+* kritisch: Ein schwerwiegender Fehler, der den Service beeinträchtigt.  Das System ist nicht in der Lage, API-Anfragen oder Client-E/A zu bearbeiten und es besteht die Gefahr eines Datenverlusts.
+* Best Practice: Fehler, die durch eine suboptimale Systemkonfiguration ausgelöst werden.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Typ
+ a| 
+Die Art des Fehlers. Mögliche Werte:
+
+* Knoten: Ein Fehler, der einen gesamten Knoten betrifft.
+* Laufwerk: Ein Fehler, der ein einzelnes Laufwerk betrifft.
+* Cluster: Ein Fehler, der den gesamten Cluster betrifft.
+* Dienst: Ein Fehler, der einen Dienst im Cluster betrifft.
+* Volumen: Ein Fehler, der ein einzelnes Volumen betrifft.
+
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_listclusterfaults.adoc[ListClusterFaults]
+* link:../storage/reference_monitor_cluster_fault_codes.html["Cluster-Fehlercodes"]
+

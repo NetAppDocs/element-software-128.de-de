@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_getldapconfiguration.html 
+sidebar: sidebar 
+keywords: ldap,config,configuration,get,getting,getldapconfiguration 
+summary: Mit der Methode GetLdapConfiguration können Sie die aktuell aktive LDAP-Konfiguration des Clusters abrufen. 
+---
+= GetLdapConfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetLdapConfiguration` Methode zum Abrufen der aktuell aktiven LDAP-Konfiguration im Cluster.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat den folgenden Rückgabewert.
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+LDAP-Konfiguration
+ a| 
+Liste der aktuellen LDAP-Konfigurationseinstellungen.  Dieser API-Aufruf gibt nicht den Klartext des Suchkontopassworts zurück.  *Hinweis:* Wenn die LDAP-Authentifizierung derzeit deaktiviert ist, sind alle zurückgegebenen Einstellungen leer, mit Ausnahme von "authType" und "groupSearchType", die auf "SearchAndBind" bzw. "ActiveDirectory" gesetzt sind.
+ a| 
+xref:reference_element_api_ldapconfiguration.adoc[LDAP-Konfiguration]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetLdapConfiguration",
+  "params": {},
+  "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "ldapConfiguration": {
+        "authType": "SearchAndBind",
+        "enabled": true,
+        "groupSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+        "groupSearchCustomFilter": "",
+        "groupSearchType": "ActiveDirectory",
+        "searchBindDN": "SFReadOnly@prodtest.solidfire.net",
+        "serverURIs": [
+           "ldaps://111.22.333.444",
+           "ldap://555.66.777.888"
+            ],
+        "userDNTemplate": "",
+        "userSearchBaseDN": "dc=prodtest,dc=solidfire,dc=net",
+        "userSearchFilter": "(&(objectClass=person)(sAMAccountName=%USERNAME%))"
+     }
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

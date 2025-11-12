@@ -1,0 +1,35 @@
+---
+permalink: storage/task_intro_sort_lists.html 
+sidebar: sidebar 
+keywords: sort lists, sorting on a single column, sorting on multiple columns, sort button, column selections, using sort criteria 
+summary: In der Element-Benutzeroberfläche können Sie auf bestimmten Seiten die Listeninformationen nach einem oder mehreren Kriterien sortieren.  Dies hilft Ihnen dabei, die benötigten Informationen auf dem Bildschirm anzuordnen. 
+---
+= Sortierlisten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In der Element-Benutzeroberfläche können Sie auf bestimmten Seiten die Listeninformationen nach einem oder mehreren Kriterien sortieren.  Dies hilft Ihnen dabei, die benötigten Informationen auf dem Bildschirm anzuordnen.
+
+. Um nach einer einzelnen Spalte zu sortieren, klicken Sie so lange auf die Spaltenüberschrift, bis die Informationen in der gewünschten Reihenfolge sortiert sind.
+. Um nach mehreren Spalten zu sortieren, klicken Sie auf die Spaltenüberschrift jeder Spalte, nach der Sie sortieren möchten, bis die Informationen in jeder Spalte in der gewünschten Reihenfolge sortiert sind.
++
+Die Schaltfläche „Sortieren“ wird angezeigt, wenn Sie nach mehreren Spalten sortieren.
+
+. Um die Sortierkriterien neu anzuordnen, führen Sie die folgenden Schritte aus:
++
+.. Klicken Sie auf *Sortieren*.
++
+Das System füllt das Feld „Sortieren nach“ mit Ihren Spaltenauswahlen.
+
+.. Ordnen Sie die Spalten im Feld „Sortieren nach“ in der Reihenfolge an, in der die Liste sortiert werden soll.
++
+Das System sortiert die Listeninformationen.
+
+
+
+. Um ein einzelnes Sortierkriterium zu entfernen, klicken Sie auf das Symbol *Entfernen* neben dem Namen des Sortierkriteriums.
+. Um alle Sortierkriterien zu entfernen, klicken Sie auf *Alle löschen*.
+

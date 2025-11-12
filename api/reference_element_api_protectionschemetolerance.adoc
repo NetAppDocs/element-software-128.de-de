@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectionschemetolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionSchemeTolerance 
+summary: Das protectionSchemeTolerance-Objekt enthält Informationen darüber, ob ein Speichercluster für ein bestimmtes Schutzschema nach Ausfällen weiterhin Daten lesen und schreiben kann. 
+---
+= Schutzschema-Toleranz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das protectionSchemeTolerance-Objekt enthält Informationen darüber, ob ein Speichercluster für ein bestimmtes Schutzschema nach Ausfällen weiterhin Daten lesen und schreiben kann.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schutzsystem
+ a| 
+Das aktuelle Schutzsystem dieses Speicherclusters.  Der einzig mögliche Wert ist Doppelhelix.
+ a| 
+Schnur
+
+
+
+ a| 
+nachhaltigeFehlerFürBlockdaten
+ a| 
+Die aktuelle Anzahl gleichzeitiger Ausfälle, die auftreten können, ohne dass die Verfügbarkeit von Blockdaten für das zugehörige Schutzsystem verloren geht.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+nachhaltigeFehlerFürMetadaten
+ a| 
+Die aktuelle Anzahl gleichzeitiger Ausfälle, die auftreten können, ohne dass die Metadatenverfügbarkeit für das zugehörige Schutzsystem verloren geht.
+ a| 
+ganze Zahl
+
+|===

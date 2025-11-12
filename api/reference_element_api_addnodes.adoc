@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_addnodes.html 
+sidebar: sidebar 
+keywords: addnodes,node,add,adding,nodes,cluster 
+summary: Mit der AddNodes-Methode können Sie einem Cluster einen oder mehrere neue Knoten hinzufügen. 
+---
+= AddNodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `AddNodes` Methode zum Hinzufügen eines oder mehrerer neuer Knoten zu einem Cluster.
+
+Wenn ein nicht konfigurierter Knoten zum ersten Mal startet, werden Sie aufgefordert, den Knoten zu konfigurieren.  Sobald Sie den Knoten konfiguriert haben, wird er als „ausstehender Knoten“ im Cluster registriert.  Speichercluster, auf denen die Element-Software läuft, stellen automatisch ein Image eines Knotens auf die Version im Cluster wieder.  Wenn Sie einen ausstehenden Knoten hinzufügen, enthält die Methodenantwort einen asyncHandle-Wert, den Sie mit dem `GetAsyncResult` Methode zur Abfrage des Status des automatischen Bildgebungsprozesses.
+
+Das Hinzufügen eines Fibre-Channel-Knotens erfolgt nach dem gleichen Verfahren wie das Hinzufügen von Element-iSCSI-Speicherknoten zu einem Cluster.  Fibre Channel-Knoten werden im System mit einer NodeID registriert.  Sobald sie zugänglich sind, erhalten sie den Status „ausstehender Knoten“.  Der `ListAllNodes` Die Methode gibt die pendingNodeID für iSCSI-Knoten sowie für alle Fibre-Channel-Knoten zurück, die dem Cluster hinzugefügt werden können.
+
+Wenn Sie einem Cluster, den Sie für virtuelle Netzwerke konfiguriert haben, einen Knoten hinzufügen, benötigt das System eine ausreichende Anzahl virtueller Speicher-IP-Adressen, um dem neuen Knoten eine virtuelle IP-Adresse zuzuweisen.  Wenn für den neuen Knoten keine virtuellen IP-Adressen verfügbar sind, `AddNode` Operation schlägt fehl.  Verwenden Sie die `ModifyVirtualNetwork` Methode zum Hinzufügen weiterer Speicher-IP-Adressen zu Ihrem virtuellen Netzwerk.
+
+Sobald Sie einen Knoten hinzufügen, werden alle Laufwerke auf diesem Knoten verfügbar und können mithilfe der Funktion hinzugefügt werden. `AddDrives` Methode zur Erhöhung der Speicherkapazität des Clusters.
+
+
+NOTE: Es kann einige Sekunden dauern, bis ein neuer Knoten nach dem Hinzufügen hochfährt und seine Laufwerke als verfügbar registriert.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+automatische Installation
+ a| 
+Wenn dies zutrifft, wird beim Hinzufügen des Knotens eine Wiederherstellung des Werksimages (RTFI) durchgeführt.  Standardmäßig wird RTFI ausgeführt.  Wenn die `cEnableAutoInstall` Wenn die Clusterkonstante falsch ist, hat sie Vorrang vor diesem Parameter.  Wenn ein Upgrade im Gange ist, findet der RTFI-Prozess unabhängig vom Wert dieses Parameters nicht statt.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+ausstehende Knoten
+ a| 
+Ausstehende NodeIDs für die hinzuzufügenden Knoten.  Sie können alle ausstehenden Knoten mit der Methode ListPendingNodes auflisten.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+automatische Installation
+ a| 
+Ob die hinzugefügten Knoten auf das Werksimage zurückgesetzt werden oder nicht.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+Knoten
+ a| 
+Ein Array von Objekten, die die vorherige "pendingNodeID" der "nodeID" zuordnen.  Wenn Sie einen ausstehenden Knoten hinzufügen, auf dem eine inkompatible Softwareversion ausgeführt wird, enthält dieses Array einen asyncHandle-Wert, den Sie mit der GetAsyncResult-Methode verwenden können, um den Status des automatischen Imaging-Prozesses abzufragen.
+ a| 
+JSON-Objektarray
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "AddNodes",
+   "params": {
+     "autoInstall" : true,
+     "pendingNodes" : [1]
+   },
+   "id":1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  id: null,
+  result: {
+    autoInstall: true,
+    nodes: [
+      {
+        activeNodeKey: "giAm2ep1hA",
+        assignedNodeID: 6,
+        asyncHandle: 3,
+        cip: "10.10.5.106",
+        mip: "192.168.133.106",
+        pendingNodeID: 2,
+        platformInfo: {
+          chassisType: "R620",
+          cpuModel: "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+          nodeMemoryGB: 72,
+          nodeType: "SF3010"
+        },
+        sip: "10.10.5.106",
+        softwareVersion: "9.0.0.1077"
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_adddrives.adoc[Laufwerke hinzufügen]
+* xref:reference_element_api_getasyncresult.adoc[GetAsyncResult]
+* xref:reference_element_api_listallnodes.adoc[Alle Knoten auflisten]
+* xref:reference_element_api_modifyvirtualnetwork.adoc[ModifyVirtualNetwork]
+

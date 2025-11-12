@@ -1,0 +1,111 @@
+---
+permalink: api/reference_element_api_listactivevolumes.html 
+sidebar: sidebar 
+keywords: active,volume,volumes,list,listing,listactivevolumes,cluster 
+summary: 'Mit der Methode ListActiveVolumes können Sie die Liste der aktuell im System aktiven Volumes abrufen.  Die Liste der Bände ist nach VolumeID sortiert und kann in mehreren Teilen (Seiten) zurückgegeben werden.' 
+---
+= ListActiveVolumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListActiveVolumes` Methode zum Abrufen der Liste der aktuell im System aktiven Volumes.  Die Liste der Datenträger ist nach VolumeID sortiert und kann in mehreren Teilen (Seiten) zurückgegeben werden.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Virtuelle Volumes einbeziehen
+ a| 
+Virtuelle Volumes werden standardmäßig in die Antwort einbezogen.  Um virtuelle Volumes auszuschließen, auf „false“ setzen.
+ a| 
+boolescher Wert
+ a| 
+true
+ a| 
+Nein
+
+
+
+ a| 
+startVolumeID
+ a| 
+Die VolumeID wird zurückgegeben.  Existiert kein Volume mit dieser VolumeID, wird das nächste Volume in der Reihenfolge der VolumeID als Startpunkt der Liste verwendet.  Um die Liste seitenweise zu durchlaufen, übergeben Sie die VolumeID des letzten Volumes aus der vorherigen Antwort + 1.
+ a| 
+ganze Zahl
+ a| 
+0
+ a| 
+Nein
+
+
+
+ a| 
+Limit
+ a| 
+Maximale Anzahl der zurückzugebenden Volumeninformationsobjekte.  0 (Null) gibt alle Volumes zurück (unbegrenzt).
+ a| 
+ganze Zahl
+ a| 
+(unbegrenzt)
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Bände
+ a| 
+Liste der aktiven Volumes.
+ a| 
+xref:reference_element_api_volume.adoc[Volumen]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListActiveVolumes",
+   "params": {
+      "startVolumeID"  : 0,
+      "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+9,6

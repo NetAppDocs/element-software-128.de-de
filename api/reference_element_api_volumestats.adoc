@@ -1,0 +1,434 @@
+---
+permalink: api/reference_element_api_volumestats.html 
+sidebar: sidebar 
+keywords: object,objects,volumeStats 
+summary: Das volumeStats-Objekt enthält statistische Daten für ein einzelnes Volume. 
+---
+= volumeStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das volumeStats-Objekt enthält statistische Daten für ein einzelnes Volume.
+
+
+
+== Objektmitglieder
+
+Sie können die folgenden Methoden verwenden, um volumeStats-Objekte für einige oder alle Volumes zu erhalten:
+
+* xref:reference_element_api_getvolumestats.adoc[Lautstärkestatistiken abrufen]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[ListVolumeStatsByAccount]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[ListVolumeStatsByVolume]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[ListVolumeStatsByVolumeAccessGroup]
+
+
+Dieses Objekt enthält die folgenden Elemente:
+
+[cols="20,50,15,15"]
+|===
+| Name | Beschreibung | Berechnung | Typ 
+
+
+ a| 
+Konto-ID
+ a| 
+Die ID des Kontos des Volumeninhabers.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+tatsächliche IOPS
+ a| 
+Die aktuelle tatsächliche IOPS-Leistung des Volumes in den letzten 500 Millisekunden.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+asyncDelay
+ a| 
+Die Zeitspanne seit der letzten Synchronisierung des Volumes mit dem Remote-Cluster.  Wenn das Volume nicht gepaart ist, ist dieser Wert null.  *Hinweis:* Ein Zielvolume im aktiven Replikationszustand hat immer einen asyncDelay von 0 (Null).  Die Zielvolumes sind während der Replikation systembewusst und gehen davon aus, dass asyncDelay jederzeit korrekt ist.
+ a| 
+k. A.
+ a| 
+ISO 8601-Dauerzeichenfolge oder null
+
+
+
+ a| 
+durchschnittliche IOPS-Größe
+ a| 
+Die durchschnittliche Größe der letzten E/A-Vorgänge auf dem Datenträger in den letzten 500 Millisekunden in Bytes.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+burstIOPSCredit
+ a| 
+Die Gesamtzahl der dem Benutzer zur Verfügung stehenden IOP-Credits.  Wenn die Volumes nicht die konfigurierte maxIOPS-Leistung ausschöpfen, werden Gutschriften gutgeschrieben.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Client-Warteschlangentiefe
+ a| 
+Die Anzahl der ausstehenden Lese- und Schreibvorgänge für das Volumen.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+gewünschteMetadatenHosts
+ a| 
+Die Metadatendienste (Slice-Dienste), zu denen migriert wird, wenn die Volumenmetadaten zwischen Metadatendiensten migriert werden.  Ein Wert von "null" bedeutet, dass das Volume nicht migriert wird.
+ a| 
+k. A.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Latenz in US-Sekunden
+ a| 
+Die durchschnittliche Zeit in Mikrosekunden, die für die Ausführung von Operationen am Volumen in den letzten 500 Millisekunden benötigt wurde.  Ein Wert von "0" (Null) bedeutet, dass keine Ein-/Ausgabe am Volume stattfindet.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Metadaten-Hosts
+ a| 
+Die Metadatendienste (Slice-Dienste), auf denen die Volumenmetadaten gespeichert sind. Mögliche Werte:
+
+* primär: Die primären Metadatendienste, die das Volume hosten.
+* liveSecondaries: Sekundäre Metadatendienste, die sich aktuell im „Live“-Status befinden.
+* deadSecondaries: Sekundäre Metadatendienste, die sich im inaktiven Zustand befinden.
+
+ a| 
+k. A.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+normalisierte IOPS
+ a| 
+Durchschnittliche Anzahl der IOPS für den gesamten Cluster in den letzten 500 Millisekunden.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+nonZeroBlocks
+ a| 
+Die Gesamtzahl der 4-KiB-Blöcke, die nach Abschluss der letzten Garbage Collection Daten enthalten.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+gelesene Bytes
+ a| 
+Die Gesamtzahl der seit der Erstellung des Volumes vom Volume gelesenen Bytes.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+readBytesLastSample
+ a| 
+Die Gesamtzahl der Bytes, die während des letzten Abtastzeitraums aus dem Datenträger gelesen wurden.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+LeselatenzUSec
+ a| 
+Die durchschnittliche Zeit in Mikrosekunden, die zum Abschließen von Lesevorgängen auf dem Datenträger in den letzten 500 Millisekunden benötigt wurde.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+LeselatenzUSecGesamt
+ a| 
+Die gesamte Zeit, die für Lesevorgänge vom Datenträger aufgewendet wurde.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Leseoperationen
+ a| 
+Die Gesamtzahl der Lesevorgänge auf dem Volume seit dessen Erstellung.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+readOpsLastSample
+ a| 
+Die Gesamtzahl der Lesevorgänge während des letzten Stichprobenzeitraums.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+samplePeriodMSec
+ a| 
+Die Länge der Abtastperiode in Millisekunden.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+sliceIopsStats
+ a| 
+Die E/A-Nutzungsstatistik für ein Volume.  Verfügbar ab Element 12.8.  Mögliche Werte für sliceIopsStats:
+
+* largeStatistics: Die E/A-Statistiken für das Volumen, gemessen über einen längeren Zeitraum, typischerweise die letzten 24 Stunden.
+* smallStatistics: Die E/A-Statistiken für das Volumen, gemessen über einen kürzeren Zeitraum, typischerweise die letzte Stunde.
+
+
+Mögliche Werte für largeStatistics und smallStatistics:
+
+* averageReadIops: Die durchschnittliche Lese-IOPS für das Volume.
+* averageTotalIops: Die durchschnittliche Gesamt-IOPS (Lesen + Schreiben) für das Volume.
+* averageWriteIops: Die durchschnittliche Schreib-IOPS für das Volume.
+* nSamples: Die Anzahl der in die statistische Berechnung einbezogenen Stichproben.
+* peakReadIops: Die maximale Anzahl an Lese-IOPS, die über ein statistisches Intervall beobachtet wurde.
+* peakTotalIops: Die maximale Gesamt-IOPS, die über ein statistisches Intervall beobachtet wurde.
+* peakWriteIops: Die maximale Schreib-IOPS, die über ein statistisches Intervall beobachtet wurde.
+* sliceID: Volumen-ID oder Slice-ID
+
+ a| 
+Zeitpunkt
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Gaspedal
+ a| 
+Ein Gleitkommawert zwischen 0 und 1, der angibt, in welchem Maße das System die Clients aufgrund von Datenreplikation, vorübergehenden Fehlern und erstellten Snapshots unterhalb ihrer maximalen IOPS drosselt.
+ a| 
+k. A.
+ a| 
+schweben
+
+
+
+ a| 
+Zeitstempel
+ a| 
+Die aktuelle Uhrzeit im UTC+0-Format.
+ a| 
+k. A.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+nicht ausgerichtete Lesevorgänge
+ a| 
+Die Gesamtzahl der kumulierten, nicht ausgerichteten Lesevorgänge auf ein Volume seit dessen Erstellung.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+unalignedWrites
+ a| 
+Die Gesamtzahl der kumulierten, nicht ausgerichteten Schreibvorgänge auf einem Volume seit dessen Erstellung.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+volumeAccessGroups
+ a| 
+Die Liste der IDs der Volume-Zugriffsgruppen, zu denen ein Volume gehört.
+ a| 
+k. A.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+Volume-ID
+ a| 
+Die ID des Datenträgers.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Volumengröße
+ a| 
+Gesamte bereitgestellte Kapazität in Bytes.
+ a| 
+k. A.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Volumennutzung
+ a| 
+Ein Gleitkommawert, der beschreibt, wie vollständig der Client die Eingabe-/Ausgabekapazitäten des Volumes im Vergleich zur QoS-Einstellung maxIOPS für dieses Volume nutzt. Mögliche Werte:
+
+* 0: Der Client nutzt das Volumen nicht.
+* 0,01 bis 0,99: Der Client nutzt die IOPS-Kapazitäten des Volumes nicht voll aus.
+* 1.00: Der Client nutzt das Volumen bis zur durch die Einstellung maxIOPS festgelegten IOPS-Grenze voll aus.
+* > 1.00: Der Client nutzt mehr Ressourcen als die durch maxIOPS festgelegte Grenze.  Dies ist möglich, wenn die BurstIOPS-QoS-Einstellung höher als MaxIOPS eingestellt ist.  Wenn beispielsweise maxIOPS auf 1000 und burstIOPS auf 2000 eingestellt ist, `volumeUtilization` Der Wert beträgt 2,00, wenn der Kunde das Volumen voll ausnutzt.
+
+ a| 
+k. A.
+ a| 
+schweben
+
+
+
+ a| 
+writeBytes
+ a| 
+Die Gesamtzahl der seit der Erstellung des Datenträgers auf diesen geschriebenen Bytes.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+writeBytesLastSample
+ a| 
+Die Gesamtzahl der Bytes, die während des letzten Abtastzeitraums auf das Volume geschrieben wurden.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+SchreiblatenzUSec
+ a| 
+Die durchschnittliche Zeit in Mikrosekunden, die zum Abschließen von Schreibvorgängen auf einem Volume in den letzten 500 Millisekunden benötigt wurde.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+SchreiblatenzUSecTotal
+ a| 
+Die gesamte Zeit, die für Schreibvorgänge auf dem Volume aufgewendet wurde.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Schreibvorgänge
+ a| 
+Die Gesamtzahl der Schreibvorgänge auf dem Volume seit dessen Erstellung.
+ a| 
+monoton steigend
+ a| 
+ganze Zahl
+
+
+
+ a| 
+writeOpsLastSample
+ a| 
+Die Gesamtzahl der Schreibvorgänge während des letzten Abtastzeitraums.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+
+
+ a| 
+zeroBlocks
+ a| 
+Die Gesamtzahl der leeren 4-KiB-Blöcke ohne Daten nach Abschluss der letzten Garbage-Collection-Operation.
+ a| 
+Zeitpunkt
+ a| 
+ganze Zahl
+
+|===

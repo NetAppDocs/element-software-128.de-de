@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_deleteclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,delete,deleting,DeleteClusterInterfacePreference 
+summary: Die Methode DeleteClusterInterfacePreference ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, eine bestehende Cluster-Schnittstellenpräferenz zu löschen.  Diese Methode ist nur für den internen Gebrauch bestimmt. 
+---
+= DeleteClusterInterfacePreference
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `DeleteClusterInterfacePreference` Mit dieser Methode können Systeme, die in Speichercluster integriert sind, auf denen die Element-Software läuft, eine bestehende Cluster-Schnittstelleneinstellung löschen.  Diese Methode ist nur für den internen Gebrauch bestimmt.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Name
+ a| 
+Der Name der zu löschenden Cluster-Schnittstelleneinstellung.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "DeleteClusterInterfacePreference",
+	"params": {
+		"name": "prefname"
+		},
+	"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== Neu seit Version
+
+11,0

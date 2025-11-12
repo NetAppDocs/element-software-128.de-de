@@ -1,0 +1,212 @@
+---
+permalink: api/reference_element_api_modifyvirtualnetwork.html 
+sidebar: sidebar 
+keywords: virtual,network,modify,modifying,change,changing,edit,editing,modifyvirtualnetwork 
+summary: Mit der Methode ModifyVirtualNetwork können Sie die Attribute eines bestehenden virtuellen Netzwerks ändern. 
+---
+= ModifyVirtualNetwork
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ModifyVirtualNetwork` Methode zum Ändern der Attribute eines bestehenden virtuellen Netzwerks.
+
+Mit dieser Methode können Sie Adressblöcke hinzufügen oder entfernen, die Netzmaske ändern oder den Namen oder die Beschreibung des virtuellen Netzwerks modifizieren.  Sie können es auch verwenden, um Namensräume zu aktivieren oder zu deaktivieren sowie ein Gateway hinzuzufügen oder zu entfernen, wenn Namensräume im virtuellen Netzwerk aktiviert sind.
+
+
+NOTE: Diese Methode erfordert entweder die virtualNetworkID oder den virtualNetworkTag als Parameter, aber nicht beide.
+
+VORSICHT:
+
+Das Aktivieren oder Deaktivieren der Funktionalität „Routbare Speicher-VLANs“ für ein bestehendes virtuelles Netzwerk durch Ändern des Namespace-Parameters unterbricht jeglichen Datenverkehr, der vom virtuellen Netzwerk verarbeitet wird.  Am besten ändern Sie den Namespace-Parameter während eines geplanten Wartungsfensters.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+
+
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+virtuelle Netzwerk-ID
+ a| 
+Eindeutige Kennung des zu modifizierenden virtuellen Netzwerks.  Dies ist die vom Cluster zugewiesene virtuelle Netzwerk-ID.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+virtuelles Netzwerk-Tag
+ a| 
+Das Netzwerk-Tag, das das zu modifizierende virtuelle Netzwerk identifiziert.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Adressblöcke
+ a| 
+Der neue Adressblock, der für dieses virtuelle Netzwerk festgelegt werden soll.  Dies kann das Hinzufügen neuer Adressblöcke zum bestehenden Objekt oder das Weglassen ungenutzter Adressblöcke, die entfernt werden müssen, beinhalten.  Alternativ können Sie die Größe bestehender Adressblöcke erweitern oder verkleinern.  Die Größe der anfänglichen addressBlocks eines Virtual Network-Objekts kann nur erhöht, aber niemals verringert werden.  Erforderliche Elemente für dieses Objekt:
+
+* Start: Der Beginn des IP-Adressbereichs.  (Zeichenkette)
+* Größe: Die Anzahl der in den Block aufzunehmenden IP-Adressen.  (ganze Zahl)
+
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Tor
+ a| 
+Die IP-Adresse eines Gateways des virtuellen Netzwerks.  Dieser Parameter ist nur gültig, wenn der Namespace-Parameter auf „true“ gesetzt ist.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Name
+ a| 
+Der neue Name für das virtuelle Netzwerk.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Namensraum
+ a| 
+Wenn auf „true“ gesetzt, wird die Funktionalität der routbaren Speicher-VLANs aktiviert, indem das virtuelle Netzwerk neu erstellt und ein Namespace konfiguriert wird, der es enthält.  Wenn auf „false“ gesetzt, wird die VRF-Funktionalität für das virtuelle Netzwerk deaktiviert.  Eine Änderung dieses Wertes unterbricht den Datenverkehr in diesem virtuellen Netzwerk.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Netzmaske
+ a| 
+Neue Netzwerkmaske für dieses virtuelle Netzwerk.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+VIP
+ a| 
+Die virtuelle Speicher-IP-Adresse für dieses virtuelle Netzwerk.  Der SVIP für ein virtuelles Netzwerk kann nicht geändert werden.  Sie müssen ein neues virtuelles Netzwerk erstellen, um eine andere SVIP-Adresse zu verwenden.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ModifyVirtualNetwork",
+  "params": {
+    "virtualNetworkID": 2,
+    "name": "ESX-VLAN-3112",
+    "addressBlocks": [
+     {
+      "start": "10.1.112.1",
+      "size": 20
+     },
+     {
+      "start": "10.1.112.100",
+      "size": 20
+     }
+   ],
+    "netmask": "255.255.255.0",
+    "gateway": "10.0.1.254",
+    "svip": "10.1.112.200",
+    "attributes": {}
+  },
+  "id":1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

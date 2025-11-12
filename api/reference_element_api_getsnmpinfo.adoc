@@ -1,0 +1,127 @@
+---
+permalink: api/reference_element_api_getsnmpinfo.html 
+sidebar: sidebar 
+keywords: snmp,information,info,get,getting 
+summary: 'Mit der Methode GetSnmpInfo können Sie die aktuellen Konfigurationsinformationen des Simple Network Management Protocol (SNMP) abrufen.' 
+---
+= GetSnmpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetSnmpInfo` Methode zum Abrufen der aktuellen Konfigurationsinformationen des Simple Network Management Protocol (SNMP).
+
+
+
+== Parameter
+
+
+NOTE: GetSnmpInfo ist für Versionen nach Element Version 8.0 veraltet.  Derxref:reference_element_api_getsnmpstate.adoc[GetSnmpState] Undxref:reference_element_api_setsnmpacl.adoc[SetSnmpACL] Diese Methoden ersetzen die GetSnmpInfo-Methode.
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Netzwerke
+ a| 
+Liste der für SNMP aktivierten Netzwerke und Zugriffstypen.  *Hinweis:* Netzwerke werden nur angezeigt, wenn SNMP v3 deaktiviert ist.
+ a| 
+xref:reference_element_api_network_snmp.adoc[Netzwerk]
+
+
+
+ a| 
+ermöglicht
+ a| 
+Zeigt an, ob die Knoten im Cluster für SNMP konfiguriert sind. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+Wenn der Knoten im Cluster für SNMP v3 konfiguriert ist. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+usmUsers
+ a| 
+Wenn SNMP v3 aktiviert ist, wird vom Cluster eine Liste der Benutzerzugriffsparameter für SNMP zurückgegeben.  Dieser Wert wird anstelle des Netzwerkparameters zurückgegeben.
+ a| 
+xref:reference_element_api_usmuser.adoc[usmUser]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetSnmpInfo",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "enabled" : true,
+      "networks" : [
+         {
+            "access" : "rosys",
+            "cidr" : 0,
+            "community" : "public",
+            "network" : "localhost"
+         }
+      ]
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getsnmpstate.adoc[GetSnmpState]
+* xref:reference_element_api_setsnmpacl.adoc[SetSnmpACL]
+

@@ -1,0 +1,29 @@
+---
+permalink: storage/task_replication_pair_volumes.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, cluster, cluster pair 
+summary: Nachdem Sie eine Verbindung zwischen Clustern in einem Clusterpaar hergestellt haben, können Sie ein Volume auf dem einen Cluster mit einem Volume auf dem anderen Cluster des Paares koppeln.  Sobald eine Volume-Paarungsbeziehung hergestellt ist, muss das Volume identifiziert werden, das das Replikationsziel ist. 
+---
+= Paarvolumina
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem Sie eine Verbindung zwischen Clustern in einem Clusterpaar hergestellt haben, können Sie ein Volume auf dem einen Cluster mit einem Volume auf dem anderen Cluster des Paares koppeln.  Sobald eine Volume-Paarungsbeziehung hergestellt ist, muss das Volume identifiziert werden, das das Replikationsziel ist.
+
+Sie können zwei Volumes für die Echtzeitreplikation koppeln, die auf verschiedenen Speicherclustern in einem verbundenen Clusterpaar gespeichert sind.  Nachdem Sie zwei Cluster gekoppelt haben, können Sie aktive Volumes auf einem Cluster so konfigurieren, dass sie kontinuierlich auf einen zweiten Cluster repliziert werden, wodurch ein kontinuierlicher Datenschutz (Continuous Data Protection, CDP) gewährleistet wird.  Sie können auch festlegen, ob ein Volume als Quelle oder Ziel der Replikation dient.
+
+Die Lautstärkepaarungen sind immer eins zu eins.  Sobald ein Volume mit einem Volume auf einem anderen Cluster gekoppelt ist, kann es nicht erneut mit einem anderen Volume gekoppelt werden.
+
+.Was du brauchst
+* Sie haben eine Verbindung zwischen Clustern in einem Clusterpaar hergestellt.
+* Sie besitzen Cluster-Administratorrechte für einen oder beide gekoppelten Cluster.
+
+
+.Schritte
+. xref:task_replication_create_a_target_volume_with_read_write_access.adoc[Erstellen Sie ein Zielvolume mit Lese- oder Schreibzugriff]
+. xref:task_replication_pair_volumes_using_volume_id_or_pairing_key.adoc[Koppeln Sie Volumes mithilfe einer Volume-ID oder eines Kopplungsschlüssels.]
+. xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Weisen Sie gepaarten Volumes eine Replikationsquelle und ein Replikationsziel zu.]
+

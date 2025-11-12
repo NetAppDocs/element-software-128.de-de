@@ -1,0 +1,128 @@
+---
+permalink: api/reference_element_api_listdeletedvolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,marked,delete,deleted,deletion,list,listing,listdeletedvolumes 
+summary: Mit der Methode ListDeletedVolumes können Sie die Liste der Datenträger abrufen, die zum Löschen markiert und aus dem System entfernt wurden. 
+---
+= ListeGelöschteVolumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListDeletedVolumes` Methode zum Abrufen der Liste der Datenträger, die zum Löschen markiert und aus dem System entfernt wurden.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Virtuelle Volumes einbeziehen
+ a| 
+Virtuelle Volumes werden standardmäßig in die Antwort einbezogen.  Um virtuelle Volumes auszuschließen, auf „false“ setzen.
+ a| 
+boolescher Wert
+ a| 
+true
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Bände
+ a| 
+Liste der gelöschten Datenträger.
+ a| 
+xref:reference_element_api_volume.adoc[Volumen]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListDeletedVolumes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Die Antworten auf diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "volumes": [
+            {
+                "access": "readWrite",
+                "accountID": 2,
+                "attributes": {},
+                "blockSize": 4096,
+                "createTime": "2018-06-24T03:13:13Z",
+                "deleteTime": "2018-07-22T16:12:39Z",
+                "enable512e": true,
+                "iqn": "iqn.2010-01.com.solidfire:0oto.deletethis.23",
+                "name": "deleteThis",
+                "purgeTime": "2016-07-23T00:12:39Z",
+                "qos": {
+                    "burstIOPS": 15000,
+                    "burstTime": 60,
+                    "curve": {
+                        "4096": 100,
+                        "8192": 160,
+                        "16384": 270,
+                        "32768": 500,
+                        "65536": 1000,
+                        "131072": 1950,
+                        "262144": 3900,
+                        "524288": 7600,
+                        "1048576": 15000
+                    },
+                    "maxIOPS": 15000,
+                    "minIOPS": 50
+                },
+                "scsiEUIDeviceID": "306f746f00000017f47acc0100000000",
+                "scsiNAADeviceID": "6f47acc100000000306f746f00000017",
+                "sliceCount": 1,
+                "status": "deleted",
+                "totalSize": 1396703232,
+                "virtualVolumeID": null,
+                "volumeAccessGroups": [],
+                "volumeID": 23,
+                "volumePairs": []
+            }
+        ]
+    }
+}
+----
+
+
+== Neu seit Version
+
+9,6

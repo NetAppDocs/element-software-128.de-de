@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Ein SolidFire All-Flash-Speichersystem besteht aus diskreten Hardwarekomponenten (Laufwerken und Knoten), die zu einem einzigen Pool von Speicherressourcen kombiniert werden.  Dieser einheitliche Cluster stellt sich externen Clients als ein einziges Speichersystem zur Verfügung und wird mit der NetApp Element Software verwaltet.' 
+---
+= Produktübersicht
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein SolidFire All-Flash-Speichersystem besteht aus einzelnen Hardwarekomponenten (Laufwerk und Knoten), die zu einem einzigen Pool von Speicherressourcen kombiniert werden.  Dieser einheitliche Cluster stellt sich externen Clients als ein einziges Speichersystem zur Verfügung und wird mit der NetApp Element Software verwaltet.
+
+Mithilfe der Element-Oberfläche, der API oder anderer Management-Tools können Sie die Speicherkapazität und Leistung des SolidFire Clusters überwachen und die Speicheraktivität in einer Multi-Tenant-Infrastruktur verwalten.
+
+
+
+== SolidFire Funktionen
+
+Ein Solidfire-System bietet folgende Funktionen:
+
+* Bietet leistungsstarken Speicher für Ihre groß angelegte, private Cloud-Infrastruktur
+* Bietet eine flexible Skalierbarkeit, die es Ihnen ermöglicht, sich ändernden Speicheranforderungen gerecht zu werden.
+* Nutzt eine API-gesteuerte Element-Softwareschnittstelle für das Speichermanagement
+* Gewährleistet die Leistung durch die Anwendung von Richtlinien zur Servicequalität.
+* Beinhaltet automatischen Lastausgleich über alle Knoten im Cluster
+* Automatische Neuausrichtung der Cluster beim Hinzufügen oder Entfernen von Knoten
+
+
+
+
+== SolidFire Einsatz
+
+Nutzen Sie von NetApp bereitgestellte und in die NetApp Element Software integrierte Speicherknoten.
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["Überblick über die SolidFire All-Flash-Speicherarchitektur"]
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_UI.html 
+summary: 'Mit der Verwaltungsknoten-Benutzeroberfläche(https://<mNodeIP>:442[] Sie können Änderungen an Netzwerk- und Clustereinstellungen vornehmen, Systemtests durchführen oder Systemdienstprogramme verwenden.' 
+keywords: 'netapp, management node ui, mnode ui, :442, Element' 
+---
+= Übersicht der Benutzeroberfläche des Verwaltungsknotens
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit der Verwaltungsknoten-Benutzeroberfläche(`https://<ManagementNodeIP>:442` Sie können Änderungen an Netzwerk- und Clustereinstellungen vornehmen, Systemtests durchführen oder Systemdienstprogramme verwenden.
+
+Aufgaben, die Sie mit der Benutzeroberfläche des Verwaltungsknotens ausführen können:
+
+* link:task_mnode_enable_alerts.html["Alarmüberwachung konfigurieren"]
+* link:task_mnode_settings.html["Ändern und testen Sie die Einstellungen des Management-Knotennetzwerks, des Clusters und des Systems."]
+* link:task_mnode_run_system_utilities.html["Führen Sie Systemdienstprogramme vom Verwaltungsknoten aus."]
+
+
+[discrete]
+== Weitere Informationen
+
+* link:task_mnode_access_ui.html["Greifen Sie auf den Verwaltungsknoten zu."]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

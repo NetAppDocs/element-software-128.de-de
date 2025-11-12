@@ -1,0 +1,553 @@
+---
+permalink: storage/reference_prereq_network_port_requirements.html 
+sidebar: sidebar 
+keywords: network port requirements, TCP ports, firewall, utilities, URL, access attempt, ICMP, MIP, SIP, MVIP, SVIP 
+summary: Möglicherweise müssen Sie die folgenden TCP-Ports durch die Edge-Firewall Ihres Rechenzentrums zulassen, damit Sie das System remote verwalten und Clients außerhalb Ihres Rechenzentrums die Verbindung zu Ressourcen ermöglichen können.  Je nachdem, wie Sie das System nutzen, werden einige dieser Anschlüsse möglicherweise nicht benötigt. 
+---
+= Anforderungen an den Netzwerkanschluss
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Möglicherweise müssen Sie die folgenden TCP- und UDP-Ports durch die Edge-Firewall Ihres Rechenzentrums zulassen, damit Sie das System remote verwalten und Clients außerhalb Ihres Rechenzentrums die Verbindung zu Ressourcen ermöglichen können.  Je nachdem, wie Sie das System nutzen, werden einige dieser Anschlüsse möglicherweise nicht benötigt.
+
+Sofern nicht anders angegeben, sind alle Ports TCP-Ports, und alle TCP-Ports müssen die Drei-Wege-Handshake-Kommunikation zwischen dem NetApp Support Server, dem Management-Knoten und den Knoten, auf denen die Element-Software ausgeführt wird, unterstützen.  Beispielsweise kommuniziert der Host auf einem Management-Knoten (Quelle) mit dem Host auf einem Storage-Cluster-MVIP-Ziel über TCP-Port 443, und der Zielhost kommuniziert über einen beliebigen Port zurück mit dem Quellhost.
+
+
+TIP: Aktivieren Sie ICMP zwischen dem Management-Knoten, den Knoten, auf denen die Element-Software läuft, und dem Cluster-MVIP.
+
+In der Tabelle werden folgende Abkürzungen verwendet:
+
+* MIP: Management-IP-Adresse, eine Adresse pro Knoten
+* SIP: Speicher-IP-Adresse, eine Adresse pro Knoten
+* MVIP: Virtuelle Management-IP-Adresse
+* SVIP: Virtuelle Speicher-IP-Adresse
+
+
+[cols="25,25,15,35"]
+|===
+| Quelle | Ziel | Hafen | Beschreibung 
+
+
+ a| 
+iSCSI-Clients
+ a| 
+Speichercluster MVIP
+ a| 
+443
+ a| 
+(Optional) Zugriff auf Benutzeroberfläche und API
+
+
+
+ a| 
+iSCSI-Clients
+ a| 
+Speichercluster SVIP
+ a| 
+3260
+ a| 
+Client-iSCSI-Kommunikation
+
+
+
+ a| 
+iSCSI-Clients
+ a| 
+Speicherknoten SIP
+ a| 
+3260
+ a| 
+Client-iSCSI-Kommunikation
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+`sfsupport.solidfire.com`
+ a| 
+22
+ a| 
+Reverse-SSH-Tunnel für Supportzugriff
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+Speicherknoten MIP
+ a| 
+22
+ a| 
+SSH-Zugriff für Support
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+DNS-Server
+ a| 
+53 TCP/UDP
+ a| 
+DNS-Suche
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+Speicherknoten MIP
+ a| 
+442
+ a| 
+UI- und API-Zugriff auf Speicherknoten und Element-Software-Upgrades
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+Speichercluster MVIP
+ a| 
+442
+ a| 
+UI- und API-Zugriff auf Speicherknoten und Element-Software-Upgrades
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+`monitoring.solidfire.com`
+ a| 
+443
+ a| 
+Speichercluster meldet an Active IQ
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+Speichercluster MVIP
+ a| 
+443
+ a| 
+UI- und API-Zugriff auf Speicherknoten und Element-Software-Upgrades
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+repo.netapp.com
+ a| 
+443
+ a| 
+Bietet Zugriff auf die für die Installation/Aktualisierung der lokalen Bereitstellung erforderlichen Komponenten.
+
+
+
+| Verwaltungsknoten | Speicherknoten BMC/IPMI | 623 UDP | RMCP-Port.  Dies ist für die Verwaltung von IPMI-fähigen Systemen erforderlich. 
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+Zeugenknoten
+ a| 
+9442
+ a| 
+API-Dienst zur Konfiguration pro Knoten
+
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+vCenter Server
+ a| 
+9443
+ a| 
+vCenter-Plug-in-Registrierung.  Der Hafen kann nach Abschluss der Registrierung geschlossen werden.
+
+
+
+ a| 
+SNMP-Server
+ a| 
+Speichercluster MVIP
+ a| 
+161 UDP
+ a| 
+SNMP-Abfrage
+
+
+
+ a| 
+SNMP-Server
+| Speicherknoten MIP  a| 
+161 UDP
+ a| 
+SNMP-Abfrage
+
+
+
+| Speicherknoten BMC/IPMI | Verwaltungsknoten | 623 UDP | RMCP-Port.  Dies ist für die Verwaltung von IPMI-fähigen Systemen erforderlich. 
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+DNS-Server
+ a| 
+53 TCP/UDP
+ a| 
+DNS-Suche
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Verwaltungsknoten
+ a| 
+80
+ a| 
+Element-Software-Upgrades
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+S3/Swift-Endpunkt
+ a| 
+80
+ a| 
+(Optional) HTTP-Kommunikation mit dem S3/Swift-Endpunkt für Datensicherung und Wiederherstellung
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+NTP-Server
+ a| 
+123 UDP
+ a| 
+NTP
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Verwaltungsknoten
+ a| 
+162 UDP
+ a| 
+(Optional) SNMP-Traps
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+SNMP-Server
+ a| 
+162 UDP
+ a| 
+(Optional) SNMP-Traps
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+LDAP-Server
+ a| 
+389 TCP/UDP
+ a| 
+(Optional) LDAP-Lookup
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Verwaltungsknoten
+ a| 
+443
+ a| 
+Elementspeicher-Upgrades
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Remote-Speichercluster MVIP
+ a| 
+443
+ a| 
+Remote-Replikationscluster-Kopplungskommunikation
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Remote-Speicherknoten MIP
+ a| 
+443
+ a| 
+Remote-Replikationscluster-Kopplungskommunikation
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+S3/Swift-Endpunkt
+ a| 
+443
+ a| 
+(Optional) HTTPS-Kommunikation mit dem S3/Swift-Endpunkt für Datensicherung und Wiederherstellung
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Verwaltungsknoten
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Syslog-Weiterleitung
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Syslog-Server
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Syslog-Weiterleitung
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+LDAPS-Server
+ a| 
+636 TCP/UDP
+ a| 
+LDAPS-Suche
+
+
+
+ a| 
+Speicherknoten MIP
+ a| 
+Remote-Speicherknoten MIP
+ a| 
+2181
+ a| 
+Intercluster-Kommunikation für die Remote-Replikation
+
+
+
+ a| 
+Speicherknoten SIP
+ a| 
+Remote-Speicherknoten SIP
+ a| 
+2181
+ a| 
+Intercluster-Kommunikation für die Remote-Replikation
+
+
+
+ a| 
+Speicherknoten SIP
+ a| 
+Speicherknoten SIP
+ a| 
+3260
+ a| 
+Internode iSCSI
+
+
+
+ a| 
+Speicherknoten SIP
+ a| 
+Remote-Speicherknoten SIP
+ a| 
+4000 bis 4020
+ a| 
+Datenübertragung zwischen entfernten Knoten bei der Replikation
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Verwaltungsknoten
+ a| 
+442
+ a| 
+HTTPS-UI-Zugriff auf den Verwaltungsknoten
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Speicherknoten MIP
+ a| 
+442
+ a| 
+HTTPS-Benutzeroberfläche und API-Zugriff auf den Speicherknoten
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Verwaltungsknoten
+ a| 
+443
+ a| 
+HTTPS-UI- und API-Zugriff auf den Verwaltungsknoten
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Speichercluster MVIP
+ a| 
+443
+ a| 
+HTTPS-Benutzeroberfläche und API-Zugriff auf den Speichercluster
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Speicherknoten-Basisplatinen-Management-Controller (BMC) / Intelligente Plattform-Management-Schnittstelle (IPMI) H410- und H600-Serie
+ a| 
+443
+ a| 
+HTTPS-Benutzeroberfläche und API-Zugriff auf die Fernsteuerung des Knotens
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Speicherknoten MIP
+ a| 
+443
+ a| 
+Erstellung eines HTTPS-Speicherclusters, Zugriff auf den Speichercluster nach der Bereitstellung über die Benutzeroberfläche
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Speicherknoten BMC/IPMI H410 und H600 Serie
+ a| 
+623 UDP
+ a| 
+Port des Remote Management Control Protocol.  Dies ist für die Verwaltung von IPMI-fähigen Systemen erforderlich.
+
+
+
+ a| 
+Systemadministrator-PC
+ a| 
+Zeugenknoten
+ a| 
+8080
+ a| 
+Witness Node – Web-Benutzeroberfläche pro Knoten
+
+
+
+ a| 
+vCenter Server
+ a| 
+Speichercluster MVIP
+ a| 
+443
+ a| 
+Zugriff auf die vCenter-Plug-in-API
+
+
+
+ a| 
+vCenter Server
+ a| 
+Fernbedienungsstecker
+ a| 
+8333
+ a| 
+Remote vCenter Plug-in-Dienst
+
+
+
+ a| 
+vCenter Server
+ a| 
+Verwaltungsknoten
+ a| 
+8443
+ a| 
+(Optional) vCenter Plug-in QoSSIOC-Dienst.
+
+
+
+ a| 
+vCenter Server
+ a| 
+Speichercluster MVIP
+ a| 
+8444
+ a| 
+vCenter VASA-Anbieterzugriff (nur VVols)
+
+
+
+ a| 
+vCenter Server
+ a| 
+Verwaltungsknoten
+ a| 
+9443
+ a| 
+vCenter-Plug-in-Registrierung.  Der Hafen kann nach Abschluss der Registrierung geschlossen werden.
+
+|===
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

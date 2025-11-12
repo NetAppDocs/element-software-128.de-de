@@ -1,0 +1,136 @@
+---
+permalink: try/task_use_demonode.html 
+sidebar: sidebar 
+keywords: element demo node, virtual machine, element software, element api, vmware deployment 
+summary: Element Demo Node ist eine VMware-VM-Version der Element-Software, die eine einfache Möglichkeit bietet, viele der wichtigsten Speicherfunktionen der NetApp HCI und SolidFire -Produkte zu demonstrieren. 
+---
+= Testen Sie die Speicherfunktionen mit dem Element Demo Node.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Element Demo Node"^]ist eine VMware Virtual Machine (VM)-Version der Element-Software, die eine einfache Möglichkeit bietet, viele der wichtigsten Speicherfunktionen der NetApp HCI und SolidFire -Produkte zu demonstrieren.  Der Demo-Knoten ermöglicht es Entwicklern, mit der Element-API zu programmieren, ohne dass physische Hardware erforderlich ist.  Es ist als OVA-Datei verpackt, um die Bereitstellung auf VMware zu vereinfachen.
+
+
+
+== Unterstützte Funktionen:
+
+Der Element Demo Node ist ausschließlich als Demonstrations- und Entwicklungswerkzeug gedacht.  Beachten Sie vor der Verwendung des Demo-Knotens die folgenden funktionalen Einschränkungen:
+
+* Der Element Demo Node unterstützt kein Clustering.  Es funktioniert nur als Einzelknoten-Cluster.
+* Es unterstützt keine Element-Upgrades.  Um eine neuere Version von Element zu testen, sollten Sie eine neue Demo-Node-VM installieren.
+* Es dient nicht dazu, die Speicherleistung zu demonstrieren.  Die auf dem Demo-Knoten beobachtete Leistung lässt in keiner Weise Rückschlüsse auf die Leistung auf den physischen Clustern zu.
+* Demo-Knoten können nicht zu NetApp HCI oder SolidFire -Clustern hinzugefügt werden.
+* VRF-VLANs werden nicht unterstützt (standardmäßige getaggte VLANs werden unterstützt).
+* Der Multi-Drive-Slice-Service (MDSS) wird nicht unterstützt.
+* Der Element Demo Node wird nur mit VMFS-Datenspeichern unterstützt.  VVols werden nicht unterstützt.
+* Die hardwarebasierte Konfigurations- und Überwachungsfunktionalität funktioniert nicht mit dem Demo-Knoten.
+* Es werden maximal 10 Snapshots pro Volume unterstützt.
+* Es unterstützt maximal 20 Konten pro Knoten/Cluster.
+* Es werden maximal 100 Bände pro Konto unterstützt.
+* Es werden maximal 200 vVols pro Konto unterstützt.
+* Es unterstützt eine maximale Speicherkapazität von 100 GiB.
+* Es unterstützt eine dauerhafte Cluster-Grenze von 3000 IOPS.
+
+
+
+NOTE: Alle anderen Softwarebeschränkungen von Element gelten weiterhin.  Weitere Einzelheiten finden Sie in den aktuellen Versionshinweisen der Element-Software.
+
+
+
+== VM Anforderungen
+
+* 240 GB Gesamtkapazität (Die Größe und Anzahl der virtuellen Festplatten für die VM kann nicht geändert werden.)  Zusätzlicher Speicher, der über den Hypervisor bereitgestellt wird, wird vom Gastbetriebssystem ignoriert.
+* 60 GB Root-Disk
+* Thick Provisioned/Eager Zeroed (eine 30-GB-Metadatenfestplatte oder drei 50-GB-Blockfestplatten) oder Thin Provisioned/Eager Zeroed (*empfohlen*) (eine 30-GB-Metadatenfestplatte oder drei 50-GB-Blockfestplatten)
+* Zwei vCPUs (vollständig reserviert)
+* 16 GB RAM (vollständig reserviert)
+* Ein einziger HBA für alle Festplatten, LSI Logic parallel
+* Zwei vNICs, beide vmxnet3 (eine für Management, eine für Speicher)
+
+
+
+
+== Host-Anforderungen
+
+* ESXi 6.0 oder 6.5 für Element Demo Node 11.7 VM
+* ESXi 6.5 für Element Demo Node 12.0 und 12.2 VMs
+* ESXi 6.7 und 7.0 für Element Demo Node 12.3 und 12.5 VMs
+* Mehrkern-64-Bit-Intel®-Architektur
+
+
+
+
+== Element-Demo-Knoten herunterladen
+
+Die Element Demo Node Software ist ein Satz von VMware-Dateien, die in einer .ova-Datei verpackt wurden.
+
+
+
+== Installieren Sie den Element Demo Node auf VMware ESXi
+
+Die Installation des Element Demo Node auf VMware ESXi umfasst die folgenden Aufgaben:
+
+* <<Netzwerkschnittstellen konfigurieren>>
+* <<Registrieren Sie den Demo-Knoten auf einem ESXi-Server>>
+* <<Starten Sie den Demo-Knoten auf einem ESXi-Server.>>
+
+
+
+
+=== Netzwerkschnittstellen konfigurieren
+
+Der Element Demo Node benötigt zwei separate virtuelle Maschinennetzwerke.  Einer dient dem Speicherdatenverkehr, der andere dem Verwaltungsdatenverkehr.  Sie sollten das Speichernetzwerk so konfigurieren, dass es Jumbo-Frames unterstützt.
+
+
+
+=== Registrieren Sie den Demo-Knoten auf einem ESXi-Server
+
+Um Element Demo Node auf einem ESXi-Server zu registrieren, sollten Sie die Demo-Node-.ova-Datei mit dem vSphere Client bereitstellen.
+
+.Schritte
+. Melden Sie sich beim vSphere Client an und wählen Sie den ESXi-Host aus dem Inventarbereich aus.
+. Wählen Sie *Datei* > *OVF-Vorlage bereitstellen*.
++
+Der Assistent zum Bereitstellen von OVF-Vorlagen wird gestartet.
+
+. Navigieren Sie auf der Seite *Vorlage auswählen* zu der heruntergeladenen OVA-Datei und wählen Sie *Öffnen*.
+. Wählen Sie *Weiter*.
+. Geben Sie auf der Seite *Name und Speicherort* einen Namen und einen Speicherort für die bereitgestellte Vorlage an und wählen Sie dann *Weiter*.
+. Navigieren Sie auf der Seite *Ressource auswählen* zu dem Speicherort, an dem Sie die Vorlage ausführen möchten, und wählen Sie *Weiter*.
+. Überprüfen Sie die Angaben und wählen Sie *Weiter*.
+. Wählen Sie auf der Seite „Speicherort auswählen“ den Speicherort für die Dateien der virtuellen Maschine aus und klicken Sie dann auf *Weiter*.
+. Ordnen Sie auf der Seite *Netzwerke auswählen* das in der OVA-Datei verwendete Netzwerk den beiden separaten virtuellen Maschinennetzwerken in Ihrem Inventar zu und wählen Sie *Weiter*.
+. Überprüfen Sie auf der Seite *Bereit zum Abschließen* die Details der virtuellen Maschine, die Sie erstellen, und wählen Sie dann *Fertigstellen*.
+
+
+
+NOTE: Die Bereitstellung des Demo-Knotens kann einige Minuten dauern.
+
+
+
+=== Starten Sie den Demo-Knoten auf einem ESXi-Server.
+
+Sie sollten die Demo-Node-VM starten, um über die VMware ESXi-Konsole auf Element zuzugreifen.
+
+.Schritte
+. Wählen Sie im vSphere Client die von Ihnen erstellte Demo-Knoten-VM aus.
+. Wählen Sie die Registerkarte *Zusammenfassung*, um die Details zu dieser VM anzuzeigen.
+. Wählen Sie *Einschalten*, um die VM zu starten.
+. Wählen Sie *Webkonsole starten*.
+. Verwenden Sie die TUI, um den Demo-Knoten zu konfigurieren. Weitere Informationen finden Sie unter link:../setup/concept_setup_configure_a_storage_node.html["Konfigurieren eines Speicherknotens"^].
+
+
+
+
+== Wie man Unterstützung erhält
+
+Der Element Demo Node wird auf freiwilliger Basis nach bestem Wissen und Gewissen zur Verfügung gestellt.  Bei Fragen zur Unterstützung können Sie diese im Forum posten. https://community.netapp.com/t5/Simulator-Discussions/bd-p/simulator-discussions["Element Demo Node Forum"^] Die
+
+
+
+== Weitere Informationen
+
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Downloadseite für Element Demo Node (Anmeldung erforderlich)"^]

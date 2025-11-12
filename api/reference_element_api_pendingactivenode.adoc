@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_pendingactivenode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingActiveNode 
+summary: Das pendingActiveNode-Objekt enthält Informationen über einen Knoten, der sich aktuell im Zustand pendingActive befindet, also zwischen den Zuständen pending und active.  Hierbei handelt es sich um Knoten, die aktuell auf das Werks-Software-Image zurückgesetzt werden.  Verwenden Sie die API-Methode ListPendingActiveNodes, um eine Liste dieser Informationen für alle pendingActive-Knoten zurückzugeben. 
+---
+= ausstehender aktiver Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das pendingActiveNode-Objekt enthält Informationen über einen Knoten, der sich aktuell im Zustand pendingActive befindet, also zwischen den Zuständen pending und active.  Hierbei handelt es sich um Knoten, die aktuell auf das Werks-Software-Image zurückgesetzt werden.  Verwenden Sie die `ListPendingActiveNodes` API-Methode zur Rückgabe einer Liste dieser Informationen für alle pendingActive-Knoten.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+aktiverKnotenschlüssel
+ a| 
+Ein eindeutiger Schlüssel, der es dem Knoten ermöglicht, nach erfolgreicher Softwareinstallation automatisch dem Cluster beizutreten.
+ a| 
+Schnur
+
+
+
+ a| 
+zugewieseneKnoten-ID
+ a| 
+Die dem Knoten zugewiesene Knoten-ID.
+ a| 
+Schnur
+
+
+
+ a| 
+asyncHandle
+ a| 
+Der asynchrone Methodenhandle, mit dem Sie den Status des Vorgangs abfragen können.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+cip
+ a| 
+Die dem Knoten zugewiesene Cluster-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+mip
+ a| 
+Die dem Knoten zugewiesene Management-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Knotensteckplatz
+ a| 
+Bei HCI-Plattformen der Buchstabe, der dem Chassis-Steckplatz entspricht, in dem sich dieser Knoten befindet ("A", "B", "C" oder "D").  Für Speicherplattformen ist dieser Wert null.
+ a| 
+Schnur
+
+
+
+ a| 
+ausstehende aktive Knoten-ID
+ a| 
+Die ausstehende Knoten-ID des Knotens.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Plattforminformationen
+ a| 
+Hardwareinformationen für den Knoten.  Mitglieder:
+
+* chassisType: Die Hardwareplattform des Knotens.
+* cpuModel: Das CPU-Modell der Hardwareplattform.
+* nodeMemoryGB: Die in der physischen Plattform installierte Speichermenge in GB.
+* nodeType: Der Name des Knotenmodells.
+* platformConfigVersion: Die für diese Knotenhardware konfigurierte Softwareversion.
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Rolle
+ a| 
+Die Rolle des Knotens im Cluster. Mögliche Werte:
+
+* Management
+* Storage
+* Berechnen
+* Zeuge
+
+ a| 
+
+
+
+ a| 
+Schluck
+ a| 
+Die dem Knoten zugewiesene Speicher-IP-Adresse (iSCSI).
+ a| 
+Schnur
+
+
+
+ a| 
+Softwareversion
+ a| 
+Die aktuell auf dem Knoten laufende Version der Element-Software.
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listpendingactivenodes.adoc[ListeAusstehendeAktiveKnoten]

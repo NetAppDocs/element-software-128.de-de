@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_protocolendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,protocolEndpoint 
+summary: Das protocolEndpoint-Objekt enthält die Attribute eines Protokollendpunkts.  Sie können diese Informationen für alle Protokollendpunkte im Cluster mithilfe der API-Methode ListProtocolEndpoints abrufen. 
+---
+= ProtokollEndpunkt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das protocolEndpoint-Objekt enthält die Attribute eines Protokollendpunkts.  Sie können diese Informationen für alle Protokollendpunkte im Cluster mithilfe des folgenden Befehls abrufen: `ListProtocolEndpoints` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+primäreAnbieter-ID
+ a| 
+Die ID des primären Protokollendpunktanbieterobjekts für den Protokollendpunkt.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+protocolEndpointID
+ a| 
+Die eindeutige ID des Protokollendpunkts.
+ a| 
+UUID
+
+
+
+ a| 
+ProtokollEndpunktStatus
+ a| 
+Der Status des Protokollendpunkts. Mögliche Werte:
+
+* Aktiv: Der Protokollendpunkt wird verwendet.
+* Start: Der Protokollendpunkt wird gestartet.
+* Ausfall: Der Protokollendpunkt ist ausgefallen.
+* Reserviert: Der Protokollendpunkt ist reserviert.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Anbietertyp
+ a| 
+Der Typ des Anbieters des Protokollendpunkts. Mögliche Werte:
+
+* Primär
+* Sekundär
+
+ a| 
+Schnur
+
+
+
+ a| 
+scsiNAADeviceID
+ a| 
+Die weltweit eindeutige SCSI-Gerätekennung für den Protokollendpunkt im NAA IEEE Registered Extended Format.
+ a| 
+Schnur
+
+
+
+ a| 
+secondaryProviderID
+ a| 
+Die ID des sekundären Protokollendpunktanbieterobjekts für den Protokollendpunkt.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]

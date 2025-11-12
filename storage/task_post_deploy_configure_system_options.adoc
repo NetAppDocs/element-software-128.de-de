@@ -1,0 +1,30 @@
+---
+permalink: storage/task_post_deploy_configure_system_options.html 
+sidebar: sidebar 
+keywords: deployment, post deployment options, credentials, components, FIPS security, passwords, MFA, multifactor authentication, mutli-factor authentication, security, EKM, key management, external key management, FIPS 
+summary: 'Nach der Einrichtung Ihres SolidFire -Systems können Sie optional einige Aufgaben ausführen.  Darüber hinaus können Sie Einstellungen für die Multi-Faktor-Authentifizierung, die Verwaltung externer Schlüssel und die Sicherheit gemäß den Federal Information Processing Standards (FIPS) konfigurieren.' 
+---
+= Konfigurieren Sie die SolidFire -Systemoptionen nach der Bereitstellung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Einrichtung Ihres SolidFire -Systems können Sie optional einige Aufgaben ausführen.
+
+Wenn Sie die Zugangsdaten im System ändern, möchten Sie möglicherweise wissen, welche Auswirkungen dies auf andere Komponenten hat.
+
+Darüber hinaus können Sie Einstellungen für die Multi-Faktor-Authentifizierung, die Verwaltung externer Schlüssel und die Sicherheit gemäß den Federal Information Processing Standards (FIPS) konfigurieren.  Sie sollten auch Ihre Passwörter gegebenenfalls aktualisieren.
+
+
+
+== Weitere Informationen
+
+* link:task_post_deploy_credentials.html["Ändern Sie die Anmeldeinformationen in NetApp HCI und NetApp SolidFire"]
+* link:reference_post_deploy_change_default_ssl_certificate.html["Ändern Sie das standardmäßige SSL-Zertifikat der Element-Software."]
+* link:task_post_deploy_credential_change_ipmi_password.html["Ändern Sie das IPMI-Passwort für die Knoten."]
+* link:task_system_manage_mfa_set_up_multi_factor_authentication.html["Aktivieren Sie die Multi-Faktor-Authentifizierung"]
+* link:concept_system_manage_key_get_started_with_external_key_management.html["Erste Schritte zur externen Schlüsselverwaltung"]
+* link:task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["Erstellen Sie einen Cluster, der FIPS-Laufwerke unterstützt."]
+

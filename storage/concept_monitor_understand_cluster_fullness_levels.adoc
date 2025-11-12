@@ -1,0 +1,57 @@
+---
+permalink: storage/concept_monitor_understand_cluster_fullness_levels.html 
+sidebar: sidebar 
+keywords: cluster fullness levels, understanding, fullness levels 
+summary: 'Der Cluster, auf dem die Element-Software läuft, generiert Clusterfehler, um den Speicheradministrator zu warnen, wenn die Kapazität des Clusters zur Neige geht.  Es gibt drei Stufen der Clusterauslastung, die alle in der NetApp Element -Benutzeroberfläche angezeigt werden: Warnung, Fehler und kritisch.' 
+---
+= Clusterfüllgrade verstehen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Cluster, auf dem die Element-Software läuft, generiert Clusterfehler, um den Speicheradministrator zu warnen, wenn die Kapazität des Clusters zur Neige geht.  Es gibt drei Stufen der Clusterauslastung, die alle in der NetApp Element -Benutzeroberfläche angezeigt werden: Warnung, Fehler und kritisch.
+
+Das System verwendet den Fehlercode BlockClusterFull, um vor einem vollen Blockspeicher im Cluster zu warnen.  Die Schweregrade der Clusterauslastung können Sie auf der Registerkarte „Warnungen“ der Element-Benutzeroberfläche einsehen.
+
+Die folgende Liste enthält Informationen zu den Schweregraden von BlockClusterFull:
+
+* *Warnung*
++
+Dies ist eine vom Kunden konfigurierbare Warnung, die erscheint, wenn die Blockkapazität des Clusters sich dem Fehlerschweregrad nähert.  Standardmäßig ist dieser Wert auf drei Prozent unterhalb des Fehlerniveaus eingestellt und kann über die Element-Benutzeroberfläche und die API angepasst werden.  Sie müssen entweder zusätzliche Kapazitäten schaffen oder so schnell wie möglich Kapazitäten freigeben.
+
+* *Fehler*
++
+Wenn sich der Cluster in diesem Zustand befindet, reicht die Kapazität im Cluster nicht aus, um den Double Helix-Datenschutz wiederherzustellen, falls ein Knoten ausfällt.  Die Erstellung neuer Volumes, Klone und Snapshots ist blockiert, solange sich der Cluster in diesem Zustand befindet.  Dies ist kein sicherer oder empfehlenswerter Zustand für einen Cluster. Sie müssen umgehend zusätzliche Kapazität hinzufügen oder Kapazität freigeben.
+
+* *Kritisch*
++
+Dieser kritische Fehler ist aufgetreten, weil der Cluster zu 100 Prozent ausgelastet ist.  Es befindet sich im Nur-Lese-Modus und es können keine neuen iSCSI-Verbindungen zum Cluster hergestellt werden.  Wenn diese Phase erreicht ist, müssen Sie umgehend zusätzliche Kapazitäten freigeben oder hinzufügen.
+
+
+
+Das System verwendet den Fehlercode MetadataClusterFull, um vor einem vollen Metadatenspeicher im Cluster zu warnen.  Den Füllstand des Cluster-Metadatenspeichers können Sie im Abschnitt „Clusterkapazität“ auf der Übersichtsseite der Registerkarte „Berichterstellung“ in der Element-Benutzeroberfläche einsehen.
+
+Die folgende Liste enthält Informationen zu den Schweregraden des MetadataClusterFull-Clusters:
+
+* *Warnung*
++
+Dies ist eine vom Kunden konfigurierbare Warnung, die erscheint, wenn die Metadatenkapazität des Clusters sich dem Fehlerschweregrad nähert.  Standardmäßig ist dieser Wert auf drei Prozent unterhalb des Fehlerwerts eingestellt und kann über die Element-API angepasst werden.  Sie müssen entweder zusätzliche Kapazitäten schaffen oder so schnell wie möglich Kapazitäten freigeben.
+
+* *Fehler*
++
+Wenn sich der Cluster in diesem Zustand befindet, reicht die Kapazität im Cluster nicht aus, um den Double Helix-Datenschutz wiederherzustellen, falls ein Knoten ausfällt.  Die Erstellung neuer Volumes, Klone und Snapshots ist blockiert, solange sich der Cluster in diesem Zustand befindet.  Dies ist kein sicherer oder empfehlenswerter Zustand für einen Cluster. Sie müssen umgehend zusätzliche Kapazität hinzufügen oder Kapazität freigeben.
+
+* *Kritisch*
++
+Dieser kritische Fehler ist aufgetreten, weil der Cluster zu 100 Prozent ausgelastet ist.  Es befindet sich im Nur-Lese-Modus und es können keine neuen iSCSI-Verbindungen zum Cluster hergestellt werden.  Wenn diese Phase erreicht ist, müssen Sie umgehend zusätzliche Kapazitäten freigeben oder hinzufügen.
+
+
+
+
+NOTE: Für Zwei-Knoten-Cluster gilt Folgendes:
+
+* Der Metadatenvollständigkeitsfehler liegt 20 % unterhalb des kritischen Wertes.
+* Der Blockfüllstandfehler liegt bei einem Blocklaufwerk (einschließlich ungenutzter Kapazität) unterhalb des kritischen Wertes; dies bedeutet, dass die Kapazität um zwei Blocklaufwerke unterhalb des kritischen Wertes liegt.
+

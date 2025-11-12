@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_enableencryptionatrest.html 
+sidebar: sidebar 
+keywords: encryption,enable,enabling,EnableEncryptionAtRest 
+summary: 'Mit der Methode EnableEncryptionAtRest können Sie die Advanced Encryption Standard (AES) 256-Bit-Verschlüsselung ruhender Daten im Cluster aktivieren, sodass der Cluster den für die Laufwerke auf jedem Knoten verwendeten Verschlüsselungsschlüssel verwalten kann.  Diese Funktion ist nicht standardmäßig aktiviert.' 
+---
+= EnableEncryptionAtRest
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `EnableEncryptionAtRest` Methode zur Aktivierung der Advanced Encryption Standard (AES) 256-Bit-Verschlüsselung ruhender Daten im Cluster, damit der Cluster den für die Laufwerke auf jedem Knoten verwendeten Verschlüsselungsschlüssel verwalten kann.  Diese Funktion ist nicht standardmäßig aktiviert.
+
+
+TIP: Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:../api/reference_element_api_getclusterinfo["Methode zum Abrufen von Clusterinformationen"^] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"^]Die
+
+
+NOTE: Diese Methode ermöglicht keine Softwareverschlüsselung im Ruhezustand.  Dies kann nur mit Hilfe des/derlink:../api/reference_element_api_createcluster.html["Methode zum Erstellen von Clustern"^] mit `enableSoftwareEncryptionAtRest` eingestellt auf `true` Die
+
+Wenn Sie die Verschlüsselung ruhender Daten aktivieren, verwaltet der Cluster die Verschlüsselungsschlüssel für die Laufwerke auf jedem Knoten im Cluster automatisch intern.
+
+Wenn eine keyProviderID angegeben wird, wird das Passwort entsprechend dem Typ des Schlüsselanbieters generiert und abgerufen.  Dies geschieht üblicherweise mithilfe eines KMIP-Schlüsselservers (Key Management Interoperability Protocol), wenn ein KMIP-Schlüsselanbieter verwendet wird.  Nach diesem Vorgang gilt der angegebene Provider als aktiv und kann erst gelöscht werden, wenn die Verschlüsselung ruhender Daten deaktiviert wird. `DisableEncryptionAtRest` Verfahren.
+
+
+NOTE: Wenn Sie einen Knotentyp mit einer Modellnummer haben, die auf "-NE" endet, `EnableEncryptionAtRest` Der Methodenaufruf schlägt mit der Antwort "Verschlüsselung nicht erlaubt" fehl.  „Cluster hat einen nicht verschlüsselbaren Knoten erkannt.“
+
+
+NOTE: Die Verschlüsselung sollte nur dann aktiviert oder deaktiviert werden, wenn der Cluster läuft und sich in einem fehlerfreien Zustand befindet.  Sie können die Verschlüsselung nach eigenem Ermessen und so oft wie nötig aktivieren oder deaktivieren.
+
+
+NOTE: Dieser Prozess ist asynchron und liefert eine Antwort, bevor die Verschlüsselung aktiviert wird.  Sie können die `GetClusterInfo` Methode, um das System abzufragen und festzustellen, wann der Prozess abgeschlossen ist.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+keyProviderID
+ a| 
+Die ID eines zu verwendenden KMIP-Schlüsselanbieters.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "EnableEncryptionAtRest",
+   "params": {},
+   "id": 1
+}
+----
+
+
+== Antwortbeispiele
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel der Methode EnableEncryptionAtRest ähnelt.  Es gibt kein Ergebnis zu berichten.
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+Während die Verschlüsselung ruhender Daten auf einem Cluster aktiviert wird, gibt GetClusterInfo ein Ergebnis zurück, das den Status der Verschlüsselung ruhender Daten ("encryptionAtRestState") als "aktiviert" beschreibt.  Sobald die Verschlüsselung ruhender Daten vollständig aktiviert ist, ändert sich der zurückgegebene Status in „aktiviert“.
+
+[listing]
+----
+{
+   "id": 1,
+      "result": {
+         "clusterInfo": {
+            "attributes": { },
+               "encryptionAtRestState": "enabling",
+            "ensemble": [
+               "10.10.5.94",
+               "10.10.5.107",
+               "10.10.5.108"
+            ],
+            "mvip": "192.168.138.209",
+            "mvipNodeID": 1,
+            "name": "Marshall",
+            "repCount": 2,
+            "svip": "10.10.7.209",
+            "svipNodeID": 1,
+            "uniqueID": "91dt"
+      }
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+[discrete]
+== Weitere Informationen
+
+* link:reference_element_api_secureerasedrives.html["SecureEraseDrives"]
+* link:reference_element_api_getclusterinfo.html["GetClusterInfo"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

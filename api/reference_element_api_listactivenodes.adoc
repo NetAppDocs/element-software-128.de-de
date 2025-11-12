@@ -1,0 +1,70 @@
+---
+permalink: api/reference_element_api_listactivenodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,active,node,nodes,listactivenodes 
+summary: Mit der Methode ListActiveNodes können Sie die Liste der aktuell aktiven Knoten im Cluster abrufen. 
+---
+= ListActiveNodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListActiveNodes` Methode zur Rückgabe der Liste der aktuell aktiven Knoten im Cluster.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Knoten
+ a| 
+Liste der aktiven Knoten im Cluster.
+ a| 
+xref:reference_element_api_node.adoc[Knoten]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListActiveNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_response_example_listactivenodes.adoc[ListActiveNodes]

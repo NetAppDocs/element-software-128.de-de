@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_pendingnode.html 
+sidebar: sidebar 
+keywords: object,objects,pendingNode 
+summary: Das pendingNode-Objekt enthält Informationen über einen Knoten, der einem Cluster hinzugefügt werden kann.  Verwenden Sie die API-Methode ListPendingNodes, um eine Liste dieser Informationen für alle ausstehenden Knoten zurückzugeben.  Sie können jeden der aufgelisteten Knoten mit Hilfe der AddNodes-API-Methode zu einem Cluster hinzufügen. 
+---
+= ausstehender Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das pendingNode-Objekt enthält Informationen über einen Knoten, der einem Cluster hinzugefügt werden kann.  Verwenden Sie die `ListPendingNodes` API-Methode zur Rückgabe einer Liste dieser Informationen für alle ausstehenden Knoten.  Sie können jeden der aufgeführten Knoten mithilfe der folgenden Methode zu einem Cluster hinzufügen: `AddNodes` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+cipi
+ a| 
+Die dem Knoten zugewiesene Cluster-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+aktiverKnotenschlüssel
+ a| 
+Ein eindeutiger Schlüssel, der es dem Knoten ermöglicht, nach erfolgreicher Softwareinstallation automatisch dem Cluster beizutreten.
+ a| 
+Schnur
+
+
+
+ a| 
+zugewieseneKnoten-ID
+ a| 
+Die dem Knoten zugewiesene Knoten-ID.
+ a| 
+Schnur
+
+
+
+ a| 
+asyncHandle
+ a| 
+Der asynchrone Methodenhandle, mit dem Sie den Status des Vorgangs abfragen können.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Chassisname
+ a| 
+Identifiziert ein Chassis eindeutig; identisch für alle Knoten in einem einzelnen Chassis.
+ a| 
+Schnur
+
+
+
+ a| 
+cip
+ a| 
+Die dem Knoten zugewiesene Cluster-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+mip
+ a| 
+Die dem Knoten zugewiesene Management-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Knotensteckplatz
+ a| 
+Bei HCI-Plattformen der Buchstabe, der dem Chassis-Steckplatz entspricht, in dem sich dieser Knoten befindet ("A", "B", "C" oder "D").  Für Speicherplattformen ist dieser Wert null.
+ a| 
+Schnur
+
+
+
+ a| 
+ausstehende aktive Knoten-ID
+ a| 
+Die ausstehende Knoten-ID des Knotens.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Plattforminformationen
+ a| 
+Hardwareinformationen für den Knoten.  Mitglieder:
+
+* chassisType: Die Hardwareplattform des Knotens.
+* cpuModel: Das CPU-Modell der Hardwareplattform.
+* nodeMemoryGB: Die in der physischen Plattform installierte Speichermenge in GB.
+* nodeType: Der Name des Knotenmodells.
+* platformConfigVersion: Die für diese Knotenhardware konfigurierte Softwareversion.
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Rolle
+ a| 
+Die Rolle des Knotens im Cluster. Mögliche Werte:
+
+* Management
+* Storage
+* Berechnen
+* Zeuge
+
+ a| 
+
+
+
+ a| 
+Schluck
+ a| 
+Die dem Knoten zugewiesene Speicher-IP-Adresse (iSCSI).
+ a| 
+Schnur
+
+
+
+ a| 
+Softwareversion
+ a| 
+Die aktuell auf dem Knoten laufende Version der Element-Software.
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_addnodes.adoc[AddNodes]
+* xref:reference_element_api_listpendingnodes.adoc[Liste der ausstehenden Knoten]
+

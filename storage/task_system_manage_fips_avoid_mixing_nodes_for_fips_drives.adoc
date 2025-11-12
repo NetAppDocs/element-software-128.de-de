@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_fips_avoid_mixing_nodes_for_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, nodes, drives, ear 
+summary: Um die Aktivierung der FIPS-Laufwerksfunktion vorzubereiten, sollten Sie vermeiden, Knoten zu mischen, bei denen einige FIPS-Laufwerke unterstützen und andere nicht. 
+---
+= Vermeiden Sie das Mischen von Knoten für FIPS-Laufwerke
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um die Aktivierung der FIPS-Laufwerksfunktion vorzubereiten, sollten Sie vermeiden, Knoten zu mischen, bei denen einige FIPS-Laufwerke unterstützen und andere nicht.
+
+Ein Cluster gilt als FIPS-konform, wenn folgende Bedingungen erfüllt sind:
+
+* Alle Laufwerke sind FIPS-zertifiziert.
+* Alle Knoten sind FIPS-Laufwerksknoten.
+* Die Verschlüsselung ruhender Daten (EAR) ist aktiviert.
+* Die FIPS-Laufwerksfunktion ist aktiviert.  Alle Laufwerke und Knoten müssen FIPS-fähig sein und die Verschlüsselung ruhender Daten muss aktiviert sein, um die FIPS-Laufwerksfunktion aktivieren zu können.
+

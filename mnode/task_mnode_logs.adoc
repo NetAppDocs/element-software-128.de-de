@@ -1,0 +1,80 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_logs.html 
+summary: Sie können Protokolle der auf dem Management-Knoten laufenden Dienste mithilfe der REST-API abrufen. 
+keywords: netapp, element, management node, management services, mnode, logs 
+---
+= Abrufen von Protokollen von Verwaltungsdiensten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Protokolle der auf dem Management-Knoten laufenden Dienste mithilfe der REST-API abrufen.  Sie können Protokolle von allen öffentlichen Diensten abrufen oder bestimmte Dienste angeben und Abfrageparameter verwenden, um die Rückgabeergebnisse genauer zu definieren.
+
+.Was du brauchst
+* Auf Ihrem Cluster läuft die NetApp Element Software 11.3 oder höher.
+* Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+
+
+.Schritte
+. Öffnen Sie die REST-API-Benutzeroberfläche auf dem Management-Knoten.
++
+** Beginnend mit Managementdienstleistungen 2.21.61:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/4/
+----
+** Für Management-Dienste 2.20.69 oder früher:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+
+
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID als mnode-client ein, falls der Wert noch nicht ausgefüllt ist.
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *GET /logs*.
+. Wählen Sie *Ausprobieren*.
+. Geben Sie die folgenden Parameter an:
++
+** `Lines`Geben Sie die Anzahl der Zeilen ein, die das Protokoll zurückgeben soll.  Dieser Parameter ist eine ganze Zahl mit dem Standardwert 1000.
++
+
+TIP: Vermeiden Sie das Anfordern des gesamten Verlaufs der Protokollinhalte, indem Sie die Anzahl der Zeilen auf 0 setzen.
+
+** `since`: Fügt einen ISO-8601-Zeitstempel für den Startpunkt der Dienstprotokolle hinzu.
++
+
+TIP: Verwenden Sie eine angemessene `since` Parameter beim Erfassen von Protokollen über längere Zeiträume.
+
+** `service-name`Geben Sie einen Dienstnamen ein.
++
+
+TIP: Verwenden Sie die `GET /services` Befehl zum Auflisten der Dienste auf dem Verwaltungsknoten.
+
+** `stopped`: Aufstellen `true` um Protokolle von gestoppten Diensten abzurufen.
+
+
+. Wählen Sie *Ausführen*.
+. Wählen Sie im Antworttext die Option *Herunterladen*, um die Protokollausgabe zu speichern.
+
+
+[discrete]
+== Weitere Informationen finden Sie hier.
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

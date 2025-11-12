@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_manage_vvol_delete_a_virtual_volume.html 
+sidebar: sidebar 
+keywords: virtual volume, delete, vvols, use Element UI to delete a vvol 
+summary: Obwohl virtuelle Volumes immer über die VMware Management Layer gelöscht werden sollten, ist die Funktionalität zum Löschen virtueller Volumes über die Element-Benutzeroberfläche aktiviert.  Ein virtuelles Volume sollte nur dann über die Element-Benutzeroberfläche gelöscht werden, wenn dies unbedingt erforderlich ist, beispielsweise wenn vSphere virtuelle Volumes auf SolidFire -Speichern nicht bereinigen kann. 
+---
+= Löschen eines virtuellen Volumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Obwohl virtuelle Volumes immer über die VMware Management Layer gelöscht werden sollten, ist die Funktionalität zum Löschen virtueller Volumes über die Element-Benutzeroberfläche aktiviert.  Ein virtuelles Volume sollte nur dann über die Element-Benutzeroberfläche gelöscht werden, wenn dies unbedingt erforderlich ist, beispielsweise wenn vSphere virtuelle Volumes auf SolidFire -Speichern nicht bereinigen kann.
+
+. Wählen Sie *VVols* > *Virtuelle Volumes*.
+. Klicken Sie auf das Aktionssymbol für das virtuelle Volume, das Sie löschen möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Löschen*.
++
+
+IMPORTANT: Sie sollten ein virtuelles Volume aus der VMware-Verwaltungsschicht löschen, um sicherzustellen, dass das virtuelle Volume vor dem Löschen ordnungsgemäß entbunden wird.  Ein virtuelles Volume sollte nur dann über die Element-Benutzeroberfläche gelöscht werden, wenn dies unbedingt erforderlich ist, beispielsweise wenn vSphere virtuelle Volumes auf SolidFire -Speichern nicht bereinigen kann.  Wenn Sie ein virtuelles Volume über die Element-Benutzeroberfläche löschen, wird das Volume sofort endgültig entfernt.
+
+. Bestätigen Sie die Aktion.
+. Aktualisieren Sie die Liste der virtuellen Volumes, um zu bestätigen, dass das virtuelle Volume entfernt wurde.
+. *Optional*: Wählen Sie *Berichterstellung* > *Ereignisprotokoll*, um zu bestätigen, dass die Bereinigung erfolgreich war.
+

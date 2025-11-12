@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_manage_volumes_assign_luns_to_fibre_channel_volumes.html 
+sidebar: sidebar 
+keywords: volumes, fc, luns, access group, assign 
+summary: Sie können die LUN-Zuordnung für ein Fibre Channel-Volume in einer Volume-Zugriffsgruppe ändern.  Sie können Fibre Channel-Volume-LUN-Zuweisungen auch vornehmen, wenn Sie eine Volume-Zugriffsgruppe erstellen. 
+---
+= LUNs Fibre Channel-Volumes zuweisen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die LUN-Zuordnung für ein Fibre Channel-Volume in einer Volume-Zugriffsgruppe ändern.  Sie können Fibre Channel-Volume-LUN-Zuweisungen auch vornehmen, wenn Sie eine Volume-Zugriffsgruppe erstellen.
+
+Die Zuweisung neuer Fibre Channel LUNs ist eine fortgeschrittene Funktion und kann unvorhersehbare Auswirkungen auf den angeschlossenen Host haben.  Beispielsweise wird die neue LUN-ID möglicherweise nicht automatisch auf dem Host erkannt, und der Host muss möglicherweise erneut gescannt werden, um die neue LUN-ID zu ermitteln.
+
+. Wählen Sie *Verwaltung* > *Zugriffsgruppen*.
+. Klicken Sie auf das Aktionssymbol für die Zugriffsgruppe, die Sie bearbeiten möchten.
+. Im daraufhin angezeigten Menü wählen Sie **Bearbeiten**.
+. Klicken Sie im Dialogfeld „Volume-Zugriffsgruppe bearbeiten“ unter „LUN-IDs zuweisen“ auf den Pfeil in der Liste „LUN-Zuweisungen“.
+. Für jedes Volume in der Liste, dem Sie eine LUN zuweisen möchten, geben Sie einen neuen Wert in das entsprechende Feld *LUN* ein.
+. Klicken Sie auf *Änderungen speichern*.
+

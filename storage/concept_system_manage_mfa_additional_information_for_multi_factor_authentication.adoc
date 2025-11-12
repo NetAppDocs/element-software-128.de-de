@@ -1,0 +1,32 @@
+---
+permalink: storage/concept_system_manage_mfa_additional_information_for_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: mfa, idp, certificates, api method 
+summary: Beachten Sie bitte die folgenden Einschränkungen im Zusammenhang mit der Multi-Faktor-Authentifizierung. 
+---
+= Zusätzliche Informationen zur Multi-Faktor-Authentifizierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Beachten Sie bitte die folgenden Einschränkungen im Zusammenhang mit der Multi-Faktor-Authentifizierung.
+
+* Um abgelaufene IdP-Zertifikate zu aktualisieren, müssen Sie mit einem Nicht-IdP-Administratorbenutzer die folgende API-Methode aufrufen: `UpdateIdpConfiguration`
+* MFA ist nicht kompatibel mit Zertifikaten, die weniger als 2048 Bit lang sind.  Standardmäßig wird auf dem Cluster ein 2048-Bit-SSL-Zertifikat erstellt.  Sie sollten vermeiden, beim Aufruf der API-Methode ein kleineres Zertifikat zu verwenden: `SetSSLCertificate`
++
+
+NOTE: Wenn der Cluster vor dem Upgrade ein Zertifikat mit weniger als 2048 Bit verwendet, muss das Clusterzertifikat nach dem Upgrade auf Element 12.0 oder höher durch ein Zertifikat mit mindestens 2048 Bit ersetzt werden.
+
+* IdP-Administratorbenutzer können nicht verwendet werden, um API-Aufrufe direkt durchzuführen (z. B. über SDKs oder Postman) oder für andere Integrationen (z. B. OpenStack Cinder oder vCenter Plug-in) verwendet zu werden.  Fügen Sie entweder LDAP-Cluster-Administratorbenutzer oder lokale Cluster-Administratorbenutzer hinzu, wenn Sie Benutzer erstellen müssen, die über diese Berechtigungen verfügen.
+
+
+
+
+== Weitere Informationen
+
+* link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

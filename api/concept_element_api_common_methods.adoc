@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_common_methods.html 
+sidebar: sidebar 
+keywords: common,methods 
+summary: Gängige Methoden sind Methoden, die verwendet werden, um Informationen über den Speichercluster, die API selbst oder laufende API-Operationen abzurufen. 
+---
+= Gängige Methoden
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Gängige Methoden sind Methoden, die verwendet werden, um Informationen über den Speichercluster, die API selbst oder laufende API-Operationen abzurufen.
+
+* xref:reference_element_api_getapi.adoc[GetAPI]
+* xref:reference_element_api_getasyncresult.adoc[GetAsyncResult]
+* xref:reference_element_api_getcompletestats.adoc[Vollständige Statistiken abrufen]
+* xref:reference_element_api_getlimits.adoc[GetLimits]
+* xref:reference_element_api_getorigin.adoc[GetOrigin]
+* xref:reference_element_api_getrawstats.adoc[GetRawStats]
+* xref:reference_element_api_listasyncresults.adoc[ListAsyncResults]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

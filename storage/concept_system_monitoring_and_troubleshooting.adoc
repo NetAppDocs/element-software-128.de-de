@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: Sie müssen das System zu Diagnosezwecken überwachen und Informationen über Leistungstrends und den Status verschiedener Systemvorgänge erhalten.  Möglicherweise müssen Sie aus Wartungsgründen einzelne Nodes oder SSDs austauschen. 
+---
+= Beheben Sie Systemprobleme
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen das System zu Diagnosezwecken überwachen und Informationen über Leistungstrends und den Status verschiedener Systemvorgänge erhalten.  Möglicherweise müssen Sie aus Wartungsgründen einzelne Nodes oder SSDs austauschen.
+
+* link:task_monitor_information_about_system_events.html["Informationen zu Systemereignissen anzeigen"]
+* link:reference_monitor_status_of_running_tasks.html["Status der laufenden Aufgaben anzeigen"]
+* link:task_monitor_system_alerts.html["Systemwarnungen anzeigen"]
+* link:task_monitor_node_performance_activity.html["Knotenleistungsaktivität anzeigen"]
+* link:task_monitor_volume_performance.html["Lautstärkeleistung anzeigen"]
+* link:task_monitor_iscsi_sessions.html["iSCSI-Sitzungen anzeigen"]
+* link:task_monitor_fibre_channel_sessions.html["Fibre Channel-Sitzungen ansehen"]
+* link:concept_troubleshoot_drives.html["Fehlerbehebung bei Laufwerken"]
+* link:concept_remove_nodes_from_cluster.html["Fehlerbehebung an Knoten"]
+* link:concept_per_node_work_with_utilities.html["Arbeiten Sie mit knotenspezifischen Dienstprogrammen für Speicherknoten."]
+* link:concept_mnode_work_with_the_management_node.html["Arbeiten Sie mit dem Management-Knoten"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["Clusterfüllgrade verstehen"]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

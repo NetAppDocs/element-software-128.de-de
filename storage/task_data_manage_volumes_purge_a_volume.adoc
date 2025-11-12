@@ -1,0 +1,51 @@
+---
+permalink: storage/task_data_manage_volumes_purge_a_volume.html 
+sidebar: sidebar 
+keywords: volumes, purge a volume 
+summary: Wenn ein Volume gelöscht wird, wird es endgültig aus dem System entfernt.  Alle Daten im Datenträger sind verloren gegangen. 
+---
+= Ein Volumen säubern
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn ein Volume gelöscht wird, wird es endgültig aus dem System entfernt.  Alle Daten im Datenträger sind verloren gegangen.
+
+Das System löscht gelöschte Datenträger automatisch acht Stunden nach dem Löschen.  Wenn Sie jedoch ein Volume vor dem geplanten Zeitpunkt löschen möchten, ist dies möglich.
+
+
+NOTE: Wenn Sie eine große Anzahl von Volumes auf einmal löschen oder wenn die zu löschenden Volumes jeweils viele zugehörige Snapshots haben, kann der Löschvorgang fehlschlagen und den Fehler "xDBConnectionLoss" zurückgeben, der im API-Protokoll in der Element-Weboberfläche angezeigt wird.  Sollte dies der Fall sein, versuchen Sie die Bereinigung mit weniger Datenmengen erneut.
+
+. Wählen Sie *Verwaltung* > *Volumes*.
+. Klicken Sie auf die Schaltfläche *Gelöscht*.
+. Führen Sie die folgenden Schritte aus, um ein einzelnes Volume oder mehrere Volumes zu löschen.
++
+|===
+
+
+| Option | Schritte 
+
+
+ a| 
+Löschen Sie einen einzelnen Band
+ a| 
+.. Klicken Sie auf das Aktionssymbol für das Volume, das Sie leeren möchten.
+.. Klicken Sie auf *Löschen*.
+.. Bestätigen Sie die Aktion.
+
+
+
+
+ a| 
+Mehrere Datenträger löschen
+ a| 
+.. Wählen Sie die Volumes aus, die Sie löschen möchten.
+.. Klicken Sie auf *Massenaktionen*.
+.. Wählen Sie im daraufhin angezeigten Menü die Option *Löschen*.
+.. Bestätigen Sie die Aktion.
+
+
+|===
+

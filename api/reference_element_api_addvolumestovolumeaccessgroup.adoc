@@ -1,0 +1,126 @@
+---
+permalink: api/reference_element_api_addvolumestovolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,volumes,adding,add,access,group,addvolumestovolumeaccessgroup 
+summary: Mit der Methode AddVolumesToVolumeAccessGroup können Sie Datenträger zu einer bestimmten Datenträgerzugriffsgruppe hinzufügen. 
+---
+= AddVolumesToVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `AddVolumesToVolumeAccessGroup` Methode zum Hinzufügen von Datenträgern zu einer bestimmten Datenträgerzugriffsgruppe.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Bände
+ a| 
+Liste der Volume-IDs, die der Volume-Zugriffsgruppe hinzugefügt werden sollen.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+VolumeAccessGroupID der Volume-Zugriffsgruppe, der Volumes hinzugefügt werden.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+volumeAccessGroup
+ a| 
+Ein Objekt, das Informationen über die neu geänderte Datenträgerzugriffsgruppe enthält.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "AddVolumesToVolumeAccessGroup",
+   "params": {
+      "volumeAccessGroupID": 96,
+      "volumes": [1,2]
+   },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        346
+      ],
+      "initiatorIDs": [
+        116,
+        117
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian:01:181324777",
+        "iqn.1993-08.org.debian:01:181324888"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        1,
+        2
+      ]
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

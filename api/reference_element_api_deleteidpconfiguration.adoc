@@ -1,0 +1,89 @@
+---
+permalink: api/reference_element_api_deleteidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,delete 
+summary: Mit der Methode DeleteIdpConfiguration können Sie eine bestehende Konfiguration eines Drittanbieter-IdP für den Cluster löschen.  Durch das Löschen der letzten IdP-Konfiguration wird das SAML-Dienstanbieterzertifikat aus dem Cluster entfernt. 
+---
+= Idp-Konfiguration löschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DeleteIdpConfiguration` Methode zum Löschen einer bestehenden Konfiguration eines Drittanbieter-IdP für den Cluster.  Durch das Löschen der letzten IdP-Konfiguration wird das SAML-Dienstanbieterzertifikat aus dem Cluster entfernt.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+idpConfigurationID
+ a| 
+UUID für die IdP-Konfiguration des Drittanbieters.
+ a| 
+UUID
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+idpName
+ a| 
+Name, der zur Identifizierung und zum Abruf eines IdP-Anbieters für SAML 2.0 Single Sign-On verwendet wird.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "DeleteIdpConfiguration",
+  "params": {
+    "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+    "idpName": "https://provider.name.url.com"
+  }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "result":{}
+}
+----
+
+
+== Neu seit Version
+
+12,0

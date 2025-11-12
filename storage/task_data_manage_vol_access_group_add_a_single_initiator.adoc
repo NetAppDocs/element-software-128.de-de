@@ -1,0 +1,66 @@
+---
+permalink: storage/task_data_manage_vol_access_group_add_a_single_initiator.html 
+sidebar: sidebar 
+keywords: initiator, add to volume access group, access groups, add single initiator, create initiator 
+summary: Sie können einer bestehenden Volume-Zugriffsgruppe einen Initiator hinzufügen. 
+---
+= Fügen Sie einer Volume-Zugriffsgruppe einen einzelnen Initiator hinzu.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einer bestehenden Volume-Zugriffsgruppe einen Initiator hinzufügen.
+
+Wenn Sie einen Initiator zu einer Volume-Zugriffsgruppe hinzufügen, hat der Initiator Zugriff auf alle Volumes in dieser Volume-Zugriffsgruppe.
+
+
+TIP: Den Initiator für jedes Volume finden Sie, indem Sie auf das Symbol „Aktionen“ klicken und dann in der Liste der aktiven Volumes die Option „Details anzeigen“ für das jeweilige Volume auswählen.
+
+Bei Verwendung von initiatorbasiertem CHAP können Sie CHAP-Anmeldeinformationen für einen einzelnen Initiator in einer Volume-Zugriffsgruppe hinzufügen, was für mehr Sicherheit sorgt.  Dies ermöglicht es Ihnen, diese Option auf bereits vorhandene Datenträgerzugriffsgruppen anzuwenden.
+
+.Schritte
+. Klicken Sie auf *Verwaltung* > *Zugriffsgruppen*.
+. Klicken Sie auf das Symbol *Aktionen* für die Zugriffsgruppe, die Sie bearbeiten möchten.
+. Klicken Sie auf *Bearbeiten*.
+. Um einen Fibre-Channel-Initiator zur Volume-Zugriffsgruppe hinzuzufügen, führen Sie die folgenden Schritte aus:
++
+.. Unter „Initiatoren hinzufügen“ wählen Sie einen vorhandenen Fibre Channel-Initiator aus der Liste *Ungebundene Fibre Channel-Initiatoren* aus.
+.. Klicken Sie auf *FC-Initiator hinzufügen*.
++
+
+NOTE: Sie können während dieses Schritts einen Initiator erstellen, indem Sie auf den Link *Initiator erstellen* klicken, einen Initiatornamen eingeben und auf *Erstellen* klicken.  Das System fügt den Initiator nach dessen Erstellung automatisch der Liste *Initiatoren* hinzu.
+
++
+Ein Beispiel für das Format sieht wie folgt aus:
+
+
+
++
+[listing]
+----
+5f:47:ac:c0:5c:74:d4:02
+----
+. Um einen iSCSI-Initiator zur Volume-Zugriffsgruppe hinzuzufügen, wählen Sie unter „Initiatoren hinzufügen“ einen vorhandenen Initiator aus der Liste „Initiatoren“ aus.
++
+
+NOTE: Sie können während dieses Schritts einen Initiator erstellen, indem Sie auf den Link *Initiator erstellen* klicken, einen Initiatornamen eingeben und auf *Erstellen* klicken.  Das System fügt den Initiator nach dessen Erstellung automatisch der Liste *Initiatoren* hinzu.
+
++
+Das zulässige Format eines Initiator-IQN ist wie folgt: iqn.yyyy-mm, wobei y und m Ziffern sind, gefolgt von einem Text, der nur Ziffern, Kleinbuchstaben, einen Punkt (.), einen Doppelpunkt (:) oder einen Bindestrich (-) enthalten darf.
+
++
+Ein Beispiel für das Format sieht wie folgt aus:
+
++
+[listing]
+----
+iqn.2010-01.com.solidfire:c2r9.fc0.2100000e1e09bb8b
+----
++
+
+TIP: Den Initiator-IQN für jedes Volume finden Sie auf der Seite *Verwaltung* > *Volumes* Aktive Volumes, indem Sie auf das Symbol Aktionen klicken und dann *Details anzeigen* für das Volume auswählen.
+
+. Klicken Sie auf *Änderungen speichern*.
+

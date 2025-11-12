@@ -1,0 +1,186 @@
+---
+permalink: api/reference_element_api_getnetworkinterface.html 
+sidebar: sidebar 
+keywords: nodes,node,network,interface,get,getting,getnetworkinterface 
+summary: Mit der Methode GetNetworkInterface können Sie Informationen über eine Netzwerkschnittstelle auf einem Knoten abrufen. 
+---
+= GetNetworkInterface
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetNetworkInterface` Methode zum Abrufen von Informationen über eine Netzwerkschnittstelle auf einem Knoten.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Schnittstelle
+ a| 
+Der Name der Schnittstelle, über die Informationen für jeden Knoten abgerufen werden sollen. Mögliche Werte:
+
+* Bond1G
+* Bond10G
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Gewalt
+ a| 
+Setzen Sie diesen Parameter auf „true“, um das Programm auf allen Knoten im Cluster auszuführen.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Knoten
+ a| 
+Ein Array von Objekten, die die Schnittstelle für jeden Speicherknoten im Speichercluster beschreiben.  Jedes Objekt innerhalb des Arrays enthält die folgenden Elemente:
+
+* nodeID: (Ganzzahl) Die ID des Speicherknotens im Speichercluster, auf den sich die Schnittstelleninformationen beziehen.
+* Ergebnis: (xref:reference_element_api_networkinterface.adoc[Netzwerkschnittstelle] ) Schnittstellenkonfigurationsinformationen für diesen Speicherknoten.
+
+ a| 
+JSON-Objektarray
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "GetNetworkInterface",
+	"params": {
+		"interface": "Bond1G",
+		"force": true
+		},
+	"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"nodes": [
+			{
+				"nodeID": 1,
+				"result": {
+					"interface": {
+						"address": "10.117.64.32",
+						"addressV6": "::",
+						"broadcast": "10.117.79.255",
+						"macAddress": "90:b1:1c:42:e0:1e",
+						"mtu": 1500,
+						"name": "Bond1G",
+						"namespace": false,
+						"netmask": "255.255.240.0",
+						"status": "UpAndRunning",
+						"type": "BondMaster",
+						"virtualNetworkTag": 0
+					}
+				}
+			},
+			{
+				"nodeID": 2,
+				"result": {
+					"interface": {
+						"address": "10.117.64.35",
+						"addressV6": "::",
+						"broadcast": "10.117.79.255",
+						"macAddress": "d4:ae:52:7a:ae:23",
+						"mtu": 1500,
+						"name": "Bond1G",
+						"namespace": false,
+						"netmask": "255.255.240.0",
+						"status": "UpAndRunning",
+						"type": "BondMaster",
+						"virtualNetworkTag": 0
+					}
+				}
+			},
+			{
+				"nodeID": 3,
+				"result": {
+					"interface": {
+						"address": "10.117.64.39",
+						"addressV6": "::",
+						"broadcast": "10.117.79.255",
+						"macAddress": "c8:1f:66:f0:9d:17",
+						"mtu": 1500,
+						"name": "Bond1G",
+						"namespace": false,
+						"netmask": "255.255.240.0",
+						"status": "UpAndRunning",
+						"type": "BondMaster",
+						"virtualNetworkTag": 0
+					}
+				}
+			},
+			{
+				"nodeID": 4,
+				"result": {
+					"interface": {
+						"address": "10.117.64.107",
+						"addressV6": "::",
+						"broadcast": "10.117.79.255",
+						"macAddress": "b8:ca:3a:f5:24:f8",
+						"mtu": 1500,
+						"name": "Bond1G",
+						"namespace": false,
+						"netmask": "255.255.240.0",
+						"status": "UpAndRunning",
+						"type": "BondMaster",
+						"virtualNetworkTag": 0
+					}
+				}
+			}
+		]
+	}
+}
+----
+
+
+== Neu seit Version
+
+9,6

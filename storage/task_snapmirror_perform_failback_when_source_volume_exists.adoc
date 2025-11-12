@@ -1,0 +1,40 @@
+---
+permalink: storage/task_snapmirror_perform_failback_when_source_volume_exists.html 
+sidebar: sidebar 
+keywords: element, ui, failback, perform, source volume, snapmirror 
+summary: Sie können das ursprüngliche Quellvolume mithilfe der NetApp Element -Benutzeroberfläche erneut synchronisieren und ein Failback durchführen.  Dieses Verfahren ist anwendbar, wenn das ursprüngliche Quellvolume noch vorhanden ist. 
+---
+= Führen Sie ein Failback durch, wenn das Quellvolume noch vorhanden ist.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können das ursprüngliche Quellvolume mithilfe der NetApp Element -Benutzeroberfläche erneut synchronisieren und ein Failback durchführen.  Dieses Verfahren ist anwendbar, wenn das ursprüngliche Quellvolume noch vorhanden ist.
+
+. Suchen Sie in der Element-Benutzeroberfläche die Beziehung, die Sie für das Failover unterbrochen haben.
+. Klicken Sie auf das Symbol „Aktionen“ und anschließend auf *Umgekehrte Resynchronisierung*.
+. Bestätigen Sie die Aktion.
++
+
+NOTE: Der Vorgang „Reverse Resync“ erzeugt eine neue Beziehung, in der die Rollen des ursprünglichen Quell- und Zielvolumes vertauscht werden (da die ursprüngliche Beziehung erhalten bleibt, entstehen dadurch zwei Beziehungen).  Alle neuen Daten vom ursprünglichen Zielvolume werden im Rahmen der umgekehrten Resynchronisierungsoperation auf das ursprüngliche Quellvolume übertragen.  Sie können weiterhin auf das aktive Volume auf der Zielseite zugreifen und Daten darauf schreiben, müssen jedoch alle Hosts vom Quellvolume trennen und ein SnapMirror Update durchführen, bevor Sie wieder auf das ursprüngliche primäre Volume umleiten.
+
+. Klicken Sie auf das Aktionssymbol der soeben erstellten inversen Beziehung und klicken Sie dann auf *Aktualisieren*.
++
+Nachdem Sie die umgekehrte Resynchronisierung abgeschlossen und sichergestellt haben, dass auf der Zielseite keine aktiven Sitzungen mit dem Volume verbunden sind und sich die neuesten Daten auf dem ursprünglichen primären Volume befinden, können Sie die folgenden Schritte ausführen, um das Failback abzuschließen und das ursprüngliche primäre Volume zu reaktivieren:
+
+. Klicken Sie auf das Aktionssymbol der inversen Beziehung und klicken Sie auf *Trennen*.
+. Klicken Sie auf das Aktionssymbol der ursprünglichen Beziehung und klicken Sie auf *Neu synchronisieren*.
++
+
+NOTE: Das ursprüngliche primäre Volume kann nun wieder eingebunden werden, um die Produktionsworkloads auf dem ursprünglichen primären Volume wieder aufzunehmen.  Die ursprüngliche SnapMirror Replikation wird gemäß den für die Beziehung konfigurierten Richtlinien und Zeitplänen fortgesetzt.
+
+. Nachdem Sie bestätigt haben, dass der ursprüngliche Beziehungsstatus "`snapmirrored`" lautet, klicken Sie auf das Aktionssymbol der inversen Beziehung und anschließend auf *Löschen*.
+
+
+
+
+== Weitere Informationen
+
+xref:concept_snapmirror_failback_scenarios.adoc[SnapMirror Failback-Szenarien]

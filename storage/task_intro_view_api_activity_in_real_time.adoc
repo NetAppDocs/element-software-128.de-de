@@ -1,0 +1,43 @@
+---
+permalink: storage/task_intro_view_api_activity_in_real_time.html 
+sidebar: sidebar 
+keywords: solidfire api, element api, element os, element, viewing the API log, viewing API calls 
+summary: Das Element-System nutzt die NetApp Element API als Grundlage für seine Funktionen und Funktionalität.  Die Element-Benutzeroberfläche ermöglicht es Ihnen, während der Nutzung der Schnittstelle verschiedene Arten von Echtzeit-API-Aktivitäten im System anzuzeigen.  Mit dem API-Protokoll können Sie benutzerinitiierte und systemseitige Hintergrundaktivitäten der API sowie API-Aufrufe auf der Seite, die Sie gerade anzeigen, einsehen. 
+---
+= API-Aktivität anzeigen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Element-System nutzt die NetApp Element API als Grundlage für seine Funktionen und Funktionalität.  Die Element-Benutzeroberfläche ermöglicht es Ihnen, während der Nutzung der Schnittstelle verschiedene Arten von Echtzeit-API-Aktivitäten im System anzuzeigen.  Mit dem API-Protokoll können Sie benutzerinitiierte und systemseitige Hintergrundaktivitäten der API sowie API-Aufrufe auf der Seite, die Sie gerade anzeigen, einsehen.
+
+Mithilfe des API-Protokolls können Sie ermitteln, welche API-Methoden für bestimmte Aufgaben verwendet werden, und sehen, wie Sie die API-Methoden und -Objekte zum Erstellen benutzerdefinierter Anwendungen verwenden können.
+
+Weitere Informationen zu den einzelnen Methoden finden Sie unter link:../api/concept_element_api_about_the_api.html["Element Software API-Referenz"]Die
+
+. Klicken Sie in der Navigationsleiste der Element-Benutzeroberfläche auf *API-Protokoll*.
+. Um den im API-Protokollfenster angezeigten API-Aktivitätstyp zu ändern, führen Sie die folgenden Schritte aus:
++
+.. Wählen Sie *Anfragen*, um den API-Anfrageverkehr anzuzeigen.
+.. Wählen Sie *Antworten*, um den API-Antwortverkehr anzuzeigen.
+.. Filtern Sie die Arten des API-Traffics, indem Sie eine der folgenden Optionen auswählen:
++
+*** *Benutzerinitiiert*: API-Traffic, der durch Ihre Aktivitäten während dieser Web-UI-Sitzung entsteht.
+*** *Hintergrundabfrage*: API-Datenverkehr, der durch Systemaktivitäten im Hintergrund generiert wird.
+*** *Aktuelle Seite*: API-Traffic, der durch Aufgaben auf der Seite generiert wird, die Sie gerade ansehen.
+
+
+
+
+
+
+
+
+== Weitere Informationen
+
+* link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

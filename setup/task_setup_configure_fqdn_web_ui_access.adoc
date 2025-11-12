@@ -1,0 +1,219 @@
+---
+permalink: setup/task_setup_configure_fqdn_web_ui_access.html 
+sidebar: sidebar 
+keywords: netapp, element, fqdn, ui, access, web, administration 
+summary: Erfahren Sie, wie Sie den FQDN-Web-UI-Zugriff Ihres Systems konfigurieren, entfernen und Fehler beheben. 
+---
+= Konfiguration des Zugriffs auf die Web-Benutzeroberfläche für vollqualifizierte Domänennamen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire All-Flash-Speicher mit NetApp Element Software 12.2 oder höher ermöglicht den Zugriff auf die Web-Oberflächen des Speicherclusters über den vollqualifizierten Domänennamen (FQDN).  Wenn Sie den FQDN verwenden möchten, um auf Web-Benutzeroberflächen wie die Element-Web-UI, die Benutzeroberfläche pro Knoten oder die Verwaltungsknoten-UI zuzugreifen, müssen Sie zuerst eine Speichercluster-Einstellung hinzufügen, um den vom Cluster verwendeten FQDN zu identifizieren.
+
+Dieser Prozess ermöglicht es dem Cluster, eine Anmeldesitzung korrekt umzuleiten und die Integration mit externen Diensten wie Schlüsselmanagern und Identitätsanbietern für die Multi-Faktor-Authentifizierung zu verbessern.
+
+.Was du brauchst
+* Diese Funktion erfordert Element 12.2 oder höher.
+* Die Konfiguration dieser Funktion über die NetApp Hybrid Cloud Control REST-APIs erfordert Management Services 2.15 oder höher.
+* Die Konfiguration dieser Funktion über die NetApp Hybrid Cloud Control-Benutzeroberfläche erfordert Management Services 2.19 oder höher.
+* Um REST-APIs nutzen zu können, benötigen Sie einen Management-Knoten, auf dem Version 11.5 oder höher ausgeführt wird.
+* Sie benötigen vollqualifizierte Domänennamen für den Management-Knoten und jeden Speichercluster, die korrekt zur IP-Adresse des Management-Knotens bzw. zur IP-Adresse des jeweiligen Speicherclusters aufgelöst werden.
+
+
+Sie können den FQDN-Web-UI-Zugriff mithilfe von NetApp Hybrid Cloud Control und der REST-API konfigurieren oder entfernen.  Sie können auch fehlerhaft konfigurierte FQDNs beheben.
+
+* <<Konfigurieren Sie den Zugriff auf die FQDN-Weboberfläche mithilfe von NetApp Hybrid Cloud Control.>>
+* <<Konfigurieren Sie den Zugriff auf die FQDN-Weboberfläche mithilfe der REST-API.>>
+* <<Entfernen des FQDN-Web-UI-Zugriffs mithilfe von NetApp Hybrid Cloud Control>>
+* <<Entfernen des FQDN-Web-UI-Zugriffs über die REST-API>>
+* <<Fehlerbehebung>>
+
+
+
+
+== Konfigurieren Sie den Zugriff auf die FQDN-Weboberfläche mithilfe von NetApp Hybrid Cloud Control.
+
+.Schritte
+. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des Speichercluster-Administrators angeben.
+. Wählen Sie das Menüsymbol oben rechts auf der Seite.
+. Wählen Sie *Konfigurieren*.
+. Im Bereich *Vollständig qualifizierte Domänennamen* wählen Sie *Einrichten*.
+. Geben Sie im daraufhin angezeigten Fenster die FQDNs für den Management-Knoten und jeden Speichercluster ein.
+. Wählen Sie *Speichern*.
++
+Im Bereich *Vollqualifizierte Domänennamen* werden alle Speichercluster mit ihren zugehörigen MVIP- und FQDN-Werten aufgelistet.
+
++
+
+NOTE: Im Bereich *Vollqualifizierte Domänennamen* werden nur verbundene Speichercluster mit festgelegtem FQDN angezeigt.
+
+
+
+
+
+== Konfigurieren Sie den Zugriff auf die FQDN-Weboberfläche mithilfe der REST-API.
+
+.Schritte
+. Stellen Sie sicher, dass die Element-Speicherknoten und der mNode für die Netzwerkumgebung korrekt über eine DNS-Konfiguration verfügen, damit FQDNs in der Umgebung aufgelöst werden können.  Um DNS einzustellen, gehen Sie zur Benutzeroberfläche des jeweiligen Knotens für Speicherknoten und zum Verwaltungsknoten und wählen Sie dann *Netzwerkeinstellungen* > *Verwaltungsnetzwerk*.
++
+.. Benutzeroberfläche pro Speicherknoten: `https://<storage_node_management_IP>:442`
+.. Benutzeroberfläche pro Knoten für den Verwaltungsknoten: `https://<management_node_IP>:442`
+
+
+. Ändern Sie die Speichercluster-Einstellungen mithilfe der Element-API.
++
+.. Greifen Sie auf die Element-API zu und erstellen Sie mithilfe der folgenden Cluster-Schnittstelleneinstellung die entsprechende Funktion:link:../api/reference_element_api_createclusterinterfacepreference.html["CreateClusterInterfacePreference"] API-Methode, die den Cluster-MVIP-FQDN für den Präferenzwert einfügt:
++
+*** Name: `mvip_fqdn`
+*** Wert: `Fully Qualified Domain Name for the Cluster MVIP`
++
+In diesem Beispiel ist FQDN=storagecluster.my.org:
+
++
+[listing]
+----
+https://<Cluster_MVIP>/json-rpc/12.2?
+method=CreateClusterInterfacePreference&name=mvip_fqdn&value=storagecluster.my.org
+----
+
+
+
+
+. Ändern Sie die Einstellungen des Verwaltungsknotens mithilfe der REST-API auf dem Verwaltungsknoten:
++
+.. Greifen Sie auf die REST-API-Benutzeroberfläche für den Management-Knoten zu, indem Sie die IP-Adresse des Management-Knotens gefolgt von eingeben. `/mnode/2/`
++
+Beispiel:
+
++
+`https://<management_node_IP>/mnode/2/`
+
+.. Klicken Sie auf *Autorisieren* oder ein beliebiges Schlosssymbol und geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Klicken Sie auf *Autorisieren*, um die Sitzung zu starten, und schließen Sie anschließend das Fenster.
+.. Wählen Sie in der Serverliste aus `mnode2` Die
+.. Klicken Sie auf *GET /settings*.
+.. Klicken Sie auf *Jetzt ausprobieren*.
+.. Klicken Sie auf *Ausführen*.
+.. Protokollieren Sie alle im Antworttext gemeldeten Proxy-Einstellungen.
+.. Klicken Sie auf *PUT/Einstellungen*.
+.. Klicken Sie auf *Jetzt ausprobieren*.
+.. Geben Sie im Anfragetext den FQDN des Verwaltungsknotens als Wert für die `mnode_fqdn` Parameter.
+.. Geben Sie alle zuvor notierten Proxy-Einstellungswerte in den verbleibenden Parametern im Anfragetext ein.  Wenn Sie die Proxy-Parameter leer lassen oder sie nicht in den Anfragetext aufnehmen, werden die vorhandenen Proxy-Einstellungen entfernt.
+.. Klicken Sie auf *Ausführen*.
+
+
+
+
+
+
+== Entfernen des FQDN-Web-UI-Zugriffs mithilfe von NetApp Hybrid Cloud Control
+
+Mit diesem Verfahren können Sie den FQDN-Webzugriff für den Management-Knoten und die Speichercluster entfernen.
+
+.Schritte
+. Im Bereich *Vollständig qualifizierte Domänennamen* wählen Sie *Bearbeiten*.
+. Löschen Sie im daraufhin angezeigten Fenster den Inhalt des Textfelds *FQDN*.
+. Wählen Sie *Speichern*.
++
+Das Fenster schließt sich und der FQDN wird nicht mehr im Bereich *Vollqualifizierte Domänennamen* angezeigt.
+
+
+
+
+
+== Entfernen des FQDN-Web-UI-Zugriffs über die REST-API
+
+.Schritte
+. Ändern Sie die Speichercluster-Einstellungen mithilfe der Element-API.
++
+.. Greifen Sie auf die Element-API zu und löschen Sie die folgende Cluster-Schnittstelleneinstellung mithilfe der `DeleteClusterInterfacePreference` API-Methode:
++
+*** Name: `mvip_fqdn`
++
+Beispiel:
+
++
+[listing]
+----
+https://<Cluster_MVIP>/json-rpc/12.2?method=DeleteClusterInterfacePreference&name=mvip_fqdn
+----
+
+
+
+
+. Ändern Sie die Einstellungen des Verwaltungsknotens mithilfe der REST-API auf dem Verwaltungsknoten:
++
+.. Greifen Sie auf die REST-API-Benutzeroberfläche für den Management-Knoten zu, indem Sie die IP-Adresse des Management-Knotens gefolgt von eingeben. `/mnode/2/` Die Beispiel:
++
+[listing]
+----
+https://<management_node_IP>/mnode/2/
+----
+.. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol aus und geben Sie den Benutzernamen und das Passwort des Element-Clusters ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+.. Wählen Sie *PUT /settings*.
+.. Wählen Sie *Ausprobieren*.
+.. Im Anfragetextbereich darf kein Wert für die `mnode_fqdn` Parameter.  Geben Sie außerdem an, ob der Proxy verwendet werden soll.(`true` oder `false` ) für die `use_proxy` Parameter.
++
+[listing]
+----
+{
+ "mnode_fqdn": "",
+ "use_proxy": false
+}
+----
+.. Wählen Sie *Ausführen*.
+
+
+
+
+
+
+== Fehlerbehebung
+
+Wenn FQDNs falsch konfiguriert sind, kann es zu Problemen beim Zugriff auf den Management-Knoten, einen Speichercluster oder beides kommen.  Nutzen Sie die folgenden Informationen, um das Problem zu beheben.
+
+[cols="3*"]
+|===
+| Ausgabe | Ursache | Auflösung 
+
+
+ a| 
+* Beim Versuch, über den FQDN auf den Verwaltungsknoten oder den Speichercluster zuzugreifen, erhalten Sie eine Browserfehlermeldung.
+* Sie können sich weder am Management-Knoten noch am Speichercluster über eine IP-Adresse anmelden.
+
+| Der FQDN des Management-Knotens und der FQDN des Speicherclusters sind beide falsch konfiguriert. | Verwenden Sie die REST-API-Anweisungen auf dieser Seite, um die FQDN-Einstellungen für den Management-Knoten und den Speichercluster zu entfernen und anschließend neu zu konfigurieren. 
+
+
+ a| 
+* Beim Versuch, auf den FQDN des Speicherclusters zuzugreifen, erhalten Sie eine Browserfehlermeldung.
+* Sie können sich weder am Management-Knoten noch am Speichercluster über eine IP-Adresse anmelden.
+
+| Der FQDN des Management-Knotens ist korrekt konfiguriert, der FQDN des Speicherclusters jedoch nicht. | Verwenden Sie die REST-API-Anweisungen auf dieser Seite, um die FQDN-Einstellungen des Speicherclusters zu entfernen und sie anschließend neu zu konfigurieren. 
+
+
+ a| 
+* Beim Versuch, auf den FQDN des Verwaltungsknotens zuzugreifen, erhalten Sie eine Browserfehlermeldung.
+* Sie können sich über eine IP-Adresse am Management-Knoten und am Speichercluster anmelden.
+
+| Der FQDN des Management-Knotens ist falsch konfiguriert, der FQDN des Speicherclusters hingegen ist korrekt konfiguriert. | Melden Sie sich bei NetApp Hybrid Cloud Control an, um die FQDN-Einstellungen des Management-Knotens in der Benutzeroberfläche zu korrigieren, oder verwenden Sie die REST-API-Anweisungen auf dieser Seite, um die Einstellungen zu korrigieren. 
+|===
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

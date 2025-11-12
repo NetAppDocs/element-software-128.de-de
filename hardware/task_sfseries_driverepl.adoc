@@ -1,0 +1,201 @@
+---
+permalink: hardware/task_sfseries_driverepl.html 
+sidebar: sidebar 
+keywords: SSDs, drives, replacement, sf-series, nodes 
+summary: Ein defektes Solid-State-Laufwerk kann im laufenden Betrieb gegen ein Ersatzlaufwerk ausgetauscht werden. 
+---
+= Laufwerke für Speicherknoten der SF-Serie austauschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein defektes Solid-State-Laufwerk kann im laufenden Betrieb gegen ein Ersatzlaufwerk ausgetauscht werden.
+
+.Was du brauchst
+* Sie haben ein Ersatzlaufwerk erhalten.
+* Sie besitzen ein ESD-Armband (elektrostatische Entladung) oder haben andere antistatische Vorkehrungen getroffen.
+* Sie haben den NetApp -Support kontaktiert, um zu überprüfen, ob die SSD ausgetauscht werden muss, und um Hilfe bei der korrekten Vorgehensweise zur Problemlösung zu erhalten.
++
+Sie benötigen die Service-Tag- oder Seriennummer, wenn Sie den NetApp -Support anrufen.  Der Support wird mit Ihnen zusammenarbeiten, um Ihnen gemäß Ihrer Servicevereinbarung ein Ersatzlaufwerk zu beschaffen.
+
+
+
+.Informationen zu diesem Vorgang
+Die Anweisungen gelten für die folgenden SolidFire -Speicherknotenmodelle:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+
+
+[NOTE]
+====
+Je nach Ihrer Element-Softwareversion werden die folgenden Knoten nicht unterstützt:
+
+* Beginnend mit den Speicherknoten Element 12.8, SF4805, SF9605, SF19210 und SF38410.
+* Beginnend mit Element 12.7, SF2405 und SF9608 Speicherknoten.
+* Beginnend mit Element 12.0, SF3010, SF6010 und SF9010 Speicherknoten.
+
+
+====
+Die folgende Abbildung zeigt die Anordnung der Laufwerke in einem SF9605-Gehäuse:
+
+image::../media/sf_drives.gif[Diese Abbildung zeigt die Laufwerke im SolidFire -Gehäuse.]
+
+
+NOTE: Die obige Abbildung ist ein Beispiel.  Der SF9608 verfügt über ein anderes Laufwerkslayout mit nur acht Laufwerken, die von links nach rechts mit eins bis acht nummeriert sind.
+
+Steckplatz 0 enthält das Metadatenlaufwerk für den Knoten.  Wenn Sie das Laufwerk in Steckplatz 0 austauschen, müssen Sie den im Versandkarton enthaltenen Aufkleber auf dem Ersatzlaufwerk anbringen, damit Sie es von den übrigen Laufwerken unterscheiden können.
+
+[NOTE]
+====
+Beachten Sie beim Umgang mit Laufwerken folgende bewährte Vorgehensweisen:
+
+* Um elektrostatische Entladungen (ESD) zu vermeiden, bewahren Sie das Laufwerk bis zur Installation in der ESD-Tasche auf.
+* Führen Sie kein Metallwerkzeug oder Messer in den ESD-Beutel ein.
+* Öffnen Sie den ESD-Beutel von Hand oder schneiden Sie die Oberseite mit einer Schere ab.
+* Bewahren Sie den ESD-Beutel und sämtliches Verpackungsmaterial auf, falls Sie später ein Laufwerk zurücksenden müssen.
+* Tragen Sie stets ein ESD-Armband, das an einer unlackierten Stelle Ihres Gehäuses geerdet ist.
+* Benutzen Sie beim Ausbau, Einbau oder Transport eines Laufwerks immer beide Hände.
+* Man kann niemals einen Antrieb mit Gewalt in das Chassis drücken.
+* Stapeln Sie die Laufwerke nicht übereinander.
+* Verwenden Sie beim Versand von Festplatten stets zugelassene Verpackungen.
+
+
+====
+Hier ein allgemeiner Überblick über die einzelnen Schritte:
+
+* <<Entfernen Sie das Laufwerk aus dem Cluster.>>
+* <<Ersetzen Sie das Laufwerk aus dem Gehäuse.>>
+* <<Fügen Sie das Laufwerk dem Cluster hinzu.>>
+
+
+
+
+== Entfernen Sie das Laufwerk aus dem Cluster.
+
+Das SolidFire -System versetzt ein Laufwerk in den Fehlerzustand, wenn die Selbstdiagnose des Laufwerks dem Knoten einen Fehler meldet oder die Kommunikation mit dem Laufwerk für fünfeinhalb Minuten oder länger abbricht.  Das System zeigt eine Liste der ausgefallenen Laufwerke an.  Sie sollten ein defektes Laufwerk aus der Liste der defekten Laufwerke in der NetApp Element -Software entfernen.
+
+.Schritte
+. Wählen Sie in der Element-Benutzeroberfläche *Cluster* > *Laufwerke* aus.
+. Wählen Sie *Fehlgeschlagen*, um die Liste der ausgefallenen Laufwerke anzuzeigen.
+. Notieren Sie die Steckplatznummer des ausgefallenen Laufwerks.
++
+Sie benötigen diese Informationen, um das defekte Laufwerk im Gehäuse zu lokalisieren.
+
+. Entfernen Sie das defekte Laufwerk mit einer der folgenden Methoden:
++
+[cols="2*"]
+|===
+| Option | Schritte 
+
+
+ a| 
+Einzelne Laufwerke entfernen
+ a| 
+.. Wählen Sie *Aktionen* für das Laufwerk aus, das Sie entfernen möchten.
+.. Wählen Sie *Entfernen*.
+
+
+
+
+ a| 
+Um mehrere Laufwerke zu entfernen
+ a| 
+.. Wählen Sie alle Laufwerke aus, die Sie entfernen möchten, und klicken Sie dann auf *Massenaktionen*.
+.. Wählen Sie *Entfernen*.
+
+
+|===
+
+
+
+
+== Ersetzen Sie das Laufwerk aus dem Gehäuse.
+
+Nachdem Sie ein defektes Laufwerk aus der Liste der defekten Laufwerke in der Element-Benutzeroberfläche entfernt haben, können Sie das defekte Laufwerk physisch aus dem Gehäuse ausbauen und ersetzen.
+
+.Schritte
+. Packen Sie das Ersatzlaufwerk aus und legen Sie es auf eine ebene, antistatische Oberfläche in der Nähe des Racks.
++
+Bewahren Sie das Verpackungsmaterial auf, bis Sie das defekte Laufwerk an NetApp zurücksenden.
+
+. Vergleichen Sie die Steckplatznummer des ausgefallenen Laufwerks in der Element-Benutzeroberfläche mit der Nummer auf dem Gehäuse.
++
+Die folgende Abbildung zeigt beispielhaft die Nummerierung der Laufwerksschächte:
+
++
+image::../media/sf_series_drive_numbers.gif[Diese Abbildung zeigt die Laufwerksnummerierung für SolidFire -Speicherknoten.]
+
++
+[cols="2*"]
+|===
+| Artikel | Beschreibung 
+
+
+ a| 
+1
+ a| 
+Laufwerksschachtnummern
+
+|===
+. Drücken Sie auf den roten Kreis an dem Laufwerk, das Sie entfernen möchten, um das Laufwerk freizugeben.
++
+Der Riegel rastet ein.
+
+. Ziehen Sie das Laufwerk aus dem Gehäuse und stellen Sie es auf eine antistatische, ebene Fläche.
+. Drücken Sie auf den roten Kreis auf dem Ersatzlaufwerk, bevor Sie es in den Steckplatz schieben.
+. Setzen Sie das Ersatzlaufwerk ein und drücken Sie auf den roten Kreis, um die Verriegelung zu schließen.
+. Benachrichtigen Sie den NetApp Support über den Festplattenaustausch.
++
+Der NetApp Support stellt Ihnen Anweisungen zur Rücksendung des defekten Laufwerks zur Verfügung.
+
+
+
+
+
+== Fügen Sie das Laufwerk dem Cluster hinzu.
+
+Nach dem Einbau eines neuen Laufwerks in das Gehäuse wird dieses als verfügbar registriert.  Sie müssen das Laufwerk über die Element-Benutzeroberfläche zum Cluster hinzufügen, bevor es am Cluster teilnehmen kann.
+
+.Schritte
+. Klicken Sie in der Element-Benutzeroberfläche auf *Cluster* > *Laufwerke*.
+. Klicken Sie auf *Verfügbar*, um die Liste der verfügbaren Laufwerke anzuzeigen.
+. Wählen Sie eine der folgenden Optionen, um Laufwerke hinzuzufügen:
++
+[cols="2*"]
+|===
+| Option | Schritte 
+
+
+ a| 
+Einzelne Laufwerke hinzufügen
+ a| 
+.. Wählen Sie die Schaltfläche *Aktionen* für das Laufwerk aus, das Sie hinzufügen möchten.
+.. Wählen Sie *Hinzufügen*.
+
+
+
+
+ a| 
+Um mehrere Laufwerke hinzuzufügen
+ a| 
+.. Wählen Sie die Kontrollkästchen der hinzuzufügenden Laufwerke aus und wählen Sie dann *Massenaktionen*.
+.. Wählen Sie *Hinzufügen*.
+
+
+|===
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

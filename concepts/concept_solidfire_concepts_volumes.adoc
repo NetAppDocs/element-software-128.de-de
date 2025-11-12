@@ -1,0 +1,29 @@
+---
+permalink: concepts/concept_solidfire_concepts_volumes.html 
+sidebar: sidebar 
+keywords: what is, element, volume, storage volume, persistent volume 
+summary: Das NetApp SolidFire Speichersystem stellt Speicherplatz mithilfe von Volumes bereit.  Volumes sind Blockgeräte, auf die über das Netzwerk von iSCSI- oder Fibre-Channel-Clients zugegriffen wird. 
+---
+= Bände
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das NetApp Element Speichersystem stellt Speicherplatz mithilfe von Volumes bereit.  Volumes sind Blockgeräte, auf die über das Netzwerk von iSCSI- oder Fibre-Channel-Clients zugegriffen wird.
+
+Mit Element Storage können Sie Volumes für Benutzerkonten erstellen, anzeigen, bearbeiten, löschen, klonen, sichern oder wiederherstellen.  Sie können auch jedes einzelne Volume in einem Cluster verwalten und Volumes in Volume-Zugriffsgruppen hinzufügen oder entfernen.
+
+
+
+== Persistente Datenträger
+
+Persistente Volumes ermöglichen es, Konfigurationsdaten des Management-Knotens auf einem bestimmten Speichercluster anstatt lokal auf einer VM zu speichern, sodass die Daten im Falle eines Verlusts oder einer Entfernung des Management-Knotens erhalten bleiben können.  Persistente Volumes sind eine optionale, aber empfehlenswerte Konfiguration für Management-Knoten.
+
+Eine Option zum Aktivieren persistenter Volumes ist in den Installations- und Upgrade-Skripten enthalten, wennlink:../mnode/task_mnode_install.html["Bereitstellung eines neuen Managementknotens"] Die  Persistente Volumes sind Volumes auf einem Element-Software-basierten Speichercluster, die Konfigurationsinformationen des Management-Knotens für die Host-Management-Knoten-VM enthalten, die über die Lebensdauer der VM hinaus bestehen bleiben.  Wenn der Management-Knoten verloren geht, kann eine Ersatz-Management-Knoten-VM die Verbindung wiederherstellen und die Konfigurationsdaten der verloren gegangenen VM wiederherstellen.
+
+Die Funktion für persistente Volumes erstellt, sofern sie während der Installation oder des Upgrades aktiviert ist, automatisch mehrere Volumes.  Diese Volumes können, wie alle Element-Software-basierten Volumes, je nach Präferenz und Installation über die Element-Software-Weboberfläche, das NetApp Element Plug-in für vCenter Server oder die API angezeigt werden.  Persistente Volumes müssen über eine iSCSI-Verbindung zum Management-Knoten betriebsbereit sein, um aktuelle Konfigurationsdaten zu erhalten, die für die Wiederherstellung verwendet werden können.
+
+
+NOTE: Persistente Volumes, die mit Verwaltungsdiensten verknüpft sind, werden während der Installation oder des Upgrades erstellt und einem neuen Konto zugewiesen.  Wenn Sie persistente Volumes verwenden, ändern oder löschen Sie die Volumes oder das zugehörige Konto nicht.

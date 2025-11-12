@@ -1,0 +1,19 @@
+---
+permalink: storage/reference_monitor_status_of_running_tasks.html 
+sidebar: sidebar 
+keywords: running tasks, view progress of 
+summary: Den Fortschritt und den Abschlussstatus der laufenden Aufgaben, die von den API-Methoden ListSyncJobs und ListBulkVolumeJobs gemeldet werden, können Sie in der Web-UI einsehen.  Sie können die Seite „Laufende Aufgaben“ über die Registerkarte „Berichte“ der Element-Benutzeroberfläche aufrufen. 
+---
+= Status der laufenden Aufgaben anzeigen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Den Fortschritt und den Abschlussstatus der laufenden Aufgaben, die von den API-Methoden ListSyncJobs und ListBulkVolumeJobs gemeldet werden, können Sie in der Web-UI einsehen.  Sie können die Seite „Laufende Aufgaben“ über die Registerkarte „Berichte“ der Element-Benutzeroberfläche aufrufen.
+
+Bei einer großen Anzahl von Aufgaben kann das System diese in eine Warteschlange stellen und in Stapeln ausführen.  Auf der Seite „Laufende Aufgaben“ werden die aktuell synchronisierten Dienste angezeigt.  Sobald eine Aufgabe abgeschlossen ist, wird sie durch die nächste in der Warteschlange befindliche Synchronisierungsaufgabe ersetzt.  Synchronisierungsaufgaben werden möglicherweise weiterhin auf der Seite „Laufende Aufgaben“ angezeigt, bis keine Aufgaben mehr zu erledigen sind.
+
+
+NOTE: Die Replikationssynchronisierungsdaten für Volumes, die gerade repliziert werden, können Sie auf der Seite „Laufende Aufgaben“ des Clusters einsehen, der das Zielvolume enthält.

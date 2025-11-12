@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_getconfig.html 
+sidebar: sidebar 
+keywords: node,get,getting,info,config,configuration,getconfig 
+summary: Mit der GetConfig-API-Methode können Sie alle Konfigurationsinformationen für einen Knoten abrufen.  Diese API-Methode enthält die gleichen Informationen, die auch in den API-Methoden GetClusterConfig und GetNetworkConfig verfügbar sind. 
+---
+= GetConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetConfig` API-Methode zum Abrufen aller Konfigurationsinformationen für einen Knoten.  Diese API-Methode enthält dieselben Informationen, die in beiden Versionen verfügbar sind. `GetClusterConfig` Und `GetNetworkConfig` API-Methoden.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Konfiguration
+ a| 
+Die Konfigurationsdetails des Clusters.  Dieses Objekt enthält:
+
+* xref:reference_element_api_cluster.adoc[Cluster]: Clusterinformationen, die angeben, wie der Speicherknoten mit dem zugehörigen Speichercluster kommuniziert.
+* xref:reference_element_api_network_all_interfaces.adoc[Netzwerk (alle Schnittstellen)]Netzwerkverbindungstypen und aktuelle Einstellungen für jede Netzwerkschnittstelle des Knotens.
+
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getclusterconfig.adoc[GetClusterConfig]
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+* xref:reference_element_api_response_example_getconfig.adoc[GetConfig]
+

@@ -1,0 +1,130 @@
+---
+permalink: api/reference_element_api_listidpconfigurations.html 
+sidebar: sidebar 
+keywords: configs configurations,idp configs,list 
+summary: Mit der Methode ListIdpConfigurations können Sie Konfigurationen für Drittanbieter-IdPs auflisten.  Optional können Sie entweder das Flag enabledOnly angeben, um die aktuell aktivierte IdP-Konfiguration abzurufen, oder eine IdP-Metadaten-UUID oder einen IdP-Namen, um Informationen für eine bestimmte IdP-Konfiguration abzufragen. 
+---
+= ListIdpConfigurations
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListIdpConfigurations` Methode zum Auflisten von Konfigurationen für Drittanbieter-IdPs.  Optional können Sie entweder Folgendes angeben: `enabledOnly` Mit dieser Option kann die aktuell aktivierte IdP-Konfiguration oder eine IdP-Metadaten-UUID oder ein IdP-Name abgerufen werden, um Informationen zu einer bestimmten IdP-Konfiguration abzufragen.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+aktiviert
+ a| 
+Filtert das Ergebnis, um die aktuell aktivierte IdP-Konfiguration zurückzugeben.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+idpConfigurationID
+ a| 
+UUID für die IdP-Konfiguration des Drittanbieters.
+ a| 
+UUID
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+idpName
+ a| 
+Ruft IdP-Konfigurationsinformationen für einen bestimmten IdP-Namen ab.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+idpConfigInfos
+ a| 
+Informationen zur/zu den IdP-Konfiguration(en) von Drittanbietern.
+ a| 
+link:reference_element_api_idpconfiginfo.html["idpConfigInfo"]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ListIdpConfigurations",
+  "params": {}
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== Neu seit Version
+
+12,0

@@ -1,0 +1,104 @@
+---
+permalink: api/reference_element_api_breaksnapmirrorvolume.html 
+sidebar: sidebar 
+keywords: SnapMirror,volume,volumes,break,breaking,relationship,ONTAP,source,snapshot 
+summary: Die Element-Weboberfläche verwendet die Methode BreakSnapMirrorVolume, um die SnapMirror -Beziehung zwischen einem ONTAP Quellcontainer und einem Element-Zielvolume aufzuheben.  Das Unterbrechen eines Element SnapMirror Volumes ist sinnvoll, wenn ein ONTAP -System während der Datenreplikation auf ein Element-Volume nicht verfügbar ist.  Diese Funktion ermöglicht es einem Speicheradministrator, die Kontrolle über ein Element SnapMirror -Volume zu übernehmen, die Verbindung zum entfernten ONTAP -System zu trennen und das Volume auf einen früheren Snapshot zurückzusetzen. 
+---
+= BreakSnapMirrorVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Element-Weboberfläche verwendet die `BreakSnapMirrorVolume` Methode zum Aufheben der SnapMirror Beziehung zwischen einem ONTAP Quellcontainer und einem Element-Zielvolume.  Das Unterbrechen eines Element SnapMirror Volumes ist sinnvoll, wenn ein ONTAP -System während der Datenreplikation auf ein Element-Volume nicht verfügbar ist.  Diese Funktion ermöglicht es einem Speicheradministrator, die Kontrolle über ein Element SnapMirror -Volume zu übernehmen, die Verbindung zum entfernten ONTAP -System zu trennen und das Volume auf einen früheren Snapshot zurückzusetzen.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Volume-ID
+ a| 
+Die Lautstärke, auf der der Bremsvorgang durchgeführt werden soll.  Der Zugriffsmodus für das Volume muss snapMirrorTarget sein.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Snapshot-ID
+ a| 
+Setzen Sie das Volume auf den durch diese ID identifizierten Snapshot zurück.  Standardmäßig wird auf den aktuellsten Snapshot zurückgegriffen.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+bewahren
+ a| 
+Alle Snapshots, die neuer als der durch snapshotID identifizierte Snapshot sind, sollen beibehalten werden. Mögliche Werte:
+
+* true: Snapshots beibehalten, die neuer als snapshotID sind.
+* false: Snapshots, die neuer als snapshotID sind, werden nicht beibehalten.
+
+
+Falls falsch, werden alle Snapshots gelöscht, die neuer als snapshotID sind.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Zugang
+ a| 
+Resultierender Datenträgerzugriffsmodus. Mögliche Werte:
+
+* Lesen Schreiben
+* Schreibgeschützt
+* gesperrt
+
+ a| 
+Schnur
+ a| 
+Lesen Schreiben
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Neu seit Version
+
+10,0
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_breaksnapmirrorrelationship.adoc[BreakSnapMirrorRelationship]

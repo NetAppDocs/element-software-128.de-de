@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_enablesnmp.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableSNMP 
+summary: Mit der Methode EnableSnmp können Sie SNMP auf Clusterknoten aktivieren.  Wenn Sie SNMP aktivieren, gilt die Aktion für alle Knoten im Cluster, und die übergebenen Werte ersetzen alle Werte, die bei einem vorherigen Aufruf von EnableSnmp festgelegt wurden. 
+---
+= SNMP aktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `EnableSnmp` Methode zur Aktivierung von SNMP auf Clusterknoten.  Wenn Sie SNMP aktivieren, gilt die Aktion für alle Knoten im Cluster, und die übergebenen Werte ersetzen alle Werte, die in einem vorherigen Aufruf von SNMP festgelegt wurden. `EnableSnmp` Die
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snmpV3Enabled
+ a| 
+Wenn auf „true“ gesetzt, wird SNMP v3 auf jedem Knoten im Cluster aktiviert.  Wenn der Wert auf „false“ gesetzt ist, wird SNMP v2 aktiviert.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "EnableSnmp",
+  "params": {
+      "snmpV3Enabled"  : "true"
+  },
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

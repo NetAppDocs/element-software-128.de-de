@@ -1,0 +1,19 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_alerts.html 
+summary: Sie können keine Einstellungen konfigurieren, um Warnmeldungen auf Ihrem SolidFire All-Flash-Speichersystem zu überwachen. 
+keywords: netapp, Element, management node, mnode, ui, alerts, alert monitoring 
+---
+= Alarmüberwachung konfigurieren
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Alarmüberwachungstools sind für die NetApp HCI Alarmüberwachung konfiguriert.  Diese Tools sind nicht für SolidFire All-Flash-Speicher konfiguriert oder werden dafür verwendet.  Die Ausführung der Tools für diese Cluster führt zu folgendem 405-Fehler, was angesichts der Konfiguration zu erwarten ist: `webUIParseError : Invalid response from server. 405`
+
+Weitere Informationen zur Konfiguration der Alarmüberwachung für NetApp HCI finden Sie unterlink:https://docs.netapp.com/us-en/hci/docs/task_mnode_enable_alerts.html["Alarmüberwachung konfigurieren"^]

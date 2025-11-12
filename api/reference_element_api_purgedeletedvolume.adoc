@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_purgedeletedvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,purging,purge,deleted,purgedeletedvolume 
+summary: Mit der Methode PurgeDeletedVolume können Sie ein gelöschtes Volume sofort und endgültig löschen.  Bevor ein Volume endgültig gelöscht werden kann, muss es mit dem Befehl DeleteVolume entfernt werden. 
+---
+= GelöschtesVolume purge
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `PurgeDeletedVolume` Methode zum sofortigen und endgültigen Löschen eines gelöschten Volumes.  Sie müssen ein Volume löschen mit `DeleteVolume` bevor es gereinigt werden kann.
+
+Die Datenträger werden nach einer gewissen Zeit automatisch gelöscht, daher ist die Anwendung dieser Methode in der Regel nicht erforderlich.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+| Volume-ID | Die Volume-ID des zu löschenden Volumes. | ganze Zahl | Nein | Ja 
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "PurgeDeletedVolume",
+   "params": {
+      "volumeID"  : 5
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_deletevolume.adoc[DeleteVolume]

@@ -1,0 +1,27 @@
+---
+permalink: storage/task_system_manage_fips_enable_encryption_at_rest.html 
+sidebar: sidebar 
+keywords: fips, security, encryption at rest, enable, disable, drives 
+summary: Sie können die clusterweite Verschlüsselung ruhender Daten aktivieren und deaktivieren.  Diese Funktion ist nicht standardmäßig aktiviert.  Um FIPS-Laufwerke zu unterstützen, müssen Sie die Verschlüsselung ruhender Daten aktivieren. 
+---
+= Aktivieren Sie die Verschlüsselung ruhender Daten.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die clusterweite Verschlüsselung ruhender Daten aktivieren und deaktivieren.  Diese Funktion ist nicht standardmäßig aktiviert.  Um FIPS-Laufwerke zu unterstützen, müssen Sie die Verschlüsselung ruhender Daten aktivieren.
+
+. Klicken Sie in der NetApp Element Software-Benutzeroberfläche auf *Cluster* > *Einstellungen*.
+. Klicken Sie auf *Verschlüsselung ruhender Daten aktivieren*.
+
+
+
+
+== Weitere Informationen
+
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[Aktivieren und Deaktivieren der Verschlüsselung für einen Cluster]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorschedules.html 
+sidebar: sidebar 
+keywords: snapmirror,schedule,schedules,list,listing,listsnapmirrorschedules,ontap 
+summary: Die Element-Software-Weboberfläche verwendet die ListSnapMirrorSchedules-Methode, um eine Liste der auf einem entfernten ONTAP Cluster verfügbaren Zeitpläne zu erhalten. 
+---
+= ListSnapMirrorSchedules
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `ListSnapMirrorSchedules` Methode zum Abrufen einer Liste der auf einem entfernten ONTAP Cluster verfügbaren Zeitpläne.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Sofern angegeben, listet das System die Zeitpläne des Endpunkts mit der angegebenen SnapMirror Endpunkt-ID auf.  Falls keine Zeitpläne angegeben werden, listet das System die Zeitpläne aller bekannten SnapMirror Endpunkte auf.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+snapMirrorSchedules
+ a| 
+Eine Liste der SnapMirror Zeitpläne auf dem entfernten ONTAP -Cluster.
+ a| 
+xref:reference_element_api_snapmirrorjobschedulecroninfo.adoc[snapMirrorJobScheduleCronInfo]Array
+
+|===
+
+
+== Neu seit Version
+
+10,1

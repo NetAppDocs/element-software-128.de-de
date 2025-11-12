@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-accounts.html 
+summary: Erfahren Sie, wie Sie ein Benutzerkonto erstellen und es mit einem Volume verknüpfen. 
+keywords: netapp, element, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= Erstellen und verwalten Sie Benutzerkonten mit NetApp Hybrid Cloud Control.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+In Element-basierten Speichersystemen können autoritative Clusterbenutzer erstellt werden, um den Anmeldezugriff auf NetApp Hybrid Cloud Control zu ermöglichen, je nachdem, welche Berechtigungen Sie Benutzern mit „Administratorrechten“ oder „Nur-Leserechten“ gewähren möchten.  Zusätzlich zu Clusterbenutzern gibt es auch Volumenkonten, die es Clients ermöglichen, eine Verbindung zu Volumen auf einem Speicherknoten herzustellen. 
+
+Verwalten Sie die folgenden Kontotypen:
+
+* <<Autorisierte Cluster-Konten verwalten>>
+* <<Volumenkonten verwalten>>
+
+
+
+
+== Aktivieren von LDAP
+
+Um LDAP für ein Benutzerkonto nutzen zu können, müssen Sie LDAP zuerst aktivieren.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Klicken Sie im Dashboard oben rechts auf das Symbol „Optionen“ und wählen Sie dann *Benutzerverwaltung*.
+. Wählen Sie auf der Seite „Benutzer“ die Option „LDAP konfigurieren“.
+. Definieren Sie Ihre LDAP-Konfiguration.
+. Wählen Sie den Authentifizierungstyp „Suchen und Binden“ oder „Direktes Binden“.
+. Bevor Sie die Änderungen speichern, wählen Sie oben auf der Seite *LDAP-Anmeldung testen*, geben Sie den Benutzernamen und das Passwort eines Benutzers ein, von dem Sie wissen, dass er existiert, und wählen Sie *Testen*.
+. Wählen Sie *Speichern*.
+
+
+
+
+== Autorisierte Cluster-Konten verwalten
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#authoritative-cluster-user-accounts["Autorisierte Benutzerkonten"]werden über die Option „Benutzerverwaltung“ im Menü oben rechts in NetApp Hybrid Cloud Control verwaltet.  Mit diesen Kontotypen können Sie sich bei jedem Speichermedium authentifizieren, das mit einer NetApp Hybrid Cloud Control-Instanz von Knoten und Clustern verbunden ist.  Mit diesem Konto können Sie Volumes, Accounts, Zugriffsgruppen und mehr clusterübergreifend verwalten.
+
+
+
+=== Erstellen Sie ein autoritatives Cluster-Konto
+
+Sie können ein Konto über NetApp Hybrid Cloud Control erstellen.
+
+Mit diesem Konto können Sie sich bei Hybrid Cloud Control, der knotenspezifischen Benutzeroberfläche des Clusters und dem Speichercluster in der NetApp Element Software anmelden.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Klicken Sie im Dashboard oben rechts auf das Symbol „Optionen“ und wählen Sie dann *Benutzerverwaltung*.
+. Wählen Sie *Benutzer erstellen*.
+. Wählen Sie den Authentifizierungstyp: Cluster oder LDAP.
+. Bitte füllen Sie eine der folgenden Aufgaben aus:
++
+** Wenn Sie LDAP ausgewählt haben, geben Sie den DN ein.
++
+
+TIP: Um LDAP nutzen zu können, müssen Sie zuerst LDAP oder LDAPS aktivieren. Sehen<<Aktivieren von LDAP>> .
+
+** Wenn Sie Cluster als Authentifizierungstyp ausgewählt haben, geben Sie einen Namen und ein Passwort für das neue Konto ein.
+
+
+. Wählen Sie entweder Administratorrechte oder Leseberechtigungen.
++
+
+TIP: Um die Berechtigungen der NetApp Element -Software anzuzeigen, wählen Sie *Legacy-Berechtigungen anzeigen*.  Wenn Sie eine Teilmenge dieser Berechtigungen auswählen, erhält das Konto Leseberechtigungen.  Wenn Sie alle Legacy-Berechtigungen auswählen, werden dem Konto Administratorberechtigungen zugewiesen.
+
++
+
+TIP: Um sicherzustellen, dass alle untergeordneten Gruppen Berechtigungen erben, erstellen Sie eine DN-Organisationsadministratorgruppe auf dem LDAP-Server.  Alle Kinderkonten dieser Gruppe erben diese Berechtigungen.
+
+. Setzen Sie ein Häkchen bei dem Kästchen, das besagt, dass ich die NetApp Endbenutzer-Lizenzvereinbarung gelesen und akzeptiert habe.
+. Wählen Sie *Benutzer erstellen*.
+
+
+
+
+=== Bearbeiten Sie ein autoritatives Cluster-Konto
+
+Mit NetApp Hybrid Cloud Control können Sie die Berechtigungen oder das Passwort eines Benutzerkontos ändern.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Klicken Sie im Dashboard auf das Symbol oben rechts und wählen Sie *Benutzerverwaltung*.
+. Optional können Sie die Liste der Benutzerkonten filtern, indem Sie *Cluster*, *LDAP* oder *Idp* auswählen.
++
+Wenn Sie Benutzer auf dem Speichercluster mit LDAP konfiguriert haben, wird für diese Konten der Benutzertyp „LDAP“ angezeigt.  Wenn Sie Benutzer auf dem Speichercluster mit Idp konfiguriert haben, wird für diese Konten der Benutzertyp „Idp“ angezeigt.
+
+. In der Spalte *Aktionen* in der Tabelle erweitern Sie das Menü für das Konto und wählen *Bearbeiten* aus.
+. Nehmen Sie die erforderlichen Änderungen vor.
+. Wählen Sie *Speichern*.
+. Abmelden von NetApp Hybrid Cloud Control.
++
+
+NOTE: Es kann bis zu 2 Minuten dauern, bis die NetApp Hybrid Cloud Control-Benutzeroberfläche den Bestand aktualisiert.  Um den Lagerbestand manuell zu aktualisieren, greifen Sie auf den REST-API-UI-Lagerbestandsdienst zu. `https://[management node IP]/inventory/1/` und laufen `GET /installations​/{id}` für den Cluster.
+
+. Melden Sie sich bei NetApp Hybrid Cloud Control an.
+
+
+
+
+=== Löschen eines autoritativen Benutzerkontos
+
+Sie können ein oder mehrere Konten löschen, wenn diese nicht mehr benötigt werden.  Sie können ein LDAP-Benutzerkonto löschen.
+
+Das primäre Administrator-Benutzerkonto für den autoritativen Cluster kann nicht gelöscht werden.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Klicken Sie im Dashboard auf das Symbol oben rechts und wählen Sie *Benutzerverwaltung*.
+. In der Spalte *Aktionen* in der Tabelle Benutzer erweitern Sie das Menü für das Konto und wählen *Löschen* aus.
+. Bestätigen Sie die Löschung mit der Auswahl von *Ja*.
+
+
+
+
+== Volumenkonten verwalten
+
+link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#volume-accounts["Volumenkonten"]werden in der NetApp Hybrid Cloud Control Volumes-Tabelle verwaltet.  Diese Konten gelten nur für den Speichercluster, auf dem sie erstellt wurden.  Mit diesen Kontotypen können Sie Berechtigungen für Volumes im gesamten Netzwerk festlegen, die jedoch außerhalb dieser Volumes keine Auswirkungen haben.
+
+Ein Volumenkonto enthält die CHAP-Authentifizierung, die für den Zugriff auf die ihm zugewiesenen Volumen erforderlich ist.
+
+
+
+=== Erstellen Sie ein Volumenkonto
+
+Erstellen Sie ein Konto speziell für dieses Volumen.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Wählen Sie im Dashboard *Speicher* > *Volumes*.
+. Wählen Sie die Registerkarte *Konten*.
+. Wählen Sie die Schaltfläche *Konto erstellen*.
+. Geben Sie einen Namen für das neue Konto ein.
+. Geben Sie im Abschnitt CHAP-Einstellungen die folgenden Informationen ein:
++
+** Initiator-Geheimnis für die CHAP-Knotensitzungsauthentifizierung
+** Zielgeheimnis für die CHAP-Knotensitzungsauthentifizierung
++
+
+NOTE: Um ein Passwort automatisch zu generieren, lassen Sie die Felder für die Anmeldeinformationen leer.
+
+
+
+. Wählen Sie *Konto erstellen*.
+
+
+
+
+=== Volumenkonto bearbeiten
+
+Sie können die CHAP-Informationen ändern und festlegen, ob ein Konto aktiv oder gesperrt ist.
+
+
+IMPORTANT: Das Löschen oder Sperren eines mit dem Verwaltungsknoten verknüpften Kontos führt dazu, dass der Verwaltungsknoten nicht mehr erreichbar ist.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Wählen Sie im Dashboard *Speicher* > *Volumes*.
+. Wählen Sie die Registerkarte *Konten*.
+. In der Spalte *Aktionen* in der Tabelle erweitern Sie das Menü für das Konto und wählen *Bearbeiten* aus.
+. Nehmen Sie die erforderlichen Änderungen vor.
+. Bestätigen Sie die Änderungen, indem Sie *Ja* auswählen.
+
+
+
+
+=== Ein Volume-Konto löschen
+
+Löschen Sie ein Konto, das Sie nicht mehr benötigen.
+
+Bevor Sie ein Volume-Konto löschen, müssen Sie zuerst alle mit diesem Konto verknüpften Volumes löschen und endgültig entfernen.
+
+
+IMPORTANT: Das Löschen oder Sperren eines mit dem Verwaltungsknoten verknüpften Kontos führt dazu, dass der Verwaltungsknoten nicht mehr erreichbar ist.
+
+
+NOTE: Persistente Volumes, die mit Verwaltungsdiensten verknüpft sind, werden bei der Installation oder dem Upgrade einem neuen Konto zugewiesen.  Wenn Sie persistente Volumes verwenden, dürfen Sie die Volumes oder das zugehörige Konto weder ändern noch löschen.  Wenn Sie diese Konten löschen, könnte Ihr Verwaltungsknoten unbrauchbar werden.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Wählen Sie im Dashboard *Speicher* > *Volumes*.
+. Wählen Sie die Registerkarte *Konten*.
+. Erweitern Sie in der Spalte *Aktionen* in der Tabelle das Menü für das Konto und wählen Sie *Löschen* aus.
+. Bestätigen Sie die Löschung mit der Auswahl von *Ja*.
+
+
+[discrete]
+== Weitere Informationen
+
+* link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html["Erfahren Sie mehr über Konten"]
+* link:../storage/task_data_manage_accounts_work_with_accounts_task.html["Arbeiten Sie mit Konten, die CHAP verwenden."]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

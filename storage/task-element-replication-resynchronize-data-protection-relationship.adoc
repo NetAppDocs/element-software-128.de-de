@@ -1,0 +1,37 @@
+---
+permalink: storage/task-element-replication-resynchronize-data-protection-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, update, replication, relationship, manually 
+summary: Möglicherweise müssen Sie eine Replikationsbeziehung manuell aktualisieren, wenn eine Aktualisierung aufgrund eines Netzwerkfehlers fehlschlägt. 
+---
+= Eine Replikationsbeziehung resynchronisieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen eine Replikationsbeziehung neu synchronisieren, nachdem Sie ein Zielvolume beschreibbar gemacht haben, nachdem ein Update fehlgeschlagen ist, weil keine gemeinsame Snapshot-Kopie auf dem Quell- und Zielvolume vorhanden ist, oder wenn Sie die Replikationsrichtlinie für die Beziehung ändern möchten.
+
+.Informationen zu diesem Vorgang
+Obwohl für die Resynchronisierung keine Basislinienübertragung erforderlich ist, kann sie zeitaufwändig sein.  Möglicherweise möchten Sie die Resynchronisierung außerhalb der Stoßzeiten durchführen.
+
+Sie müssen den Elementquellpfad im folgenden Format angeben: `<hostip:>/lun/<name>` , wobei "`lun`" die eigentliche Zeichenkette "`lun`" ist und `name` ist der Name des Element-Volumes.
+
+.Schritt
+. Quell- und Zielvolume erneut synchronisieren:
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -policy <policy>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel synchronisiert die Beziehung zwischen dem Quellvolume neu. `0005` an der IP-Adresse 10.0.0.11 und dem Zielvolumen `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+

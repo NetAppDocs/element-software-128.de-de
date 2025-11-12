@@ -1,0 +1,43 @@
+---
+permalink: storage/task-element-replication-create-replication-job-schedule.html 
+sidebar: sidebar 
+keywords: ontap, cli, create, replication, job, schedule 
+summary: Sie können den Cron-Befehl „job schedule create“ verwenden, um einen Replikationsjob-Zeitplan zu erstellen.  Der Jobplan legt fest, wann SnapMirror die Datensicherungsbeziehung, der der Plan zugeordnet ist, automatisch aktualisiert. 
+---
+= Erstellen Sie einen Replikationsauftragszeitplan
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Unabhängig davon, ob Sie Daten von Element nach ONTAP oder von ONTAP nach Element replizieren, müssen Sie einen Job-Zeitplan konfigurieren, eine Richtlinie festlegen und die Beziehung erstellen und initialisieren.  Sie können eine Standardrichtlinie oder eine benutzerdefinierte Richtlinie verwenden.
+
+Sie können die `job schedule cron create` Befehl zum Erstellen eines Replikationsjob-Zeitplans.  Der Jobplan legt fest, wann SnapMirror die Datensicherungsbeziehung, der der Plan zugeordnet ist, automatisch aktualisiert.
+
+.Informationen zu diesem Vorgang
+Sie ordnen einen Jobplan zu, wenn Sie eine Datenschutzbeziehung erstellen.  Wenn Sie keinen Arbeitsplan zuweisen, müssen Sie die Beziehung manuell aktualisieren.
+
+.Schritt
+. Erstellen Sie einen Arbeitsplan:
++
+`job schedule cron create -name _job_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+Für `-month` , `-dayofweek` , Und `-hour` Sie können Folgendes angeben `all` den Job jeweils einmal im Monat, an jedem Wochentag und zu jeder Stunde auszuführen.
+
++
+Ab ONTAP 9.10.1 können Sie den Vserver in Ihren Jobplan einbinden:
+
++
+`job schedule cron create -name _job_name_ -vserver _Vserver_name_ -month _month_ -dayofweek _day_of_week_ -day _day_of_month_ -hour _hour_ -minute _minute_`
+
++
+Das folgende Beispiel erstellt einen Jobplan mit dem Namen `my_weekly` das samstags um 3:00 Uhr morgens stattfindet:
+
++
+[listing]
+----
+cluster_dst::> job schedule cron create -name my_weekly -dayofweek "Saturday" -hour 3 -minute 0
+----
+

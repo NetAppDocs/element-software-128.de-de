@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_protection_using_volume_snapshots.html 
+sidebar: sidebar 
+keywords: data protection, volume snapshots, roll back volume, replicate snapshots 
+summary: Ein Volume-Snapshot ist eine Momentaufnahme eines Volumes.  Sie können einen Snapshot eines Volumes erstellen und diesen Snapshot später verwenden, wenn Sie ein Volume auf den Zustand zurücksetzen müssen, in dem es sich zum Zeitpunkt der Erstellung des Snapshots befand. 
+---
+= Verwenden Sie Volume-Snapshots zum Datenschutz.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Volume-Snapshot ist eine Momentaufnahme eines Volumes.  Sie können einen Snapshot eines Volumes erstellen und diesen Snapshot später verwenden, wenn Sie ein Volume auf den Zustand zurücksetzen müssen, in dem es sich zum Zeitpunkt der Erstellung des Snapshots befand.
+
+Snapshots sind ähnlich wie Volume-Klone.  Snapshots sind jedoch lediglich Replikate der Metadaten des Datenträgers, daher können sie weder eingebunden noch beschrieben werden.  Das Erstellen eines Volume-Snapshots benötigt ebenfalls nur wenig Systemressourcen und Speicherplatz, wodurch die Snapshot-Erstellung schneller ist als das Klonen.
+
+Sie können eine Momentaufnahme eines einzelnen Volumes oder einer Gruppe von Volumes erstellen.
+
+Optional können Snapshots auf einen Remote-Cluster repliziert und als Sicherungskopie des Volumes verwendet werden.  Dies ermöglicht es Ihnen, ein Volume mithilfe des replizierten Snapshots auf einen bestimmten Zeitpunkt zurückzusetzen.  Alternativ können Sie einen Klon eines Volumes aus einem replizierten Snapshot erstellen.
+
+
+
+== Weitere Informationen
+
+* xref:task_data_protection_use_individual_volume_snapshots.adoc[Verwenden Sie einzelne Volume-Snapshots zum Datenschutz.]
+* xref:task_data_protection_use_group_snapshots_for_data_protection.adoc[Verwendung von Gruppen-Snapshots für die Datensicherungsaufgabe]
+* xref:task_data_protection_schedule_a_snapshot_task.adoc[Einen Snapshot planen]
+

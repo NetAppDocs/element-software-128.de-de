@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_task_virtual_volumes.html 
+sidebar: sidebar 
+keywords: object,objects,task 
+summary: Das Aufgabenobjekt enthält Informationen über eine aktuell laufende oder abgeschlossene virtuelle Volumenaufgabe im System.  Sie können die Methode ListVirtualVolumeTasks verwenden, um diese Informationen für alle virtuellen Volume-Tasks abzurufen. 
+---
+= Aufgabe (virtuelle Volumina)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Aufgabenobjekt enthält Informationen über eine aktuell laufende oder abgeschlossene virtuelle Volumenaufgabe im System.  Sie können die `ListVirtualVolumeTasks` Methode zum Abrufen dieser Informationen für alle virtuellen Volumenaufgaben.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+abgesagt
+ a| 
+Zeigt an, ob die Aufgabe abgebrochen wurde oder nicht. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+cloneVirtualVolumeID
+ a| 
+Die eindeutige virtuelle Volume-ID des zu klonenden virtuellen Volumes (für Klonvorgänge).
+ a| 
+UUID
+
+
+
+ a| 
+übergeordnete Metadaten
+ a| 
+Ein Objekt, das Metadaten des übergeordneten Objekts für Aufgaben enthält, die ein virtuelles Volume klonen oder Snapshots davon erstellen.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Gesamtgröße des Elternteils
+ a| 
+Der insgesamt verfügbare Speicherplatz (in Bytes) auf dem übergeordneten System für Klon- oder Snapshot-Aufgaben.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+parentUsedSize
+ a| 
+Der vom übergeordneten Prozess belegte Speicherplatz (in Bytes) für Klon- oder Snapshot-Aufgaben.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Betrieb
+ a| 
+Die Art der Operation, die der Task ausführt. Mögliche Werte:
+
+* unbekannt: Die Aufgabenoperation ist unbekannt.
+* Vorbereiten: Die Aufgabe besteht darin, ein virtuelles Volumen vorzubereiten.
+* Snapshot: Die Aufgabe besteht darin, einen Snapshot eines virtuellen Volumes zu erstellen.
+* Rollback: Die Aufgabe besteht darin, ein virtuelles Volume auf einen Snapshot zurückzusetzen.
+* Klonen: Die Aufgabe besteht darin, eine Kopie des virtuellen Volumes zu erstellen.
+* fastClone: Die Aufgabe besteht darin, eine schnelle Kopie eines virtuellen Volumes zu erstellen.
+* copyDiffs: Die Aufgabe besteht darin, unterschiedliche Blöcke auf ein virtuelles Volume zu kopieren.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Status
+ a| 
+Der aktuelle Stand der Aufgabe „Virtuelles Volumen“. Mögliche Werte:
+
+* Fehler: Die Aufgabe ist fehlgeschlagen und hat einen Fehler zurückgegeben.
+* In der Warteschlange: Die Aufgabe wartet darauf, ausgeführt zu werden.
+* Ausführung: Der Task wird aktuell ausgeführt.
+* Erfolg: Die Aufgabe wurde erfolgreich abgeschlossen.
+
+ a| 
+Schnur
+
+
+
+ a| 
+virtuellerVolumeHostID
+ a| 
+Die eindeutige ID des Hosts, der den Task gestartet hat.
+ a| 
+UUID
+
+
+
+ a| 
+virtuelleVolumeID
+ a| 
+Die neue, eindeutige virtuelle Volume-ID (für Aufgaben, die ein neues virtuelles Volume erstellen).
+ a| 
+UUID
+
+
+
+ a| 
+virtuelleVolumeTaskID
+ a| 
+Die eindeutige ID der Aufgabe.
+ a| 
+UUID
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listvirtualvolumetasks.adoc[ListVirtualVolumeTasks]

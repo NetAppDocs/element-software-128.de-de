@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_restartservices.html 
+sidebar: sidebar 
+keywords: restart,service,services,restartservices,restarting,node 
+summary: Mit der Methode RestartServices können Sie die Dienste auf einem Knoten neu starten. 
+---
+= RestartServices
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RestartServices` Methode zum Neustart der Dienste auf einem Knoten.
+
+
+
+== Parameter
+
+VORSICHT:
+
+Diese Methode führt zu einer vorübergehenden Unterbrechung der Knotendienste.
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Gewalt
+ a| 
+Auf „true“ setzen, um die Dienste auf einem Knoten neu zu starten.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Service
+ a| 
+Name des neu zu startenden Dienstes.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Aktion
+ a| 
+Für den Dienst auszuführende Aktion (Starten, Stoppen, Neustarten).
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Details
+ a| 
+Die Ausgabe des Neustartvorgangs des Dienstes, einschließlich etwaiger Fehler.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Dauer
+ a| 
+Die Zeit in Sekunden, die zum Neustart der Dienste auf dem Knoten benötigt wurde.
+ a| 
+Schnur
+
+
+
+ a| 
+Ergebnis
+ a| 
+Ergebnisse des Neustarts.
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "RestartServices",
+   "params": {
+              "force" : true
+              "action" : restart,
+             }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": "solidfire stop/waiting\nsolidfire start/running, process 7284\n",
+    "duration": "00:00:02.541594",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

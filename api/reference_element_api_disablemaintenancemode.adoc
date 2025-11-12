@@ -1,0 +1,136 @@
+---
+permalink: api/reference_element_api_disablemaintenancemode.html 
+sidebar: sidebar 
+keywords: disable,maintenance,mode 
+summary: Mit der Methode DisableMaintenanceMode können Sie einen Speicherknoten aus dem Wartungsmodus nehmen.  Den Wartungsmodus sollten Sie erst deaktivieren, nachdem Sie die Wartungsarbeiten abgeschlossen haben und der Knoten wieder online ist. 
+---
+= Wartungsmodus deaktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DisableMaintenanceMode` Methode zum Verlassen des Wartungsmodus eines Speicherknotens.  Den Wartungsmodus sollten Sie erst deaktivieren, nachdem Sie die Wartungsarbeiten abgeschlossen haben und der Knoten wieder online ist.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Knoten
+ a| 
+Liste der Speicherknoten-IDs, die aus dem Wartungsmodus genommen werden sollen.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+asyncHandle
+ a| 
+Sie können die Methode GetAsyncResult verwenden, um dieses asyncHandle abzurufen und festzustellen, wann der Übergang in den Wartungsmodus abgeschlossen ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+aktueller Modus
+ a| 
+Der aktuelle Wartungsmodus-Status des Knotens. Mögliche Werte:
+
+* Deaktiviert: Es wurden keine Wartungsarbeiten angefordert.
+* FailedToRecover: Der Knoten konnte nicht aus dem Wartungsmodus wiederhergestellt werden.
+* Unerwartet: Der Knoten war offline, befand sich aber im deaktivierten Modus.
+* Wiederherstellung aus dem Wartungsmodus: Der Knoten befindet sich im Wiederherstellungsprozess nach dem Wartungsmodus.
+* Vorbereitung der Wartung: Es werden Maßnahmen ergriffen, um einen Knoten für die Durchführung von Wartungsarbeiten vorzubereiten.
+* Wartungsbereit: Der Knoten ist bereit für die Durchführung von Wartungsarbeiten.
+
+ a| 
+Wartungsmodus (Zeichenkette)
+
+
+
+ a| 
+angeforderter Modus
+ a| 
+Der angeforderte Wartungsmodus des Knotens. Mögliche Werte:
+
+* Deaktiviert: Es wurden keine Wartungsarbeiten angefordert.
+* FailedToRecover: Der Knoten konnte nicht aus dem Wartungsmodus wiederhergestellt werden.
+* Unerwartet: Der Knoten war offline, befand sich aber im deaktivierten Modus.
+* Wiederherstellung aus dem Wartungsmodus: Der Knoten befindet sich im Wiederherstellungsprozess nach dem Wartungsmodus.
+* Vorbereitung der Wartung: Es werden Maßnahmen ergriffen, um einen Knoten für die Durchführung von Wartungsarbeiten vorzubereiten.
+* Wartungsbereit: Der Knoten ist bereit für die Durchführung von Wartungsarbeiten.
+
+ a| 
+Wartungsmodus (Zeichenkette)
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "DisableMaintenanceMode",
+  "params": {
+    "nodes": [6]
+  },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "Disabled",
+        "asyncHandle": 1,
+        "currentMode": "Enabled"
+    }
+}
+----
+
+
+== Neu seit Version
+
+12,2
+
+
+
+== Weitere Informationen
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["NetApp HCI Speicherwartungsmoduskonzepte"^]

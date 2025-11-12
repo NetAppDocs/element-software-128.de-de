@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_perform_failback_to_element.html 
+sidebar: sidebar 
+keywords: failback, perform a failbacl, Element, snapmirror 
+summary: Sobald das Problem auf der primären Seite behoben ist, müssen Sie das ursprüngliche Quellvolume erneut synchronisieren und auf die NetApp Element -Software zurückgreifen.  Die durchzuführenden Schritte variieren je nachdem, ob das ursprüngliche Quellvolume noch existiert oder ob Sie auf ein neu erstelltes Volume zurückgreifen müssen. 
+---
+= Erfahren Sie mehr über die Durchführung eines Failbacks zu Element.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sobald das Problem auf der primären Seite behoben ist, müssen Sie das ursprüngliche Quellvolume erneut synchronisieren und auf die NetApp Element -Software zurückgreifen.  Die durchzuführenden Schritte variieren je nachdem, ob das ursprüngliche Quellvolume noch existiert oder ob Sie auf ein neu erstelltes Volume zurückgreifen müssen.
+
+
+
+== SnapMirror Failback-Szenarien
+
+Die Funktionalität von SnapMirror zur Notfallwiederherstellung wird anhand zweier Failback-Szenarien veranschaulicht.  Diese Annahmen setzen voraus, dass die ursprüngliche Beziehung gescheitert (abgebrochen) ist.
+
+Die Schritte aus den entsprechenden Verfahrensanweisungen sind zur Veranschaulichung hinzugefügt.
+
+
+NOTE: In den hier aufgeführten Beispielen entspricht R1 der ursprünglichen Beziehung, in der der Cluster, auf dem die NetApp Element -Software läuft, das ursprüngliche Quellvolume (Element) und ONTAP das ursprüngliche Zielvolume (ONTAP) ist.  R2 und R3 stellen die inversen Beziehungen dar, die durch die umgekehrte Resynchronisierungsoperation erzeugt werden.
+
+Die folgende Abbildung zeigt das Failback-Szenario, wenn das Quellvolume noch vorhanden ist:
+
+image::../media/snapmirror_element_failback1.gif[Abbildung des Failback-Szenarios, wenn das Quellvolume noch existiert]
+
+Die folgende Abbildung zeigt das Failback-Szenario, wenn das Quellvolume nicht mehr existiert:
+
+image::../media/snapmirror_element_failback2.png[Abbildung des Failback-Szenarios, wenn das Quellvolume nicht mehr existiert]
+
+
+
+== Weitere Informationen
+
+* xref:task_snapmirror_perform_failback_when_source_volume_exists.adoc[Führen Sie ein Failback durch, wenn das Quellvolume noch vorhanden ist.]
+* xref:task_snapmirror_performing_failback_when_source_volume_no_longer_exists.adoc[Führen Sie ein Failback durch, wenn das Quellvolume nicht mehr existiert.]
+* xref:concept_snapmirror_failback_scenarios.adoc[SnapMirror Failback-Szenarien]
+

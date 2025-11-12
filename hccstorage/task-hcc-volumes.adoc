@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-volumes.html 
+summary: Sie können die Volumen in Ihrem System über die Seite „Hybrid Cloud Control Volumes“ überwachen. 
+keywords: netapp, element, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= Überwachen Sie die Volumes Ihres Speicherclusters
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das SolidFire -System stellt Speicherplatz mithilfe von Volumes bereit.  Volumes sind Blockgeräte, auf die über das Netzwerk von iSCSI- oder Fibre-Channel-Clients zugegriffen wird.  Sie können Details zu Zugriffsgruppen, Konten, Initiatoren, genutzter Kapazität, Snapshot-Datenschutzstatus, Anzahl der iSCSI-Sitzungen und der mit dem Volume verknüpften Quality-of-Service-Richtlinie (QoS) überwachen.
+
+Sie können auch Details zu aktiven und gelöschten Volumes einsehen.
+
+Bei dieser Ansicht empfiehlt es sich, zunächst die Spalte „Belegte Kapazität“ zu überwachen.
+
+Sie können nur auf diese Informationen zugreifen, wenn Sie über administrative Berechtigungen für NetApp Hybrid Cloud Control verfügen.
+
+.Schritte
+. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser. Beispiel:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen für den SolidFire All-Flash-Speichercluster angeben.
+. Wählen Sie im linken blauen Navigationsfeld die Installation des SolidFire All-Flash-Speichers aus.
+. Wählen Sie in der linken Navigationsleiste den Cluster aus und wählen Sie *Speicher* > *Volumes*.
++
+image::hcc_volumes_overview_active.png[Seite HCC Volumes > Registerkarte „Übersicht“ (Bild)]
+
+. Verwenden Sie auf der Seite „Volumes“ die folgenden Optionen:
++
+image::hcc_volumes_icons.png[Symbole der HCC Volumes-Seite]
+
++
+.. Filtern Sie die Ergebnisse, indem Sie das Symbol *Filter* auswählen.
+.. Spalten können durch Auswahl des Symbols *Ausblenden/Einblenden* ein- oder ausgeblendet werden.
+.. Aktualisieren Sie die Daten, indem Sie das Symbol *Aktualisieren* auswählen.
+.. Laden Sie eine CSV-Datei herunter, indem Sie auf das Symbol *Download* klicken.
+
+
+. Überwachen Sie die Spalte „Belegte Kapazität“.  Wenn Warn-, Fehler- oder kritische Schwellenwerte erreicht werden, stellt die Farbe den Auslastungsgrad dar:
++
+.. Warnung – Gelb
+.. Fehler - Orange
+.. Kritisch – Rot
+
+
+. In der Volume-Ansicht können Sie die Registerkarten auswählen, um weitere Details zu den Volumes anzuzeigen:
++
+.. *Zugriffsgruppen*: Hier sehen Sie die Volume-Zugriffsgruppen, die von Initiatoren einer Sammlung von Volumes für den sicheren Zugriff zugeordnet sind.
++
+Siehe Informationen über link:../concepts/concept_solidfire_concepts_volume_access_groups.html["Volumenzugriffsgruppen"]Die
+
+.. *Konten*: Hier sehen Sie die Benutzerkonten, die es Clients ermöglichen, eine Verbindung zu Volumes auf einem Knoten herzustellen.  Wenn Sie ein Volume erstellen, wird es einem bestimmten Benutzerkonto zugewiesen.
++
+Siehe Informationen über link:../concepts/concept_solidfire_concepts_accounts_and_permissions.html#user-accounts["Benutzerkonten für das SolidFire All-Flash-Speichersystem"]Die
+
+.. *Initiatoren*: Sie können die iSCSI-Initiatoren-IQN oder Fibre Channel-WWPNs für das Volume sehen.  Jeder einer Zugriffsgruppe hinzugefügte IQN kann auf jedes Volume in der Gruppe zugreifen, ohne dass eine CHAP-Authentifizierung erforderlich ist.  Jeder einer Zugriffsgruppe hinzugefügte WWPN ermöglicht den Fibre-Channel-Netzwerkzugriff auf die Volumes in der Zugriffsgruppe.
+.. *QoS-Richtlinien*: Hier sehen Sie die auf das Volume angewendete QoS-Richtlinie.  Eine QoS-Richtlinie wendet standardisierte Einstellungen für minimale IOPS, maximale IOPS und Burst-IOPS auf mehrere Volumes an.
++
+Siehe Informationen über link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-performance["Leistungs- und QoS-Richtlinien"]Die
+
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Dokumentation"^]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

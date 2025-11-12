@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_setloginsessioninfo.html 
+sidebar: sidebar 
+keywords: authentication,login,session,info,timeout,setloginsessioninfo 
+summary: Mit der Methode SetLoginSessionInfo können Sie die Zeitspanne festlegen, für die eine Anmeldeauthentifizierung für eine Sitzung gültig ist.  Nach Ablauf der Anmeldefrist ohne Systemaktivität erlischt die Authentifizierung.  Für den weiteren Zugriff auf den Cluster nach Ablauf der Anmeldefrist sind neue Anmeldeinformationen erforderlich. 
+---
+= SetLoginSessionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `SetLoginSessionInfo` Methode zum Festlegen des Zeitraums, für den eine Anmeldeauthentifizierung für eine Sitzung gültig ist.  Nach Ablauf der Anmeldefrist ohne Systemaktivität erlischt die Authentifizierung.  Für den weiteren Zugriff auf den Cluster nach Ablauf der Anmeldefrist sind neue Anmeldeinformationen erforderlich.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Time-out
+ a| 
+Ablaufzeit der Cluster-Authentifizierung.  Formatiert in HH:mm:ss.  Beispielsweise können 01:30:00, 00:90:00 und 00:00:5400 alle verwendet werden, um eine 90-minütige Auszeit zu ergeben.  Der minimale Timeout-Wert beträgt 1 Minute.  Wird kein Wert angegeben oder auf Null gesetzt, hat die Anmeldesitzung keinen Timeout-Wert.
+ a| 
+Schnur
+ a| 
+30 Minuten
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "SetLoginSessionInfo",
+  "params": {
+    "timeout" : "01:30:00"
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

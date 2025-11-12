@@ -1,0 +1,42 @@
+---
+permalink: storage/task_system_manage_virtual_edit_a_virtual_network.html 
+sidebar: sidebar 
+keywords: virtual network, edit, ip address block, vlan attributes 
+summary: Sie können VLAN-Attribute wie VLAN-Name, Netzmaske und Größe der IP-Adressblöcke ändern.  Das VLAN-Tag und der SVIP können für ein VLAN nicht geändert werden.  Das Gateway-Attribut ist kein gültiger Parameter für Nicht-VRF-VLANs. 
+---
+= Bearbeiten eines virtuellen Netzwerks
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können VLAN-Attribute wie VLAN-Name, Netzmaske und Größe der IP-Adressblöcke ändern.  Das VLAN-Tag und der SVIP können für ein VLAN nicht geändert werden.  Das Gateway-Attribut ist kein gültiger Parameter für Nicht-VRF-VLANs.
+
+Falls iSCSI-, Remote-Replikations- oder andere Netzwerk-Sitzungen bestehen, kann die Änderung fehlschlagen.
+
+Bei der Verwaltung der Größe von VLAN-IP-Adressbereichen sollten Sie die folgenden Einschränkungen beachten:
+
+* Sie können nur IP-Adressen aus dem ursprünglichen IP-Adressbereich entfernen, der Ihnen bei der Erstellung des VLAN zugewiesen wurde.
+* Sie können einen IP-Adressblock entfernen, der nach dem ursprünglichen IP-Adressbereich hinzugefügt wurde, aber Sie können einen IP-Block nicht vergrößern, indem Sie IP-Adressen entfernen.
+* Beim Versuch, IP-Adressen aus dem ursprünglichen IP-Adressbereich oder einem IP-Block zu entfernen, die von Knoten im Cluster verwendet werden, kann der Vorgang fehlschlagen.
+* Bestimmte, bereits verwendete IP-Adressen können nicht anderen Knoten im Cluster neu zugewiesen werden.
+
+
+Sie können einen IP-Adressbereich mit folgendem Verfahren hinzufügen:
+
+. Wählen Sie *Cluster* > *Netzwerk*.
+. Wählen Sie das Aktionssymbol für das VLAN aus, das Sie bearbeiten möchten.
+. Wählen Sie *Bearbeiten*.
+. Geben Sie im Dialogfeld *VLAN bearbeiten* die neuen Attribute für das VLAN ein.
+. Wählen Sie *Block hinzufügen*, um einen nicht zusammenhängenden Block von IP-Adressen für das virtuelle Netzwerk hinzuzufügen.
+. Wählen Sie *Änderungen speichern*.
+
+
+.Link zu den KB-Artikeln zur Fehlerbehebung
+Hier finden Sie Artikel aus der Wissensdatenbank, die Ihnen bei der Fehlerbehebung im Zusammenhang mit der Verwaltung Ihrer VLAN-IP-Adressbereiche helfen.
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Duplicate_IP_warning_after_adding_a_storage_node_in_VLAN_on_Element_cluster["Warnung vor doppelter IP-Adresse nach dem Hinzufügen eines Speicherknotens in einem VLAN auf dem Element-Cluster"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_determine_which_VLAN_IP%27s_are_in_use_and_which_nodes_those_IP%27s_are_assigned_to_in_Element["Wie man in Element ermittelt, welche VLAN-IPs verwendet werden und welchen Knoten diese IPs zugewiesen sind."^]
+

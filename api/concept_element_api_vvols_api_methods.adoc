@@ -1,0 +1,35 @@
+---
+permalink: api/concept_element_api_vvols_api_methods.html 
+sidebar: sidebar 
+keywords: virtual,volume,vvol,API,method 
+summary: 'Die Virtual Volume API-Methoden der Element-Software ermöglichen die Verwaltung virtueller Volumes (VVols).  Mit diesen API-Methoden können Sie vorhandene VVols anzeigen sowie virtuelle Volume-Speichercontainer erstellen, ändern und löschen.  Obwohl Sie diese Methoden nicht für die Bearbeitung normaler Volumes verwenden können, können Sie die API-Methoden für normale Volumes verwenden, um Informationen über VVols aufzulisten.' 
+---
+= Methoden der virtuellen Volume-API
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Virtual Volume API-Methoden der Element-Software ermöglichen die Verwaltung virtueller Volumes (VVols).  Mit diesen API-Methoden können Sie vorhandene VVols anzeigen sowie virtuelle Volume-Speichercontainer erstellen, ändern und löschen.  Obwohl Sie diese Methoden nicht für die Bearbeitung normaler Volumes verwenden können, können Sie die API-Methoden für normale Volumes verwenden, um Informationen über VVols aufzulisten.
+
+* xref:reference_element_api_createstoragecontainer.adoc[Speichercontainer erstellen]
+* xref:reference_element_api_deletestoragecontainers.adoc[Speichercontainer löschen]
+* xref:reference_element_api_getstoragecontainerefficiency.adoc[GetStorageContainerEfficiency]
+* xref:reference_element_api_getvirtualvolumecount.adoc[GetVirtualVolumeCount]
+* xref:reference_element_api_listprotocolendpoints.adoc[ListProtocolEndpoints]
+* xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]
+* xref:reference_element_api_listvirtualvolumebindings.adoc[ListVirtualVolumeBindings]
+* xref:reference_element_api_listvirtualvolumehosts.adoc[ListVirtualVolumeHosts]
+* xref:reference_element_api_listvirtualvolumes.adoc[ListVirtualVolumes]
+* xref:reference_element_api_listvirtualvolumetasks.adoc[ListVirtualVolumeTasks]
+* xref:reference_element_api_modifystoragecontainer.adoc[ModifyStorageContainer]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_pairs.html 
+sidebar: sidebar 
+keywords: volume pairs, delete 
+summary: Sie können ein Volume-Paar löschen, wenn Sie die Zuordnung zweier Volumes aufheben möchten. 
+---
+= Datenträgerpaare löschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein Volume-Paar löschen, wenn Sie die Zuordnung zweier Volumes aufheben möchten.
+
+. Wählen Sie *Datenschutz* > *Volume-Paare*.
+. Klicken Sie auf das Aktionssymbol für das Volume-Paar, das Sie löschen möchten.
+. Klicken Sie auf *Löschen*.
+. Bestätigen Sie die Nachricht.
+

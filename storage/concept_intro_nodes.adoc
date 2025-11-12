@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_intro_nodes.html 
+sidebar: sidebar 
+keywords: sf-series nodes, nodes, block storage, storage nodes, fibre channel nodes, fc, FC 
+summary: 'Knoten sind die einzelnen Hardwarekomponenten, die zu einem Cluster zusammengefasst werden, um als Blockspeicher genutzt zu werden.  In einem SolidFire -Speichersystem gibt es zwei Arten von Knoten: Speicherknoten und Fibre-Channel-Knoten.' 
+---
+= Nodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Knoten sind die einzelnen Hardwarekomponenten, die zu einem Cluster zusammengefasst werden, um als Blockspeicher genutzt zu werden.  In einem SolidFire -Speichersystem gibt es zwei Arten von Knoten: Speicherknoten und Fibre-Channel-Knoten.

@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removekeyserverfromproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,unassigning,removing,remove,unassign,removekeyserverfromproviderkmip 
+summary: 'Mit der Methode RemoveKeyServerFromProviderKmip können Sie den angegebenen KMIP-Schlüsselserver (Key Management Interoperability Protocol) von dem Provider, dem er zugewiesen war, abkoppeln.  Sie können einen Schlüsselserver von seinem Anbieter trennen, es sei denn, es handelt sich um den letzten und sein Anbieter ist aktiv (d. h. er stellt Schlüssel bereit, die aktuell in Gebrauch sind).  Wenn der angegebene Schlüsselserver keinem Anbieter zugewiesen ist, werden keine Maßnahmen ergriffen und es wird kein Fehler zurückgegeben.' 
+---
+= RemoveKeyServerFromProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RemoveKeyServerFromProviderKmip` Methode zum Aufheben der Zuordnung des angegebenen KMIP-Schlüsselservers (Key Management Interoperability Protocol) zu dem Anbieter, dem er zugewiesen wurde.  Sie können einen Schlüsselserver von seinem Anbieter trennen, es sei denn, es handelt sich um den letzten und sein Anbieter ist aktiv (d. h. er stellt Schlüssel bereit, die aktuell in Gebrauch sind).  Wenn der angegebene Schlüsselserver keinem Anbieter zugewiesen ist, werden keine Maßnahmen ergriffen und es wird kein Fehler zurückgegeben.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+SchlüsselServerID
+ a| 
+Die ID des KMIP-Schlüsselservers, dessen Zuweisung aufgehoben werden soll.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.  Die Entfernung gilt als erfolgreich, solange kein Fehler zurückgegeben wird.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "RemoveKeyServerFromProviderKmip",
+  "params": {
+    "keyServerID": 1
+   },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+    }
+}
+----
+
+
+== Neu seit Version
+
+11,7

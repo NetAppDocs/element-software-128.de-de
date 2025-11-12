@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_cluster_enable_and_disable_support_access.html 
+sidebar: sidebar 
+keywords: support access, enable, disable 
+summary: Sie können den Supportzugriff aktivieren, um dem NetApp Supportpersonal vorübergehend über SSH Zugriff auf die Speicherknoten zur Fehlerbehebung zu gewähren. 
+---
+= Supportzugriff aktivieren und deaktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Supportzugriff aktivieren, um dem NetApp Supportpersonal vorübergehend über SSH Zugriff auf die Speicherknoten zur Fehlerbehebung zu gewähren.
+
+Sie benötigen Cluster-Administratorrechte, um den Supportzugriff zu ändern.
+
+. Klicken Sie auf *Cluster* > *Einstellungen*.
+. Im Abschnitt „Supportzugriff aktivieren/deaktivieren“ geben Sie die Dauer (in Stunden) ein, für die der Support Zugriff haben soll.
+. Klicken Sie auf *Supportzugriff aktivieren*.
+. *Optional:* Um den Supportzugriff zu deaktivieren, klicken Sie auf *Supportzugriff deaktivieren*.
+

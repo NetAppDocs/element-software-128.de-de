@@ -1,0 +1,71 @@
+---
+permalink: hardware/task_sfseries_psurepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, power supply replacement, sf-series nodes 
+summary: Jedes SolidFire -Chassis enthält zwei Netzteile für redundante Stromversorgung.  Wenn ein Netzteil ausfällt, sollten Sie es so schnell wie möglich ersetzen, um sicherzustellen, dass das Gehäuse über eine redundante Stromversorgung verfügt. 
+---
+= Netzteil austauschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Jedes SolidFire -Chassis enthält zwei Netzteile für redundante Stromversorgung.  Wenn ein Netzteil ausfällt, sollten Sie es so schnell wie möglich ersetzen, um sicherzustellen, dass das Gehäuse über eine redundante Stromversorgung verfügt.
+
+.Was du brauchst
+* Sie haben festgestellt, dass das Netzteil ausgetauscht werden muss.
+* Sie haben ein Ersatznetzteil.
+* Sie haben überprüft, dass das zweite Netzteil funktioniert.
+* Sie besitzen ein ESD-Armband (elektrostatische Entladung) oder haben andere antistatische Vorkehrungen getroffen.
+
+
+.Informationen zu diesem Vorgang
+Die Anweisungen gelten, wenn Sie ein 1-HE-Gehäuse (1 Rack Unit) mit einem der folgenden Knoten besitzen:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+Je nach Ihrer Element-Softwareversion werden die folgenden Knoten nicht unterstützt:
+
+* Beginnend mit den Speicherknoten Element 12.8, SF4805, SF9605, SF19210 und SF38410.
+* Beginnend mit Element 12.7, den Speicherknoten SF2405 und SF9608 sowie den FC-Knoten FC0025 und SF-FCN-01.
+* Beginnend mit Element 12.0, SF3010, SF6010 und SF9010 Speicherknoten.
+
+
+====
+.Schritte
+. Ziehen Sie den Netzstecker von dem Netzteil, das Sie ersetzen.
+. Drücken Sie den Entriegelungsknopf, um das Netzteil aus dem Gehäuse zu schieben.
++
+
+IMPORTANT: Achten Sie darauf, dass Sie das Gewicht des Netzteils mit beiden Händen stützen.
+
+. Richten Sie mit beiden Händen die Kanten des Ersatznetzteils an der Öffnung im Gehäuse aus und drücken Sie das Netzteil vorsichtig in das Gehäuse.
++
+
+IMPORTANT: Wenden Sie beim Einschieben des Netzteils in das Gehäuse keine übermäßige Kraft an, um Beschädigungen der Hardware zu vermeiden.
+
+. Schließen Sie das Netzkabel an.
+. Senden Sie das defekte Gerät gemäß den Anweisungen in der mitgelieferten Verpackung an NetApp zurück.
++
+Für Unterstützung beim Austauschverfahren können Sie sich an den NetApp -Support wenden.
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

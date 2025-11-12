@@ -1,0 +1,49 @@
+---
+permalink: storage/task_troubleshoot_remove_failed_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, failed drives, remove 
+summary: Das SolidFire -System versetzt ein Laufwerk in den Fehlerzustand, wenn die Selbstdiagnose des Laufwerks dem Knoten einen Fehler meldet oder die Kommunikation mit dem Laufwerk für fünfeinhalb Minuten oder länger abbricht.  Das System zeigt eine Liste der ausgefallenen Laufwerke an.  Sie müssen ein defektes Laufwerk aus der Liste der defekten Laufwerke in der NetApp Element -Software entfernen. 
+---
+= Ausgefallene Laufwerke aus dem Cluster entfernen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das SolidFire -System versetzt ein Laufwerk in den Fehlerzustand, wenn die Selbstdiagnose des Laufwerks dem Knoten einen Fehler meldet oder die Kommunikation mit dem Laufwerk für fünfeinhalb Minuten oder länger abbricht.  Das System zeigt eine Liste der ausgefallenen Laufwerke an.  Sie müssen ein defektes Laufwerk aus der Liste der defekten Laufwerke in der NetApp Element -Software entfernen.
+
+In der Liste *Warnungen* werden Laufwerke als *blockServiceUnhealthy* angezeigt, wenn ein Knoten offline ist.  Beim Neustart des Knotens werden die Laufwerke automatisch aktualisiert und bleiben im Cluster aktiv, sofern der Knoten und seine Laufwerke innerhalb von fünfeinhalb Minuten wieder online sind.
+
+. Wählen Sie in der Element-Benutzeroberfläche *Cluster* > *Laufwerke* aus.
+. Klicken Sie auf *Fehlgeschlagen*, um die Liste der ausgefallenen Laufwerke anzuzeigen.
+. Notieren Sie die Steckplatznummer des ausgefallenen Laufwerks.
++
+Sie benötigen diese Informationen, um das defekte Laufwerk im Gehäuse zu lokalisieren.
+
+. Entfernen Sie die defekten Laufwerke mit einer der folgenden Methoden:
++
+|===
+
+
+| Option | Schritte 
+
+
+ a| 
+Einzelne Laufwerke entfernen
+ a| 
+.. Klicken Sie auf *Aktionen* für das Laufwerk, das Sie entfernen möchten.
+.. Klicken Sie auf *Entfernen*.
+
+
+
+
+ a| 
+Um mehrere Laufwerke zu entfernen
+ a| 
+.. Wählen Sie alle Laufwerke aus, die Sie entfernen möchten, und klicken Sie auf *Massenaktionen*.
+.. Klicken Sie auf *Entfernen*.
+
+
+|===
+

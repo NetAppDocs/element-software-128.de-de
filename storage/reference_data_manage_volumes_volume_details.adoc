@@ -1,0 +1,88 @@
+---
+permalink: storage/reference_data_manage_volumes_volume_details.html 
+sidebar: sidebar 
+keywords: volume, size of volume 
+summary: Die Seite „Volumes“ auf der Registerkarte „Verwaltung“ liefert Informationen über die aktiven Volumes, wie z. B. Name, Konto, dem Volume zugeordnete Zugriffsgruppen und Größe des Volumes. 
+---
+= Volumendetails
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Seite „Volumes“ auf der Registerkarte „Verwaltung“ liefert Informationen über die aktiven Volumes, wie z. B. Name, Konto, dem Volume zugeordnete Zugriffsgruppen und Größe des Volumes.
+
+* *AUSWEIS*
++
+Die vom System generierte ID für das Volume.
+
+* *Name*
++
+Der Name, der dem Band bei seiner Erstellung gegeben wurde.
+
+* *Konto*
++
+Der Name des dem Volumen zugeordneten Kontos.
+
+* *Zugriffsgruppen*
++
+Der Name der Datenträgerzugriffsgruppe oder -gruppen, zu denen der Datenträger gehört.
+
+* *Zugang*
++
+Die Art des Zugriffs, die dem Volume bei seiner Erstellung zugewiesen wurde. Mögliche Werte:
+
++
+** Lesen/Schreiben: Alle Lese- und Schreibvorgänge werden akzeptiert.
+** Nur Lesen: Alle Leseaktivitäten sind erlaubt; Schreibvorgänge sind nicht erlaubt.
+** Gesperrt: Nur Administratorzugriff erlaubt.
+** ReplicationTarget: Als Zielvolume in einem replizierten Volume-Paar festgelegt.
+
+
+* *Gebraucht*
++
+Der prozentuale Anteil des genutzten Raums am Gesamtvolumen.
+
+* *Größe*
++
+Die Gesamtgröße (in GB) des Volumens.
+
+* *Schnappschüsse*
++
+Die Anzahl der für das Volume erstellten Snapshots.
+
+* *QoS-Richtlinie*
++
+Name und Link zur benutzerdefinierten QoS-Richtlinie.
+
+* *Min. IOPS*
++
+Die für das Volumen garantierte Mindestanzahl an IOPS.
+
+* *Maximale IOPS*
++
+Die maximal zulässige Anzahl an IOPS für das Volume.
+
+* *Burst IOPS*
++
+Die maximal zulässige Anzahl an IOPS innerhalb eines kurzen Zeitraums für das Volumen.  Standardwert = 15.000.
+
+* *Eigenschaften*
++
+Attribute, die dem Volume über eine API-Methode als Schlüssel/Wert-Paar zugewiesen wurden.
+
+* *512e*
++
+Anzeige, ob 512e auf einem Volume aktiviert ist. Mögliche Werte:
+
++
+** Ja
+** Nein
+
+
+* *Erstellt am*
++
+Datum und Uhrzeit der Datenträgererstellung.
+
+

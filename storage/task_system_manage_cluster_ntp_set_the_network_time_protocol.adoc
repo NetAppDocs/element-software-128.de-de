@@ -1,0 +1,16 @@
+---
+permalink: storage/task_system_manage_cluster_ntp_set_the_network_time_protocol.html 
+sidebar: sidebar 
+keywords: set, ntp, broadcasts, query, updates, clocks, synchronize, 
+summary: 'Die Einrichtung des Network Time Protocol (NTP) kann auf zwei Arten erfolgen: entweder durch Anweisung an jeden Knoten in einem Cluster, auf Broadcasts zu achten, oder durch Anweisung an jeden Knoten, einen NTP-Server nach Aktualisierungen abzufragen.' 
+---
+= Stellen Sie das Netzwerkzeitprotokoll ein.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Einrichtung des Network Time Protocol (NTP) kann auf zwei Arten erfolgen: entweder durch Anweisung an jeden Knoten in einem Cluster, auf Broadcasts zu achten, oder durch Anweisung an jeden Knoten, einen NTP-Server nach Aktualisierungen abzufragen.
+
+Das NTP wird verwendet, um Uhren über ein Netzwerk zu synchronisieren.  Die Anbindung an einen internen oder externen NTP-Server sollte Teil der initialen Cluster-Einrichtung sein.

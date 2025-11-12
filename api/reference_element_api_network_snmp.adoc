@@ -1,0 +1,72 @@
+---
+permalink: api/reference_element_api_network_snmp.html 
+sidebar: sidebar 
+keywords: object,objects,network 
+summary: Das SNMP-Netzwerkobjekt enthält Informationen zur SNMP v3-Konfiguration für die Clusterknoten. 
+---
+= Netzwerk (SNMP)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das SNMP-Netzwerkobjekt enthält Informationen zur SNMP v3-Konfiguration für die Clusterknoten.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Zugang
+ a| 
+Die Art des Zugriffs, der für SNMP-Informationsanfragen zulässig ist. Mögliche Werte:
+
+* ro: Nur-Lese-Zugriff.
+* rw: Lese- und Schreibzugriff.
+* rosys: Schreibgeschützter Zugriff auf einen eingeschränkten Satz von Systeminformationen.
+
+ a| 
+Schnur
+
+
+
+ a| 
+cidr
+ a| 
+Eine CIDR-Netzwerkmaske.  Diese Netzwerkmaske muss eine ganze Zahl größer oder gleich 0 und kleiner oder gleich 32 sein.  Es darf auch nicht gleich 31 sein.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Gemeinschaft
+ a| 
+Die SNMP-Community-Zeichenfolge.
+ a| 
+Schnur
+
+
+
+ a| 
+Netzwerk
+ a| 
+Dieses Mitglied steuert zusammen mit dem CIDR-Mitglied, für welches Netzwerk die Zugriffs- und Community-Zeichenfolge gilt.  Der Sonderwert „default“ dient zur Angabe eines Eintrags, der für alle Netzwerke gilt.  Die CIDR-Maske wird ignoriert, wenn dieses Element entweder ein Hostname oder "default" ist.
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_getsnmpinfo.adoc[GetSnmpInfo]

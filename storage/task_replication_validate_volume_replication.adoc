@@ -1,0 +1,24 @@
+---
+permalink: storage/task_replication_validate_volume_replication.html 
+sidebar: sidebar 
+keywords: volume pairings, replication, validate volume replication 
+summary: Nach der Replikation eines Volumes sollten Sie sicherstellen, dass Quell- und Zielvolume aktiv sind.  Im aktiven Zustand werden die Volumes gekoppelt, Daten werden vom Quell- zum Zielvolume gesendet und die Daten werden synchronisiert. 
+---
+= Volumenreplikation validieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach der Replikation eines Volumes sollten Sie sicherstellen, dass Quell- und Zielvolume aktiv sind.  Im aktiven Zustand werden die Volumes gekoppelt, Daten werden vom Quell- zum Zielvolume gesendet und die Daten werden synchronisiert.
+
+. Wählen Sie in beiden Clustern *Datenschutz* > *Volume-Paare* aus.
+. Überprüfen Sie, ob der Volume-Status „Aktiv“ lautet.
+
+
+
+
+== Weitere Informationen
+
+xref:reference_replication_volume_pairing_warnings.adoc[Warnungen zur Lautstärkepaarung]

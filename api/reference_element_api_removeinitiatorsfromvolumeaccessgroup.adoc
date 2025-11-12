@@ -1,0 +1,134 @@
+---
+permalink: api/reference_element_api_removeinitiatorsfromvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: initiators,initiator,volume,access,group,remove,removing,removeinitiatorsfromvolumeaccessgroup 
+summary: Mit der Methode RemoveInitiatorsFromVolumeAccessGroup können Sie Initiatoren aus einer bestimmten Volume-Zugriffsgruppe entfernen. 
+---
+= RemoveInitiatorsFromVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RemoveInitiatorsFromVolumeAccessGroup` Methode zum Entfernen von Initiatoren aus einer bestimmten Volume-Zugriffsgruppe.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Die ID der Volume-Zugriffsgruppe, aus der Initiatoren entfernt werden.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Initiatoren
+ a| 
+Liste der Initiator-IDs oder -Namen (IQNs und WWPNs), die in die Volume-Zugriffsgruppe aufgenommen werden sollen.  Wenn Sie eine Liste von Initiatornamen übergeben, werden die Initiatoren erstellt, sofern sie noch nicht existieren.  Wenn Sie eine Liste von Initiator-IDs übergeben, gibt die Methode einen Fehler zurück, falls einer der Initiatoren noch nicht existiert.  Die Übergabe von Initiatornamen ist veraltet; verwenden Sie nach Möglichkeit Initiator-IDs.
+ a| 
+Ganzzahl-Array (empfohlen) oder Zeichenketten-Array (veraltet)
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+deleteOrphanInitiators
+ a| 
+Legt fest, ob Initiatorobjekte nach dem Entfernen aus einer Volume-Zugriffsgruppe gelöscht werden sollen oder nicht. Mögliche Werte:
+
+* true: Initiatorobjekte löschen, nachdem sie aus einer Volume-Zugriffsgruppe entfernt wurden.
+* falsch: Initiatorobjekte werden nicht gelöscht, nachdem sie aus einer Volume-Zugriffsgruppe entfernt wurden. Dies ist die Standardeinstellung.
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+volumeAccessGroup
+ a| 
+Ein Objekt, das Informationen über die neu geänderte Datenträgerzugriffsgruppe enthält.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "id": 13171,
+  "method": "RemoveInitiatorsFromVolumeAccessGroup",
+  "params": {
+    "initiators": [114,115],
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 13171,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [],
+      "initiators": [],
+      "name": "test",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

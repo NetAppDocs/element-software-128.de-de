@@ -1,0 +1,122 @@
+---
+permalink: hardware/task_hseries_driverepl.html 
+sidebar: sidebar 
+keywords: drives, replace drives, SSDs, replacement, h610s, h410s, maintenance 
+summary: Wenn ein Laufwerk defekt ist oder der Verschleißgrad des Laufwerks einen bestimmten Schwellenwert unterschreitet, sollten Sie es austauschen.  Alarme in der Element-Software-Benutzeroberfläche benachrichtigen Sie, wenn ein Laufwerk ausgefallen ist oder ausfallen wird.  Ein defektes Laufwerk kann im laufenden Betrieb ausgetauscht werden. 
+---
+= Laufwerke ersetzen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn ein Laufwerk defekt ist oder der Verschleißgrad des Laufwerks einen bestimmten Schwellenwert unterschreitet, sollten Sie es austauschen.  Alarme in der Element-Software-Benutzeroberfläche benachrichtigen Sie, wenn ein Laufwerk ausgefallen ist oder ausfallen wird.  Ein defektes Laufwerk kann im laufenden Betrieb ausgetauscht werden.
+
+.Informationen zu diesem Vorgang
+Dieses Verfahren dient zum Austauschen von Laufwerken in H410S- und H610S-Speicherknoten.  Durch das Entfernen eines Laufwerks wird dieses offline genommen.  Sämtliche Daten auf dem Laufwerk werden entfernt und auf andere Laufwerke im Cluster migriert.  Die Datenmigration auf andere aktive Laufwerke im System kann je nach Kapazitätsauslastung und aktiver E/A im Cluster einige Minuten bis zu einer Stunde dauern.  Beim Aus- und Einbau von Laufwerken sollten Sie folgende bewährte Vorgehensweisen beachten:
+
+* Bewahren Sie das Laufwerk im ESD-Beutel auf, bis Sie es einbauen möchten.
+* Öffnen Sie den ESD-Beutel von Hand oder schneiden Sie die Oberseite mit einer Schere ab.
+* Tragen Sie stets ein ESD-Armband, das an einer unlackierten Stelle Ihres Gehäuses geerdet ist.
+* Benutzen Sie beim Ausbau, Einbau oder Transport eines Laufwerks immer beide Hände.
+* Man kann niemals einen Antrieb mit Gewalt in das Chassis drücken.
+* Verwenden Sie beim Versand von Festplatten stets zugelassene Verpackungen.
+* Stapeln Sie die Laufwerke nicht übereinander.
+
+
+
+
+== Bewährte Verfahren zum Hinzufügen und Entfernen von Laufwerken
+
+* Fügen Sie alle Blocklaufwerke hinzu und stellen Sie sicher, dass die Blocksynchronisierung abgeschlossen ist, bevor Sie die Slice-Laufwerke hinzufügen.
+* Bei Element-Softwareversionen ab 10.x müssen alle Blocklaufwerke gleichzeitig hinzugefügt werden.  Stellen Sie sicher, dass Sie dies nicht für mehr als drei Knoten gleichzeitig tun.
+* Bei Element-Softwareversionen 9.x und älter sollten Sie drei Laufwerke gleichzeitig hinzufügen, damit diese vollständig synchronisiert werden können, bevor Sie die nächste Dreiergruppe hinzufügen.
+* Entfernen Sie das Slice-Laufwerk und stellen Sie sicher, dass die Slice-Synchronisierung abgeschlossen ist, bevor Sie die Block-Laufwerke entfernen.
+* Entfernen Sie alle Block-Laufwerke eines einzelnen Knotens gleichzeitig.  Stellen Sie sicher, dass die Synchronisierung aller Blöcke abgeschlossen ist, bevor Sie zum nächsten Knoten übergehen.
+
+
+.Schritte
+. Entfernen Sie das Laufwerk mithilfe der NetApp Element Software-Benutzeroberfläche aus dem Cluster:
++
+.. Wählen Sie in der Element-Benutzeroberfläche *Cluster > Laufwerke* aus.
+.. Wählen Sie *Fehlgeschlagen*, um die Liste der ausgefallenen Laufwerke anzuzeigen.
+.. Notieren Sie sich die Steckplatznummer des ausgefallenen Laufwerks.  Sie benötigen diese Informationen, um das defekte Laufwerk im Gehäuse zu lokalisieren.
+.. Wählen Sie *Aktionen* für das Laufwerk aus, das Sie entfernen möchten.
+.. Wählen Sie *Entfernen*.
++
+
+NOTE: Wenn vor dem Entfernen eines Knotens nicht genügend Kapazität zum Entfernen aktiver Laufwerke vorhanden ist, wird beim Bestätigen des Laufwerksentfernungsvorgangs eine Fehlermeldung angezeigt.  Nachdem Sie den Fehler behoben haben, können Sie das Laufwerk nun physisch aus dem Gehäuse entfernen.
+
+
+
+. Ersetzen Sie das Laufwerk aus dem Gehäuse:
++
+.. Packen Sie das Ersatzlaufwerk aus und legen Sie es auf eine ebene, antistatische Oberfläche in der Nähe des Racks.  Bewahren Sie das Verpackungsmaterial auf, bis Sie das defekte Laufwerk an NetApp zurücksenden.  Hier sehen Sie die H610S- und H410S-Speicherknoten mit den Laufwerken von vorn:
++
+image::h610s_h410s.png[Zeigt die Vorderansicht der Speicherknoten H610S und H410S.]
+
+.. (*Nur H410S*) Führen Sie die folgenden Schritte durch:
++
+... Identifizieren Sie den Knoten, indem Sie die Seriennummer (Service-Tag) mit der Nummer vergleichen, die Sie sich in der Element-Benutzeroberfläche notiert haben.  Die Seriennummer befindet sich auf einem Aufkleber auf der Rückseite jedes Knotens.  Nachdem Sie den Knoten identifiziert haben, können Sie anhand der Steckplatzinformationen den Steckplatz ermitteln, in dem sich das ausgefallene Laufwerk befindet. Die Laufwerke sind alphabetisch von A bis D und von 0 bis 5 angeordnet.
+... Entfernen Sie die Lünette.
+... Drücken Sie die Entriegelungstaste am defekten Laufwerk:
++
+image::h410s_drive.png[Zeigt die Entriegelungstaste am Laufwerk für H410S-Speicherknoten.]
+
++
+Beim Drücken des Auslöseknopfes springt der Nockenhebel am Antrieb teilweise auf, und der Antrieb löst sich von der Mittelebene.
+
+... Öffnen Sie den Nockenhebel und schieben Sie das Laufwerk vorsichtig mit beiden Händen heraus.
+... Legen Sie das Laufwerk auf eine antistatische, ebene Fläche.
+... Schieben Sie das Ersatzlaufwerk mit beiden Händen vollständig in den Steckplatz im Gehäuse ein.
+... Drücken Sie den Nockenhebel nach unten, bis er einrastet.
+... Bringen Sie die Lünette wieder an.
+... Benachrichtigen Sie den NetApp Support über den Festplattenaustausch.  Der NetApp Support stellt Ihnen Anweisungen zur Rücksendung des defekten Laufwerks zur Verfügung.
+
+
+.. (*Nur H610S*) Führen Sie die folgenden Schritte aus:
++
+... Vergleichen Sie die Steckplatznummer des ausgefallenen Laufwerks in der Element-Benutzeroberfläche mit der Nummer auf dem Gehäuse.  Die LED am defekten Laufwerk leuchtet gelb.
+... Entfernen Sie die Lünette.
+... Drücken Sie die Entriegelungstaste und entfernen Sie das defekte Laufwerk wie in der folgenden Abbildung gezeigt:
++
+image::h610s_driveremove.png[Zeigt, wie das Laufwerk aus dem H610S-Knoten entfernt wird.]
+
++
+
+NOTE: Stellen Sie sicher, dass der Griff des Einschubfachs vollständig geöffnet ist, bevor Sie versuchen, das Laufwerk aus dem Gehäuse herauszuziehen.
+
+... Schieben Sie das Laufwerk heraus und legen Sie es auf eine antistatische, ebene Fläche.
+... Drücken Sie die Entriegelungstaste am Ersatzlaufwerk, bevor Sie es in den Laufwerksschacht einsetzen.  Der Griff des Laufwerksfachs springt auf.
++
+image::H600S_driveinstall.png[Zeigt, wie das Laufwerk im H610S-Knoten installiert wird.]
+
+... Setzen Sie das Ersatzlaufwerk ohne übermäßige Krafteinwirkung ein.  Wenn das Laufwerk vollständig eingeschoben ist, ist ein Klicken zu hören.
+... Schließen Sie den Griff des Laufwerksfachs vorsichtig.
+... Bringen Sie die Lünette wieder an.
+... Benachrichtigen Sie den NetApp Support über den Festplattenaustausch.  Der NetApp Support stellt Ihnen Anweisungen zur Rücksendung des defekten Laufwerks zur Verfügung.
+
+
+
+
+. Fügen Sie das Laufwerk mithilfe der Element-Benutzeroberfläche wieder zum Cluster hinzu.
++
+
+NOTE: Wenn Sie ein neues Laufwerk in einem bestehenden Knoten installieren, wird das Laufwerk automatisch in der Element-Benutzeroberfläche als *Verfügbar* registriert.  Sie müssen das Laufwerk dem Cluster hinzufügen, bevor es am Cluster teilnehmen kann.
+
++
+.. Wählen Sie in der Element-Benutzeroberfläche *Cluster > Laufwerke* aus.
+.. Wählen Sie *Verfügbar*, um die Liste der verfügbaren Laufwerke anzuzeigen.
+.. Wählen Sie das Symbol „Aktionen“ für das Laufwerk aus, das Sie hinzufügen möchten, und wählen Sie dann *Hinzufügen*.
+
+
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

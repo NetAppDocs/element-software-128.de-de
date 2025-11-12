@@ -1,0 +1,34 @@
+---
+permalink: storage/task_replication_plan_cluster_and_volume_pairing.html 
+sidebar: sidebar 
+keywords: cluster, volume pairing, plan for, real-time replication 
+summary: Für die Echtzeit-Replikation auf entfernten Servern müssen Sie zwei Speichercluster, auf denen die Element-Software läuft, koppeln, auf jedem Cluster Volumes koppeln und die Replikation validieren.  Nach Abschluss der Replikation sollten Sie die Volume-Beziehung löschen. 
+---
+= Planen Sie die Cluster- und Volume-Paarung für die Echtzeitreplikation.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Für die Echtzeit-Replikation auf entfernten Servern müssen Sie zwei Speichercluster, auf denen die Element-Software läuft, koppeln, auf jedem Cluster Volumes koppeln und die Replikation validieren.  Nach Abschluss der Replikation sollten Sie die Volume-Beziehung löschen.
+
+.Was du brauchst
+* Sie benötigen Cluster-Administratorrechte für mindestens einen der beiden zu koppelnden Cluster.
+* Alle Knoten-IP-Adressen sowohl im Management- als auch im Speichernetzwerk für gepaarte Cluster werden miteinander verbunden.
+* Die MTU aller gepaarten Knoten muss gleich sein und zwischen den Clustern durchgängig unterstützt werden.
+* Beide Speichercluster sollten eindeutige Clusternamen, MVIPs, SVIPs und alle Knoten-IP-Adressen haben.
+* Der Unterschied zwischen den Element-Softwareversionen auf den Clustern beträgt maximal eine Hauptversion.  Ist der Unterschied größer, muss einer der Cluster aufgerüstet werden, um die Datenreplikation durchzuführen.
+
+
+
+NOTE: WAN Accelerator-Appliances sind von NetApp nicht für die Verwendung bei der Datenreplikation qualifiziert.  Diese Geräte können die Komprimierung und Deduplizierung beeinträchtigen, wenn sie zwischen zwei Clustern eingesetzt werden, die Daten replizieren.  Stellen Sie sicher, dass Sie die Auswirkungen jeder WAN-Beschleuniger-Appliance vollständig qualifizieren, bevor Sie sie in einer Produktionsumgebung einsetzen.
+
+
+
+== Weitere Informationen
+
+* xref:task_replication_pair_clusters.adoc[Clusterpaare für die Replikation]
+* xref:task_replication_pair_volumes.adoc[Paarvolumina]
+* xref:task_replication_assign_replication_source_and_target_to_paired_volumes.adoc[Weisen Sie gepaarten Volumes eine Replikationsquelle und ein Replikationsziel zu.]
+

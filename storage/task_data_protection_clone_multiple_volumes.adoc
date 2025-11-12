@@ -1,0 +1,39 @@
+---
+permalink: storage/task_data_protection_clone_multiple_volumes.html 
+sidebar: sidebar 
+keywords: multiple volumes, clone, create 
+summary: Sie können in einem einzigen Vorgang mehrere Volume-Klone erstellen, um eine Momentaufnahme der Daten auf einer Gruppe von Volumes zu erstellen. 
+---
+= Mehrere Volumes klonen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können in einem einzigen Vorgang mehrere Volume-Klone erstellen, um eine Momentaufnahme der Daten auf einer Gruppe von Volumes zu erstellen.
+
+Beim Klonen eines Volumes erstellt das System eine Momentaufnahme des Volumes und erstellt dann aus den Daten in der Momentaufnahme ein neues Volume.  Sie können den neuen Volume-Klon einbinden und darauf schreiben.  Das Klonen mehrerer Volumes ist ein asynchroner Prozess und dauert je nach Größe und Anzahl der zu klonenden Volumes unterschiedlich lange.
+
+Die Größe des Datenträgers und die aktuelle Clusterlast beeinflussen die Zeit, die zum Abschließen eines Klonvorgangs benötigt wird.
+
+.Schritte
+. Klicken Sie auf *Verwaltung* > *Volumes*.
+. Klicken Sie auf die Registerkarte *Aktiv*.
+. Verwenden Sie die Kontrollkästchen, um mehrere Datenträger auszuwählen und so eine Gruppe von Datenträgern zu erstellen.
+. Klicken Sie auf *Massenaktionen*.
+. Klicken Sie im daraufhin erscheinenden Menü auf *Klonen*.
+. Geben Sie im Dialogfeld „Mehrere Volumes klonen“ ein *neues Volume-Namenspräfix* ein.
++
+Das Präfix wird auf alle Bände der Gruppe angewendet.
+
+. *Optional:* Wählen Sie ein anderes Konto aus, zu dem der Klon gehören soll.
++
+Wenn Sie kein Konto auswählen, ordnet das System die neuen Volumes dem aktuellen Volume-Konto zu.
+
+. *Optional:* Wählen Sie eine andere Zugriffsmethode für die Volumes im Klon.
++
+Wenn Sie keine Zugriffsmethode auswählen, verwendet das System den aktuellen Datenträgerzugriff.
+
+. Klicken Sie auf *Klonen starten*.
+

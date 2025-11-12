@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicyrule.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicyRule 
+summary: Das snapMirrorPolicyRule-Objekt enthält Informationen über die Regeln in einer SnapMirror -Richtlinie. 
+---
+= Snap-Spiegel-Richtlinienregel
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das snapMirrorPolicyRule-Objekt enthält Informationen über die Regeln in einer SnapMirror -Richtlinie.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Snap-Spiegel-Beschriftung
+ a| 
+Die Snapshot-Kopienbezeichnung, die zur Auswahl von Snapshot-Kopien in erweiterten Datenschutzbeziehungen verwendet wird.
+ a| 
+Schnur
+
+
+
+ a| 
+Zähler behalten
+ a| 
+Gibt die maximale Anzahl von Snapshot-Kopien an, die für eine Regel auf dem SnapMirror Zielvolume aufbewahrt werden.
+ a| 
+ganze Zahl
+
+|===

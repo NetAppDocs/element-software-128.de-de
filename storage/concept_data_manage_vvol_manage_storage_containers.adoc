@@ -1,0 +1,120 @@
+---
+permalink: storage/concept_data_manage_vvol_manage_storage_containers.html 
+sidebar: sidebar 
+keywords: storage container, storage containers, about storage containers, cluster, vvols, create, view details, chap, edit, delete 
+summary: Ein Speichercontainer ist eine vSphere-Datenspeicherdarstellung, die auf einem Cluster erstellt wird, auf dem die Element-Software ausgeführt wird. 
+---
+= Lagerbehälter verwalten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Speichercontainer ist eine vSphere-Datenspeicherdarstellung, die auf einem Cluster erstellt wird, auf dem die Element-Software ausgeführt wird.
+
+Speichercontainer werden erstellt und mit NetApp Element -Konten verknüpft.  Ein auf Element Storage erstellter Speichercontainer wird in vCenter und ESXi als vSphere-Datenspeicher angezeigt.  Lagerbehälter belegen keinen Speicherplatz auf Element.  Sie dienen lediglich dazu, virtuelle Volumes logisch zu verknüpfen.
+
+Es werden maximal vier Speichercontainer pro Cluster unterstützt.  Für die Aktivierung der VVols-Funktionalität ist mindestens ein Speichercontainer erforderlich.
+
+
+
+== Erstellen Sie einen Aufbewahrungsbehälter
+
+Sie können Speichercontainer in der Element-Benutzeroberfläche erstellen und diese in vCenter wiederfinden.  Sie müssen mindestens einen Speichercontainer erstellen, um mit der Bereitstellung von VVol-gestützten virtuellen Maschinen beginnen zu können.
+
+Bevor Sie beginnen, aktivieren Sie die VVols-Funktionalität in der Element-Benutzeroberfläche für den Cluster.
+
+.Schritte
+. Wählen Sie *VVols* > *Speichercontainer*.
+. Klicken Sie auf die Schaltfläche *Speicherbehälter erstellen*.
+. Geben Sie die Informationen zum Speichercontainer im Dialogfeld *Neuen Speichercontainer erstellen* ein:
++
+.. Geben Sie einen Namen für den Aufbewahrungsbehälter ein.
+.. Konfigurieren Sie Initiator- und Zielgeheimnisse für CHAP.
++
+
+TIP: Lassen Sie die Felder für die CHAP-Einstellungen leer, um Geheimnisse automatisch zu generieren.
+
+.. Klicken Sie auf die Schaltfläche *Speichercontainer erstellen*.
+
+
+. Überprüfen Sie, ob der neue Speichercontainer in der Liste auf der Registerkarte *Speichercontainer* angezeigt wird.
++
+
+NOTE: Da eine NetApp Element -Konto-ID automatisch erstellt und dem Speichercontainer zugewiesen wird, ist es nicht notwendig, ein Konto manuell zu erstellen.
+
+
+
+
+
+== Details zum Lagercontainer anzeigen
+
+Auf der Seite „Speichercontainer“ des VVols-Tabs können Sie Informationen zu allen aktiven Speichercontainern im Cluster anzeigen.
+
+* *Konto-ID*: Die ID des NetApp Element -Kontos, das dem Speichercontainer zugeordnet ist.
+* *Name*: Der Name des Speicherbehälters.
+* *Status*: Der Status des Speichercontainers. Mögliche Werte:
++
+** Aktiv: Der Lagerbehälter ist in Gebrauch.
+** Verschlossen: Der Lagercontainer ist verschlossen.
+
+
+* *PE-Typ*: Der Protokollendpunkttyp (SCSI ist das einzige für die Element-Software verfügbare Protokoll).
+* *Speichercontainer-ID*: Die UUID des virtuellen Volume-Speichercontainers.
+* *Aktive virtuelle Volumes*: Die Anzahl der aktiven virtuellen Volumes, die dem Speichercontainer zugeordnet sind.
+
+
+
+
+== Details zu den einzelnen Lagercontainern anzeigen
+
+Die Informationen zu einem einzelnen Speichercontainer können Sie anzeigen, indem Sie ihn auf der Seite „Speichercontainer“ auf der Registerkarte „VVols“ auswählen.
+
+* *Konto-ID*: Die ID des NetApp Element -Kontos, das dem Speichercontainer zugeordnet ist.
+* *Name*: Der Name des Speicherbehälters.
+* *Status*: Der Status des Speichercontainers. Mögliche Werte:
++
+** Aktiv: Der Lagerbehälter ist in Gebrauch.
+** Verschlossen: Der Lagercontainer ist verschlossen.
+
+
+* *Geheimnis des CHAP-Initiators*: Das einzigartige CHAP-Geheimnis für den Initiator.
+* *CHAP-Zielgeheimnis*: Das einzigartige CHAP-Geheimnis für das Ziel.
+* *Speichercontainer-ID*: Die UUID des virtuellen Volume-Speichercontainers.
+* *Protokoll-Endpunkttyp*: Gibt den Protokoll-Endpunkttyp an (SCSI ist das einzige verfügbare Protokoll).
+
+
+
+
+== Bearbeiten Sie einen Speichercontainer
+
+Die CHAP-Authentifizierung für Speichercontainer kann in der Element-Benutzeroberfläche angepasst werden.
+
+. Wählen Sie *VVols* > *Speichercontainer*.
+. Klicken Sie auf das Symbol *Aktionen* für den Speichercontainer, den Sie bearbeiten möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Bearbeiten*.
+. Unter CHAP-Einstellungen können Sie die für die Authentifizierung verwendeten Anmeldeinformationen für Initiator Secret und Target Secret bearbeiten.
++
+
+TIP: Wenn Sie die Anmeldeinformationen für die CHAP-Einstellungen nicht ändern, bleiben diese unverändert.  Wenn Sie die Felder für die Anmeldeinformationen leer lassen, generiert das System automatisch neue Geheimnisse.
+
+. Klicken Sie auf *Änderungen speichern*.
+
+
+
+
+== Einen Speichercontainer löschen
+
+Sie können Speichercontainer über die Element-Benutzeroberfläche löschen.
+
+.Was du brauchst
+Stellen Sie sicher, dass alle virtuellen Maschinen aus dem VVol-Datenspeicher entfernt wurden.
+
+.Schritte
+. Wählen Sie *VVols* > *Speichercontainer*.
+. Klicken Sie auf das Symbol *Aktionen* für den Speichercontainer, den Sie löschen möchten.
+. Im daraufhin angezeigten Menü wählen Sie *Löschen*.
+. Bestätigen Sie die Aktion.
+. Aktualisieren Sie die Liste der Speichercontainer im Unterreiter *Speichercontainer*, um zu bestätigen, dass der Speichercontainer entfernt wurde.
+

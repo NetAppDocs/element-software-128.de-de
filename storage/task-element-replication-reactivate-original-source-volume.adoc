@@ -1,0 +1,163 @@
+---
+permalink: storage/task-element-replication-reactivate-original-source-volume.html 
+sidebar: sidebar 
+keywords: ontap,cli, reactivate, original, source, volume 
+summary: Sie können die ursprüngliche Datensicherungsbeziehung zwischen Quell- und Zielvolume wiederherstellen, wenn Sie keine Daten mehr vom Zielvolume benötigen. 
+---
+= Reaktivieren Sie das ursprüngliche Quellvolumen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die ursprüngliche Datensicherungsbeziehung zwischen Quell- und Zielvolume wiederherstellen, wenn Sie keine Daten mehr vom Zielvolume benötigen.
+
+.Informationen zu diesem Vorgang
+Das unten beschriebene Verfahren setzt voraus, dass die Basislinie im ursprünglichen Quellvolumen intakt ist.  Wenn die Basislinie nicht intakt ist, müssen Sie die Beziehung zwischen dem Datenträger, von dem Sie Daten bereitstellen, und dem ursprünglichen Quelldatenträger erstellen und initialisieren, bevor Sie die Prozedur durchführen.
+
+Sie müssen den Elementquellpfad im folgenden Format angeben: `<hostip:>/lun/<name>` , wobei "`lun`" die eigentliche Zeichenkette "`lun`" ist und `name` ist der Name des Element-Volumes.
+
+Ab ONTAP 9.4 werden Snapshot-Kopien einer LUN, die während der Datenbereitstellung vom ONTAP Ziel erstellt wurden, automatisch repliziert, wenn die Elementquelle reaktiviert wird.
+
+Die Replikationsregeln lauten wie folgt:
+
+* Es werden ausschließlich iSCSI-LUNs unterstützt.
+* Es ist nicht möglich, mehr als eine LUN von einem ONTAP -Volume auf ein Element-Volume zu replizieren.
+* Eine LUN kann nicht von einem ONTAP -Volume auf mehrere Element-Volumes repliziert werden.
+
+
+.Schritte
+. Löschen Sie die ursprüngliche Datenschutzbeziehung:
++
+`snapmirror delete -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -policy <policy>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel löscht die Beziehung zwischen dem ursprünglichen Quellvolume, `0005` unter der IP-Adresse 10.0.0.11 und dem Volume, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror delete -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+. Umkehrung des ursprünglichen Datenschutzverhältnisses:
++
+`snapmirror resync -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -policy <policy>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Obwohl für die Resynchronisierung keine Basislinienübertragung erforderlich ist, kann sie zeitaufwändig sein.  Möglicherweise möchten Sie die Resynchronisierung außerhalb der Stoßzeiten durchführen.
+
++
+Das folgende Beispiel kehrt die Beziehung zwischen dem ursprünglichen Quellvolumen um, `0005` unter der IP-Adresse 10.0.0.11 und dem Volume, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005 -policy MirrorLatest
+----
+. Aktualisieren Sie die umgekehrte Beziehung:
++
+`snapmirror update -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+[NOTE]
+====
+Der Befehl schlägt fehl, wenn auf dem Quell- und Zielsystem keine gemeinsame Snapshot-Kopie existiert.  Verwenden `snapmirror initialize` um die Beziehung neu zu initialisieren.
+
+====
++
+Das folgende Beispiel aktualisiert die Beziehung zwischen dem Volume, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` und das ursprüngliche Quellbuch, `0005` unter der IP-Adresse 10.0.0.11:
+
++
+[listing]
+----
+cluster_dst::> snapmirror update -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. Geplante Überweisungen für die umgekehrte Beziehung stoppen:
++
+`snapmirror quiesce -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel stoppt geplante Übertragungen zwischen dem Volume, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` und das ursprüngliche Quellbuch, `0005` unter der IP-Adresse 10.0.0.11:
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. Laufende Überweisungen aufgrund der umgekehrten Beziehung einstellen:
++
+`snapmirror abort -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel stoppt laufende Übertragungen zwischen dem Volume, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` und das ursprüngliche Quellbuch, `0005` unter der IP-Adresse 10.0.0.11:
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. Durchbrechen Sie die umgekehrte Beziehung:
++
+`snapmirror break -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel unterbricht die Beziehung zwischen dem Datenvolumen, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` und das ursprüngliche Quellbuch, `0005` unter der IP-Adresse 10.0.0.11:
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. Löschen Sie die umgekehrte Datenschutzbeziehung:
++
+`snapmirror delete -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -policy <policy>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel löscht die umgekehrte Beziehung zwischen dem ursprünglichen Quellvolume, `0005` bei der IP-Adresse 10.0.0.11 und dem Volume, von dem Sie Daten bereitstellen, `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_src::> snapmirror delete -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005 -policy MirrorLatest
+----
+. Wiederherstellung des ursprünglichen Datenschutzverhältnisses:
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel stellt die Beziehung zwischen dem ursprünglichen Quellvolumen wieder her. `0005` an der IP-Adresse 10.0.0.11 und dem ursprünglichen Zielvolume, `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+
+
+.Nach Abschluss
+Verwenden Sie die `snapmirror show` Befehl zur Überprüfung, ob die SnapMirror -Beziehung erstellt wurde.  Die vollständige Befehlssyntax finden Sie in der Manpage.

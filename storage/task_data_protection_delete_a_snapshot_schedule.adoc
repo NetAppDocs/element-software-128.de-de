@@ -1,0 +1,20 @@
+---
+permalink: storage/task_data_protection_delete_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, delete 
+summary: Sie können einen Snapshot-Zeitplan löschen.  Nach dem Löschen des Zeitplans werden keine weiteren geplanten Snapshots mehr ausgeführt.  Alle im Rahmen des Zeitplans erstellten Snapshots bleiben auf dem Speichersystem erhalten. 
+---
+= Einen Snapshot-Zeitplan löschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Snapshot-Zeitplan löschen.  Nach dem Löschen des Zeitplans werden keine weiteren geplanten Snapshots mehr ausgeführt.  Alle im Rahmen des Zeitplans erstellten Snapshots bleiben auf dem Speichersystem erhalten.
+
+. Klicken Sie auf *Datenschutz* > *Zeitpläne*.
+. Klicken Sie auf das Symbol *Aktionen* für den Zeitplan, den Sie löschen möchten.
+. Klicken Sie im daraufhin angezeigten Menü auf *Löschen*.
+. Bestätigen Sie die Aktion.
+

@@ -1,0 +1,67 @@
+---
+permalink: setup/task_setup_determine_which_solidfire_components_to_install.html 
+sidebar: sidebar 
+keywords: setup, element, solidfire active iq 
+summary: 'Je nach Konfigurations- und Bereitstellungsoptionen sollten Sie prüfen, welche SolidFire -Komponenten, wie z. B. der Management-Knoten, Active IQ und der NetApp Monitoring Agent (NMA), Sie installieren sollten.' 
+---
+= Ermitteln Sie, welche SolidFire -Komponenten installiert werden sollen.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Je nach Konfigurations- und Bereitstellungsoptionen sollten Sie prüfen, welche SolidFire -Komponenten, wie z. B. der Management-Knoten, Active IQ und der NetApp Monitoring Agent (NMA), Sie installieren sollten.
+
+In der folgenden Tabelle sind die zusätzlichen Komponenten aufgeführt und es wird angegeben, ob Sie diese installieren sollten.
+
+[cols="3*"]
+|===
+| Komponente | Eigenständiger SolidFire Speichercluster | NetApp HCI Cluster 
+
+
+ a| 
+Verwaltungsknoten
+ a| 
+Empfohlen
+ a| 
+Standardmäßig installiert, erforderlich
+
+
+
+ a| 
+Active IQ
+ a| 
+Empfohlen*
+ a| 
+Empfohlen*
+
+
+
+ a| 
+NetApp Überwachungsagent
+ a| 
+Nicht unterstützt
+ a| 
+Empfohlen
+
+|===
+* Für SolidFire -Speichercluster mit Kapazitätslizenz ist Active IQ erforderlich.
+
+.Schritte
+. Ermitteln Sie, welche Komponenten installiert werden sollen.
+. Führen Sie die Installation gemäß der Anleitung durch.link:../mnode/task_mnode_install.html["Installieren Sie den Management-Knoten"] Verfahren.
++
+
+NOTE: Um Active IQ einzurichten, verwenden Sie die `--telemetry_active` Parameter im Setup-Skript, um die Datenerfassung für Analysen durch Active IQ zu aktivieren.
+
+. Informationen zum NetApp Monitoring Agent finden Sie hier.link:../mnode/task_mnode_enable_activeIQ.html["Verfahren"] Die
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

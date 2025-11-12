@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_configure_proxy_server.html 
+summary: Wenn sich Ihr Cluster hinter einem Proxy-Server befindet, müssen Sie die Proxy-Einstellungen so konfigurieren, dass ein öffentliches Netzwerk erreicht werden kann. 
+keywords: netapp, Element, mnode, api, management node, add proxy, proxy server 
+---
+= Konfigurieren Sie einen Proxy-Server
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn sich Ihr Cluster hinter einem Proxy-Server befindet, müssen Sie die Proxy-Einstellungen so konfigurieren, dass Sie ein öffentliches Netzwerk erreichen können.
+
+Für Telemetrie-Sammler und Reverse-Tunnel-Verbindungen wird ein Proxy-Server verwendet.  Sie können einen Proxy-Server über die REST-API-Benutzeroberfläche aktivieren und konfigurieren, falls Sie während der Installation oder des Upgrades noch keinen Proxy-Server konfiguriert haben.  Sie können auch die Einstellungen des bestehenden Proxy-Servers ändern oder einen Proxy-Server deaktivieren.
+
+Der Befehl zum Konfigurieren eines Proxy-Servers aktualisiert die aktuellen Proxy-Einstellungen für den Verwaltungsknoten und gibt diese anschließend zurück.  Die Proxy-Einstellungen werden von Active IQ, dem NetApp Überwachungsdienst, und anderen Element-Software-Dienstprogrammen verwendet, die auf dem Management-Knoten installiert sind, einschließlich des Reverse-Support-Tunnels für den NetApp Support.
+
+.Bevor Sie beginnen
+* Sie sollten die Host- und Anmeldeinformationen für den Proxy-Server kennen, den Sie konfigurieren.
+* Stellen Sie sicher, dass auf Ihrem Cluster die NetApp Element Software Version 11.3 oder höher ausgeführt wird.
+* Stellen Sie sicher, dass Sie einen Management-Knoten mit Version 11.3 oder höher bereitgestellt haben.
+* (Management-Knoten 12.0 und höher) Sie haben NetApp Hybrid Cloud Control auf die Management-Services-Version 2.16 aktualisiert, bevor Sie einen Proxy-Server konfiguriert haben.
+
+
+.Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche des Management-Knotens zu, indem Sie die IP-Adresse des Management-Knotens gefolgt von eingeben. `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie *PUT /settings*.
+. Wählen Sie *Ausprobieren*.
+. Um einen Proxy-Server zu aktivieren, müssen Sie Folgendes einstellen: `use_proxy` zu wahr.  Geben Sie die IP-Adresse oder den Hostnamen und die Proxy-Portziele ein.
++
+Der Proxy-Benutzername, das Proxy-Passwort und der SSH-Port sind optional und sollten weggelassen werden, wenn sie nicht verwendet werden.
+
++
+[listing]
+----
+{
+"proxy_ip_or_hostname": "[IP or name]",
+"use_proxy": [true/false],
+"proxy_username": "[username]",
+"proxy_password": "[password]",
+"proxy_port": [port value],
+"proxy_ssh_port": [port value: default is 443]
+}
+----
+. Wählen Sie *Ausführen*.
+
+
+
+NOTE: Je nach Ihrer Umgebung müssen Sie möglicherweise Ihren Management-Knoten neu starten.
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

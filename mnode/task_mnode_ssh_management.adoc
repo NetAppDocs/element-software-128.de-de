@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_ssh_management.html 
+summary: Sie können die SSH-Funktionalität auf dem Management-Knoten über die NetApp Hybrid Cloud Control UI oder die REST API UI deaktivieren und aktivieren oder den Status der SSH-Unterstützungsverbindungsfähigkeit über die REST API UI ermitteln. 
+keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid, cloud, control, hcc 
+---
+= SSH-Funktionalität auf dem Management-Knoten verwalten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die SSH-Funktionalität auf dem Management-Knoten (mNode) mithilfe der REST-API deaktivieren, wieder aktivieren oder deren Status ermitteln.  SSH-Funktionalität, die Folgendes bietetlink:task_mnode_enable_remote_support_connections.html["NetApp Support Remote Support Tunnel (RST) Sitzungszugriff"] ist standardmäßig deaktiviert auf Management-Knoten, auf denen Management-Dienste 2.18 oder höher ausgeführt werden.
+
+Ab Management Services 2.20.69 können Sie die SSH-Funktionalität auf dem Management-Knoten über die NetApp Hybrid Cloud Control-Benutzeroberfläche aktivieren und deaktivieren.
+
+.Was du brauchst
+* * NetApp Hybrid Cloud Control-Berechtigungen*: Sie verfügen über Administratorrechte.
+* *Cluster-Administratorberechtigungen*: Sie verfügen über Administratorrechte für den Speichercluster.
+* *Element-Software*: Auf Ihrem Cluster läuft die NetApp Element -Software 11.3 oder höher.
+* *Management-Knoten*: Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+* *Aktualisierungen der Managementdienste*:
++
+** Um die NetApp Hybrid Cloud Control-Benutzeroberfläche zu verwenden, müssen Sie Ihre https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["Management-Servicepaket"^] auf Version 2.20.69 oder höher.
+** Um die REST-API-Benutzeroberfläche zu verwenden, haben Sie Ihre https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["Management-Servicepaket"^] auf Version 2.17.
+
+
+
+
+.Optionen
+* <<Deaktivieren oder aktivieren Sie die SSH-Funktionalität auf dem Management-Knoten über die NetApp Hybrid Cloud Control-Benutzeroberfläche.>>
+
+
+Sie können nach demlink:task_mnode_api_get_authorizationtouse.html["authentifizieren"] :
+
+* <<Deaktivieren oder aktivieren Sie die SSH-Funktionalität auf dem Verwaltungsknoten mithilfe von APIs.>>
+* <<Ermitteln Sie den Status der SSH-Funktionalität auf dem Management-Knoten mithilfe von APIs.>>
+
+
+
+
+== Deaktivieren oder aktivieren Sie die SSH-Funktionalität auf dem Management-Knoten über die NetApp Hybrid Cloud Control-Benutzeroberfläche.
+
+Sie können die SSH-Funktionalität auf dem Management-Knoten deaktivieren oder wieder aktivieren.  SSH-Funktionalität, die Folgendes bietetlink:task_mnode_enable_remote_support_connections.html["NetApp Support Remote Support Tunnel (RST) Sitzungszugriff"] ist standardmäßig deaktiviert auf Management-Knoten, auf denen Management-Dienste 2.18 oder höher ausgeführt werden.  Das Deaktivieren von SSH beendet oder trennt keine bestehenden SSH-Client-Sitzungen zum Management-Knoten.  Wenn Sie SSH deaktivieren und es zu einem späteren Zeitpunkt wieder aktivieren möchten, können Sie dies über die NetApp Hybrid Cloud Control-Benutzeroberfläche tun.
+
+
+NOTE: Um den Supportzugriff per SSH für einen Speichercluster zu aktivieren oder zu deaktivieren, müssen Sie Folgendes verwenden:link:../storage/task_system_manage_cluster_enable_and_disable_support_access.html["Element UI Cluster-Einstellungsseite"] Die
+
+.Schritte
+. Wählen Sie im Dashboard oben rechts das Optionsmenü und anschließend *Konfigurieren*.
+. Im Bildschirm *Supportzugriff für Management-Knoten* den Schalter umlegen, um SSH für den Management-Knoten zu aktivieren.
+. Nachdem Sie die Fehlerbehebung abgeschlossen haben, schalten Sie im Bildschirm *Supportzugriff für Management-Knoten* den Schalter um, um den SSH-Zugriff auf den Management-Knoten zu deaktivieren.
+
+
+
+
+== Deaktivieren oder aktivieren Sie die SSH-Funktionalität auf dem Verwaltungsknoten mithilfe von APIs.
+
+Sie können die SSH-Funktionalität auf dem Management-Knoten deaktivieren oder wieder aktivieren.  SSH-Funktionalität, die Folgendes bietetlink:task_mnode_enable_remote_support_connections.html["NetApp Support Remote Support Tunnel (RST) Sitzungszugriff"] ist standardmäßig deaktiviert auf Management-Knoten, auf denen Management-Dienste 2.18 oder höher ausgeführt werden.  Das Deaktivieren von SSH beendet oder trennt keine bestehenden SSH-Client-Sitzungen zum Management-Knoten.  Wenn Sie SSH deaktivieren und es zu einem späteren Zeitpunkt wieder aktivieren möchten, können Sie dies mit derselben API tun.
+
+.API-Befehl
+Für Management-Services 2.18 oder höher:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+Für Management-Dienste 2.17 oder früher:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: Sie können den Träger finden `${TOKEN}` wird vom API-Befehl verwendet, wenn Sielink:task_mnode_api_get_authorizationtouse.html["autorisieren"] Die  Der Überbringer `${TOKEN}` befindet sich in der Curl-Antwort.
+
+.REST-API-UI-Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Management-Node-API-Dienst zu, indem Sie die IP-Adresse des Management-Nodes gefolgt von eingeben. `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie in der REST-API-Benutzeroberfläche *PUT /settings​/ssh* aus.
++
+.. Wählen Sie *Ausprobieren*.
+.. Setzen Sie den Parameter *aktiviert* auf `false` SSH deaktivieren oder `true` um die zuvor deaktivierte SSH-Funktionalität wieder zu aktivieren.
+.. Wählen Sie *Ausführen*.
+
+
+
+
+
+
+== Ermitteln Sie den Status der SSH-Funktionalität auf dem Management-Knoten mithilfe von APIs.
+
+Ob die SSH-Funktionalität auf dem Management-Knoten aktiviert ist, können Sie über eine Management-Knoten-Service-API feststellen.  SSH ist auf Management-Knoten, auf denen Management-Dienste der Version 2.18 oder höher ausgeführt werden, standardmäßig deaktiviert.
+
+.API-Befehl
+Für Management-Services 2.18 oder höher:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+Für Management-Dienste 2.17 oder früher:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: Sie können den Träger finden `${TOKEN}` wird vom API-Befehl verwendet, wenn Sielink:task_mnode_api_get_authorizationtouse.html["autorisieren"] Die  Der Überbringer `${TOKEN}` befindet sich in der Curl-Antwort.
+
+.REST-API-UI-Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für den Management-Node-API-Dienst zu, indem Sie die IP-Adresse des Management-Nodes gefolgt von eingeben. `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+. Wählen Sie in der REST-API-Benutzeroberfläche *GET /settings​/ssh* aus.
++
+.. Wählen Sie *Ausprobieren*.
+.. Wählen Sie *Ausführen*.
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

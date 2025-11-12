@@ -1,0 +1,20 @@
+= Weitere Informationen
+:allow-uri-read: 
+
+
+Der Return To Factory Image (RTFI)-Prozess verwendet ein bootfähiges, installierbares Medium mit einem vollständig in sich geschlossenen, minimalistischen Linux-Betriebssystem, um die Element-Software auf einem Knoten bereitzustellen.  Sie können das für Ihre Element-Softwareversion spezifische RTFI-ISO-Image von folgender Seite herunterladen: https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["NetApp Support-Site"^] Die
+
+Nach dem Herunterladen des RTFI-ISO-Images können Sie es mit einer der folgenden gängigen Methoden bereitstellen:
+
+* *Physischer USB-Stick*: Sie können eine bootfähige Element-Software-ISO-Datei auf einen USB-Stick schreiben.  Eine Anleitung finden Sie im Knowledge-Base-Artikel. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["Wie man einen RTFI-Schlüssel zum Neuinstallieren eines SolidFire -Speicherknotens erstellt"^] Die  Stecken Sie den USB-Stick mit der ISO-Datei in den Knoten und starten Sie den Computer vom USB-Stick.
+* *Virtuelle Medien über den Management-Port des Baseboard Management Controllers (BMC)*: Sie können den BMC verwenden, um dynamisch eine Verbindung zum ISO-Image auf Ihrem Client-System herzustellen.  Die ISO-Datei wird dem Host-Betriebssystem als virtuelles Laufwerk (CD oder DVD) zur Verfügung gestellt.  Weitere Informationen finden Sie im Artikel der Wissensdatenbank. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_RTFI_a_node_via_BMC["Wie man einen Knoten über BMC per RTFI ansteuert"^] Die
+* *Netzwerkstart über eine Preboot Execution Environment (PXE), ein Trivial File Transfer Protocol (TFTP) oder FTP*: Anstatt ein ISO-Image manuell zu entpacken, können Sie Folgendes verwenden: `autofs` um automatisch ein Bild zu extrahieren, wenn der RTFI-Prozess dies anfordert.  Dieser Bereitstellungsmechanismus erfordert zwar einen höheren anfänglichen Einrichtungsaufwand, ermöglicht aber eine korrekte Automatisierung und Skalierbarkeit der Installation.
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

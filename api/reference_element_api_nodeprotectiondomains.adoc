@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_nodeprotectiondomains.html 
+sidebar: sidebar 
+keywords: object,objects,node,protection domains 
+summary: Das nodeProtectionDomains-Objekt enthält Informationen über die Identität eines Knotens und die diesem Knoten zugeordneten Schutzdomänen. 
+---
+= Knotenschutzdomänen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das nodeProtectionDomains-Objekt enthält Informationen über die Identität eines Knotens und die diesem Knoten zugeordneten Schutzdomänen.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Knoten-ID
+ a| 
+Eindeutige Kennung für den Knoten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Schutzdomänen
+ a| 
+Liste der Schutzdomänen, denen der Knoten angehört.
+ a| 
+link:reference_element_api_protectiondomain.html["Schutzdomäne"]
+
+|===

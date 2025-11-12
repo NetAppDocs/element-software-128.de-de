@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_multi_vcenter_config.html 
+summary: Sie können NetApp Hybrid Cloud Control mithilfe der REST-API-Benutzeroberfläche so konfigurieren, dass mehrere vCenter-Server verwendet werden. 
+keywords: netapp, mnode, management node, multi-vcenter, Element 
+---
+= NetApp Hybrid Cloud Control für mehrere vCenter-Center konfigurieren
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können NetApp Hybrid Cloud Control so konfigurieren, dass Assets von zwei oder mehr vCenter-Servern verwaltet werden, die nicht im Linked Mode arbeiten.
+
+Dieses Verfahren sollten Sie nach Ihrer Erstinstallation anwenden, wenn Sie Assets für eine kürzlich skalierte Installation hinzufügen müssen oder wenn neue Assets nicht automatisch zu Ihrer Konfiguration hinzugefügt wurden.  Verwenden Sie diese APIs, um Assets hinzuzufügen, die kürzlich zu Ihrer Installation hinzugefügt wurden.
+
+.Was du brauchst
+* Auf Ihrem Cluster läuft die NetApp Element Software 11.3 oder höher.
+* Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+
+
+.Schritte
+. link:task_mnode_add_assets.html["Neue vCenter-Center als Controller-Assets hinzufügen"]zur Konfiguration des Management-Knotens.
+. Aktualisieren Sie die Inventardienst-API auf dem Verwaltungsknoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
++
+
+NOTE: Alternativ können Sie 2 Minuten warten, bis der Bestand in der NetApp Hybrid Cloud Control-Benutzeroberfläche aktualisiert ist.
+
++
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` Die
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Fenster.
+
+
+.. Wählen Sie in der REST-API-Benutzeroberfläche *GET /installations* aus.
+.. Wählen Sie *Ausprobieren*.
+.. Wählen Sie *Ausführen*.
+.. Kopieren Sie aus der Antwort die Installations-Asset-ID.(`"id"` ).
+.. Wählen Sie in der REST-API-Benutzeroberfläche *GET /installations/{id}* aus.
+.. Wählen Sie *Ausprobieren*.
+.. Aktualisierung einstellen auf `True` Die
+.. Fügen Sie die Installations-Asset-ID in das Feld *id* ein.
+.. Wählen Sie *Ausführen*.
+
+
+. Aktualisieren Sie den NetApp Hybrid Cloud Control-Browser, um die Änderungen zu sehen.
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

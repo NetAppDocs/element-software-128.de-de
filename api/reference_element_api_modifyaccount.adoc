@@ -1,0 +1,188 @@
+---
+permalink: api/reference_element_api_modifyaccount.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,accounts,settings,modifyaccount 
+summary: Mit der Methode ModifyAccount können Sie ein bestehendes Konto ändern. 
+---
+= Konto ändern
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ModifyAccount` Methode zum Ändern eines bestehenden Kontos.
+
+Wenn Sie ein Konto sperren, werden alle bestehenden Verbindungen dieses Kontos sofort beendet.  Wenn Sie die CHAP-Einstellungen eines Kontos ändern, bleiben alle bestehenden Verbindungen aktiv, und die neuen CHAP-Einstellungen werden bei nachfolgenden Verbindungen oder Wiederverbindungen verwendet.  Um die Attribute eines Kontos zu löschen, geben Sie {} für den Parameter „attributes“ an.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Konto-ID
+ a| 
+AccountID für das zu ändernde Konto.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+enableChap
+ a| 
+Legt fest, ob CHAP-Kontodaten von einem Initiator für den Zugriff auf Volumes verwendet werden können.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Initiatorgeheimnis
+ a| 
+Das CHAP-Geheimnis für den Initiator.  Dieses Geheimnis muss 12 bis 16 Zeichen lang sein und undurchschaubar sein.  Das CHAP-Geheimnis des Initiators muss eindeutig sein und darf nicht mit dem CHAP-Geheimnis des Ziels übereinstimmen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Status
+ a| 
+Status des Kontos. Mögliche Werte:
+
+* aktiv: Das Konto ist aktiv und Verbindungen sind erlaubt.
+* gesperrt: Das Konto ist gesperrt und Verbindungen werden verweigert.
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Zielgeheimnis
+ a| 
+Der CHAP-Schlüssel, der für das Ziel verwendet werden soll (gegenseitige CHAP-Authentifizierung).  Dieses Geheimnis muss 12 bis 16 Zeichen lang sein und undurchschaubar sein.  Das Ziel-CHAP-Geheimnis muss eindeutig sein und darf nicht mit dem Initiator-CHAP-Geheimnis übereinstimmen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Benutzername
+ a| 
+Dient dazu, den mit dem Konto verknüpften Benutzernamen zu ändern.  (Muss zwischen 1 und 64 Zeichen lang sein).
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Konto
+ a| 
+Ein Objekt, das Informationen über das geänderte Konto enthält.
+ a| 
+xref:reference_element_api_account.adoc[Konto]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel.  In diesem Beispiel werden die Attribute durch Angabe von {} gelöscht:
+
+[listing]
+----
+{
+   "method": "ModifyAccount",
+   "params": {
+     "accountID"  : 25,
+     "status"   : "locked",
+     "attributes" : {}
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "account": {
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "username": "user1",
+        "accountID": 1,
+        "volumes": [
+        ],
+        "enableChap": true,
+        "initiatorSecret": "txz123456q890",
+        "attributes": {
+        },
+        "status": active",
+        "targetSecret": "rxe123b567890"
+    }
+}
+----
+
+
+== Neu seit Version
+
+9,6

@@ -1,0 +1,44 @@
+---
+permalink: storage/reference_replication_volume_pairing_messages.html 
+sidebar: sidebar 
+keywords: volume pairing, messages, replication, data protection 
+summary: Die Meldungen zur Datenträgerpaarung während des ersten Kopplungsprozesses können Sie auf der Seite „Datenträgerpaare“ unter der Registerkarte „Datenschutz“ einsehen.  Diese Meldungen können sowohl am Quell- als auch am Zielende des Paares in der Listenansicht „Replizierende Volumes“ angezeigt werden. 
+---
+= Volume-Pairing-Nachrichten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Meldungen zur Datenträgerpaarung während des ersten Kopplungsprozesses können Sie auf der Seite „Datenträgerpaare“ unter der Registerkarte „Datenschutz“ einsehen.  Diese Meldungen können sowohl am Quell- als auch am Zielende des Paares in der Listenansicht „Replizierende Volumes“ angezeigt werden.
+
+* *Verbindung unterbrochen*
++
+Zeitüberschreitung bei Quellreplikation oder Synchronisierungs-RPCs.  Die Verbindung zum Remote-Cluster wurde unterbrochen.  Überprüfen Sie die Netzwerkverbindungen zum Cluster.
+
+* *Verbindung wird wiederhergestellt*
++
+Die Remote-Replikationssynchronisierung ist jetzt aktiv.  Der Synchronisierungsprozess wird gestartet und auf Daten wird gewartet.
+
+* *RRSync wird fortgesetzt*
++
+Es wird eine einzelne Helixkopie der Volumenmetadaten auf den zugehörigen Cluster erstellt.
+
+* *Lokale Synchronisierung wird fortgesetzt*
++
+Es wird eine Doppelhelixkopie der Volumenmetadaten auf den zugehörigen Cluster erstellt.
+
+* *Datenübertragung wird fortgesetzt*
++
+Die Datenübertragung wurde wieder aufgenommen.
+
+* *Aktiv*
++
+Die Volumes sind gepaart, und die Daten werden vom Quell- zum Zielvolume gesendet, wobei die Daten synchronisiert sind.
+
+* *Leerlauf*
++
+Es findet keine Replikationsaktivität statt.
+
+

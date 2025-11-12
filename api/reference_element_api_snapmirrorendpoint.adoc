@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_snapmirrorendpoint.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorEndpoint 
+summary: Das snapMirrorEndpoint-Objekt enthält Informationen über die entfernten SnapMirror -Speichersysteme, die mit dem Element-Speichercluster kommunizieren.  Diese Informationen können Sie mit der API-Methode ListSnapMirrorEndpoints abrufen. 
+---
+= SnapMirrorEndpunkt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das snapMirrorEndpoint-Objekt enthält Informationen über die entfernten SnapMirror -Speichersysteme, die mit dem Element-Speichercluster kommunizieren.  Diese Informationen können Sie mit der API-Methode ListSnapMirrorEndpoints abrufen.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die eindeutige Kennung für das Objekt im lokalen Cluster.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Management-IP
+ a| 
+Die Clusterverwaltungs-IP-Adresse des Endpunkts.
+ a| 
+Schnur
+
+
+
+ a| 
+Clustername
+ a| 
+Der ONTAP Clustername.  Dieser Wert wird automatisch mit dem Wert von "`clusterName`" aus dem snapMirrorClusterIdentity-Objekt befüllt.
+ a| 
+Schnur
+
+
+
+ a| 
+Benutzername
+ a| 
+Der Verwaltungsbenutzername für das ONTAP -System.
+ a| 
+Schnur
+
+
+
+ a| 
+IP-Adressen
+ a| 
+Liste der Intercluster-Speicher-IP-Adressen für alle Knoten im Cluster.  Sie können diese IP-Adressen mit der Methode ListSnapMirrorNetworkInterfaces abrufen.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+istVerbunden
+ a| 
+Der Verbindungsstatus der Steuerverbindung zum ONTAP Cluster.
+ a| 
+boolescher Wert
+
+|===

@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_listkeyserverskmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,key,server,listing,list,listkeyserverskmip 
+summary: 'Mit der Methode ListKeyServersKmip können Sie alle erstellten Key Management Interoperability Protocol (KMIP)-Schlüsselserver auflisten.  Sie können die Ergebnisse filtern, indem Sie zusätzliche Parameter angeben.' 
+---
+= ListKeyServersKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListKeyServersKmip` Methode zum Auflisten aller erstellten Key Management Interoperability Protocol (KMIP)-Schlüsselserver.  Sie können die Ergebnisse filtern, indem Sie zusätzliche Parameter angeben.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+keyProviderID
+ a| 
+Wenn angegeben, gibt die Methode nur KMIP-Schlüsselserver zurück, die dem angegebenen KMIP-Schlüsselanbieter zugeordnet sind.  Wird dieser Parameter weggelassen, werden die zurückgegebenen KMIP-Schlüsselserver nicht danach gefiltert, ob sie dem angegebenen KMIP-Schlüsselanbieter zugeordnet sind.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+kmipAssignedProviderIsActive
+ a| 
+Die Filter gaben KMIP-Schlüsselserverobjekte basierend auf deren Aktivitätsstatus zurück. Mögliche Werte:
+
+* true: Gibt nur aktive KMIP-Schlüsselserver zurück (die Schlüssel bereitstellen, die aktuell verwendet werden).
+* false: Gibt nur KMIP-Schlüsselserver zurück, die inaktiv sind (keine Schlüssel bereitstellen und gelöscht werden können).
+
+
+Wenn die Angabe weggelassen wird, werden die zurückgegebenen KMIP-Schlüsselserver nicht danach gefiltert, ob sie aktiv sind.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+kmipHasProviderAssigned
+ a| 
+Die Filter gaben KMIP-Schlüsselserver basierend darauf zurück, ob ihnen ein KMIP-Schlüsselanbieter zugewiesen ist. Mögliche Werte:
+
+* true: Gibt nur KMIP-Schlüsselserver zurück, denen ein KMIP-Schlüsselanbieter zugewiesen ist.
+* false: Gibt nur KMIP-Schlüsselserver zurück, denen kein KMIP-Schlüsselanbieter zugewiesen ist.
+
+
+Wird dieser Parameter weggelassen, werden die zurückgegebenen KMIP-Schlüsselserver nicht danach gefiltert, ob ihnen ein KMIP-Schlüsselanbieter zugewiesen ist.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+kmipKeyServers
+ a| 
+Die vollständige Liste der erstellten KMIP-Schlüsselserver.
+ a| 
+link:reference_element_api_keyserverkmip.html["KeyServerKmip"]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ListKeyServersKmip",
+  "params": {},
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "kmipKeyServers": [
+        {
+            "kmipKeyServerName": "keyserverName",
+            "kmipClientCertificate": "dKkkirWmnWXbj9T/UWZYB2oK0z5...",
+            "keyServerID": 15,
+            "kmipAssignedProviderIsActive": true,
+            "kmipKeyServerPort": 5696,
+            "kmipCaCertificate": "MIICPDCCAaUCEDyRMcsf9tAbDpq40ES/E...",
+            "kmipKeyServerHostnames": [
+                "server1.hostname.com", "server2.hostname.com"
+            ],
+            "keyProviderID": 1
+        }
+    ]
+}
+----
+
+
+== Neu seit Version
+
+11,7

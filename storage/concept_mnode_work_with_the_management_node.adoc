@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_mnode_work_with_the_management_node.html 
+sidebar: sidebar 
+keywords: management node,mNode 
+summary: 'Mit dem Management-Knoten (mNode) können Sie Systemdienste aktualisieren, Cluster-Ressourcen und -Einstellungen verwalten, Systemtests und -programme ausführen, Active IQ für die Systemüberwachung konfigurieren und den NetApp -Supportzugriff zur Fehlerbehebung aktivieren.' 
+---
+= Arbeiten Sie mit dem Management-Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dem Management-Knoten (mNode) können Sie Systemdienste aktualisieren, Cluster-Ressourcen und -Einstellungen verwalten, Systemtests und -programme ausführen, Active IQ für die Systemüberwachung konfigurieren und den NetApp -Supportzugriff zur Fehlerbehebung aktivieren.
+
+
+NOTE: Als bewährte Methode empfiehlt es sich, nur einen Management-Knoten mit einer VMware vCenter-Instanz zu verknüpfen und die Definition derselben Speicher- und Rechenressourcen oder vCenter-Instanzen in mehreren Management-Knoten zu vermeiden.
+
+Sehenlink:../mnode/task_mnode_work_overview.html["Dokumentation des Verwaltungsknotens"] für weitere Informationen.

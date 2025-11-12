@@ -1,0 +1,71 @@
+---
+permalink: storage/concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.html 
+sidebar: sidebar 
+keywords: element, terms of use, banner, config, edit, terms of use, disable, enable 
+summary: Sie können ein Banner aktivieren, bearbeiten oder konfigurieren, das eine Nachricht für den Benutzer enthält. 
+---
+= Banner „Nutzungsbedingungen verwalten“
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein Banner aktivieren, bearbeiten oder konfigurieren, das eine Nachricht für den Benutzer enthält.
+
+.Optionen
+<<Aktivieren Sie das Banner „Nutzungsbedingungen“.>> <<Bearbeiten Sie das Banner „Nutzungsbedingungen“.>> <<Banner „Nutzungsbedingungen“ deaktivieren>>
+
+
+
+== Aktivieren Sie das Banner „Nutzungsbedingungen“.
+
+Sie können ein Banner mit den Nutzungsbedingungen aktivieren, das beim Anmelden eines Benutzers an der Element-Benutzeroberfläche angezeigt wird.  Wenn der Benutzer auf das Banner klickt, erscheint ein Textdialogfeld mit der Nachricht, die Sie für den Cluster konfiguriert haben.  Das Banner kann jederzeit ausgeblendet werden.
+
+Sie benötigen Cluster-Administratorrechte, um die Nutzungsbedingungen-Funktionalität zu aktivieren.
+
+. Klicken Sie auf *Benutzer* > *Nutzungsbedingungen*.
+. Geben Sie im Formular *Nutzungsbedingungen* den Text ein, der im Dialogfeld „Nutzungsbedingungen“ angezeigt werden soll.
++
+
+NOTE: Die maximale Zeichenanzahl beträgt 4096.
+
+. Klicken Sie auf *Aktivieren*.
+
+
+
+
+== Bearbeiten Sie das Banner „Nutzungsbedingungen“.
+
+Sie können den Text bearbeiten, den ein Benutzer sieht, wenn er das Anmeldebanner mit den Nutzungsbedingungen auswählt.
+
+.Was du brauchst
+* Sie benötigen Cluster-Administratorrechte, um die Nutzungsbedingungen zu konfigurieren.
+* Stellen Sie sicher, dass die Funktion „Nutzungsbedingungen“ aktiviert ist.
+
+
+.Schritte
+. Klicken Sie auf *Benutzer* > *Nutzungsbedingungen*.
+. Im Dialogfeld *Nutzungsbedingungen* können Sie den Text bearbeiten, der angezeigt werden soll.
++
+
+NOTE: Die maximale Zeichenanzahl beträgt 4096.
+
+. Klicken Sie auf *Änderungen speichern*.
+
+
+
+
+== Banner „Nutzungsbedingungen“ deaktivieren
+
+Sie können das Banner mit den Nutzungsbedingungen deaktivieren.  Wenn das Banner deaktiviert ist, wird der Benutzer bei der Nutzung der Element-Benutzeroberfläche nicht mehr aufgefordert, die Nutzungsbedingungen zu akzeptieren.
+
+.Was du brauchst
+* Sie benötigen Cluster-Administratorrechte, um die Nutzungsbedingungen zu konfigurieren.
+* Stellen Sie sicher, dass die Nutzungsbedingungen aktiviert sind.
+
+
+.Schritte
+. Klicken Sie auf *Benutzer* > *Nutzungsbedingungen*.
+. Klicken Sie auf *Deaktivieren*.
+

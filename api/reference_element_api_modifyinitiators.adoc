@@ -1,0 +1,147 @@
+---
+permalink: api/reference_element_api_modifyinitiators.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,initiators,initiator,attribute,attributes,modifyinitiators 
+summary: Mit der Methode ModifyInitiators können Sie die Attribute eines oder mehrerer vorhandener Initiatoren ändern. 
+---
+= Initiatoren ändern
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ModifyInitiators` Methode zum Ändern der Attribute eines oder mehrerer bestehender Initiatoren.
+
+Der Name eines bestehenden Initiators kann nicht geändert werden.  Wenn Sie den Namen eines Initiators ändern müssen, löschen Sie ihn zuerst mit demxref:reference_element_api_deleteinitiators.adoc[Löschinitiatoren] Methode und erstellen Sie eine neue mit derxref:reference_element_api_createinitiators.adoc[Initiatoren erstellen] Verfahren.
+
+Falls ModifyInitiators einen der im Parameter angegebenen Initiatoren nicht ändern kann, gibt die Methode einen Fehler zurück und ändert keine Initiatoren (eine Teilausführung ist nicht möglich).
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+
+
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Initiatoren
+ a| 
+Eine Liste von Objekten, die die Eigenschaften jedes zu modifizierenden Initiators enthalten.  Mögliche Objekte:
+
+* `alias`: (Optional) Ein neuer, aussagekräftiger Name für den Initiator.  (Zeichenkette)
+* `attributes`: (Optional) Ein neuer Satz von JSON-Attributen, der dem Initiator zugewiesen werden soll.  (JSON-Objekt)
+* `chapUsername`: (Optional) Ein neuer, eindeutiger CHAP-Benutzername für diesen Initiator.  (Zeichenkette)
+* `forceDuringUpgrade`: Die Initiatormodifikation sollte während eines Upgrades abgeschlossen werden.
+* `initiatorID`: (Erforderlich) Die ID des Initiators, der geändert werden soll.  (ganze Zahl)
+* `initiatorSecret`: (Optional) Ein neues CHAP-Geheimnis zur Authentifizierung des Initiators.  (Zeichenkette)
+* `requireChap`: (Optional) True, wenn CHAP für diesen Initiator erforderlich ist.  (boolesch)
+* `targetSecret`: (Optional) Ein neues CHAP-Geheimnis, das zur Authentifizierung des Ziels verwendet wird (bei Verwendung der gegenseitigen CHAP-Authentifizierung).  (Zeichenkette)
+* `virtualNetworkIDs`: (Optional) Die Liste der virtuellen Netzwerk-IDs, die diesem Initiator zugeordnet sind.  Wenn Sie ein oder mehrere virtuelle Netzwerke definieren, kann sich dieser Initiator nur in diesen virtuellen Netzwerken anmelden.  Wenn Sie keine virtuellen Netzwerke definieren, kann sich dieser Initiator in allen Netzwerken anmelden.
+* `volumeAccessGroupID`: (Optional) Die ID der Volume-Zugriffsgruppe, der der Initiator hinzugefügt werden soll.  Falls der Initiator zuvor einer anderen Volume-Zugriffsgruppe angehörte, wird er aus der alten Volume-Zugriffsgruppe entfernt.  Ist dieser Schlüssel vorhanden, aber null, wird der Initiator aus seiner aktuellen Volume-Zugriffsgruppe entfernt, jedoch keiner neuen Volume-Zugriffsgruppe zugeordnet.  (ganze Zahl)
+
+ a| 
+JSON-Objektarray
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Initiatoren
+ a| 
+Liste der Objekte, die die neu modifizierten Initiatoren beschreiben.
+ a| 
+xref:reference_element_api_initiator.adoc[Initiator]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "id": 6683,
+  "method": "ModifyInitiators",
+  "params": {
+    "initiators": [
+      {
+        "initiatorID": 2,
+        "alias": "alias1",
+        "volumeAccessGroupID": null
+      },
+      {
+        "initiatorID": 3,
+        "alias": "alias2",
+        "volumeAccessGroupID": 1
+      }
+    ]
+  }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 6683,
+  "result": {
+    "initiators": [
+      {
+        "alias": "alias1",
+        "attributes": {},
+        "initiatorID": 2,
+        "initiatorName": "iqn.1993-08.org.debian:01:395543635",
+        "volumeAccessGroups": []
+      },
+      {
+        "alias": "alias2",
+        "attributes": {},
+        "initiatorID": 3,
+        "initiatorName": "iqn.1993-08.org.debian:01:935573135",
+        "volumeAccessGroups": [
+          1
+        ]
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_createinitiators.adoc[Initiatoren erstellen]
+* xref:reference_element_api_deleteinitiators.adoc[Löschinitiatoren]
+

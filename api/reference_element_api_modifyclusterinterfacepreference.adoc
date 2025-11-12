@@ -1,0 +1,93 @@
+---
+permalink: api/reference_element_api_modifyclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,interface,preference,modifyclusterinterfacepreference 
+summary: Die Methode ModifyClusterInterfacePreference ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, eine bestehende Cluster-Schnittstelleneinstellung zu ändern.  Diese Methode ist nur für den internen Gebrauch bestimmt. 
+---
+= ModifyClusterInterfacePreference
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `ModifyClusterInterfacePreference` Mit dieser Methode können Systeme, die in Speichercluster integriert sind, auf denen die Element-Software läuft, eine bestehende Cluster-Schnittstelleneinstellung ändern.  Diese Methode ist nur für den internen Gebrauch bestimmt.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+
+
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Name
+ a| 
+Der Name der zu ändernden Cluster-Schnittstelleneinstellung.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Wert
+ a| 
+Der neue Wert der Cluster-Schnittstellenpräferenz.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "ModifyClusterInterfacePreference",
+	"params": {
+	"name": "testname",
+	"value": "newvalue"
+},
+	"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {}
+}
+----
+
+
+== Neu seit Version
+
+11,0

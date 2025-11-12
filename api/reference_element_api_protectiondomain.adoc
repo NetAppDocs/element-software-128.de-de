@@ -1,0 +1,46 @@
+---
+permalink: api/reference_element_api_protectiondomain.html 
+sidebar: sidebar 
+keywords: object,objects,protection domains 
+summary: Das protectionDomain-Objekt enthält den Namen und die Typdetails einer Schutzdomäne. 
+---
+= Schutzdomäne
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das protectionDomain-Objekt enthält den Namen und die Typdetails einer Schutzdomäne.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schutzdomänenname
+ a| 
+Der Name der Schutzdomäne.
+ a| 
+Schnur
+
+
+
+ a| 
+Schutzdomänentyp
+ a| 
+Die Art der Schutzdomäne. Mögliche Werte:
+
+* Chassis: Alle Speicherknoten in einem einzigen Chassis.
+* benutzerdefiniert: Alle Speicherknoten in einer einzigen, vom Kunden definierten Schutzdomäne.
+
+ a| 
+Schnur
+
+|===

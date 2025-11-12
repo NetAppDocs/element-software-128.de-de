@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_purgedeletedvolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,purge,purging,multiple,deleted,purgedeletedvolumes 
+summary: Mit der Methode PurgeDeletedVolumes können Sie gelöschte Volumes sofort und endgültig löschen; Sie können diese Methode verwenden, um bis zu 500 Volumes gleichzeitig zu löschen. 
+---
+= Gelöschte Volumes purgeDelete
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `PurgeDeletedVolumes` Methode zum sofortigen und endgültigen Löschen von Volumes; mit dieser Methode können Sie bis zu 500 Volumes gleichzeitig löschen.
+
+Sie müssen Volumes löschen mit `DeleteVolumes` bevor sie beseitigt werden können.  Die Datenträger werden nach einer gewissen Zeit automatisch gelöscht, daher ist die Anwendung dieser Methode in der Regel nicht erforderlich.
+
+
+NOTE: Wenn Sie eine große Anzahl von Volumes gleichzeitig löschen oder wenn zu jedem der zu löschenden Volumes viele zugehörige Snapshots gehören, kann die Methode fehlschlagen und den Fehler "xDBConnectionLoss" zurückgeben.  Sollte dies der Fall sein, versuchen Sie den Methodenaufruf mit weniger Volumen erneut.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+| Volume-IDs | Eine Liste der Volume-IDs der Datenträger, die aus dem System entfernt werden sollen. | Ganzzahl-Array | Nein | Nein 
+
+
+| Konto-IDs | Eine Liste von Konto-IDs.  Sämtliche Datenträger aller angegebenen Konten werden aus dem System gelöscht. | Ganzzahl-Array | Nein | Nein 
+
+
+| volumeAccessGroupIDs | Eine Liste der volumeAccessGroupIDs.  Sämtliche Datenträger aus allen angegebenen Datenträgerzugriffsgruppen werden aus dem System entfernt. | Ganzzahl-Array | Nein | Nein 
+|===
+*Hinweis:* Pro Methodenaufruf kann nur einer der oben genannten Parameter angegeben werden.  Die Angabe von mehr als einem Wert oder von keinem Wert führt zu einem Fehler.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "PurgeDeletedVolumes",
+   "params": {
+      "accountIDs" : [1, 2, 3]
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_deletevolumes.adoc[DeleteVolumes]

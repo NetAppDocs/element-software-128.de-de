@@ -1,0 +1,239 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_enable_node_troubleshooting_sessions.html 
+summary: Ab Element 12.5 können Sie das Benutzerkonto sfreadonly auf dem Management-Knoten aktivieren, um Systemkomponenten ohne Hilfe des NetApp Supports zu analysieren und Fehler zu beheben.  Sie können außerdem den Remote-Support-Tunnelzugriff für den NetApp Support aktivieren und öffnen, um eine erweiterte Fehlerbehebung durchzuführen. 
+keywords: netapp, sfreadonly, connect to support, support tunnel, rst, mnode, management node 
+---
+= Zugriff auf Speicherknoten über SSH zur grundlegenden Fehlerbehebung
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab Element 12.5 können Sie das sfreadonly-Systemkonto auf den Speicherknoten für grundlegende Fehlerbehebungen verwenden.  Sie können außerdem den Remote-Support-Tunnelzugriff für den NetApp Support aktivieren und öffnen, um eine erweiterte Fehlerbehebung zu ermöglichen.
+
+Das Systemkonto „sfreadonly“ ermöglicht den Zugriff auf die Ausführung grundlegender Befehle zur Fehlerbehebung im Linux-System und Netzwerk, einschließlich `ping` Die
+
+
+WARNING: Sofern nicht vom NetApp -Support empfohlen, werden jegliche Änderungen an diesem System nicht unterstützt, führen zum Erlöschen Ihres Supportvertrags und können Instabilität oder den Verlust der Datenverfügbarkeit zur Folge haben.
+
+.Bevor Sie beginnen
+* *Schreibberechtigungen*: Überprüfen Sie, ob Sie Schreibberechtigungen für das aktuelle Arbeitsverzeichnis besitzen.
+* *(Optional) Generieren Sie Ihr eigenes Schlüsselpaar*: Ausführen `ssh-keygen` von Windows 10, MacOS oder Linux-Distribution.  Dies ist eine einmalige Aktion zur Erstellung eines Benutzerschlüsselpaares und kann für zukünftige Fehlerbehebungssitzungen wiederverwendet werden.  Sie könnten Zertifikate verwenden, die mit Mitarbeiterkonten verknüpft sind; das würde in diesem Modell ebenfalls funktionieren.
+* *SSH-Funktionalität auf dem Management-Knoten aktivieren*: Informationen zur Aktivierung der Fernzugriffsfunktionalität im Management-Modus finden Sie hier.link:task_mnode_ssh_management.html["dieses Thema"] Die  Bei Managementdiensten ab Version 2.18 ist die Möglichkeit des Fernzugriffs auf dem Managementknoten standardmäßig deaktiviert.
+* *SSH-Funktionalität auf dem Speichercluster aktivieren*: Informationen zur Aktivierung der Fernzugriffsfunktionalität auf den Knoten des Speicherclusters finden Sie hier.link:https://docs.netapp.com/us-en/element-software/storage/task_system_manage_cluster_enable_and_disable_support_access.html["dieses Thema"] Die
+* *Firewall-Konfiguration*: Befindet sich Ihr Management-Knoten hinter einem Proxy-Server, sind die folgenden TCP-Ports in der sshd.config-Datei erforderlich:
++
+[cols="15,25,60"]
+|===
+| TCP-Port | Beschreibung | Verbindungsrichtung 
+
+
+| 443 | API-Aufrufe/HTTPS für Reverse-Port-Weiterleitung über einen offenen Support-Tunnel zur Web-UI | Managementknoten zu Speicherknoten 
+
+
+| 22 | SSH-Anmeldezugriff | Managementknoten zu Speicherknoten oder von Speicherknoten zu Managementknoten 
+|===
+
+
+.Optionen zur Fehlerbehebung
+* <<Fehlerbehebung an einem Clusterknoten>>
+* <<Fehlerbehebung an einem Clusterknoten mit Hilfe des NetApp Supports>>
+* <<Fehlerbehebung an einem Knoten, der nicht Teil des Clusters ist>>
+
+
+
+
+== Fehlerbehebung an einem Clusterknoten
+
+Sie können grundlegende Fehlerbehebungen mithilfe des Systemkontos sfreadonly durchführen:
+
+.Schritte
+. Stellen Sie eine SSH-Verbindung zum Management-Knoten her, indem Sie die Anmeldeinformationen Ihres Kontos verwenden, die Sie bei der Installation der Management-Knoten-VM ausgewählt haben.
+. Gehen Sie auf dem Verwaltungsknoten zu `/sf/bin` Die
+. Suchen Sie das passende Skript für Ihr System:
++
+** SignSshKeys.ps1
+** SignSshKeys.py
+** SignSshKeys.sh
++
+[NOTE]
+====
+SignSshKeys.ps1 benötigt PowerShell 7 oder höher, und SignSshKeys.py benötigt Python 3.6.0 oder höher. https://docs.python-requests.org/["Anforderungsmodul"^] Die
+
+Der `SignSshKeys` Skript schreibt `user` , `user.pub` , Und `user-cert.pub` Dateien in das aktuelle Arbeitsverzeichnis, die später von der `ssh` Befehl.  Wird dem Skript jedoch eine Datei mit einem öffentlichen Schlüssel bereitgestellt, so wird nur ein `<public_key>` Datei (mit `<public_key>` (ersetzt durch das Präfix der an das Skript übergebenen öffentlichen Schlüsseldatei) wird in das Verzeichnis geschrieben.
+
+====
+
+
+. Führen Sie das Skript auf dem Management-Knoten aus, um den SSH-Schlüsselbund zu generieren.  Das Skript ermöglicht den SSH-Zugriff über das Systemkonto sfreadonly auf allen Knoten im Cluster.
++
+[listing]
+----
+SignSshKeys --ip [ip address] --user [username] --duration [hours] --publickey [public key path]
+----
++
+.. Ersetzen Sie für jeden der folgenden Parameter den Wert in den eckigen Klammern [ ] (einschließlich der Klammern selbst):
++
+
+NOTE: Sie können entweder die abgekürzte oder die ausgeschriebene Form des Parameters verwenden.
+
++
+*** *--ip | -i [IP-Adresse]*: IP-Adresse des Zielknotens, auf dem die API ausgeführt werden soll.
+*** *--user | -u [Benutzername]*: Cluster-Benutzer, der zum Ausführen des API-Aufrufs verwendet wird.
+*** *(Optional) --duration | -d [Stunden]*: Die Dauer, für die ein signierter Schlüssel gültig bleiben soll, als ganze Zahl in Stunden.  Der Standardwert beträgt 24 Stunden.
+*** *(Optional) --publickey | -k [Pfad zum öffentlichen Schlüssel]*: Der Pfad zu einem öffentlichen Schlüssel, falls der Benutzer einen solchen angeben möchte.
+
+
+.. Vergleichen Sie Ihre Eingabe mit dem folgenden Beispielbefehl.  In diesem Beispiel `10.116.139.195` ist die IP-Adresse des Speicherknotens, `admin` ist der Cluster-Benutzername, und die Gültigkeitsdauer des Schlüssels beträgt zwei Stunden:
++
+[listing]
+----
+sh /sf/bin/SignSshKeys.sh --ip 10.116.139.195 --user admin --duration 2
+----
+.. Führe den Befehl aus.
+
+
+. SSH-Verbindung zu den Knoten-IPs:
++
+[listing]
+----
+ssh -i user sfreadonly@[node_ip]
+----
++
+Sie werden in der Lage sein, grundlegende Befehle zur Fehlerbehebung im Linux-System und Netzwerk auszuführen, wie zum Beispiel: `ping` und andere schreibgeschützte Befehle.
+
+. (Optional) Deaktivierenlink:task_mnode_ssh_management.html["Fernzugriffsfunktionalität"] erneut, nachdem die Fehlersuche abgeschlossen ist.
++
+
+NOTE: SSH bleibt auf dem Management-Knoten aktiviert, solange Sie es nicht deaktivieren.  Die SSH-fähige Konfiguration bleibt auf dem Management-Knoten auch nach Updates und Upgrades erhalten, bis sie manuell deaktiviert wird.
+
+
+
+
+
+== Fehlerbehebung an einem Clusterknoten mit Hilfe des NetApp Supports
+
+Der NetApp -Support kann mit einem Systemkonto, das es einem Techniker ermöglicht, detailliertere Element-Diagnosen durchzuführen, eine erweiterte Fehlerbehebung vornehmen.
+
+.Schritte
+. Stellen Sie eine SSH-Verbindung zum Management-Knoten her, indem Sie die Anmeldeinformationen Ihres Kontos verwenden, die Sie bei der Installation der Management-Knoten-VM ausgewählt haben.
+. Führen Sie den Befehl „rst“ mit der von NetApp Support übermittelten Portnummer aus, um den Support-Tunnel zu öffnen:
++
+`rst -r  sfsupport.solidfire.com -u element -p <port_number>`
+
++
+Der NetApp -Support meldet sich über den Support-Tunnel an Ihrem Management-Knoten an.
+
+. Gehen Sie auf dem Verwaltungsknoten zu `/sf/bin` Die
+. Suchen Sie das passende Skript für Ihr System:
++
+** SignSshKeys.ps1
+** SignSshKeys.py
+** SignSshKeys.sh
++
+[NOTE]
+====
+SignSshKeys.ps1 benötigt PowerShell 7 oder höher, und SignSshKeys.py benötigt Python 3.6.0 oder höher. https://docs.python-requests.org/["Anforderungsmodul"^] Die
+
+Der `SignSshKeys` Skript schreibt `user` , `user.pub` , Und `user-cert.pub` Dateien in das aktuelle Arbeitsverzeichnis, die später von der `ssh` Befehl.  Wird dem Skript jedoch eine Datei mit einem öffentlichen Schlüssel bereitgestellt, so wird nur ein `<public_key>` Datei (mit `<public_key>` (ersetzt durch das Präfix der an das Skript übergebenen öffentlichen Schlüsseldatei) wird in das Verzeichnis geschrieben.
+
+====
+
+
+. Führen Sie das Skript aus, um den SSH-Schlüsselbund mit dem `--sfadmin` Flagge.  Das Skript aktiviert SSH auf allen Knoten.
++
+[listing]
+----
+SignSshKeys --ip [ip address] --user [username] --duration [hours] --sfadmin
+----
++
+[NOTE]
+====
+Um sich per SSH anzumelden `--sfadmin` Für einen Clusterknoten müssen Sie den SSH-Schlüsselbund mithilfe eines `--user` mit `supportAdmin` Zugriff auf den Cluster.
+
+Zum Konfigurieren `supportAdmin` Für den Zugriff auf Cluster-Administratorkonten können Sie die Element-Benutzeroberfläche oder APIs verwenden:
+
+** link:../storage/concept_system_manage_manage_cluster_administrator_users.html#view-cluster-admin-details["Konfigurieren Sie den „supportAdmin“-Zugriff über die Element-Benutzeroberfläche."]
+** Konfigurieren `supportAdmin` Zugriff durch Verwendung von APIs und Hinzufügen `"supportAdmin"` als die `"access"` Geben Sie Folgendes in die API-Anfrage ein:
++
+*** link:../api/reference_element_api_addclusteradmin.html["Konfigurieren Sie den „supportAdmin“-Zugriff für ein neues Konto."]
+*** link:../api/reference_element_api_modifyclusteradmin.html["Konfigurieren Sie den „supportAdmin“-Zugriff für ein bestehendes Konto"]
++
+Um die `clusterAdminID` Sie können dielink:../api/reference_element_api_listclusteradmins.html["ListClusterAdmins"] API.
+
+
+
+
+
+Um hinzuzufügen `supportAdmin` Für den Zugriff benötigen Sie Cluster-Administrator- oder Administratorrechte.
+
+====
++
+.. Ersetzen Sie für jeden der folgenden Parameter den Wert in den eckigen Klammern [ ] (einschließlich der Klammern selbst):
++
+
+NOTE: Sie können entweder die abgekürzte oder die ausgeschriebene Form des Parameters verwenden.
+
++
+*** *--ip | -i [IP-Adresse]*: IP-Adresse des Zielknotens, auf dem die API ausgeführt werden soll.
+*** *--user | -u [Benutzername]*: Cluster-Benutzer, der zum Ausführen des API-Aufrufs verwendet wird.
+*** *(Optional) --duration | -d [Stunden]*: Die Dauer, für die ein signierter Schlüssel gültig bleiben soll, als ganze Zahl in Stunden.  Der Standardwert beträgt 24 Stunden.
+
+
+.. Vergleichen Sie Ihre Eingabe mit dem folgenden Beispielbefehl.  In diesem Beispiel `192.168.0.1` ist die IP-Adresse des Speicherknotens, `admin` ist der Cluster-Benutzername, die Gültigkeitsdauer des Schlüssels beträgt zwei Stunden, und `--sfadmin` Ermöglicht den Zugriff auf den NetApp -Supportknoten zur Fehlerbehebung:
++
+[listing]
+----
+sh /sf/bin/SignSshKeys.sh --ip 192.168.0.1 --user admin --duration 2 --sfadmin
+----
+.. Führe den Befehl aus.
+
+
+. SSH-Verbindung zu den Knoten-IPs:
++
+[listing]
+----
+ssh -i user sfadmin@[node_ip]
+----
+. Um den Remote-Support-Tunnel zu schließen, geben Sie Folgendes ein:
++
+`rst --killall`
+
+. (Optional) Deaktivierenlink:task_mnode_ssh_management.html["Fernzugriffsfunktionalität"] erneut, nachdem die Fehlersuche abgeschlossen ist.
++
+
+NOTE: SSH bleibt auf dem Management-Knoten aktiviert, solange Sie es nicht deaktivieren.  Die SSH-fähige Konfiguration bleibt auf dem Management-Knoten auch nach Updates und Upgrades erhalten, bis sie manuell deaktiviert wird.
+
+
+
+
+
+== Fehlerbehebung an einem Knoten, der nicht Teil des Clusters ist
+
+Sie können grundlegende Fehlerbehebungsmaßnahmen an einem Knoten durchführen, der noch nicht zu einem Cluster hinzugefügt wurde.  Sie können hierfür das Systemkonto „sfreadonly“ mit oder ohne Unterstützung des NetApp -Supports verwenden.  Wenn Sie einen Management-Knoten eingerichtet haben, können Sie diesen für SSH verwenden und das für diese Aufgabe bereitgestellte Skript ausführen.
+
+. Führen Sie von einem Windows-, Linux- oder Mac-Rechner mit installiertem SSH-Client das für Ihr System geeignete Skript aus, das Ihnen vom NetApp Support zur Verfügung gestellt wird.
+. SSH-Verbindung zur Knoten-IP herstellen:
++
+[listing]
+----
+ssh -i user sfreadonly@[node_ip]
+----
+. (Optional) Deaktivierenlink:task_mnode_ssh_management.html["Fernzugriffsfunktionalität"] erneut, nachdem die Fehlersuche abgeschlossen ist.
++
+
+NOTE: SSH bleibt auf dem Management-Knoten aktiviert, solange Sie es nicht deaktivieren.  Die SSH-fähige Konfiguration bleibt auf dem Management-Knoten auch nach Updates und Upgrades erhalten, bis sie manuell deaktiviert wird.
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/hci/index.html["NetApp HCI Dokumentation"^]
+

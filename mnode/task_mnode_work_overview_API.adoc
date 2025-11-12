@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_API.html 
+summary: 'Mit der Management Node (mNode) API können Sie Systemdienste aktualisieren, Cluster-Assets und -Einstellungen verwalten, Systemtests und -Dienstprogramme ausführen, Active IQ für die Systemüberwachung konfigurieren und den NetApp Support SSH-Zugriff für die Fehlerbehebung aktivieren oder deaktivieren.' 
+keywords: netapp, mnode api, management node api, rest api 
+---
+= Übersicht der REST-API-Benutzeroberfläche des Management-Knotens
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Durch die Verwendung der integrierten REST-API-Benutzeroberfläche(`https://<ManagementNodeIP>/mnode` Sie können APIs ausführen oder verstehen, die sich auf die Dienste des Verwaltungsknotens beziehen, einschließlich der Konfiguration des Proxy-Servers, Aktualisierungen auf Dienstebene oder der Anlagenverwaltung.
+
+Aufgaben, die Sie mit REST-APIs ausführen können:
+
+
+
+== Genehmigung
+
+* link:task_mnode_api_get_authorizationtouse.html["Autorisierung zur Nutzung von REST-APIs einholen."]
+
+
+
+
+== Anlagenkonfiguration
+
+* link:task_mnode_enable_activeIQ.html["Aktivieren Sie Active IQ und die NetApp Überwachung."]
+* link:task_mnode_configure_proxy_server.html["Konfigurieren Sie einen Proxy-Server für den Verwaltungsknoten."]
+* link:task_mnode_multi_vcenter_config.html["NetApp Hybrid Cloud Control für mehrere vCenter-Center konfigurieren"]
+* link:task_mnode_add_assets.html["Fügen Sie dem Verwaltungsknoten ein Controller-Asset hinzu."]
+* link:task_mnode_manage_storage_cluster_assets.html["Speichercluster-Assets erstellen und verwalten"]
+
+
+
+
+== Vermögensverwaltung
+
+* link:task_mnode_edit_vcenter_assets.html["Vorhandene Controller-Assets anzeigen oder bearbeiten"]
+* link:task_mnode_manage_storage_cluster_assets.html["Speichercluster-Assets erstellen und verwalten"]
+* link:../hccstorage/task-hcc-collectlogs.html#use-the-rest-api-to-collect-netapp-hci-logs["Verwenden Sie die REST-API, um Element-Systemprotokolle zu erfassen."]
+* link:task_mnode_api_find_mgmt_svcs_version.html["Überprüfen Sie die Versionen des Management-Knoten-Betriebssystems und der Dienste."]
+* link:task_mnode_logs.html["Abrufen von Protokollen von Verwaltungsdiensten"]
+
+
+[discrete]
+== Weitere Informationen
+
+* link:task_mnode_access_ui.html["Greifen Sie auf den Verwaltungsknoten zu."]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

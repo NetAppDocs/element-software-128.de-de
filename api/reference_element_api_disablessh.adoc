@@ -1,0 +1,67 @@
+---
+permalink: api/reference_element_api_disablessh.html 
+sidebar: sidebar 
+keywords: SSH,disable,disabling,node,DisableSsh 
+summary: Mit der Methode DisableSsh können Sie den SSH-Dienst für einen einzelnen Speicherknoten deaktivieren.  Diese Methode hat keinen Einfluss auf die Timeout-Dauer des clusterweiten SSH-Dienstes. 
+---
+= SSH deaktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DisableSsh` Methode zum Deaktivieren des SSH-Dienstes für einen einzelnen Speicherknoten.  Diese Methode hat keinen Einfluss auf die Timeout-Dauer des clusterweiten SSH-Dienstes.
+
+
+
+== Parameter
+
+Diese Methode hat keinen Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+ermöglicht
+ a| 
+Der Status des SSH-Dienstes für diesen Knoten.
+ a| 
+boolescher Wert
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "DisableSsh",
+  "params": {
+      },
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {"enabled": false}
+}
+----

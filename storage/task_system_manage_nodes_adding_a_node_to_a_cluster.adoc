@@ -1,0 +1,52 @@
+---
+permalink: storage/task_system_manage_nodes_adding_a_node_to_a_cluster.html 
+sidebar: sidebar 
+keywords: nodes, add, config, cluster, pending, pairs, capacity, rule 
+summary: Sie können einem Cluster Knoten hinzufügen, wenn mehr Speicherplatz benötigt wird oder nachdem der Cluster bereits erstellt wurde.  Die Knoten müssen bei der ersten Inbetriebnahme initial konfiguriert werden.  Nach der Konfiguration des Knotens erscheint er in der Liste der ausstehenden Knoten und kann einem Cluster hinzugefügt werden. 
+---
+= Füge einem Cluster einen Knoten hinzu.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einem Cluster Knoten hinzufügen, wenn mehr Speicherplatz benötigt wird oder nachdem der Cluster bereits erstellt wurde.  Die Knoten müssen bei der ersten Inbetriebnahme initial konfiguriert werden.  Nach der Konfiguration des Knotens erscheint er in der Liste der ausstehenden Knoten und kann einem Cluster hinzugefügt werden.
+
+Die Softwareversionen auf den einzelnen Knoten eines Clusters müssen kompatibel sein.  Wenn Sie einem Cluster einen Knoten hinzufügen, installiert der Cluster bei Bedarf die Clusterversion der NetApp Element -Software auf dem neuen Knoten.
+
+Sie können einem bestehenden Cluster Knoten mit kleinerer oder größerer Kapazität hinzufügen.  Sie können einem Cluster größere Knotenkapazitäten hinzufügen, um ein Kapazitätswachstum zu ermöglichen.  Größere Knoten, die einem Cluster mit kleineren Knoten hinzugefügt werden, müssen paarweise hinzugefügt werden.  Dadurch bleibt genügend Platz für Double Helix, um die Daten zu verschieben, falls einer der größeren Knoten ausfällt.  Sie können kleinere Knotenkapazitäten zu einem größeren Knotencluster hinzufügen, um die Leistung zu verbessern.
+
+
+NOTE: Wenn ein neu hinzugefügter Knoten mehr als 50 Prozent der gesamten Clusterkapazität ausmacht, wird ein Teil der Kapazität dieses Knotens unbrauchbar gemacht ("gestrandet"), damit er der Kapazitätsregel entspricht.  Dies bleibt so lange der Fall, bis zusätzlicher Speicherplatz geschaffen wird.  Wird ein sehr großer Knoten hinzugefügt, der ebenfalls gegen die Kapazitätsregel verstößt, so ist der zuvor gestrandete Knoten nicht mehr gestrandet, während der neu hinzugefügte Knoten gestrandet wird.  Um dies zu vermeiden, sollten Kapazitäten immer paarweise addiert werden.  Wenn ein Knoten ausfällt, wird der Clusterfehler strandedCapacity ausgelöst.
+
+https://www.youtube.com/embed/2smVHWkikXY?rel=0["NetApp Video: Skalierung nach Ihren Wünschen: Erweiterung eines SolidFire Clusters"^]
+
+Sie können Knoten zu NetApp HCI Appliances hinzufügen.
+
+.Schritte
+. Wählen Sie *Cluster* > *Knoten*.
+. Klicken Sie auf *Ausstehend*, um die Liste der ausstehenden Knoten anzuzeigen.
++
+Sobald der Vorgang zum Hinzufügen von Knoten abgeschlossen ist, erscheinen diese in der Liste der aktiven Knoten.  Bis dahin werden die ausstehenden Knoten in der Liste „Ausstehende Aktive“ angezeigt.
+
++
+SolidFire installiert die Element-Softwareversion des Clusters auf den ausstehenden Knoten, wenn Sie diese einem Cluster hinzufügen. Dies kann einige Minuten dauern.
+
+. Führen Sie einen der folgenden Schritte aus:
++
+** Um einzelne Knoten hinzuzufügen, klicken Sie auf das *Aktionen*-Symbol des Knotens, den Sie hinzufügen möchten.
+** Um mehrere Knoten hinzuzufügen, wählen Sie die Kontrollkästchen der hinzuzufügenden Knoten aus und klicken Sie dann auf *Massenaktionen*.  *Hinweis:* Falls auf dem hinzuzufügenden Knoten eine andere Version der Element-Software installiert ist als die auf dem Cluster laufende Version, aktualisiert der Cluster den Knoten asynchron auf die auf dem Cluster-Master laufende Version der Element-Software.  Nach der Aktualisierung des Knotens fügt er sich automatisch dem Cluster hinzu.  Während dieses asynchronen Prozesses befindet sich der Knoten im Zustand pendingActive.
+
+
+. Klicken Sie auf *Hinzufügen*.
++
+Der Knoten erscheint in der Liste der aktiven Knoten.
+
+
+
+
+
+== Weitere Informationen
+
+xref:concept_system_manage_nodes_node_versioning_and_compatibility.adoc[Node-Versionierung und Kompatibilität]

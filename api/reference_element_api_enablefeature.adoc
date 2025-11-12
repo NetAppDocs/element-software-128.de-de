@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_enablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableFeature,vvols,virtual volumes,FIPS,140-2,SnapMirror 
+summary: Mit der Methode EnableFeature können Sie Clusterfunktionen wie VVols aktivieren, die standardmäßig deaktiviert sind. 
+---
+= Funktion aktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `EnableFeature` Methode zur Aktivierung von Clusterfunktionen wie VVols, die standardmäßig deaktiviert sind.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter.
+
+
+NOTE: Bei Systemen, auf denen die Element-Software 11.x ausgeführt wird, führt das Aktivieren virtueller Volumes vor oder nach dem Festlegen der Überwachung von Schutzdomänen dazu, dass die Funktion „Cluster-Schutzdomänen“ nur auf Knotenebene funktioniert.
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Besonderheit
+ a| 
+Aktivieren Sie eine Clusterfunktion. Mögliche Werte:
+
+* `fips`: Aktivieren Sie die FIPS 140-2-zertifizierte Verschlüsselung für HTTPS-Kommunikation.
+* `FipsDrives`: Aktivieren Sie die FIPS 140-2-Laufwerksunterstützung für den Speichercluster.
+* `SnapMirror`Aktivieren Sie die SnapMirror Replikationsclusterfunktion.
+* `VolumeLoadBalanceOnActualIOPS`: Aktivieren Sie den Slice-Balancing auf Basis der tatsächlichen IOPS anstatt der minimalen IOPS.  Verfügbar ab Element 12.8.
+* `vvols`: Aktivieren Sie die Element-Software-VVols-Clusterfunktion.
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "vvols"
+    },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

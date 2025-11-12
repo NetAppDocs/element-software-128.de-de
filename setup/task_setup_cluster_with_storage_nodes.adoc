@@ -1,0 +1,30 @@
+---
+permalink: setup/task_setup_cluster_with_storage_nodes.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: Verstehen Sie die Abfolge beim Einrichten eines Clusters mit Speicherknoten. 
+---
+= Einrichten eines Clusters mit Element-Speicherknoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können einen Cluster mit Speicherknoten einrichten und ihn mithilfe der Element-Software verwalten, nachdem Sie die Knoten in einer Rack-Einheit installiert und verkabelt und eingeschaltet haben. Anschließend können Sie weitere Komponenten in Ihrem Speichersystem installieren und konfigurieren.
+
+.Schritte
+. link:concept_setup_configure_a_storage_node.html["Konfigurieren eines Speicherknotens"]
+. link:task_setup_create_a_storage_cluster.html["Erstellen Sie einen Speichercluster"]
+. link:task_post_deploy_access_the_element_software_user_interface.html["Melden Sie sich bei der Element-Software-Benutzeroberfläche an."]
+. link:task_setup_add_drives_to_a_cluster.html["Fügen Sie dem Cluster Laufwerke hinzu."]
+. link:task_setup_determine_which_solidfire_components_to_install.html["Ermitteln Sie, welche SolidFire -Komponenten installiert werden sollen."]
+. link:task_setup_gh_redirect_set_up_a_management_node.html["Richten Sie einen Verwaltungsknoten ein."]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

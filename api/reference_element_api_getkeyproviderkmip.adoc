@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_getkeyproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key provider,retrieving,get,retrieve 
+summary: 'Mit der Methode GetKeyProviderKmip können Sie Informationen über den angegebenen KMIP-Schlüsselanbieter (Key Management Interoperability Protocol) abrufen.' 
+---
+= GetKeyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetKeyProviderKmip` Methode zum Abrufen von Informationen über den angegebenen KMIP-Schlüsselanbieter (Key Management Interoperability Protocol).
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+keyProviderID
+ a| 
+Die ID des zurückzugebenden KMIP-Schlüsselanbieterobjekts.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+kmipKeyProvider
+ a| 
+Ein Objekt, das Details zum angeforderten Schlüsselanbieter enthält.
+ a| 
+link:reference_element_api_keyproviderkmip.html["KeyProviderKmip"]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetKeyProviderKmip",
+  "params": {
+    "keyProviderID": 15
+    },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+    {
+    "kmipKeyProvider": {
+        "keyProviderID": 15,
+        "kmipCapabilities": "SSL",
+        "keyProviderIsActive": true,
+        "keyServerIDs": [
+            1
+        ],
+        "keyProviderName": "ProviderName"
+    }
+   }
+}
+----
+
+
+== Neu seit Version
+
+11,7

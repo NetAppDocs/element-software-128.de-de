@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgroupefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,access,group,efficiency,GetVolumeAccessGroupEfficiency 
+summary: Mit der Methode GetVolumeAccessGroupEfficiency können Sie Effizienzinformationen zu einer Volume-Zugriffsgruppe abrufen.  Nur die Datenträgerzugriffsgruppe, die Sie als Parameter in dieser API-Methode angeben, wird zur Berechnung der Kapazität verwendet. 
+---
+= GetVolumeAccessGroupEfficiency
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetVolumeAccessGroupEfficiency` Methode zum Erhalt von Effizienzinformationen über eine Volumenzugriffsgruppe.  Nur die Datenträgerzugriffsgruppe, die Sie als Parameter in dieser API-Methode angeben, wird zur Berechnung der Kapazität verwendet.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Gibt die Datenträgerzugriffsgruppe an, für die die Kapazität berechnet wird.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Kompression
+ a| 
+Die durch Datenkomprimierung eingesparte Speicherplatzmenge für alle Datenträger in der Datenträgerzugriffsgruppe.  Angegeben als Verhältniswert, wobei ein Wert von 1 bedeutet, dass die Daten unkomprimiert gespeichert wurden.
+ a| 
+schweben
+
+
+
+ a| 
+Deduplizierung
+ a| 
+Die Menge an Speicherplatz, die durch das Vermeiden der Datenduplizierung für alle Datenträger in der Datenträgerzugriffsgruppe eingespart wird.  Als Verhältnis angegeben.
+ a| 
+schweben
+
+
+
+ a| 
+Thin Provisioning
+ a| 
+Das Verhältnis des genutzten Speicherplatzes zum für die Datenspeicherung vorgesehenen Speicherplatz.  Als Verhältnis angegeben.
+ a| 
+schweben
+
+
+
+ a| 
+Zeitstempel
+ a| 
+Die letzten Effizienzdaten wurden nach der Müllabfuhr erhoben.
+ a| 
+ISO 8601-Datenzeichenfolge
+
+
+
+ a| 
+fehlende Bände
+ a| 
+Die Volumina, für die keine Effizienzdaten abgefragt werden konnten.  Fehlende Volumes können durch eine kürzlich erfolgte Speicherbereinigung, einen vorübergehenden Netzwerkausfall oder durch seit dem letzten Speicherbereinigungszyklus neu gestartete Dienste verursacht werden.
+ a| 
+Ganzzahl-Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupEfficiency",
+   "params": {
+      "volumeAccessGroupID": 1
+   },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.006012925331075,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T17:05:27Z"
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

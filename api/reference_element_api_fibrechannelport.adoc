@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_fibrechannelport.html 
+sidebar: sidebar 
+keywords: object,objects,fibreChannelPort 
+summary: Das fibreChannelPort-Objekt enthält Informationen über einzelne Ports auf einem Knoten oder über einen gesamten Knoten im Cluster.  Diese Informationen können Sie mit der Methode ListNodeFibreChannelPortInfo abrufen. 
+---
+= Fibre Channel Port
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das fibreChannelPort-Objekt enthält Informationen über einzelne Ports auf einem Knoten oder über einen gesamten Knoten im Cluster.  Sie können diese Informationen mithilfe der folgenden Methode abrufen: `ListNodeFibreChannelPortInfo` Verfahren.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Firmware
+ a| 
+Die auf dem Fibre Channel-Port installierte Firmware-Version.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+hbaPort
+ a| 
+Die ID des einzelnen Host-Bus-Adapter-Ports (HBA).
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Modell
+ a| 
+Modell des HBA am Port.
+ a| 
+Schnur
+
+
+
+ a| 
+nPortID
+ a| 
+Die eindeutige Portknoten-ID.
+ a| 
+Schnur
+
+
+
+ a| 
+PCI-Steckplatz
+ a| 
+Der Steckplatz, der die PCI-Karte im Fibre-Channel-Knotengehäuse enthält.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Seriennummer
+ a| 
+Die Seriennummer am Fibre-Channel-Anschluss.
+ a| 
+Schnur
+
+
+
+ a| 
+Geschwindigkeit
+ a| 
+Die Geschwindigkeit des HBA am Hafen.
+ a| 
+Schnur
+
+
+
+ a| 
+Zustand
+ a| 
+Mögliche Werte:
+
+* Unbekannt
+* Nicht anwesend
+* Online
+* Offline
+* Blockiert
+* Umgangen
+* Diagnostik
+* Linkdown
+* Fehler
+* Rücklauf
+* Gelöscht
+
+ a| 
+Schnur
+
+
+
+ a| 
+switchWwn
+ a| 
+Die weltweite Bezeichnung für den Fibre-Channel-Switch-Port.
+ a| 
+Schnur
+
+
+
+ a| 
+wwnn
+ a| 
+Weltweiter Knotenname des HBA-Knotens.
+ a| 
+Schnur
+
+
+
+ a| 
+wwpn
+ a| 
+Weltweiter Hafenname, der dem physischen Hafen des HBA zugewiesen ist.
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listnodefibrechannelportinfo.adoc[ListNodeFibreChannelPortInfo]

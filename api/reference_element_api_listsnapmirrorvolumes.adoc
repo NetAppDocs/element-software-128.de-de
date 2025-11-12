@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_listsnapmirrorvolumes.html 
+sidebar: sidebar 
+keywords: snapmirror,volume,list,listing,volumes,listsnapmirrorvolumes,ontap 
+summary: Die Web-Benutzeroberfläche der Element-Software verwendet die Methode ListSnapMirrorVolumes, um alle auf einem entfernten ONTAP -System verfügbaren SnapMirror Volumes aufzulisten. 
+---
+= ListSnapMirrorVolumes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `ListSnapMirrorVolumes` Methode zum Auflisten aller SnapMirror Volumes, die auf einem entfernten ONTAP -System verfügbar sind.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Es sollen nur die Volumes aufgelistet werden, die mit der angegebenen Endpunkt-ID verknüpft sind.  Wird keine Endpunkt-ID angegeben, listet das System Volumes von allen bekannten SnapMirror Endpunkten auf.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+vServer
+ a| 
+Liste der auf dem angegebenen Vserver gehosteten Volumes auf.  Der Vserver muss vom Typ "data" sein.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Name
+ a| 
+Es sollen nur ONTAP Volumes mit dem angegebenen Namen aufgelistet werden.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Typ
+ a| 
+Es sollen nur ONTAP Volumes des angegebenen Typs aufgelistet werden. Mögliche Werte:
+
+* rw: Lese-/Schreib-Volumes
+* ls: Lastverteilungsvolumes
+* dp: Datenschutzvolumes
+
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+SnapMirrorVolumes
+ a| 
+Eine Liste der auf dem ONTAP Speichersystem verfügbaren SnapMirror Volumes.
+ a| 
+xref:reference_element_api_snapmirrorvolume.adoc[SnapMirrorVolume]Array
+
+|===
+
+
+== Neu seit Version
+
+10,1

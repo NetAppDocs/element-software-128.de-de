@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_removevolumepair.html 
+sidebar: sidebar 
+keywords: volume,pair,volumes,remove,removing,removevolumepair 
+summary: Mit der Methode RemoveVolumePair können Sie die Remote-Kopplung zwischen zwei Volumes aufheben.  Wenden Sie diese Methode sowohl auf das Quell- als auch auf das Zielvolume an, die miteinander verbunden sind.  Wenn Sie die Volume-Pairing-Informationen entfernen, werden keine Daten mehr auf das Volume oder von diesem repliziert. 
+---
+= Lautstärkepaar entfernen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RemoveVolumePair` Methode zum Aufheben der Remote-Kopplung zwischen zwei Volumes.  Wenden Sie diese Methode sowohl auf das Quell- als auch auf das Zielvolume an, die miteinander verbunden sind.  Wenn Sie die Volume-Pairing-Informationen entfernen, werden keine Daten mehr auf das Volume oder von diesem repliziert.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Volume-ID
+ a| 
+ID des Volumes, auf dem der Replikationsprozess gestoppt werden soll.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "RemoveVolumePair",
+   "params": {
+      "volumeID": 5
+   "id" : 1
+   }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

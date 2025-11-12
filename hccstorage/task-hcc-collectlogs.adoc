@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-collectlogs.html 
+summary: Mit NetApp Hybrid Cloud Control können Sie Protokolle Ihrer Element-Installation erfassen, um die Fehlerbehebung zu erleichtern. 
+keywords: netapp, element, logs, collection, troubleshooting, monitor 
+---
+= Sammeln Sie Protokolle zur Fehlerbehebung.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sollten Sie Probleme mit Ihrer SolidFire All-Flash-Speicherinstallation haben, können Sie Protokolle sammeln und an den NetApp -Support senden, um die Diagnose zu erleichtern.  Sie können entweder NetApp Hybrid Cloud Control oder die REST-API verwenden, um Protokolle auf einem Element-System zu erfassen.
+
+.Was du brauchst
+* Stellen Sie sicher, dass auf Ihrem Speichercluster die NetApp Element Software Version 11.3 oder höher läuft.
+* Stellen Sie sicher, dass Sie einen Management-Knoten mit Version 11.3 oder höher bereitgestellt haben.
+
+
+.Optionen zur Protokollerfassung
+Wählen Sie eine der folgenden Optionen:
+
+* <<Verwenden Sie NetApp Hybrid Cloud Control, um Protokolle zu erfassen.>>
+* <<Verwenden Sie die REST-API, um Protokolle zu erfassen.>>
+
+
+
+
+== Verwenden Sie NetApp Hybrid Cloud Control, um Protokolle zu erfassen.
+
+Sie können auf den Bereich zur Protokollerfassung über das NetApp Hybrid Cloud Control Dashboard zugreifen.
+
+.Schritte
+. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser. Beispiel:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen des Element-Speicherclusters angeben.
+. Wählen Sie im Dashboard das Menü oben rechts aus.
+. Wählen Sie *Protokolle sammeln*.
++
+Wenn Sie bereits zuvor Protokolle gesammelt haben, können Sie das bestehende Protokollpaket herunterladen oder eine neue Protokollsammlung starten.
+
+. Wählen Sie im Dropdown-Menü *Datumsbereich* einen Datumsbereich aus, um festzulegen, welche Daten in den Protokollen enthalten sein sollen.
++
+Wenn Sie ein benutzerdefiniertes Startdatum angeben, können Sie das Datum auswählen, an dem der Datumsbereich beginnen soll.  Die Protokolle werden ab diesem Datum bis zum heutigen Tag erfasst.
+
+. Im Abschnitt *Protokollsammlung* wählen Sie die Arten von Protokolldateien aus, die das Protokollpaket enthalten soll.
++
+Für Speicherprotokolle können Sie die Liste der Speicherknoten erweitern und einzelne Knoten auswählen, von denen Protokolle erfasst werden sollen (oder alle Knoten in der Liste).
+
+. Wählen Sie *Protokolle sammeln*, um die Protokollsammlung zu starten.
++
+Die Protokollerfassung läuft im Hintergrund, und der Fortschritt wird auf der Seite angezeigt.
+
++
+
+NOTE: Je nachdem, welche Protokolle Sie sammeln, kann der Fortschrittsbalken mehrere Minuten lang bei einem bestimmten Prozentsatz stehen bleiben oder an manchen Stellen sehr langsam voranschreiten.
+
+. Wählen Sie *Protokolle herunterladen*, um das Protokollpaket herunterzuladen.
++
+Das Protokollpaket liegt im komprimierten UNIX .tgz-Dateiformat vor.
+
+
+
+
+
+== Verwenden Sie die REST-API, um Protokolle zu erfassen.
+
+Sie können die REST-API verwenden, um Elementprotokolle zu erfassen.
+
+.Schritte
+. Ermitteln Sie die Speichercluster-ID:
++
+.. Öffnen Sie die REST-API-Benutzeroberfläche des Management-Knotens auf dem Management-Knoten:
++
+[listing]
+----
+https://[management node IP]/logs/1/
+----
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` falls der Wert noch nicht belegt ist.
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+
+
+
+
+. Protokolle von Element sammeln:
++
+.. Wählen Sie *POST /bundle*.
+.. Wählen Sie *Ausprobieren*.
+.. Ändern Sie die Werte der folgenden Parameter im Feld *Anfragetext* je nachdem, welche Art von Protokollen Sie erfassen möchten und für welchen Zeitraum:
++
+|===
+| Parameter | Typ | Beschreibung 
+
+
+| `modifiedSince` | Datumszeichenfolge | Berücksichtigen Sie nur Protokolldateien, die nach diesem Datum und dieser Uhrzeit geändert wurden.  Beispielsweise definiert der Wert "2020-07-14T20:19:00.000Z" ein Startdatum am 14. Juli 2020 um 20:19 UTC. 
+
+
+| `mnodeLogs` | Boolescher Wert | Stellen Sie diesen Parameter auf `true` einschließlich der Management-Knotenprotokolle. 
+
+
+| `storageCrashDumps` | Boolescher Wert | Stellen Sie diesen Parameter auf `true` einschließlich der Debug-Protokolle für Abstürze von Speicherknoten. 
+
+
+| `storageLogs` | Boolescher Wert | Stellen Sie diesen Parameter auf `true` einschließlich der Protokolle der Speicherknoten. 
+
+
+| `storageNodeIds` | UUID-Array | Wenn `storageLogs` ist eingestellt auf `true` Füllen Sie diesen Parameter mit den Speichercluster-Knoten-IDs, um die Protokollerfassung auf diese spezifischen Speicherknoten zu beschränken.  Verwenden Sie die `GET https://[management node IP]/logs/1/bundle/options` Endpunkt, um alle möglichen Knoten-IDs anzuzeigen, die Sie verwenden können. 
+|===
+.. Wählen Sie *Ausführen*, um die Protokollerfassung zu starten.  Die Antwort sollte in etwa so aussehen:
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. Überprüfen Sie den Status der Protokollerfassungsaufgabe:
++
+.. Wählen Sie *GET /bundle*.
+.. Wählen Sie *Ausprobieren*.
+.. Wählen Sie *Ausführen*, um den Status der Datenerfassungsaufgabe abzurufen.
+.. Scrollen Sie bis zum Ende des Antworttextes.
++
+Du solltest sehen `percentComplete` Attribut, das den Fortschritt der Sammlung detailliert beschreibt.  Wenn die Sammlung vollständig ist, `downloadLink` Das Attribut enthält den vollständigen Download-Link einschließlich des Dateinamens des Protokollpakets.
+
+.. Kopieren Sie den Dateinamen am Ende des `downloadLink` Attribut.
+
+
+. Laden Sie das gesammelte Protokollpaket herunter:
++
+.. Wählen Sie *GET /bundle/{filename}*.
+.. Wählen Sie *Ausprobieren*.
+.. Fügen Sie den zuvor kopierten Dateinamen in das Feld ein. `filename` Parametertextfeld.
+.. Wählen Sie *Ausführen*.
++
+Nach der Ausführung erscheint ein Download-Link im Antworttext.
+
+.. Wählen Sie *Datei herunterladen* und speichern Sie die resultierende Datei auf Ihrem Computer.
++
+Das Protokollpaket liegt im komprimierten UNIX .tgz-Dateiformat vor.
+
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

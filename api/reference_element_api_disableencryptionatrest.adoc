@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_disableencryptionatrest.html 
+sidebar: sidebar 
+keywords: element, api, encryption, disable, disabling, at rest, rest, DisableEncryptionAtRest 
+summary: Mit der Methode DisableEncryptionAtRest können Sie die Verschlüsselung entfernen, die zuvor mit der Methode EnableEncryptionAtRest auf den Cluster angewendet wurde.  Diese Deaktivierungsmethode ist asynchron und gibt eine Antwort zurück, bevor die Verschlüsselung deaktiviert wird.  Sie können die GetClusterInfo-Methode verwenden, um das System abzufragen und zu sehen, wann der Prozess abgeschlossen ist. 
+---
+= DisableEncryptionAtRest
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DisableEncryptionAtRest` Methode zum Entfernen der zuvor auf den Cluster angewendeten Verschlüsselung mithilfe der `EnableEncryptionAtRest` Verfahren.  Diese Deaktivierungsmethode ist asynchron und gibt eine Antwort zurück, bevor die Verschlüsselung deaktiviert wird.  Sie können die `GetClusterInfo` Methode, um das System abzufragen und festzustellen, wann der Prozess abgeschlossen ist.
+
+
+TIP: Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:api/reference_element_api_getclusterinfo.html["Methode zum Abrufen von Clusterinformationen"] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"]Die
+
+
+NOTE: Mit dieser Methode lässt sich die Softwareverschlüsselung im Ruhezustand nicht deaktivieren.  Um die Softwareverschlüsselung im Ruhezustand zu deaktivieren, müssen Sielink:reference_element_api_createcluster.html["Einen neuen Cluster erstellen"] mit deaktivierter Softwareverschlüsselung im Ruhezustand.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "DisableEncryptionAtRest",
+   "params": {},
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+[discrete]
+== Weitere Informationen
+
+* link:api/reference_element_api_getclusterinfo.html["GetClusterInfo"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

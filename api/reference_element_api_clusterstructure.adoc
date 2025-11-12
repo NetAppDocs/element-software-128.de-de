@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_clusterstructure.html 
+sidebar: sidebar 
+keywords: objects,cluster,structure,clusterStructure,object 
+summary: Das clusterStructure-Objekt enthält Sicherungsinformationen zur Clusterkonfiguration, die mit der GetClusterStructure-Methode erstellt wurden.  Mit der Methode SetClusterStructure können Sie diese Informationen in einem Speichercluster wiederherstellen, den Sie gerade neu aufbauen. 
+---
+= Clusterstruktur
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das clusterStructure-Objekt enthält Sicherungsinformationen zur Clusterkonfiguration, die mit der GetClusterStructure-Methode erstellt wurden.  Mit der Methode SetClusterStructure können Sie diese Informationen in einem Speichercluster wiederherstellen, den Sie gerade neu aufbauen.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die kombinierten Rückgabeinformationen der folgenden Methoden:
+
+* xref:reference_element_api_getclusterinfo.adoc[GetClusterInfo]
+* xref:reference_element_api_listaccounts.adoc[Konten auflisten]
+* xref:reference_element_api_listinitiators.adoc[Listeninitiatoren]
+* xref:reference_element_api_listvolumes.adoc[ListVolumes](mit includeVirtualVolumes=false)
+* xref:reference_element_api_listvolumeaccessgroups.adoc[ListVolumeAccessGroups]
+* xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]
+* xref:reference_element_api_listqospolicies.adoc[ListQoSPolicies]
+* xref:reference_element_api_getsnmpinfo.adoc[GetSnmpInfo]
+* xref:reference_element_api_getntpinfo.adoc[GetNtpInfo]
+* xref:reference_element_api_listvirtualnetworks.adoc[ListVirtualNetworks]
+* xref:reference_element_api_listclusteradmins.adoc[ListClusterAdmins]
+* xref:reference_element_api_listschedules.adoc[Zeitpläne auflisten]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[ListSnapMirrorEndpoints]
+* xref:reference_element_api_getfeaturestatus.adoc[GetFeatureStatus]
+* xref:reference_element_api_getldapconfiguration.adoc[GetLdapConfiguration]
+* xref:reference_element_api_getremotelogginghosts.adoc[GetRemoteLoggingHosts]
+* xref:reference_element_api_getdefaultqos.adoc[Standard-QoS abrufen]
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[GetVolumeAccessGroupLunAssignments]
+
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getclusterstructure.adoc[GetClusterStructure]
+* xref:reference_element_api_setclusterstructure.adoc[SetClusterStructure]
+

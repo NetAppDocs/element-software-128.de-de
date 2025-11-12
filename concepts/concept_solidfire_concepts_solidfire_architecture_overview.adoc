@@ -1,0 +1,77 @@
+---
+permalink: concepts/concept_solidfire_concepts_solidfire_architecture_overview.html 
+sidebar: sidebar 
+keywords: solidfire, element, aiq, cluster, active iq, vcenter plugin, vcp, storage, what is, activeiq 
+summary: 'Ein SolidFire All-Flash-Speichersystem besteht aus diskreten Hardwarekomponenten (Laufwerken und Knoten), die durch die NetApp Element Software, die unabhängig auf jedem Knoten läuft, zu einem einzigen Pool von Speicherressourcen kombiniert werden.  Dieser einheitliche Cluster stellt sich externen Clients als ein einziges Speichersystem dar und wird über die Element-Software-Benutzeroberfläche, die API und andere Verwaltungstools als eine einzige Einheit verwaltet.' 
+---
+= Erfahren Sie mehr über die SolidFire -Architektur.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein SolidFire All-Flash-Speichersystem besteht aus einzelnen Hardwarekomponenten (Laufwerken und Knoten), die zu einem Pool von Speicherressourcen kombiniert werden, wobei die NetApp Element Software unabhängig auf jedem Knoten läuft.  Dieses einzelne Speichersystem wird als eine Einheit mithilfe der Element-Software-Benutzeroberfläche, der API und anderer Verwaltungstools verwaltet.
+
+Ein SolidFire -Speichersystem umfasst folgende Hardwarekomponenten:
+
+* *Cluster*: Der zentrale Knotenpunkt des SolidFire -Speichersystems, der aus einer Sammlung von Knoten besteht.
+* *Knoten*: Die zu einem Cluster gruppierten Hardwarekomponenten.  Es gibt zwei Arten von Knoten:
++
+** Speicherknoten sind Server, die eine Sammlung von Laufwerken enthalten.
+** Fibre Channel (FC)-Knoten, die Sie verwenden, um eine Verbindung zu FC-Clients herzustellen
+
+
+* *Laufwerke*: Werden in Speicherknoten verwendet, um Daten für den Cluster zu speichern.  Ein Speicherknoten enthält zwei Arten von Laufwerken:
++
+** Volume-Metadaten speichern Informationen, die die Volumes und andere Objekte innerhalb eines Clusters definieren.
+** Blocklaufwerke speichern Datenblöcke für Datenträger.
+
+
+
+
+image::../media/solidfire_concepts_guide_architecture_image.gif[Architekturdiagramm der Element-Software]
+
+Sie können das System mithilfe der Element-Weboberfläche und anderer kompatibler Tools verwalten, überwachen und aktualisieren:
+
+* link:../concepts/concept_intro_solidfire_software_interfaces.html["SolidFire Softwareschnittstellen"]
+* link:../concepts/concept_intro_solidfire_active_iq.html["SolidFire Active IQ"]
+* link:../concepts/concept_intro_management_node.html["Verwaltungsknoten für die Element-Software"]
+* link:../concepts/concept_intro_management_services_for_afa.html["Managementdienstleistungen"]
+
+
+
+
+== Häufige URLs
+
+Dies sind die gängigen URLs, die Sie mit einem SolidFire All-Flash-Speichersystem verwenden:
+
+[cols="2*"]
+|===
+| URL | Beschreibung 
+
+
+| `https://[storage cluster MVIP address]` | Greifen Sie auf die Benutzeroberfläche der NetApp Element Software zu. 
+
+
+| `https://activeiq.solidfire.com` | Überwachen Sie Daten und erhalten Sie Benachrichtigungen über etwaige Leistungsengpässe oder potenzielle Systemprobleme. 
+
+
+| `https://[management node IP address]` | Greifen Sie auf NetApp Hybrid Cloud Control zu, um Ihre Speicherinstallation zu aktualisieren und die Verwaltungsdienste zu aktualisieren. 
+
+
+| `https://[IP address]:442` | Über die Benutzeroberfläche pro Knoten können Sie auf Netzwerk- und Clustereinstellungen zugreifen und Systemtests und -hilfsmittel nutzen.link:../storage/task_per_node_access_settings.html["Erfahren Sie mehr."] 
+
+
+| `https://[management node IP address]/mnode` | Nutzen Sie die REST-API der Managementdienste und weitere Funktionen des Managementknotens.link:../mnode/task_mnode_work_overview.html["Erfahren Sie mehr."] 
+
+
+| `https://[management node IP address]:9443` | Registrieren Sie das vCenter-Plug-in-Paket im vSphere Web Client.link:https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html["Erfahren Sie mehr."^] 
+|===
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

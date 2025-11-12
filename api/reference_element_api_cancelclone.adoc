@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_cancelclone.html 
+sidebar: sidebar 
+keywords:  
+summary: Mit der Methode CancelClone können Sie einen laufenden Volume-Klon- oder Volume-Kopiervorgang stoppen.  Wenn Sie einen Gruppenklonvorgang abbrechen, wird der Vorgang vom System abgeschlossen und das zugehörige asyncHandle entfernt. 
+---
+= CancelClone
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `CancelClone` Methode zum Stoppen eines laufenden Volume-Klon- oder Volume-Kopiervorgangs.  Wenn Sie einen Gruppenklonvorgang abbrechen, wird der Vorgang vom System abgeschlossen und das zugehörige asyncHandle entfernt.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+cloneID
+ a| 
+Die Klon-ID für den laufenden Klonvorgang.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "CancelClone",
+   "params": {
+      "cloneID" : 5,
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

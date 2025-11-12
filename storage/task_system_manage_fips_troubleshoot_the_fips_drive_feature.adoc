@@ -1,0 +1,34 @@
+---
+permalink: storage/task_system_manage_fips_troubleshoot_the_fips_drive_feature.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2 
+summary: Mithilfe der NetApp Element Software-Benutzeroberfläche können Sie Warnmeldungen zu Clusterfehlern oder Systemfehlern im Zusammenhang mit der FIPS-Laufwerksfunktion anzeigen. 
+---
+= Fehlerbehebung bei der FIPS-Laufwerksfunktion
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mithilfe der NetApp Element Software-Benutzeroberfläche können Sie Warnmeldungen zu Clusterfehlern oder Systemfehlern im Zusammenhang mit der FIPS-Laufwerksfunktion anzeigen.
+
+. Wählen Sie in der Element-Benutzeroberfläche *Berichte* > *Warnungen* aus.
+. Suchen Sie nach Clusterfehlern, einschließlich:
++
+** FIPS-Laufwerke nicht kompatibel
+** FIPS-Verstöße führen zu Nichteinhaltung
+
+
+. Lösungsvorschläge finden Sie in den Informationen zum Cluster-Fehlercode.
+
+
+
+
+== Weitere Informationen
+
+* xref:reference_monitor_cluster_fault_codes.adoc[Cluster-Fehlercodes]
+* link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

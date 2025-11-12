@@ -1,0 +1,232 @@
+---
+permalink: api/reference_element_api_node.html 
+sidebar: sidebar 
+keywords: object,objects,node 
+summary: Das Knotenobjekt enthält Informationen über jeden Knoten im Cluster.  Diese Informationen können Sie mit den Methoden ListActiveNodes und ListAllNodes abrufen. 
+---
+= Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Knotenobjekt enthält Informationen über jeden Knoten im Cluster.  Sie können diese Informationen abrufen mithilfe der `ListActiveNodes` Und `ListAllNodes` Methoden.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+zugehörigeFServiceID
+ a| 
+Die Fibre Channel-Dienst-ID für den Knoten.  "0", wenn es sich bei dem Knoten nicht um einen Fibre Channel-Knoten handelt.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+zugehörigeMasterServiceID
+ a| 
+Master-Service-ID für den Knoten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Chassisname
+ a| 
+Identifiziert ein Chassis eindeutig; identisch für alle Knoten in einem einzelnen Chassis.
+ a| 
+Schnur
+
+
+
+ a| 
+cip
+ a| 
+Die dem Knoten zugewiesene Cluster-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+cipi
+ a| 
+Netzwerkschnittstelle zur Clusterkommunikation.
+ a| 
+Schnur
+
+
+
+ a| 
+benutzerdefinierterSchutzdomänenname
+ a| 
+Identifiziert eindeutig eine benutzerdefinierte Schutzdomäne.  Dieser Name ist für alle Speicherknoten innerhalb aller Gehäuse in einer bestimmten benutzerdefinierten Schutzdomäne identisch.
+ a| 
+Schnur
+
+
+
+ a| 
+FibreChannelTargetPortGroup
+ a| 
+Die diesem Knoten zugeordnete Zielgruppe.  "null", wenn es sich bei dem Knoten nicht um einen Fibre Channel-Knoten handelt.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Wartungsmodus
+ a| 
+Zeigt an, in welchem Wartungsmodus sich ein Knoten befindet.
+ a| 
+n/a
+
+
+
+ a| 
+mip
+ a| 
+Die für die Knotenverwaltung verwendete IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+mipi
+ a| 
+Die Netzwerkschnittstelle, die für die Knotenverwaltung verwendet wird.
+ a| 
+Schnur
+
+
+
+ a| 
+Name
+ a| 
+Hostname für den Knoten.
+ a| 
+Schnur
+
+
+
+ a| 
+Knoten-ID
+ a| 
+Knoten-ID für diesen Knoten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Knotensteckplatz
+ a| 
+Bei HCI-Plattformen der Buchstabe, der dem Chassis-Steckplatz entspricht, in dem sich dieser Knoten befindet ("A", "B", "C" oder "D").  Für Speicherplattformen ist dieser Wert null.
+ a| 
+Schnur
+
+
+
+ a| 
+Plattforminformationen
+ a| 
+Hardwareinformationen für den Knoten.  Mitglieder:
+
+* chassisType: Die Hardwareplattform des Knotens.
+* cpuModel: Das CPU-Modell der Hardwareplattform.
+* nodeMemoryGB: Die in der physischen Plattform installierte Speichermenge in GB.
+* nodeType: Der Name des Knotenmodells.
+* platformConfigVersion: Die für diese Knotenhardware konfigurierte Softwareversion.
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Rolle
+ a| 
+Die Rolle des Knotens im Cluster. Mögliche Werte:
+
+* Management
+* Storage
+* Berechnen
+* Zeuge
+
+ a| 
+
+
+
+ a| 
+Schluck
+ a| 
+Die dem Knoten zugewiesene Speicher-IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Sipi
+ a| 
+Die für den Speicherdatenverkehr verwendete Netzwerkschnittstelle.
+ a| 
+Schnur
+
+
+
+ a| 
+Softwareversion
+ a| 
+Gibt die aktuelle Version der auf dem Knoten ausgeführten Element-Software zurück.
+ a| 
+Schnur
+
+
+
+ a| 
+uuid
+ a| 
+Die diesem Knoten zugeordnete, universell eindeutige Kennung.
+ a| 
+Schnur
+
+
+
+ a| 
+virtuelle Netzwerke
+ a| 
+Objekt, das virtuelle Netzwerk-IP-Adressen und IDs enthält.
+ a| 
+xref:reference_element_api_virtualnetwork.adoc[virtuelles Netzwerk]Array
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_listactivenodes.adoc[ListActiveNodes]
+* xref:reference_element_api_listallnodes.adoc[Alle Knoten auflisten]
+

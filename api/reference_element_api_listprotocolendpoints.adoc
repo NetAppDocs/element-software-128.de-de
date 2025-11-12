@@ -1,0 +1,122 @@
+---
+permalink: api/reference_element_api_listprotocolendpoints.html 
+sidebar: sidebar 
+keywords: protocol,endpoints,endpoint,list,listing,listprotocolendpoints 
+summary: Mit der Methode ListProtocolEndpoints können Sie Informationen über alle Protokollendpunkte im Cluster abrufen.  Protokollendpunkte regeln den Zugriff auf die zugehörigen virtuellen Speichercontainer. 
+---
+= ListProtocolEndpoints
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListProtocolEndpoints` Methode zum Abrufen von Informationen über alle Protokollendpunkte im Cluster.  Protokollendpunkte regeln den Zugriff auf die zugehörigen virtuellen Speichercontainer.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+ProtokollEndpunkt-IDs
+ a| 
+Eine Liste von Protokollendpunkt-IDs, für die Informationen abgerufen werden können.  Wenn Sie diesen Parameter weglassen, gibt die Methode Informationen über alle Protokollendpunkte zurück.
+ a| 
+protocolEndpointID UUID-Array
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+ProtokollEndpunkte
+ a| 
+Liste von Objekten, die Informationen über jeden Protokollendpunkt im System enthalten.
+ a| 
+xref:reference_element_api_protocolendpoint.adoc[ProtokollEndpunkt]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "id": 1,
+  "method": "ListProtocolEndpoints",
+  "params": {}
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "protocolEndpoints": [
+      {
+        "primaryProviderID": 1,
+        "protocolEndpointID": "1387e257-d2e3-4446-be6d-39db71583e7b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000016970687200000000",
+        "secondaryProviderID": 2
+      },
+      {
+        "primaryProviderID": 2,
+        "protocolEndpointID": "1f16ed86-3f31-4c76-b004-a1251187700b",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000026970687200000000",
+        "secondaryProviderID": 3
+      },
+      {
+        "primaryProviderID": 4,
+        "protocolEndpointID": "c6458dfe-9803-4350-bb4e-68a3feb7e830",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000046970687200000000",
+        "secondaryProviderID": 1
+      },
+      {
+        "primaryProviderID": 3,
+        "protocolEndpointID": "f3e7911d-0e86-4776-97db-7468c272213f",
+        "protocolEndpointState": "Active",
+        "providerType": "Primary",
+        "scsiNAADeviceID": "6f47acc2000000036970687200000000",
+        "secondaryProviderID": 4
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_clusterinfo.html 
+sidebar: sidebar 
+keywords: element, api, object, objects, clusterInfo 
+summary: Das clusterInfo-Objekt enthält Informationen, die der Knoten zur Kommunikation mit dem Cluster verwendet.  Diese Informationen erhalten Sie mit der GetClusterInfo-API-Methode. 
+---
+= Clusterinformationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das clusterInfo-Objekt enthält Informationen, die der Knoten zur Kommunikation mit dem Cluster verwendet.  Diese Informationen erhalten Sie mit der GetClusterInfo-API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Standardschutzschema
+ a| 
+Das Schutzschema, das standardmäßig für neue Datenträger verwendet wird, es sei denn, ein anderes Schutzschema wird mit dem Datenträger bereitgestellt.xref:reference_element_api_createvolume.adoc[Volumen erstellen] Methodenaufruf.  Dieses Schutzsystem muss immer im Satz der aktivierten Schutzsysteme enthalten sein.
+ a| 
+Schnur
+
+
+
+ a| 
+aktivierteSchutzschemas
+ a| 
+Eine Liste aller Schutzmechanismen, die auf diesem Speichercluster aktiviert wurden.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+Verschlüsselung im Ruhezustand
+ a| 
+Der Status der Funktion „Verschlüsselung ruhender Daten“. Mögliche Werte:
+
+* Aktivierung: Die Verschlüsselung ruhender Daten wird aktiviert.
+* Aktiviert: Die Verschlüsselung ruhender Daten ist aktiviert.
+* Deaktivierung: Die Verschlüsselung ruhender Daten wird deaktiviert.
+* Deaktiviert: Die Verschlüsselung ruhender Daten ist deaktiviert.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Ensemble
+ a| 
+Die Knoten, die am Cluster teilnehmen.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+MVIP
+ a| 
+Die Floating-IP-Adresse (virtuelle IP-Adresse) für den Cluster im Management-Netzwerk.
+ a| 
+Schnur
+
+
+
+ a| 
+mvipInterface
+ a| 
+Die physische Schnittstelle, die der MVIP-Adresse zugeordnet ist.
+ a| 
+Schnur
+
+
+
+ a| 
+mvipNodeID
+ a| 
+Der Knoten, der die Master-MVIP-Adresse enthält.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+mvipVlanTag
+ a| 
+Die VLAN-Kennung für die MVIP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+Name
+ a| 
+Der eindeutige Clustername.
+ a| 
+Schnur
+
+
+
+ a| 
+repCount
+ a| 
+Die Anzahl der Replikate jedes Datenelements, die im Cluster gespeichert werden sollen.  Der gültige Wert ist „2“.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Softwareverschlüsselung im Ruhezustand
+ a| 
+Softwarebasierte Verschlüsselung ruhender Daten.
+ a| 
+Schnur
+
+
+
+ a| 
+unterstützte Schutzschemas
+ a| 
+Eine Liste aller Schutzmechanismen, die auf diesem Speichercluster unterstützt werden.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+VIP
+ a| 
+Die Floating (virtuelle) IP-Adresse für den Cluster im Speichernetzwerk (iSCSI).
+ a| 
+Schnur
+
+
+
+ a| 
+svipInterface
+ a| 
+Die physische Schnittstelle, die der Master-SVIP-Adresse zugeordnet ist.
+ a| 
+Schnur
+
+
+
+ a| 
+svipNodeID
+ a| 
+Der Knoten, der die Master-SVIP-Adresse enthält.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+svipVlanTag
+ a| 
+Die VLAN-Kennung für die Master-SVIP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+eindeutige ID
+ a| 
+Die eindeutige ID für den Cluster.
+ a| 
+Schnur
+
+
+
+ a| 
+uuid
+ a| 
+Die eindeutige Kennung für den Cluster.
+ a| 
+UUID
+
+
+
+ a| 
+volumeLoadBalanceOnActualIopsState
+ a| 
+Der Status für den Slice-Balancing basiert auf den tatsächlichen IOPS und nicht auf der Min-IOPS-Funktion.  Verfügbar ab Element 12.8.
+ a| 
+Schnur
+
+|===
+[discrete]
+== Weitere Informationen
+
+* link:reference_element_api_getclusterinfo.html["GetClusterInfo"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"^]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

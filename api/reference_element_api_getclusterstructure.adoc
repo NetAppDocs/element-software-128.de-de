@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: Mit der Methode GetClusterStructure können Sie die aktuellen Konfigurationsinformationen des Speicherclusters sichern.  Wird die Speicherclusterkonfiguration während der Ausführung dieser Methode geändert, ist der Inhalt der Konfigurationssicherung unvorhersehbar.  Sie können diese Daten in einer Textdatei speichern und sie auf anderen Clustern oder im Katastrophenfall auf demselben Cluster wiederherstellen. 
+---
+= GetClusterStructure
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetClusterStructure` Methode zum Sichern der aktuellen Speichercluster-Konfigurationsinformationen.  Wird die Speicherclusterkonfiguration während der Ausführung dieser Methode geändert, ist der Inhalt der Konfigurationssicherung unvorhersehbar.  Sie können diese Daten in einer Textdatei speichern und sie auf anderen Clustern oder im Katastrophenfall auf demselben Cluster wiederherstellen.
+
+
+
+== Parameter
+
+Diese Methode hat keinen Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Ergebnis
+ a| 
+Ein JSON-Objekt, das die aktuellen Konfigurationsinformationen des Speicherclusters enthält.
+ a| 
+xref:reference_element_api_clusterstructure.adoc[Clusterstruktur]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== Neu seit Version
+
+10,3

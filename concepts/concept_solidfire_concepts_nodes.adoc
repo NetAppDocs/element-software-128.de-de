@@ -1,0 +1,98 @@
+---
+permalink: concepts/concept_solidfire_concepts_nodes.html 
+sidebar: sidebar 
+keywords: what is, node, management node, storage node, fibre channel, state, pending, active 
+summary: Knoten sind die Hardwarekomponenten, die zu einem Cluster zusammengefasst werden, um als Blockspeicher oder Rechenressourcen genutzt zu werden. 
+---
+= Nodes
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Knoten sind Hardware- oder virtuelle Ressourcen, die zu einem Cluster zusammengefasst werden, um Blockspeicher- und Rechenkapazitäten bereitzustellen.
+
+Die NetApp Element Software definiert verschiedene Knotenrollen für einen Cluster.  Die Arten von Knotenrollen sind folgende:
+
+* <<Verwaltungsknoten>>
+* <<Speicherknoten>>
+* <<Fibre Channel-Knoten>>
+
+
+<<Betriebszustände der Knoten,Knotenzustände>>variieren je nach Clusterzugehörigkeit.
+
+
+
+== Verwaltungsknoten
+
+Ein Management-Knoten ist eine virtuelle Maschine, die zur Aktualisierung und Bereitstellung von Systemdiensten wie Überwachung und Telemetrie, zur Verwaltung von Clusterressourcen und -einstellungen, zur Ausführung von Systemtests und -dienstprogrammen sowie zur Ermöglichung des NetApp Supportzugriffs für die Fehlerbehebung verwendet wird.link:../concepts/concept_intro_management_node.html["Mehr erfahren"]
+
+
+
+== Speicherknoten
+
+Ein SolidFire -Speicherknoten ist ein Server, der eine Sammlung von Laufwerken enthält, die über die Bond10G-Netzwerkschnittstelle miteinander kommunizieren.  Die Laufwerke im Knoten enthalten Block- und Metadatenspeicher für die Datenspeicherung und Datenverwaltung.  Jeder Knoten enthält ein Werksabbild der NetApp Element -Software.
+
+Speicherknoten weisen folgende Eigenschaften auf:
+
+* Jeder Knoten hat einen eindeutigen Namen.  Wird kein Knotenname von einem Administrator angegeben, wird standardmäßig SF-XXXX verwendet, wobei XXXX vier vom System generierte Zufallszeichen sind.
+* Jeder Knoten verfügt über einen eigenen, leistungsstarken, nichtflüchtigen Direktzugriffsspeicher (NVRAM) als Schreibcache, um die Gesamtleistung des Systems zu verbessern und die Schreiblatenz zu reduzieren.
+* Jeder Knoten ist mit zwei Netzwerken verbunden, einem Speichernetzwerk und einem Verwaltungsnetzwerk, die jeweils über zwei unabhängige Verbindungen für Redundanz und Leistung verfügen.  Jeder Knoten benötigt eine IP-Adresse in jedem Netzwerk.
+* Sie können einen Cluster mit neuen Speicherknoten erstellen oder einem bestehenden Cluster Speicherknoten hinzufügen, um die Speicherkapazität und die Leistung zu erhöhen.
+* Sie können jederzeit Knoten zum Cluster hinzufügen oder daraus entfernen, ohne den Dienst zu unterbrechen.
+
+
+
+
+== Fibre Channel-Knoten
+
+SolidFire Fibre Channel-Knoten bieten Konnektivität zu einem Fibre Channel-Switch, an den Sie Fibre Channel-Clients anschließen können.  Fibre Channel-Knoten fungieren als Protokollkonverter zwischen den Fibre Channel- und iSCSI-Protokollen; dies ermöglicht es Ihnen, Fibre Channel-Konnektivität zu jedem neuen oder bestehenden SolidFire Cluster hinzuzufügen.
+
+Fibre-Channel-Knoten weisen folgende Eigenschaften auf:
+
+* Fibre-Channel-Switches verwalten den Zustand des Fabric und sorgen so für optimierte Verbindungen.
+* Der Datenverkehr zwischen zwei Ports fließt ausschließlich über die Switches; er wird nicht an andere Ports weitergeleitet.
+* Der Ausfall eines Ports ist ein isoliertes Problem und beeinträchtigt nicht den Betrieb anderer Ports.
+* In einem Fabric können mehrere Portpaare gleichzeitig kommunizieren.
+
+
+
+
+== Betriebszustände der Knoten
+
+Ein Knoten kann sich je nach Konfigurationsebene in einem von mehreren Zuständen befinden.
+
+* *Verfügbar*
++
+Der Knoten hat keinen zugeordneten Clusternamen und ist noch nicht Teil eines Clusters.
+
+* *Ausstehend*
++
+Der Knoten ist konfiguriert und kann einem bestimmten Cluster hinzugefügt werden.
+
++
+Für den Zugriff auf den Knoten ist keine Authentifizierung erforderlich.
+
+* *Aktivierungsstatus ausstehend*
++
+Das System ist dabei, kompatible Element-Software auf dem Knoten zu installieren.  Nach Abschluss des Vorgangs wechselt der Knoten in den aktiven Zustand.
+
+* *Aktiv*
++
+Der Knoten ist Teil eines Clusters.
+
++
+Zur Änderung des Knotens ist eine Authentifizierung erforderlich.
+
+
+
+In jedem dieser Zustände sind einige Felder schreibgeschützt.
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

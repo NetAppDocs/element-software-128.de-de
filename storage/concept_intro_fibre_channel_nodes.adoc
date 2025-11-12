@@ -1,0 +1,22 @@
+---
+permalink: storage/concept_intro_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords: fibre channel nodes, fibre channel switch, clients, protcols, iSCSi protocols, clusters, interconnections, fc, FC, connectivity, fibre channel connectivity, fibre channel nodes, fibre channel protocol 
+summary: SolidFire Fibre Channel-Knoten bieten Konnektivität zu einem Fibre Channel-Switch, an den Sie Fibre Channel-Clients anschließen können.  Fibre Channel-Knoten fungieren als Protokollkonverter zwischen den Fibre Channel- und iSCSI-Protokollen; dies ermöglicht es Ihnen, Fibre Channel-Konnektivität zu jedem neuen oder bestehenden SolidFire Cluster hinzuzufügen. 
+---
+= Fibre-Channel-Knoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire Fibre Channel-Knoten bieten Konnektivität zu einem Fibre Channel-Switch, an den Sie Fibre Channel-Clients anschließen können.  Fibre Channel-Knoten fungieren als Protokollkonverter zwischen den Fibre Channel- und iSCSI-Protokollen; dies ermöglicht es Ihnen, Fibre Channel-Konnektivität zu jedem neuen oder bestehenden SolidFire Cluster hinzuzufügen.
+
+Fibre-Channel-Knoten weisen folgende Eigenschaften auf:
+
+* Fibre-Channel-Switches verwalten den Zustand des Fabric und sorgen so für optimierte Verbindungen.
+* Der Datenverkehr zwischen zwei Ports fließt ausschließlich über die Switches; er wird nicht an andere Ports weitergeleitet.
+* Der Ausfall eines Ports ist ein isoliertes Problem und beeinträchtigt nicht den Betrieb anderer Ports.
+* In einem Fabric können mehrere Portpaare gleichzeitig kommunizieren.
+

@@ -1,0 +1,16 @@
+---
+permalink: api/reference_trademark.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Trademark
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NETAPP, das NETAPP-Logo und die auf der NetApp -Markenseite aufgeführten Marken sind Marken von NetApp, Inc. Andere Firmen- und Produktnamen können Marken ihrer jeweiligen Eigentümer sein.
+
+http://www.netapp.com/us/legal/netapptmlist.aspx[]

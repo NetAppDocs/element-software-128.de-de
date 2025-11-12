@@ -1,0 +1,24 @@
+---
+permalink: setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Wenn Sie einen neuen Cluster mit Fibre Channel-Knoten und SolidFire -Speicherknoten erstellen, stehen Ihnen die weltweiten Portnamen (WWPN) der Knoten in der Web-Benutzeroberfläche zur Verfügung.  Sie können die WWPN-Adressen verwenden, um den Fibre Channel-Switch zu zonieren.' 
+---
+= Zonen für Fibre-Channel-Knoten einrichten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie einen neuen Cluster mit Fibre Channel-Knoten und SolidFire -Speicherknoten erstellen, stehen Ihnen die weltweiten Portnamen (WWPN) der Knoten in der Web-Benutzeroberfläche zur Verfügung.  Sie können die WWPN-Adressen verwenden, um den Fibre Channel-Switch zu zonieren.
+
+WWPNs werden im System registriert, wenn Sie einen neuen Cluster mit Knoten erstellen.  In der Element-Benutzeroberfläche finden Sie die WWPN-Adressen in der Spalte WWPN auf der Registerkarte FC-Ports, die Sie über die Registerkarte Cluster aufrufen.
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

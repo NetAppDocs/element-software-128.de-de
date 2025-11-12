@@ -1,0 +1,52 @@
+---
+permalink: storage/reference_data_manage_vvol_protocol_endpoints_details.html 
+sidebar: sidebar 
+keywords: protocol endpoints, details, vvols, state, type, id 
+summary: Die Seite „Protokollendpunkte“ auf der Registerkarte „VVols“ liefert Informationen zu den Protokollendpunkten. 
+---
+= Details zu den Protokollendpunkten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Seite „Protokollendpunkte“ auf der Registerkarte „VVols“ liefert Informationen zu den Protokollendpunkten.
+
+* *Primäre Anbieter-ID*
++
+Die ID des primären Protokollendpunktanbieters.
+
+* *Sekundäre Anbieter-ID*
++
+Die ID des sekundären Protokollendpunktanbieters.
+
+* *Protokoll-Endpunkt-ID*
++
+Die UUID des Protokollendpunkts.
+
+* *Protokollendpunktstatus*
++
+Der Status des Protokollendpunkts.  Folgende Werte sind möglich:
+
++
+** Aktiv: Der Protokollendpunkt wird verwendet.
+** Start: Der Protokollendpunkt wird gestartet.
+** Ausfall: Der Protokollendpunkt ist ausgefallen.
+** Reserviert: Der Protokollendpunkt ist reserviert.
+
+
+* *Anbietertyp*
++
+Der Typ des Anbieters des Protokollendpunkts.  Folgende Werte sind möglich:
+
++
+** Primär
+** Sekundär
+
+
+* *SCSI NAA Geräte-ID*
++
+Die weltweit eindeutige SCSI-Gerätekennung für den Protokollendpunkt im NAA IEEE Registered Extended Format.
+
+

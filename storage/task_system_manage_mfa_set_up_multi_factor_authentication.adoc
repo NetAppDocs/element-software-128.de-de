@@ -1,0 +1,48 @@
+---
+permalink: storage/task_system_manage_mfa_set_up_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: idp, json, mfa, cluster, metadata, saml 
+summary: Mithilfe dieser grundlegenden Schritte können Sie über die Element API Ihren Cluster für die Verwendung der Multi-Faktor-Authentifizierung einrichten.  Einzelheiten zu den einzelnen API-Methoden finden Sie in der Element API-Referenzdokumentation. 
+---
+= Multifaktor-Authentifizierung einrichten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Multi-Faktor-Authentifizierung (MFA) nutzt einen Drittanbieter-Identitätsanbieter (IdP) über die Security Assertion Markup Language (SAML), um Benutzersitzungen zu verwalten.  Die Multi-Faktor-Authentifizierung (MFA) ermöglicht es Administratoren, bei Bedarf zusätzliche Authentifizierungsfaktoren zu konfigurieren, wie beispielsweise Passwort und SMS oder Passwort und E-Mail-Nachricht.
+
+Mithilfe dieser grundlegenden Schritte können Sie über die Element API Ihren Cluster für die Verwendung der Multi-Faktor-Authentifizierung einrichten.
+
+Einzelheiten zu jeder API-Methode finden Sie in der link:../api/concept_element_api_about_the_api.html["Element-API-Referenz"]Die
+
+. Erstellen Sie eine neue Konfiguration eines Drittanbieter-Identitätsanbieters (IdP) für den Cluster, indem Sie die folgende API-Methode aufrufen und die IdP-Metadaten im JSON-Format übergeben: `CreateIdpConfiguration`
++
+Die IdP-Metadaten werden im Klartextformat vom Drittanbieter-IdP abgerufen.  Diese Metadaten müssen validiert werden, um sicherzustellen, dass sie korrekt im JSON-Format vorliegen.  Es gibt zahlreiche JSON-Formatierungsanwendungen, die Sie verwenden können, zum Beispiel: https://freeformatter.com/json-escape.html.
+
+. Rufen Sie die Cluster-Metadaten über spMetadataUrl ab, um sie durch Aufruf der folgenden API-Methode an den Drittanbieter-IdP zu kopieren: `ListIdpConfigurations`
++
+spMetadataUrl ist eine URL, die verwendet wird, um Dienstanbieter-Metadaten aus dem Cluster für den IdP abzurufen, um eine Vertrauensbeziehung herzustellen.
+
+. Konfigurieren Sie SAML-Assertions auf dem Drittanbieter-IdP so, dass sie das Attribut "`NameID`" enthalten, um einen Benutzer für die Audit-Protokollierung eindeutig zu identifizieren und damit Single Logout ordnungsgemäß funktioniert.
+. Erstellen Sie ein oder mehrere Cluster-Administrator-Benutzerkonten, die von einem Drittanbieter-IdP zur Autorisierung authentifiziert werden, indem Sie die folgende API-Methode aufrufen:``AddIdpClusterAdmin``
++
+
+NOTE: Der Benutzername des IdP-Clusteradministrators muss mit der SAML-Attribut-Name/Wert-Zuordnung übereinstimmen, um den gewünschten Effekt zu erzielen, wie in den folgenden Beispielen gezeigt:
+
++
+** email=bob@company.com -- wobei der IdP so konfiguriert ist, dass er eine E-Mail-Adresse in den SAML-Attributen freigibt.
+** group=cluster-administrator - wobei der IdP so konfiguriert ist, dass er eine Gruppeneigenschaft freigibt, auf die alle Benutzer Zugriff haben sollen.  Beachten Sie, dass bei der SAML-Attribut-Name/Wert-Zuordnung aus Sicherheitsgründen zwischen Groß- und Kleinschreibung unterschieden wird.
+
+
+. Aktivieren Sie MFA für den Cluster, indem Sie die folgende API-Methode aufrufen: `EnableIdpAuthentication`
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

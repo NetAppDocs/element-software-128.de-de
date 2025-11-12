@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_volumeaccessgroup.html 
+sidebar: sidebar 
+keywords: object,objects,volumeAccessGroup 
+summary: Das volumeAccessGroup-Objekt enthält Informationen über eine bestimmte Volume-Zugriffsgruppe.  Sie können eine Liste dieser Informationen für alle Zugriffsgruppen mit der API-Methode ListVolumeAccessGroups abrufen. 
+---
+= volumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das volumeAccessGroup-Objekt enthält Informationen über eine bestimmte Volume-Zugriffsgruppe.  Sie können eine Liste dieser Informationen für alle Zugriffsgruppen mit der API-Methode abrufen. `ListVolumeAccessGroups` Die
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+gelöschte Volumes
+ a| 
+Array von Datenträgern, die aus der Datenträgerzugriffsgruppe gelöscht wurden, aber noch nicht vollständig aus dem System entfernt wurden.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+Initiator-IDs
+ a| 
+Eine Liste der IDs der Initiatoren, die der Volume-Zugriffsgruppe zugeordnet sind.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+Initiatoren
+ a| 
+Array von eindeutigen IQN/WWPN-Initiatoren, die der Volume-Zugriffsgruppe zugeordnet sind.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+Name
+ a| 
+Name der Datenträgerzugriffsgruppe.
+ a| 
+Schnur
+
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Eindeutige VolumeAccessGroupID-Kennung für die Datenträgerzugriffsgruppe.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Bände
+ a| 
+Eine Liste der Volume-IDs, die zur Volume-Zugriffsgruppe gehören.
+ a| 
+Ganzzahl-Array
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listvolumeaccessgroups.adoc[ListVolumeAccessGroups]

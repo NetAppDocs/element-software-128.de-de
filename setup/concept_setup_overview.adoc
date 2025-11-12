@@ -1,0 +1,43 @@
+---
+permalink: setup/concept_setup_overview.html 
+sidebar: sidebar 
+keywords: element, solidfire, install, setup, node, cluster 
+summary: Bevor Sie beginnen, sollten Sie sich mit der Reihenfolge der Installation und Einrichtung der NetApp Element -Software vertraut machen. 
+---
+= Erfahren Sie mehr über die Einrichtung von Speichersystemen.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Zu diesem Zeitpunkt sollten Sie die Hardware installiert haben.  Zur Hardware gehört auch die Element-Software.
+
+Als Nächstes müssen Sie das Speichersystem für Ihre Umgebung einrichten.  Sie können einen Cluster mit Speicherknoten oder Fibre-Channel-Knoten einrichten und ihn mit der Element-Software verwalten, nachdem Sie die Knoten in einer Rack-Einheit installiert und verkabelt und eingeschaltet haben.
+
+image::../media/sf_and_element_workflow_for_setup_shorter_workflow.png[Workflow-Diagramm einrichten]
+
+.Schritte zum Einrichten des Speichers
+. Wähle eine der folgenden:
++
+** link:../setup/concept_setup_configure_a_storage_node.html["Cluster mit Speicherknoten einrichten"]
++
+Sie können einen Cluster mit Speicherknoten einrichten und ihn mithilfe der Element-Software verwalten, nachdem Sie die Knoten in einer Rack-Einheit installiert und verkabelt und eingeschaltet haben. Anschließend können Sie weitere Komponenten in Ihrem Speichersystem installieren und konfigurieren.
+
+** link:../setup/concept_setup_fc_configure_a_fibre_channel_node.html["Cluster mit Fibre-Channel-Knoten einrichten"]
++
+Sie können einen Cluster mit Fibre-Channel-Knoten einrichten und ihn mithilfe der Element-Software verwalten, nachdem Sie die Knoten in einer Rack-Einheit installiert und verkabelt und eingeschaltet haben. Anschließend können Sie weitere Komponenten in Ihrem Speichersystem installieren und konfigurieren.
+
+
+
+. link:../setup/task_setup_determine_which_solidfire_components_to_install.html["Ermitteln Sie, welche SolidFire -Komponenten installiert werden sollen."]
+. link:../setup/task_setup_gh_redirect_set_up_a_management_node.html["Richten Sie einen Management-Knoten ein und aktivieren Sie die Active IQ Telemetrie."]
+
+
+
+
+== Weitere Informationen
+
+* link:../setup/concept_setup_whats_next.html["Entdecken Sie die nächsten Schritte zur Nutzung des Speichers"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

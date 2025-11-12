@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_drive.html 
+sidebar: sidebar 
+keywords: objects,object,drive 
+summary: Das Laufwerksobjekt enthält Informationen über einzelne Laufwerke in den aktiven Knoten des Clusters.  Dieses Objekt enthält Details zu Laufwerken, die als Volume-Metadaten oder Blocklaufwerke hinzugefügt wurden, sowie zu Laufwerken, die noch nicht hinzugefügt wurden und verfügbar sind.  Diese Informationen können Sie mit der ListDrives-API-Methode abrufen. 
+---
+= fahren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Laufwerksobjekt enthält Informationen über einzelne Laufwerke in den aktiven Knoten des Clusters.  Dieses Objekt enthält Details zu Laufwerken, die als Volume-Metadaten oder Blocklaufwerke hinzugefügt wurden, sowie zu Laufwerken, die noch nicht hinzugefügt wurden und verfügbar sind.  Diese Informationen können Sie mit dem/der/dem abrufen. `ListDrives` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.  Dieses Objekt ist immer null und kann nicht verändert werden.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Kapazität
+ a| 
+Die Gesamtkapazität des Laufwerks in Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Chassis-Steckplatz
+ a| 
+Bei HCI-Plattformen handelt es sich bei diesem Wert um den Knotenbuchstaben und die Steckplatznummer im Servergehäuse, in dem sich dieses Laufwerk befindet.  Bei Speicherplattformen ist die Steckplatznummer eine Zeichenkettendarstellung der Ganzzahl "Slot".
+ a| 
+Schnur
+
+
+
+ a| 
+Laufwerksfehlerdetails
+ a| 
+Wenn der Status eines Laufwerks „Fehlgeschlagen“ lautet, liefert dieses Feld detailliertere Informationen darüber, warum das Laufwerk als fehlerhaft markiert wurde.
+ a| 
+Schnur
+
+
+
+ a| 
+Laufwerk-ID
+ a| 
+Die ID dieses Laufwerks.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Grund für einen Sicherheitsfehler am Laufwerk
+ a| 
+Falls das Aktivieren oder Deaktivieren der Laufwerkssicherheit fehlgeschlagen ist, wird der Grund für das Fehlschlagen angegeben.  Wenn der Wert "keine" lautet, ist kein Fehler aufgetreten.
+ a| 
+Schnur
+
+
+
+ a| 
+Schlüssel-ID
+ a| 
+Die vom Schlüsselanbieter verwendete Schlüssel-ID, um den Authentifizierungsschlüssel zum Entsperren dieses Laufwerks zu erhalten.
+ a| 
+UUID
+
+
+
+ a| 
+keyProviderID
+ a| 
+Gibt den Anbieter des Authentifizierungsschlüssels zum Entsperren dieses Laufwerks an.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Knoten-ID
+ a| 
+Die ID des Knotens, der dieses Laufwerk enthält.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+segmentFileSize
+ a| 
+Die Segmentdateigröße des Laufwerks in Bytes.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Seriennummer
+ a| 
+Die Seriennummer des Laufwerks.
+ a| 
+Schnur
+
+
+
+ a| 
+Slot
+ a| 
+Die Steckplatznummer im Servergehäuse, in der sich dieses Laufwerk befindet, oder -1, wenn ein SATADIMM-Gerät für das interne Metadatenlaufwerk verwendet wird.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Status
+ a| 
+Der Status des Laufwerks. Mögliche Werte:
+
+* Verfügbar: Ein freier Laufwerk.
+* aktiv: Ein aktives Laufwerk.
+* Löschen: Ein Laufwerk wird gerade sicher gelöscht.  Alle Daten auf diesem Laufwerk werden dauerhaft gelöscht.
+* Ausgefallen: Ein Laufwerk, das ausgefallen ist.  Alle Daten, die sich zuvor auf dem Laufwerk befanden, wurden auf andere Laufwerke im Cluster migriert.
+* Entfernen: Ein Laufwerk wird gerade entfernt.  Alle zuvor auf dem Laufwerk befindlichen Daten werden auf andere Laufwerke im Cluster migriert.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Typ
+ a| 
+Die Art des Laufwerks. Mögliche Werte:
+
+* Volume: Speichert Metadaten des Volumes.
+* Block: Speichert Blockdaten.
+* unbekannt: Laufwerkstyp noch nicht aktiv und muss noch ermittelt werden.
+
+ a| 
+Schnur
+
+
+
+ a| 
+nutzbare Kapazität
+ a| 
+Die nutzbare Kapazität des Laufwerks in Bytes.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listdrives.adoc[ListDrives]

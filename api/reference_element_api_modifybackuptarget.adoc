@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_modifybackuptarget.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,backup,target,modifybackuptarget 
+summary: Mit der Methode ModifyBackupTarget können Sie Attribute eines Sicherungsziels ändern. 
+---
+= ModifyBackupTarget
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ModifyBackupTarget` Methode zum Ändern von Attributen eines Sicherungsziels.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+backupTargetID
+ a| 
+Eindeutige Ziel-ID für das zu ändernde Ziel.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Name
+ a| 
+Neuer Name für das Backup-Ziel.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ModifyBackupTarget",
+   "params": {
+      "backupTargetID" : 1,
+      "name": "yourtargetS3"
+      "attributes" : {
+          "size" : 500,
+      }
+   },
+  "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

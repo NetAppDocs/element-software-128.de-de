@@ -1,0 +1,19 @@
+---
+permalink: api/reference_element_api_supported_modes_of_replication.html 
+sidebar: sidebar 
+keywords: supported,replication,modes,clusters,paired,pair,pairs 
+summary: 'Auf den gepaarten Clustern werden folgende Replikationsmodi unterstützt:' 
+---
+= Unterstützte Replikationsmodi für gepaarte Cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Auf den gepaarten Clustern werden folgende Replikationsmodi unterstützt:
+
+* Asynchrone Datenreplikation: Die an das Replikationszielvolume gesendeten Daten werden asynchron übertragen.  Das System wartet nicht auf den Empfang einer Bestätigung, bevor es Daten schreibt.
+* Synchrone Datenreplikation: Die an das Replikationszielvolume gesendeten Daten werden synchron übertragen.  Sobald die vom Host gesendeten E/A-Operationen vom System bestätigt wurden, wird die Systembestätigung an den Host zurückgesendet und die Daten werden an das Replikationszielvolume gesendet.
+* Datenreplikation nur mit Snapshots: Es werden ausschließlich Volume-Snapshots in den Zielcluster repliziert.
+

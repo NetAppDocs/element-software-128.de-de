@@ -1,0 +1,107 @@
+---
+permalink: concepts/concept_data_manage_volumes_solidfire_quality_of_service.html 
+sidebar: sidebar 
+keywords: solidfire, element, qos, performance, iops 
+summary: 'Ein SolidFire -Speichercluster ist in der Lage, Quality of Service (QoS)-Parameter pro Volume bereitzustellen.  Sie können die Clusterleistung, gemessen in Eingängen und Ausgängen pro Sekunde (IOPS), mithilfe von drei konfigurierbaren Parametern, die QoS definieren, garantieren: Min IOPS, Max IOPS und Burst IOPS.' 
+---
+= Leistung und Servicequalität
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein SolidFire -Speichercluster ist in der Lage, Quality-of-Service-Parameter (QoS) auf Volume-Basis bereitzustellen.  Sie können die Clusterleistung, gemessen in Eingängen und Ausgängen pro Sekunde (IOPS), mithilfe von drei konfigurierbaren Parametern, die QoS definieren, garantieren: Min IOPS, Max IOPS und Burst IOPS.
+
+
+NOTE: SolidFire Active IQ verfügt über eine QoS-Empfehlungsseite, die Hinweise zur optimalen Konfiguration und Einrichtung der QoS-Einstellungen bietet.
+
+
+
+== Servicequalitätsparameter
+
+Die IOPS-Parameter werden wie folgt definiert:
+
+* *Minimale IOPS* - Die Mindestanzahl an kontinuierlichen Eingaben und Ausgaben pro Sekunde (IOPS), die der Speichercluster einem Volume bereitstellt.  Der für ein Volume konfigurierte Min IOPS-Wert ist die garantierte Leistungsstufe für ein Volume.  Die Leistung sinkt nicht unter dieses Niveau.
+* *Maximale IOPS* - Die maximale Anzahl an anhaltenden IOPS, die der Speichercluster einem Volume bereitstellt.  Wenn die IOPS-Werte des Clusters kritisch hoch sind, wird dieses IOPS-Leistungsniveau nicht überschritten.
+* *Burst IOPS* - Die maximale Anzahl an IOPS, die in einem kurzen Burst-Szenario zulässig ist.  Wenn ein Volume unterhalb der maximalen IOPS läuft, werden Burst-Gutschriften angesammelt.  Wenn die Leistungsanforderungen sehr hoch sind und bis zum Maximum ausgereizt werden, werden kurze IOPS-Spitzen auf dem Volume zugelassen.
++
+Die Element-Software verwendet Burst IOPS, wenn ein Cluster in einem Zustand geringer Cluster-IOPS-Auslastung läuft.
+
++
+Ein einzelnes Volume kann Burst-IOPS ansammeln und die Guthaben nutzen, um seine maximale IOPS-Leistung für eine festgelegte "Burst-Periode" bis zum Burst-IOPS-Niveau zu steigern.  Ein Volumen kann für bis zu 60 Sekunden kurzzeitig auftreten, sofern der Cluster die Kapazität besitzt, diesen Kurzzeitausbruch zu verkraften.  Einem Volume wird für jede Sekunde, in der es unterhalb seines Max IOPS-Limits läuft, eine Sekunde Burst-Guthaben gutgeschrieben (bis zu einem Maximum von 60 Sekunden).
+
++
+Die Burst-IOPS sind auf zwei Arten begrenzt:
+
++
+** Ein Volume kann seine maximale IOPS-Leistung für eine Anzahl von Sekunden überschreiten, die der Anzahl der Burst-Credits entspricht, die das Volume angesammelt hat.
+** Wenn ein Volume seinen Max-IOPS-Wert überschreitet, wird es durch seinen Burst-IOPS-Wert begrenzt.  Daher überschreitet die Burst-IOPS-Zahl niemals den für das Volumen festgelegten Burst-IOPS-Wert.
+
+
+* *Effektive maximale Bandbreite* - Die maximale Bandbreite wird berechnet, indem die Anzahl der IOPS (basierend auf der QoS-Kurve) mit der IO-Größe multipliziert wird.
++
+Beispiel: QoS-Parametereinstellungen von 100 Min IOPS, 1000 Max IOPS und 1500 Burst IOPS haben folgende Auswirkungen auf die Leistungsqualität:
+
++
+** Die Workloads können maximal 1000 IOPS erreichen und aufrechterhalten, bis es im Cluster zu einer Überlastung der Workloads hinsichtlich der IOPS kommt.  Die IOPS werden dann schrittweise reduziert, bis die IOPS auf allen Volumes innerhalb der festgelegten QoS-Bereiche liegen und die Leistungskonflikte beseitigt sind.
+** Die Performance wird auf allen Volumes in Richtung des minimalen IOPS-Werts von 100 angestrebt.  Die Werte fallen nicht unter den Min-IOPS-Wert, können aber bei nachlassender Arbeitslast über 100 IOPS bleiben.
+** Die Leistung beträgt über einen längeren Zeitraum nie mehr als 1000 IOPS oder weniger als 100 IOPS.  Eine Leistung von 1500 IOPS (Burst IOPS) ist zulässig, jedoch nur für solche Volumes, die Burst-Guthaben durch Betrieb unterhalb der maximalen IOPS angesammelt haben, und nur für kurze Zeiträume.  Die Spitzenwerte sind nie dauerhaft.
+
+
+
+
+
+
+== QoS-Wertgrenzen
+
+Hier sind die möglichen Minimal- und Maximalwerte für QoS.
+
+[cols="7*"]
+|===
+| Parameter | Minimalwert | Standard | 4 4KB | 5 8 KB | 6 16 KB | 262 KB 
+
+
+| Min IOPS | 50 | 50 | 15.000 | 9.375* | 5556* | 385* 
+
+
+| Maximale IOPS | 100 | 15.000 | 200.000** | 125.000 | 74.074 | 5128 
+
+
+| Burst IOPS | 100 | 15.000 | 200.000** | 125.000 | 74,074 | 5128 
+|===
+*Diese Schätzungen sind Näherungswerte.  **Max IOPS und Burst IOPS können auf bis zu 200.000 eingestellt werden; diese Einstellung ist jedoch nur zulässig, um die Leistung eines Volumes effektiv freizugeben.  Die maximale Leistung eines Volumes in der Praxis wird durch die Clusternutzung und die Leistung pro Knoten begrenzt.
+
+
+
+== QoS-Leistung
+
+Die QoS-Leistungskurve zeigt den Zusammenhang zwischen Blockgröße und IOPS-Prozentsatz.
+
+Blockgröße und Bandbreite haben einen direkten Einfluss auf die Anzahl der IOPS, die eine Anwendung erzielen kann.  Die Element-Software berücksichtigt die empfangenen Blockgrößen, indem sie diese auf 4k normalisiert.  Je nach Arbeitslast kann das System die Blockgrößen erhöhen. Mit zunehmender Blockgröße erhöht das System die Bandbreite auf ein Niveau, das zur Verarbeitung der größeren Blockgrößen erforderlich ist.  Mit zunehmender Bandbreite sinkt die Anzahl der IOPS, die das System erreichen kann.
+
+Die QoS-Leistungskurve zeigt den Zusammenhang zwischen zunehmenden Blockgrößen und dem abnehmenden Prozentsatz der IOPS:
+
+image::../media/solidfire_qos_performance_curve.png[Beschreibt für QoS den Zusammenhang zwischen zunehmender Blockgröße und IOPS.]
+
+Wenn beispielsweise die Blockgröße 4k beträgt und die Bandbreite 4000 KBps, beträgt die IOPS-Zahl 1000.  Wenn die Blockgröße auf 8k erhöht wird, erhöht sich die Bandbreite auf 5000 KBps, und die IOPS sinken auf 625.  Durch die Berücksichtigung der Blockgröße stellt das System sicher, dass Arbeitslasten mit niedrigerer Priorität, die größere Blockgrößen verwenden, wie z. B. Backups und Hypervisor-Aktivitäten, nicht zu viel der Leistung beanspruchen, die für Datenverkehr mit höherer Priorität benötigt wird, der kleinere Blockgrößen verwendet.
+
+
+
+== QoS-Richtlinien
+
+Eine QoS-Richtlinie ermöglicht es Ihnen, eine standardisierte Dienstgüteeinstellung zu erstellen und zu speichern, die auf viele Volumes angewendet werden kann.
+
+QoS-Richtlinien eignen sich am besten für Serviceumgebungen, beispielsweise für Datenbank-, Anwendungs- oder Infrastrukturserver, die selten neu gestartet werden und einen konstanten, gleichberechtigten Zugriff auf den Speicher benötigen.  Die individuelle Volume-QoS eignet sich am besten für VMs mit geringer Auslastung, wie z. B. virtuelle Desktops oder spezialisierte Kiosk-VMs, die täglich oder mehrmals täglich neu gestartet, eingeschaltet oder ausgeschaltet werden können.
+
+QoS und QoS-Richtlinien sollten nicht zusammen verwendet werden.  Wenn Sie QoS-Richtlinien verwenden, sollten Sie auf einem Volume keine benutzerdefinierten QoS-Einstellungen verwenden.  Benutzerdefinierte QoS-Einstellungen überschreiben und passen die QoS-Richtlinienwerte für die Volumen-QoS-Einstellungen an.
+
+
+NOTE: Der ausgewählte Cluster muss Element 10.0 oder höher sein, um QoS-Richtlinien nutzen zu können; andernfalls stehen QoS-Richtlinienfunktionen nicht zur Verfügung.
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

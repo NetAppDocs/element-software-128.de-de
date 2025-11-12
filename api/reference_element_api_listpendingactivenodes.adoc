@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_listpendingactivenodes.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,pending,active,node,nodes,listpendingactivenodes 
+summary: Mit der Methode ListPendingActiveNodes können Sie die Knoten im Cluster auflisten, die sich im Status PendingActive befinden, also zwischen den Status pending und active.  Knoten in diesem Zustand werden auf das Werksimage zurückgesetzt. 
+---
+= ListeAusstehendeAktiveKnoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListPendingActiveNodes` Methode zum Auflisten von Knoten im Cluster, die sich im Status PendingActive befinden, zwischen den Status pending und active.  Knoten in diesem Zustand werden auf das Werksimage zurückgesetzt.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+ausstehende aktive Knoten
+ a| 
+Liste von Objekten mit detaillierten Informationen zu allen PendingActive-Knoten im System.
+ a| 
+xref:reference_element_api_pendingactivenode.adoc[ausstehender aktiver Knoten]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListPendingActiveNodes",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  id: null,
+  result: {
+    pendingActiveNodes: [
+    {
+      activeNodeKey: "5rPHP3lTAO",
+      assignedNodeID: 5,
+      asyncHandle: 2,
+      cip: "10.10.5.106",
+      mip: "192.168.133.106",
+      pendingNodeID: 1,
+      platformInfo: {
+        chassisType: "R620",
+        cpuModel: "Intel(R) Xeon(R) CPU E5-2640 0 @ 2.50GHz",
+        nodeMemoryGB: 72,
+        nodeType: "SF3010"
+      },
+     sip: "10.10.5.106",
+     softwareVersion: "9.0.0.1077"
+    }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

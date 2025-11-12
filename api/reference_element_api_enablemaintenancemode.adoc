@@ -1,0 +1,176 @@
+---
+permalink: api/reference_element_api_enablemaintenancemode.html 
+sidebar: sidebar 
+keywords: maintenance,enable,mode 
+summary: Mit der Methode EnableMaintenanceMode können Sie einen Speicherknoten für die Wartung vorbereiten.  Zu den Wartungsszenarien gehören alle Aufgaben, die ein Ausschalten oder einen Neustart des Knotens erfordern. 
+---
+= Wartungsmodus aktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `EnableMaintenanceMode` Verfahren zur Vorbereitung eines Speicherknotens für Wartungsarbeiten.  Zu den Wartungsszenarien zählen alle Aufgaben, die ein Ausschalten oder einen Neustart des Knotens erfordern.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+forceWithUnresolvedFaults
+ a| 
+Erzwinge die Aktivierung des Wartungsmodus für diesen Knoten, selbst wenn blockierende Clusterfehler vorliegen.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Knoten
+ a| 
+Die Liste der Knoten-IDs, die in den Wartungsmodus versetzt werden sollen.  Es wird jeweils nur ein Knoten unterstützt.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+perMinutePrimarySwapLimit
+ a| 
+Die Anzahl der primären Segmente, die pro Minute ausgetauscht werden sollen.  Sofern nicht anders angegeben, werden alle primären Slices gleichzeitig ausgetauscht.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Time-out
+ a| 
+Legt fest, wie lange der Wartungsmodus aktiviert bleiben soll, bevor er automatisch deaktiviert wird.  Formatiert als Zeitzeichenfolge (zum Beispiel HH:mm:ss).  Sofern nicht anders angegeben, bleibt der Wartungsmodus aktiviert, bis er explizit deaktiviert wird.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+asyncHandle
+ a| 
+Sie können die Methode GetAsyncResult verwenden, um dieses asyncHandle abzurufen und festzustellen, wann der Übergang in den Wartungsmodus abgeschlossen ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+aktueller Modus
+ a| 
+Der aktuelle Wartungsmodus-Status des Knotens. Mögliche Werte:
+
+* Deaktiviert: Es wurden keine Wartungsarbeiten angefordert.
+* FailedToRecover: Der Knoten konnte nicht aus dem Wartungsmodus wiederhergestellt werden.
+* Wiederherstellung aus dem Wartungsmodus: Der Knoten befindet sich im Wiederherstellungsprozess nach dem Wartungsmodus.
+* Vorbereitung der Wartung: Es werden Maßnahmen ergriffen, um einen Knoten für die Durchführung von Wartungsarbeiten vorzubereiten.
+* Wartungsbereit: Der Knoten ist bereit für die Durchführung von Wartungsarbeiten.
+
+ a| 
+Wartungsmodus (Zeichenkette)
+
+
+
+ a| 
+angeforderter Modus
+ a| 
+Der angeforderte Wartungsmodus des Knotens. Mögliche Werte:
+
+* Deaktiviert: Es wurden keine Wartungsarbeiten angefordert.
+* FailedToRecover: Der Knoten konnte nicht aus dem Wartungsmodus wiederhergestellt werden.
+* Wiederherstellung aus dem Wartungsmodus: Der Knoten befindet sich im Wiederherstellungsprozess nach dem Wartungsmodus.
+* Vorbereitung der Wartung: Es werden Maßnahmen ergriffen, um einen Knoten für die Durchführung von Wartungsarbeiten vorzubereiten.
+* Wartungsbereit: Der Knoten ist bereit für die Durchführung von Wartungsarbeiten.
+
+ a| 
+Wartungsmodus (Zeichenkette)
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "EnableMaintenanceMode",
+  "params": {
+    "forceWithUnresolvedFaults": False,
+    "nodes": [6],
+    "perMinutePrimarySwapLimit" : 40,
+    "timeout" : "01:00:05"
+  },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "requestedMode": "ReadyForMaintenance",
+        "asyncHandle": 1,
+        "currentMode": "Disabled"
+    }
+}
+----
+
+
+== Neu seit Version
+
+12,2
+
+
+
+== Weitere Informationen
+
+http://docs.netapp.com/us-en/hci/docs/concept_hci_storage_maintenance_mode.html["NetApp HCI Speicherwartungsmoduskonzepte"^]

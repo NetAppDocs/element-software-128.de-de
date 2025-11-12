@@ -1,0 +1,150 @@
+---
+permalink: api/reference_element_api_clusterconfig.html 
+sidebar: sidebar 
+keywords: objects,object,clusterConfig 
+summary: Das clusterConfig-Objekt gibt Informationen zurück, die der Knoten zur Kommunikation mit dem Cluster verwendet. 
+---
+= Clusterkonfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `clusterConfig` Das Objekt gibt Informationen zurück, die der Knoten zur Kommunikation mit dem Cluster verwendet.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+`cipi`
+ a| 
+Netzwerkschnittstelle zur Clusterkommunikation.
+ a| 
+Schnur
+
+
+
+ a| 
+`cluster`
+ a| 
+Eindeutiger Name des Clusters.
+ a| 
+Schnur
+
+
+
+ a| 
+`encryptionCapable`
+ a| 
+Gibt an, ob der Knoten Verschlüsselung unterstützt.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+`ensemble`
+ a| 
+Knoten, die am Cluster teilnehmen.
+ a| 
+Zeichenketten-Array
+
+
+
+ a| 
+`fipsDriveConfiguration`
+ a| 
+Gibt an, ob der Knoten FIPS 140-2-zertifizierte Laufwerke unterstützt.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+`hasLocalAdmin`
+ a| 
+Gibt an, ob der Cluster über einen lokalen Administrator verfügt.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+`mipi`
+ a| 
+Netzwerkschnittstelle zur Knotenverwaltung.
+ a| 
+Schnur
+
+
+
+ a| 
+`name`
+ a| 
+Eindeutige Kennung für den Cluster.
+ a| 
+Schnur
+
+
+
+ a| 
+`nodeID`
+ a| 
+Eindeutige Kennung für den Knoten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`pendingNodeID`
+ a| 
+Eindeutige Kennung für den ausstehenden Knoten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`role`
+ a| 
+Identifiziert die Rolle des Knotens.
+ a| 
+Schnur
+
+
+
+ a| 
+`sipi`
+ a| 
+Netzwerkschnittstelle für Speicherzwecke.
+ a| 
+Schnur
+
+
+
+ a| 
+`state`
+ a| 
+Zeigt den Zustand des Knotens an.
+ a| 
+Schnur
+
+
+
+ a| 
+`version`
+ a| 
+Gibt die Version des Knotens an.
+ a| 
+Schnur
+
+|===

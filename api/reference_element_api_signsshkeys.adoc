@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_signsshkeys.html 
+sidebar: sidebar 
+keywords: ssh, sign key 
+summary: Nachdem SSH auf einem Knoten oder Cluster aktiviert wurde, können Sie mit der Methode „SignSshKeys“ Zugriff auf eine Shell auf einem Knoten als „sfadmin“ oder „sfreadonly“ erhalten. „sfreadonly“ ist ein neues Benutzerkonto ab Element 12.5, das die erste Fehlerbehebung auf einem Knoten ermöglicht, jedoch keine Berechtigungen für erhöhte Befehle besitzt. 
+---
+= SignSshKeys
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nachdem SSH auf dem Cluster aktiviert wurde,link:../api/reference_element_api_enablessh.html["EnableSSH-Methode"] Sie können die `SignSshKeys` Methode zum Erlangen von Zugriff auf eine Shell auf einem Knoten.
+
+Beginnend mit Element 12.5, `sfreadonly` Ein neues Systemkonto ermöglicht die grundlegende Fehlerbehebung auf einem Knoten.  Diese API ermöglicht den SSH-Zugriff über die `sfreadonly` Systemkonto auf allen Knoten im Cluster.
+
+
+WARNING: Sofern Sie nicht vom NetApp Support dazu aufgefordert werden, sind jegliche Änderungen am System nicht unterstützt, führen zum Erlöschen Ihres Supportvertrags und können Instabilität oder den Verlust der Datenverfügbarkeit zur Folge haben.
+
+Nachdem Sie die Methode angewendet haben, müssen Sie den Schlüsselbund aus der Antwort kopieren, ihn auf dem System speichern, von dem die SSH-Verbindung initiiert wird, und anschließend den folgenden Befehl ausführen:
+
+[listing]
+----
+ssh -i <identity_file> sfreadonly@<node_ip>
+----
+ `identity_file`ist eine Datei, aus der die Identität (privater Schlüssel) für die Public-Key-Authentifizierung gelesen wird und `node_ip` ist die IP-Adresse des Knotens.  Weitere Informationen finden Sie unter `identity_file` Siehe die SSH-Manpage.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Dauer
+ a| 
+Ganze Zahl von 1 bis 24, die die Anzahl der Stunden angibt, in denen der signierte Schlüssel gültig ist.  Wird keine Dauer angegeben, wird der Standardwert verwendet.
+ a| 
+ganze Zahl
+ a| 
+1
+ a| 
+Nein
+
+
+
+ a| 
+öffentlicher Schlüssel
+ a| 
+Falls dieser Parameter angegeben wird, wird lediglich der signierte öffentliche Schlüssel zurückgegeben, anstatt einen vollständigen Schlüsselbund für den Benutzer zu erstellen.
+
+
+NOTE: Öffentliche Schlüssel, die über die URL-Leiste in einem Browser übermittelt wurden, `+` werden als Zeichen mit Abständen und Unterbrechungen interpretiert.
+ a| 
+Schnur
+ a| 
+Null
+ a| 
+Nein
+
+
+
+ a| 
+sfadmin
+ a| 
+Ermöglicht den Zugriff auf das sfadmin-Shell-Konto, wenn Sie den API-Aufruf mit supportAdmin-Clusterzugriff durchführen oder wenn sich der Knoten nicht in einem Cluster befindet.
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Keygen-Status
+ a| 
+Enthält die Identität im signierten Schlüssel, die zulässigen Benutzer und die gültigen Start- und Enddaten für den Schlüssel.
+ a| 
+Schnur
+
+
+
+ a| 
+privater_key
+ a| 
+Ein privater SSH-Schlüsselwert wird nur dann zurückgegeben, wenn die API einen vollständigen Schlüsselbund für den Endbenutzer generiert.
+
+
+NOTE: Der Wert ist Base64-kodiert; Sie müssen den Wert dekodieren, wenn er in eine Datei geschrieben wird, um sicherzustellen, dass er als gültiger privater Schlüssel gelesen wird.
+ a| 
+Schnur
+
+
+
+ a| 
+öffentlicher Schlüssel
+ a| 
+Ein öffentlicher SSH-Schlüsselwert wird nur dann zurückgegeben, wenn die API einen vollständigen Schlüsselbund für den Endbenutzer generiert.
+
+
+NOTE: Wenn Sie einen public_key-Parameter an die API-Methode übergeben, wird nur der `signed_public_key` Der Wert wird in der Antwort zurückgegeben.
+ a| 
+Schnur
+
+
+
+ a| 
+signierter öffentlicher Schlüssel
+ a| 
+Der SSH-öffentliche Schlüssel, der durch Signieren des öffentlichen Schlüssels entsteht, unabhängig davon, ob dieser vom Benutzer bereitgestellt oder von der API generiert wurde.
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+    "method": "SignSshKeys",
+    "params": {
+        "duration": 2,
+        "publicKey":<string>
+    },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "signedKeys": {
+      "keygen_status": <keygen_status>,
+      "signed_public_key": <signed_public_key>
+    }
+  }
+}
+----
+In diesem Beispiel wird ein öffentlicher Schlüssel signiert und zurückgegeben, der für die Dauer (1-24 Stunden) gültig ist.
+
+
+
+== Neu seit Version
+
+12,5

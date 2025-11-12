@@ -1,0 +1,77 @@
+= Bewährte Verfahren zum Hinzufügen und Entfernen von Laufwerken
+:allow-uri-read: 
+
+
+Möglicherweise müssen Sie das Gehäuse austauschen, wenn der Lüfter, die zentrale Verarbeitungseinheit (CPU) oder das Dual-Inline-Speichermodul (DIMM) ausfällt oder um Überhitzungsprobleme oder Probleme mit dem Bootvorgang zu beheben.  Das Blinken der gelben LED an der Vorderseite des Gehäuses weist auf einen möglichen Bedarf an Gehäuseaustausch hin.  Sie sollten sich vor dem Fortfahren an den NetApp -Support wenden.
+
+
+NOTE: Siehe dielink:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/NetApp_H610S_installation_requirements_for_replacement_or_expansion_nodes["KB-Artikel"^] Informationen zu den Installationsvoraussetzungen für H610S-Knoten finden Sie hier.  Neue und zusätzliche H610S-Speicherknoten können je nach der vorhandenen Element-Softwareversion des Speicherclusters zusätzliche Installationsanforderungen haben.  Wenden Sie sich für weitere Informationen an den NetApp Support.
+
+
+TIP: Die Begriffe „Node“ und „Chassis“ werden im Falle des H610S, einem Chassis mit einer Höheneinheit (1U), synonym verwendet.
+
+
+
+== Bewährte Verfahren zum Hinzufügen und Entfernen von Laufwerken
+
+Beachten Sie beim Hinzufügen von Laufwerken zum Cluster folgende bewährte Vorgehensweisen:
+
+* Fügen Sie alle Blocklaufwerke hinzu und stellen Sie sicher, dass die Blocksynchronisierung abgeschlossen ist, bevor Sie die Slice-Laufwerke hinzufügen.
+* Bei Element-Softwareversionen ab 10.x müssen alle Blocklaufwerke gleichzeitig hinzugefügt werden.  Stellen Sie sicher, dass Sie dies nicht für mehr als drei Knoten gleichzeitig tun.
+* Bei Element-Softwareversionen 9.x und älter sollten Sie drei Laufwerke gleichzeitig hinzufügen, damit diese vollständig synchronisiert werden können, bevor Sie die nächste Dreiergruppe hinzufügen.
+* Entfernen Sie das Slice-Laufwerk und stellen Sie sicher, dass die Slice-Synchronisierung abgeschlossen ist, bevor Sie die Block-Laufwerke entfernen.
+* Entfernen Sie alle Block-Laufwerke eines einzelnen Knotens gleichzeitig.  Stellen Sie sicher, dass die Synchronisierung aller Blöcke abgeschlossen ist, bevor Sie zum nächsten Knoten übergehen.
+
+
+.Was du brauchst
+* Sie haben den NetApp Support kontaktiert.  Wenn Sie ein Ersatzgerät bestellen, sollten Sie einen Fall beim NetApp -Support eröffnen.
+* Sie haben den Ersatzknoten erhalten.
+* Sie besitzen ein ESD-Armband (elektrostatische Entladung) oder haben andere antistatische Schutzmaßnahmen getroffen.
+* Falls Sie den RTFI-Prozess (Return to Factory Image) durchführen müssen, haben Sie den USB-Schlüssel erhalten.  Der NetApp -Support kann Ihnen bei der Entscheidung helfen, ob Sie den RTFI-Prozess durchführen müssen.
+* Du hast eine Tastatur und einen Monitor.
+* Sie haben den ausgefallenen Knoten korrekt aus dem Cluster entfernt.
+* Falls ein DIMM ausgefallen ist, müssen Sie die Laufwerke entfernen, bevor Sie den Knoten aus dem Cluster entfernen.
+
+
+.Informationen zu diesem Vorgang
+Alarme in der Element-Benutzeroberfläche benachrichtigen Sie, wenn ein Host ausfällt.  Sie müssen die Seriennummer des ausgefallenen Hosts aus dem VMware vSphere Web Client mit der Seriennummer auf dem Aufkleber auf der Rückseite des Knotens abgleichen.
+
+.Schritte
+. Suchen Sie das Service-Etikett an der Vorderseite des defekten Gehäuses.
++
+image::h610s-servicetag.gif[Zeigt das Service-Etikett an der Vorderseite des H610S-Gehäuses.]
+
+. Prüfen Sie, ob die Seriennummer auf dem Service-Tag mit der NetApp -Support-Fallnummer übereinstimmt, die Sie bei der Bestellung des Ersatzgehäuses angegeben haben.
+. Schließen Sie Tastatur und Monitor an der Rückseite des defekten Gehäuses an.
+. Bitte überprüfen Sie die Seriennummer des ausgefallenen Knotens beim NetApp -Support.
+. Schalten Sie das Chassis aus.
+. Beschriften Sie die Laufwerke an der Vorderseite und die Kabel an der Rückseite mit ihren jeweiligen Positionen, damit Sie sie nach dem Austausch wieder an den gleichen Stellen anbringen können.  Die folgende Abbildung zeigt die Anordnung der Laufwerke im Gehäuse:
++
+image::h610s-drives.gif[Zeigt die Vorderseite des H610S-Gehäuses mit den beschrifteten Laufwerken.]
+
+. Entfernen Sie die Kabel.
+. Das Chassis kann durch Lösen der Rändelschrauben an den Befestigungslaschen entfernt werden.  Sie sollten das defekte Chassis verpacken und an NetApp zurücksenden.
+. Bauen Sie das Ersatzgehäuse ein.
+. Nehmen Sie die Laufwerke vorsichtig aus dem defekten Gehäuse heraus und setzen Sie sie in das Ersatzgehäuse ein.
++
+
+NOTE: Sie sollten die Laufwerke wieder in die gleichen Steckplätze einsetzen, in denen sie sich vor dem Ausbau befanden.
+
+. Entfernen Sie die Netzteile aus dem defekten Gehäuse und setzen Sie sie in das Ersatzgehäuse ein.
+. Stecken Sie die Stromkabel und die Netzwerkkabel in ihre ursprünglichen Anschlüsse.
+. In die 10GbE-Ports des Ersatzknotens könnten SFP-Transceiver (Small Form-Factor Pluggable) eingesetzt werden.  Sie sollten diese entfernen, bevor Sie die 10GbE-Ports verkabeln.
++
+
+NOTE: Sollte Ihr Switch die Kabel nicht erkennen, konsultieren Sie die Dokumentation Ihres Switch-Herstellers.
+
+. Schalten Sie das Gehäuse durch Drücken des Netzschalters an der Vorderseite ein.  Der Knoten benötigt ungefähr fünf Minuten und 30 Sekunden zum Hochfahren.
+. Führen Sie die Konfigurationsschritte durch.
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

@@ -1,0 +1,29 @@
+---
+permalink: api/concept_element_api_fibre_channel_api_methods.html 
+sidebar: sidebar 
+keywords: fibre,channel,method,API,fibre channel 
+summary: Mit den Methoden der Fibre Channel API können Sie Fibre Channel-Knotenmitglieder eines Speicherclusters hinzufügen, ändern oder entfernen. 
+---
+= Fibre Channel API-Methoden
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit den Methoden der Fibre Channel API können Sie Fibre Channel-Knotenmitglieder eines Speicherclusters hinzufügen, ändern oder entfernen.
+
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[GetVolumeAccessGroupLunAssignments]
+* xref:reference_element_api_listfibrechannelportinfo.adoc[ListFibreChannelPortInfo]
+* xref:reference_element_api_listfibrechannelsessions.adoc[ListFibreChannelSessions]
+* xref:reference_element_api_listnodefibrechannelportinfo.adoc[ListNodeFibreChannelPortInfo]
+* xref:reference_element_api_modifyvolumeaccessgrouplunassignments.adoc[ModifyVolumeAccessGroupLunAssignments]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

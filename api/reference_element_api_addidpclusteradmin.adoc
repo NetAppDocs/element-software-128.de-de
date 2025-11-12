@@ -1,0 +1,132 @@
+---
+permalink: api/reference_element_api_addidpclusteradmin.html 
+sidebar: sidebar 
+keywords: IdP,idp,cluster,admin,add,adding,addIdpclusteradmin 
+summary: 'Mit der Methode AddIpdClusterAdmin können Sie einen Cluster-Administratorbenutzer hinzufügen, der von einem Drittanbieter-Identitätsanbieter (IdP) authentifiziert wurde.  Die Administratorkonten des IdP-Clusters werden auf Basis der SAML-Attributwertinformationen konfiguriert, die in der dem Benutzer zugeordneten SAML-Assertion des IdP enthalten sind.  Wenn sich ein Benutzer erfolgreich beim IdP authentifiziert und SAML-Attributanweisungen innerhalb der SAML-Assertion mit mehreren IdP-Cluster-Administratorkonten übereinstimmen, erhält der Benutzer die kombinierte Zugriffsebene dieser übereinstimmenden IdP-Cluster-Administratorkonten.' 
+---
+= AddIdpClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `AddIpdClusterAdmin` Methode zum Hinzufügen eines Cluster-Administratorbenutzers, der von einem Drittanbieter-Identitätsanbieter (IdP) authentifiziert wurde.  Die Administratorkonten des IdP-Clusters werden auf Basis der SAML-Attributwertinformationen konfiguriert, die in der dem Benutzer zugeordneten SAML-Assertion des IdP enthalten sind.  Wenn sich ein Benutzer erfolgreich beim IdP authentifiziert und SAML-Attributanweisungen innerhalb der SAML-Assertion mit mehreren IdP-Cluster-Administratorkonten übereinstimmen, erhält der Benutzer die kombinierte Zugriffsebene dieser übereinstimmenden IdP-Cluster-Administratorkonten.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Zugang
+ a| 
+Steuert, welche Methoden dieser IdP-Clusteradministrator verwenden kann.
+ a| 
+Zeichenketten-Array
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+acceptEula
+ a| 
+Akzeptieren Sie die Endbenutzer-Lizenzvereinbarung.  Auf „true“ setzen, um dem System ein Cluster-Administratorkonto hinzuzufügen.  Wird der Parameter weggelassen oder auf „false“ gesetzt, schlägt der Methodenaufruf fehl.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Attribute
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Benutzername
+ a| 
+Eine SAML-Attribut-Wert-Zuordnung zu einem IdP-Cluster-Administrator (z. B. email=test@example.com).  Dies kann mithilfe eines spezifischen SAML-Subjekts definiert werden. `NameID` oder als Eintrag in der SAML-Attributanweisung, wie zum Beispiel `eduPersonAffiliation` Die
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+clusterAdminID
+ a| 
+Eindeutige Kennung für den neu erstellten Cluster-Administrator.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+    "method": "AddIdpClusterAdmin",
+    "params": {
+        "username": "email=test@example.com",
+        "acceptEula": true,
+        "access": ["administrator"]
+    }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "result": {
+        "clusterAdminID": 13
+    }
+}
+----
+
+
+== Neu seit Version
+
+12,0

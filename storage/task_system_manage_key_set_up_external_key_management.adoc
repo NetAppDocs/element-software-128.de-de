@@ -1,0 +1,59 @@
+---
+permalink: storage/task_system_manage_key_set_up_external_key_management.html 
+sidebar: sidebar 
+keywords: sign request, certificate authority, software encryption at rest, ear, eks, csr 
+summary: Sie können diese Schritte befolgen und die aufgeführten Element-API-Methoden verwenden, um Ihre externe Schlüsselverwaltungsfunktion einzurichten. 
+---
+= Einrichtung der externen Schlüsselverwaltung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können diese Schritte befolgen und die aufgeführten Element-API-Methoden verwenden, um Ihre externe Schlüsselverwaltungsfunktion einzurichten.
+
+.Was du brauchst
+* Wenn Sie die externe Schlüsselverwaltung in Kombination mit der Softwareverschlüsselung ruhender Daten einrichten, haben Sie die Softwareverschlüsselung ruhender Daten mithilfe von … aktiviert.link:../api/reference_element_api_createcluster.html["CreateCluster"] Methode auf einem neuen Cluster, der keine Volumes enthält.
+
+
+.Schritte
+. Stellen Sie eine Vertrauensbeziehung zum externen Schlüsselserver (EKS) her.
++
+.. Erstellen Sie ein öffentliches/privates Schlüsselpaar für den Element-Cluster, das zum Aufbau einer Vertrauensbeziehung mit dem Schlüsselserver verwendet wird, indem Sie die folgende API-Methode aufrufen:link:../api/reference_element_api_createpublicprivatekeypair.html["Öffentliches/Privates Schlüsselpaar erstellen"]
+.. Besorgen Sie sich die Zertifikatsignieranforderung (CSR), die die Zertifizierungsstelle unterzeichnen muss.  Der CSR ermöglicht es dem Schlüsselserver zu überprüfen, ob der Elementcluster, der auf die Schlüssel zugreifen soll, als Elementcluster authentifiziert ist.  Rufen Sie die folgende API-Methode auf:link:../api/reference_element_api_getclientcertificatesignrequest.html["GetClientCertificateSignRequest"]
+.. Verwenden Sie die EKS/Zertifizierungsstelle, um den abgerufenen CSR zu signieren.  Weitere Informationen finden Sie in der Dokumentation von Drittanbietern.
+
+
+. Erstellen Sie einen Server und einen Provider auf dem Cluster, um mit dem EKS zu kommunizieren.  Ein Schlüsselanbieter legt fest, wo ein Schlüssel bezogen werden soll, und ein Server definiert die spezifischen Attribute des EKS, mit denen kommuniziert werden soll.
++
+.. Erstellen Sie einen Schlüsselanbieter, in dem die Details des Schlüsselservers gespeichert werden, indem Sie die folgende API-Methode aufrufen:link:../api/reference_element_api_createkeyproviderkmip.html["CreateKeyProviderKmip"]
+.. Erstellen Sie einen Schlüsselserver, der das signierte Zertifikat und das öffentliche Schlüsselzertifikat der Zertifizierungsstelle bereitstellt, indem Sie die folgenden API-Methoden aufrufen:link:../api/reference_element_api_createkeyserverkmip.html["CreateKeyServerKmip"] link:../api/reference_element_api_testkeyserverkmip.html["TestKeyServerKmip"]
++
+Falls der Test fehlschlägt, überprüfen Sie Ihre Serververbindung und -konfiguration.  Wiederholen Sie dann den Test.
+
+.. Fügen Sie den Schlüsselserver dem Schlüsselanbietercontainer hinzu, indem Sie die folgenden API-Methoden aufrufen:link:../api/reference_element_api_addkeyservertoproviderkmip.html["AddKeyServerToProviderKmip"] link:../api/reference_element_api_testkeyproviderkmip.html["TestKeyProviderKmip"]
++
+Falls der Test fehlschlägt, überprüfen Sie Ihre Serververbindung und -konfiguration.  Wiederholen Sie dann den Test.
+
+
+
+. Führen Sie als nächsten Schritt zur Verschlüsselung ruhender Daten einen der folgenden Schritte durch:
++
+.. (Für Hardwareverschlüsselung ruhender Daten) Aktivierenlink:../concepts/concept_solidfire_concepts_security.html["Hardwareverschlüsselung im Ruhezustand"] indem die ID des Schlüsselanbieters angegeben wird, der den zum Speichern der Schlüssel verwendeten Schlüsselserver enthält, indem die folgende Funktion aufgerufen wird:link:../api/reference_element_api_enableencryptionatrest.html["EnableEncryptionAtRest"] API-Methode.
++
+
+NOTE: Sie müssen die Verschlüsselung ruhender Daten über dielink:../api/reference_element_api_enableencryptionatrest.html["API"] Die  Durch Aktivieren der Verschlüsselung ruhender Daten über die vorhandene Element UI-Schaltfläche wird die Funktion auf die Verwendung intern generierter Schlüssel zurückgesetzt.
+
+.. (Für die Softwareverschlüsselung im Ruhezustand) Damitlink:../concepts/concept_solidfire_concepts_security.html["Softwareverschlüsselung im Ruhezustand"] Um den neu erstellten Schlüsselanbieter zu nutzen, übergeben Sie die Schlüsselanbieter-ID an denlink:../api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html["RekeySoftwareEncryptionAtRestMasterKey"] API-Methode.
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* link:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["Aktivieren und Deaktivieren der Verschlüsselung für einen Cluster"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

@@ -1,0 +1,28 @@
+---
+permalink: storage/task_data_protection_edit_snapshot_retention.html 
+sidebar: sidebar 
+keywords: snapshot retention, edit, set a retention period, edit retention period 
+summary: 'Sie können die Aufbewahrungsfrist für einen Snapshot ändern, um zu steuern, wann und ob das System Snapshots löscht.  Die von Ihnen angegebene Aufbewahrungsfrist beginnt mit dem Eintritt in das neue Intervall.  Wenn Sie eine Aufbewahrungsfrist festlegen, können Sie einen Zeitraum auswählen, der zum aktuellen Zeitpunkt beginnt (die Aufbewahrungsfrist wird nicht ab dem Zeitpunkt der Snapshot-Erstellung berechnet).  Sie können die Intervalle in Minuten, Stunden und Tagen angeben.' 
+---
+= Snapshot-Aufbewahrung bearbeiten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Aufbewahrungsfrist für einen Snapshot ändern, um zu steuern, wann und ob das System Snapshots löscht.  Die von Ihnen angegebene Aufbewahrungsfrist beginnt mit dem Eintritt in das neue Intervall.  Wenn Sie eine Aufbewahrungsfrist festlegen, können Sie einen Zeitraum auswählen, der mit dem aktuellen Zeitpunkt beginnt (die Aufbewahrungsfrist wird nicht ab dem Zeitpunkt der Snapshot-Erstellung berechnet).  Sie können die Intervalle in Minuten, Stunden und Tagen angeben.
+
+.Schritte
+. Klicken Sie auf *Datenschutz* > *Schnappschüsse*.
+. Klicken Sie auf das Symbol *Aktionen* für den Snapshot, den Sie bearbeiten möchten.
+. Klicken Sie im daraufhin angezeigten Menü auf *Bearbeiten*.
+. *Optional:* Aktivieren Sie das Kontrollkästchen **Snapshot bei Replikation einbeziehen, wenn gekoppelt**, um sicherzustellen, dass der Snapshot bei der Replikation erfasst wird, wenn das übergeordnete Volume gekoppelt wird.
+. *Optional:* Wählen Sie eine Aufbewahrungsoption für den Snapshot aus:
++
+** Klicken Sie auf *Für immer behalten*, um den Snapshot auf unbestimmte Zeit im System zu speichern.
+** Klicken Sie auf *Aufbewahrungsdauer festlegen* und wählen Sie mithilfe der Datums-Drehfelder eine Zeitspanne aus, für die das System den Snapshot aufbewahrt.
+
+
+. Klicken Sie auf *Änderungen speichern*.
+

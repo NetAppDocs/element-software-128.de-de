@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_checkproposedcluster.html 
+sidebar: sidebar 
+keywords: cluster,creation,check,proposed,checking,nodes,node,before,CheckProposedCluster 
+summary: Mit der Methode „CheckProposedCluster“ können Sie eine Reihe von Speicherknoten testen, bevor Sie mit ihnen einen Speichercluster erstellen. So können Sie mögliche Fehler oder Störungen identifizieren, die bei diesem Versuch auftreten könnten, wie z. B. unausgewogene gemischte Knotenkapazitäten oder Knotentypen, die für Zwei-Knoten-Speichercluster nicht unterstützt werden. 
+---
+= Vorgeschlagener Cluster prüfen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `CheckProposedCluster` Methode zum Testen einer Reihe von Speicherknoten, bevor ein Speichercluster mit ihnen erstellt wird, um mögliche Fehler oder Störungen zu identifizieren, die bei dem Versuch auftreten könnten, wie z. B. unausgewogene gemischte Knotenfähigkeiten oder Knotentypen, die für Zwei-Knoten-Speichercluster nicht unterstützt werden.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Knoten
+ a| 
+Eine Liste der Speicher-IP-Adressen der ursprünglichen Speicherknoten, aus denen der Speichercluster besteht.
+ a| 
+Zeichenketten-Array
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Gewalt
+ a| 
+Auf „true“ setzen, um das Programm auf allen Speicherknoten im Speichercluster auszuführen.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+vorgeschlagenerClusterGültig
+ a| 
+Gibt an, ob die vorgeschlagenen Speicherknoten einen gültigen Speichercluster bilden würden. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+vorgeschlageneClusterfehler
+ a| 
+Fehler, die auftreten würden, wenn ein Speichercluster mit den vorgeschlagenen Speicherknoten erstellt würde.
+ a| 
+Zeichenketten-Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "CheckProposedCluster",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== Neu seit Version
+
+11,0

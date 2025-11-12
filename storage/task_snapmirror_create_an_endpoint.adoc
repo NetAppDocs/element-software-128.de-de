@@ -1,0 +1,42 @@
+---
+permalink: storage/task_snapmirror_create_an_endpoint.html 
+sidebar: sidebar 
+keywords: element, endpoints, create, snapmirror, ui 
+summary: Bevor Sie eine Beziehung erstellen können, müssen Sie einen SnapMirror Endpunkt in der NetApp Element -Benutzeroberfläche erstellen. 
+---
+= Erstellen Sie einen SnapMirror Endpunkt
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie eine Beziehung erstellen können, müssen Sie einen SnapMirror Endpunkt in der NetApp Element -Benutzeroberfläche erstellen.
+
+Ein SnapMirror Endpunkt ist ein ONTAP -Cluster, der als Replikationsziel für einen Cluster dient, auf dem die Element-Software ausgeführt wird.  Bevor Sie eine SnapMirror Beziehung erstellen, müssen Sie zuerst einen SnapMirror Endpunkt erstellen.
+
+Sie können bis zu vier SnapMirror Endpunkte auf einem Speichercluster erstellen und verwalten, auf dem die Element-Software ausgeführt wird.
+
+
+NOTE: Wurde ein bestehender Endpunkt ursprünglich über die API erstellt und wurden die Anmeldeinformationen nicht gespeichert, können Sie den Endpunkt in der Element-Benutzeroberfläche sehen und seine Existenz überprüfen, er kann jedoch nicht über die Element-Benutzeroberfläche verwaltet werden.  Dieser Endpunkt kann dann nur über die Element-API verwaltet werden.
+
+Einzelheiten zu den API-Methoden finden Sie unter link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"]Die
+
+.Was du brauchst
+* Sie hätten SnapMirror in der Element-Benutzeroberfläche für den Speichercluster aktivieren sollen.
+* Sie kennen die ONTAP -Zugangsdaten für den Endpunkt.
+
+
+.Schritte
+. Klicken Sie auf *Datenschutz* > * SnapMirror Endpunkte*.
+. Klicken Sie auf *Endpunkt erstellen*.
+. Geben Sie im Dialogfeld *Neuen Endpunkt erstellen* die Cluster-Management-IP-Adresse des ONTAP Systems ein.
+. Geben Sie die ONTAP Administratoranmeldeinformationen ein, die mit dem Endpunkt verknüpft sind.
+. Weitere Details prüfen:
++
+** LIFs: Listet die logischen ONTAP Intercluster-Schnittstellen auf, die zur Kommunikation mit Element verwendet werden.
+** Status: Zeigt den aktuellen Status des SnapMirror Endpunkts an.  Mögliche Werte sind: verbunden, getrennt und nicht verwaltet.
+
+
+. Klicken Sie auf *Endpunkt erstellen*.
+

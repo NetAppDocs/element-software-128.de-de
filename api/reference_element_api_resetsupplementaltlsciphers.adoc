@@ -1,0 +1,59 @@
+---
+permalink: api/reference_element_api_resetsupplementaltlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,reset,supplemental,resetsupplementaltlsciphers,restore,restoring,supplemental 
+summary: Mit der Methode ResetSupplementalTlsCiphers können Sie die Liste der zusätzlichen TLS-Verschlüsselungen auf den Standardwert zurücksetzen.  Diese Methode können Sie auf dem gesamten Cluster anwenden. 
+---
+= Zusätzliche TLS-Verschlüsselungen zurücksetzen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ResetSupplementalTlsCiphers` Methode zum Wiederherstellen der Liste der zusätzlichen TLS-Verschlüsselungen auf den Standardwert.  Diese Methode können Sie auf dem gesamten Cluster anwenden.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ResetSupplementalTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {}
+}
+----
+
+
+== Neu seit Version
+
+11,3

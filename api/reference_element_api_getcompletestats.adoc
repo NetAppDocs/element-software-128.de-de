@@ -1,0 +1,28 @@
+---
+permalink: api/reference_element_api_getcompletestats.html 
+sidebar: sidebar 
+keywords:  
+summary: Die NetApp Entwicklungsabteilung verwendet die GetCompleteStats-API-Methode, um neue Funktionen zu testen.  Die von GetCompleteStats zurückgegebenen Daten sind nicht dokumentiert, ändern sich häufig und ihre Genauigkeit wird nicht garantiert.  GetCompleteStats sollte nicht zur Erfassung von Leistungsdaten oder für andere Managementintegrationen mit einem Speichercluster verwendet werden, auf dem die Element-Software läuft. 
+---
+= Vollständige Statistiken abrufen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Engineering nutzt die `GetCompleteStats` API-Methode zum Testen neuer Funktionen.  Die zurückgegebenen Daten `GetCompleteStats` ist nicht dokumentiert, ändert sich häufig und es wird keine Gewähr für ihre Richtigkeit übernommen.  Sie sollten nicht verwenden `GetCompleteStats` zur Erfassung von Leistungsdaten oder für jede andere Managementintegration mit einem Speichercluster, auf dem die Element-Software läuft.
+
+Verwenden Sie die folgenden unterstützten API-Methoden, um statistische Informationen abzurufen:
+
+* xref:reference_element_api_getvolumestats.adoc[Lautstärkestatistiken abrufen]
+* xref:reference_element_api_getclusterstats.adoc[GetClusterStats]
+* xref:reference_element_api_getnodestats.adoc[GetNodeStats]
+* xref:reference_element_api_getdrivestats.adoc[GetDriveStats]
+
+
+
+
+== Neu seit Version
+
+9,6

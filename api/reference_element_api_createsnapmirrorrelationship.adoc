@@ -1,0 +1,140 @@
+---
+permalink: api/reference_element_api_createsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,create,creating,CreateSnapMirrorRelationship 
+summary: Die Element-Weboberfläche verwendet die Methode CreateSnapMirrorRelationship, um eine SnapMirror -Beziehung für erweiterten Datenschutz zwischen einem Quell- und einem Zielendpunkt zu erstellen. 
+---
+= CreateSnapMirrorRelationship
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Element-Weboberfläche verwendet die `CreateSnapMirrorRelationship` Methode zum Erstellen einer SnapMirror Erweiterungs-Datenschutzbeziehung zwischen einem Quell- und einem Zielendpunkt.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Die Endpunkt-ID des entfernten ONTAP -Speichersystems, das mit dem Element-Speichercluster kommuniziert.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Quellvolumen
+ a| 
+Das Quellvolumen in der Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Zielvolumen
+ a| 
+Das Zielvolumen in der Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Beziehungstyp
+ a| 
+Die Art der Beziehung.  Auf Speichersystemen, auf denen die Element-Software läuft, ist dieser Wert immer "`extended_data_protection`".
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Richtlinienname
+ a| 
+Gibt den Namen der ONTAP SnapMirror -Richtlinie für die Beziehung an.  Falls nicht anders angegeben, lautet der Standardrichtlinienname MirrorLatest.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Zeitplanname
+ a| 
+Der Name des bereits vorhandenen Cron-Zeitplans im ONTAP System, der zur Aktualisierung der SnapMirror Beziehung verwendet wird.  Wenn kein Zeitplan festgelegt ist, werden snapMirror-Aktualisierungen nicht geplant und müssen manuell durchgeführt werden.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+maxTransferRate
+ a| 
+Gibt die maximale Datenübertragungsrate zwischen den Volumes in Kilobyte pro Sekunde an.  Der Standardwert 0 bedeutet unbegrenzte Bandbreite und ermöglicht es der SnapMirror -Beziehung, die verfügbare Netzwerkbandbreite voll auszunutzen.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Snap-Spiegelbeziehung
+ a| 
+Informationen zur neu erstellten SnapMirror Beziehung.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[Snap-Spiegelbeziehung]
+
+|===
+
+
+== Neu seit Version
+
+10,1

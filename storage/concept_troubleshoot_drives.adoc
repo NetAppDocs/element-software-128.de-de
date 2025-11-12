@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_drives.html 
+sidebar: sidebar 
+keywords: troubleshoot, drives, ssd, swappable, solid-state drives 
+summary: 'Sie können ein defektes Solid-State-Laufwerk (SSD) durch ein Ersatzlaufwerk ersetzen.  SSDs für SolidFire -Speicherknoten sind im laufenden Betrieb austauschbar.  Wenn Sie vermuten, dass eine SSD ausgefallen ist, wenden Sie sich an den NetApp Support, um den Fehler zu überprüfen und sich die richtige Vorgehensweise zur Fehlerbehebung erklären zu lassen.  Der NetApp Support arbeitet außerdem mit Ihnen zusammen, um Ihnen gemäß Ihrer Servicevereinbarung ein Ersatzlaufwerk zu beschaffen.' 
+---
+= Fehlerbehebung bei Laufwerken
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können ein defektes Solid-State-Laufwerk (SSD) durch ein Ersatzlaufwerk ersetzen.  SSDs für SolidFire -Speicherknoten sind im laufenden Betrieb austauschbar.  Wenn Sie vermuten, dass eine SSD ausgefallen ist, wenden Sie sich an den NetApp Support, um den Fehler zu überprüfen und sich die richtige Vorgehensweise zur Fehlerbehebung erklären zu lassen.  Der NetApp Support arbeitet außerdem mit Ihnen zusammen, um Ihnen gemäß Ihrer Servicevereinbarung ein Ersatzlaufwerk zu beschaffen.
+
+How-swapable bedeutet in diesem Fall, dass Sie ein defektes Laufwerk aus einem aktiven Knoten entfernen und durch ein neues SSD-Laufwerk von NetApp ersetzen können.  Es wird nicht empfohlen, nicht defekte Laufwerke in einem aktiven Cluster zu entfernen.
+
+Sie sollten die von NetApp Support empfohlenen Ersatzteile vor Ort bereithalten, um im Falle eines Ausfalls einen sofortigen Austausch des Laufwerks zu ermöglichen.
+
+
+NOTE: Wenn Sie zu Testzwecken einen Laufwerksausfall simulieren, indem Sie ein Laufwerk aus einem Knoten entnehmen, müssen Sie 30 Sekunden warten, bevor Sie das Laufwerk wieder in den Laufwerksschacht einsetzen.
+
+Wenn ein Laufwerk ausfällt, verteilt Double Helix die Daten auf dem Laufwerk auf die verbleibenden Knoten im Cluster.  Mehrere Laufwerksausfälle auf demselben Knoten stellen kein Problem dar, da die Element-Software vor zwei Datenkopien auf demselben Knoten schützt.  Ein Laufwerksausfall führt zu folgenden Ereignissen:
+
+* Die Daten werden vom Laufwerk migriert.
+* Die Gesamtkapazität des Clusters wird durch die Kapazität des Laufwerks reduziert.
+* Der Double-Helix-Datenschutz gewährleistet, dass zwei gültige Kopien der Daten existieren.
+
+
+
+IMPORTANT: SolidFire -Speichersysteme unterstützen nicht das Entfernen eines Laufwerks, wenn dadurch nicht mehr genügend Speicherplatz für die Datenmigration zur Verfügung steht.
+
+
+
+== Weitere Informationen
+
+* xref:task_troubleshoot_remove_failed_drives.adoc[Ausgefallene Laufwerke aus dem Cluster entfernen]
+* xref:concept_troubleshoot_basic_mdss_drive_troubleshooting.adoc[Grundlegende Fehlerbehebung bei MDSS-Laufwerken]
+* xref:task_troubleshoot_remove_mdss_drives.adoc[MDSS-Laufwerke entfernen]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2844771["Austauschen von Laufwerken für SolidFire -Speicherknoten"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2846859["Austausch von Laufwerken für Speicherknoten der Serie H600S"]
+* link:../hardware/task_h410s_h610s_install.html["Hardwareinformationen zu H410S und H610S"]
+* link:../hardware/task_sfseries_chassisrepl.html["Hardwareinformationen der SF-Serie"]
+

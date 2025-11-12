@@ -1,0 +1,146 @@
+---
+permalink: api/reference_element_api_testconnectmvip.html 
+sidebar: sidebar 
+keywords: management,connection,test,testing,mvip,testconnectmvip 
+summary: Mit der Methode TestConnectMvip können Sie die Managementverbindung zum Speichercluster testen.  Der Test pingt den MVIP an und führt eine einfache API-Methode aus, um die Konnektivität zu überprüfen. 
+---
+= TestConnectMvip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `TestConnectMvip` Methode zum Testen der Managementverbindung zum Speichercluster.  Der Test pingt den MVIP an und führt eine einfache API-Methode aus, um die Konnektivität zu überprüfen.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+| MVIP | Sie können diesen Wert übergeben, um die Managementverbindung eines anderen MVIP zu testen.  Sie müssen diesen Wert nicht verwenden, wenn Sie die Verbindung zum Zielcluster testen. | Schnur | Keine | Nein 
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+| Details  a| 
+Informationen zum Testvorgang (JSON-Objekt):
+
+* `connected`: Gibt an, ob der Test eine Verbindung zum MVIP herstellen konnte (boolescher Wert)
+* `mvip`: Der MVIP wurde gegen (Zeichenkette) getestet
+* `pingBytes`Details zu den Ping-Tests mit 56 Bytes und 1500 Bytes (Objekt)
++
+** `56`Ergebnisse des 56-Byte-Ping-Tests (JSON-Objekt):
++
+*** `individualResponseTimes`: Liste der Antwortzeiten von jedem Ensemble-Knoten (Zeichenketten-Array)
+*** `individualStatus`: Liste des Ping-Status von jedem Ensemble-Knoten (boolesches Array)
+*** `responseTime`Durchschnittliche Ping-Antwortzeit (Zeichenkette)
+*** `successful`: Gibt an, ob der Ping-Test erfolgreich war (boolescher Wert)
+
+
+** `1500`Ergebnisse des 1500-Byte-Ping-Tests (JSON-Objekt):
++
+*** `individualResponseTimes`: Liste der Antwortzeiten von jedem Ensemble-Knoten (Zeichenketten-Array)
+*** `individualStatus`: Liste des Ping-Status von jedem Ensemble-Knoten (boolesches Array)
+*** `responseTime`Durchschnittliche Ping-Antwortzeit (Zeichenkette)
+*** `successful`: Ob der Ping-Test erfolgreich war (boolescher Wert)
+
+
+** `duration`: Dauer der Testausführung (Zeichenkette)
+** `result`Gesamtergebnis des Tests (Zeichenkette)
+
+
+
+| JSON-Objekt 
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "TestConnectMvip",
+   "params": {
+       "mvip" : "172.27.62.50"
+       },
+    "id":1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "mvip": "172.27.62.50",
+      "pingBytes": {
+        "1500": {
+          "individualResponseTimes": [
+            "00:00:00.000250",
+            "00:00:00.000206",
+            "00:00:00.000200",
+            "00:00:00.000199",
+            "00:00:00.000199"
+         ],
+          "individualStatus": [
+             true,
+             true,
+             true,
+             true,
+             true
+         ],
+         "responseTime": "00:00:00.000211",
+         "successful": true
+       },
+       "56": {
+          "individualResponseTimes": [
+            "00:00:00.000217",
+            "00:00:00.000122",
+            "00:00:00.000117",
+            "00:00:00.000119",
+            "00:00:00.000121"
+         ],
+         "individualStatus": [
+            true,
+            true,
+            true,
+            true,
+            true
+         ],
+         "responseTime": "00:00:00.000139",
+         "successful": true
+        }
+      }
+    },
+    "duration": "00:00:00.271244",
+    "result": "Passed"
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

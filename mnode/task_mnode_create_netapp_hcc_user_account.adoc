@@ -1,0 +1,284 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_create_netapp_hcc_role_vcenter.html 
+summary: Sie müssen eine NetApp HCC-Rolle in vCenter erstellen, bevor Sie vCenter-Assets zum Management-Knoten hinzufügen können. 
+keywords: netapp, mnode, management node, vcenter, hcc, esxi 
+---
+= Erstellen Sie eine NetApp HCC-Rolle in vCenter
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie sollten eine NetApp HCC-Rolle in vCenter erstellen, um nach der Installation manuell vCenter-Assets (Controller) zum Management-Knoten hinzuzufügen oder vorhandene Controller zu modifizieren.
+
+Diese NetApp HCC-Rolle beschränkt Ihre Ansicht der Management-Knotendienste auf Assets, die ausschließlich von NetApp.
+
+.Informationen zu diesem Vorgang
+* Dieses Verfahren beschreibt die in Version 6.7 von vSphere verfügbaren Schritte.  Die Benutzeroberfläche Ihrer vSphere-Umgebung kann je nach installierter vSphere-Version geringfügig von der Beschreibung abweichen.  Weitere Hilfe finden Sie in der VMware vCenter-Dokumentation.
+* Zulink:task_mnode_create_netapp_hcc_role_vcenter.html#create-a-new-netapp-hcc-role["Erstellen einer neuen NetApp HCC-Rolle"] Sie richten zunächst ein neues Benutzerkonto in vCenter ein, erstellen eine NetApp HCC-Rolle und weisen dem Benutzer anschließend die Berechtigungen zu.
+* Bei NetApp ESXi-Hostkonfigurationen sollten Sie das mit NDE erstellte Benutzerkonto auf die neue NetApp HCC-Rolle aktualisieren:
++
+** Verwendenlink:task_mnode_create_netapp_hcc_role_vcenter.html#netapp-esxi-host-does-not-exist-in-a-vcenter-host-cluster["diese Option"] wenn Ihr NetApp ESXi-Host nicht innerhalb eines vCenter-Hostclusters existiert
+** Verwendenlink:task_mnode_create_netapp_hcc_role_vcenter.html#netapp-esxi-host-exists-in-a-vcenter-host-cluster["diese Option"] wenn sich Ihr NetApp ESXi-Host innerhalb eines vCenter-Hostclusters befindet
+
+
+* Du kannstlink:task_mnode_create_netapp_hcc_role_vcenter.html#controller-asset-already-exists-on-the-management-node["Konfigurieren eines Controller-Assets"] das bereits auf dem Management-Knoten existiert.
+* Verwenden Sie die neue NetApp HCC-Rolle, umlink:task_mnode_create_netapp_hcc_role_vcenter.html#add-an-asset-to-the-management-node["Füge ein Asset hinzu"] zum Managementknoten.
+
+
+
+
+== Erstellen Sie eine neue NetApp HCC-Rolle
+
+Richten Sie ein neues Benutzerkonto in vCenter ein, erstellen Sie eine NetApp HCC-Rolle und weisen Sie dem Benutzer anschließend die Berechtigungen zu.
+
+
+
+=== Ein neues Benutzerkonto in vCenter einrichten
+
+Führen Sie die folgenden Schritte aus, um ein neues Benutzerkonto in vCenter einzurichten.
+
+.Schritte
+. Melden Sie sich beim vSphere Web Client an als `\administrator@vsphere.local` oder gleichwertig.
+. Wählen Sie im Menü *Administration*.
+. Im Abschnitt *Single Sign-On* wählen Sie *Benutzer* und *Gruppen* aus.
+. Wählen Sie in der Liste *Domäne* Folgendes aus `vsphere.local` oder Ihre LDAP-Domäne.
+. Wählen Sie *Benutzer hinzufügen*.
+. Füllen Sie das Formular *Benutzer hinzufügen* aus.
+
+
+
+
+=== Erstellen Sie eine neue NetApp HCC-Rolle in vCenter
+
+Führen Sie die folgenden Schritte aus, um eine neue NetApp HCC-Rolle in vCenter zu erstellen.
+
+.Schritte
+. Wählen Sie *Rolle bearbeiten* und weisen Sie die erforderlichen Berechtigungen zu.
+. Im linken Navigationsbereich wählen Sie *Global* aus.
+. Wählen Sie *Diagnostik* und *Lizenzen* aus.
+. Wählen Sie im linken Navigationsbereich *Hosts* aus.
+. Wählen Sie *Wartung*, *Energie*, *Speicherpartitionskonfiguration* und *Firmware*.
+. Speichern unter `NetApp Role` Die
+
+
+
+
+=== Weisen Sie Benutzerberechtigungen für vCenter zu.
+
+Führen Sie die folgenden Schritte aus, um der neuen NetApp HCC-Rolle in vCenter die Benutzerberechtigungen zuzuweisen.
+
+.Schritte
+. Wählen Sie im Menü *Hosts* und *Cluster* aus.
+. Wählen Sie im linken Navigationsbereich eine der folgenden Optionen aus:
++
+** Das vCenter der obersten Ebene.
+** Ihr gewünschtes vCenter, falls Sie sich im verknüpften Modus befinden.
++
+[NOTE]
+====
+*** Beginnend mit dem NetApp Element Plug-in für vCenter Server 5.0, um zu verwenden https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenter-Verknüpfungsmodus"^] Sie registrieren das Element-Plug-in von einem separaten Verwaltungsknoten für jeden vCenter Server, der NetApp SolidFire -Speichercluster verwaltet (empfohlen).
+*** Verwendung des NetApp Element Plug-ins für vCenter Server 4.10 und früher zur Verwaltung von Clusterressourcen von anderen vCenter Servern aus. https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenter-Verknüpfungsmodus"^] ist auf lokale Speichercluster beschränkt.
+
+
+====
+
+
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne
+.. Verwenden Sie die Suchfunktion, um den neuen Benutzer zu finden, den Sie erstellt haben in<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `NetApp Role` Die
++
+
+IMPORTANT: Wählen Sie *NICHT* die Option *An untergeordnete Elemente weitergeben*.
+
++
+image::mnode_new_HCC_role_vcenter.PNG[zeigt das Fenster "Berechtigung hinzufügen" an]
+
+
+
+
+
+
+
+=== Weisen Sie dem Rechenzentrum Benutzerberechtigungen zu.
+
+Führen Sie die folgenden Schritte aus, um dem Rechenzentrum in vCenter die Benutzerberechtigungen zuzuweisen.
+
+.Schritte
+. Wählen Sie im linken Bereich *Rechenzentrum* aus.
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne.
+.. Verwenden Sie die Suchfunktion, um den neuen HCC-Benutzer zu finden, den Sie erstellt haben.<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `ReadOnly role` Die
++
+
+IMPORTANT: Wählen Sie *NICHT* die Option *An untergeordnete Elemente weitergeben*.
+
+
+
+
+
+
+
+=== Benutzerberechtigungen für NetApp HCI Datenspeicher zuweisen
+
+Führen Sie die folgenden Schritte aus, um den NetApp HCI -Datenspeichern in vCenter die Benutzerberechtigungen zuzuweisen.
+
+.Schritte
+. Wählen Sie im linken Bereich *Rechenzentrum* aus.
+. Erstellen Sie einen neuen Speicherordner.  Klicken Sie mit der rechten Maustaste auf *Datacenter* und wählen Sie *Speicherordner erstellen*.
+. Übertragen Sie alle NetApp HCI Datenspeicher aus dem Speichercluster und lokal auf dem Rechenknoten in den neuen Speicherordner.
+. Wählen Sie den neuen Speicherordner aus.
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne.
+.. Verwenden Sie die Suchfunktion, um den neuen HCC-Benutzer zu finden, den Sie erstellt haben.<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `Administrator role`
+.. Wählen Sie *An untergeordnete Elemente weitergeben*.
+
+
+
+
+
+
+=== Weisen Sie einem NetApp Hostcluster Benutzerberechtigungen zu.
+
+Führen Sie die folgenden Schritte aus, um einem NetApp Hostcluster in vCenter die Benutzerberechtigungen zuzuweisen.
+
+.Schritte
+. Wählen Sie im linken Navigationsbereich den NetApp Hostcluster aus.
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne.
+.. Verwenden Sie die Suchfunktion, um den neuen HCC-Benutzer zu finden, den Sie erstellt haben.<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `NetApp Role` oder `Administrator` Die
+.. Wählen Sie *An untergeordnete Elemente weitergeben*.
+
+
+
+
+
+
+== NetApp ESXi-Hostkonfigurationen
+
+Bei NetApp ESXi-Hostkonfigurationen sollten Sie das mit NDE erstellte Benutzerkonto auf die neue NetApp HCC-Rolle aktualisieren.
+
+
+
+=== Der NetApp ESXi-Host ist in einem vCenter-Hostcluster nicht vorhanden.
+
+Falls der NetApp ESXi-Host nicht innerhalb eines vCenter-Hostclusters existiert, können Sie mit dem folgenden Verfahren die NetApp HCC-Rolle und Benutzerberechtigungen in vCenter zuweisen.
+
+.Schritte
+. Wählen Sie im Menü *Hosts* und *Cluster* aus.
+. Wählen Sie im linken Navigationsbereich den NetApp ESXi-Host aus.
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne.
+.. Verwenden Sie die Suchfunktion, um den neuen Benutzer zu finden, den Sie erstellt haben in<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `NetApp Role` oder `Administrator` Die
+
+
+. Wählen Sie *An untergeordnete Elemente weitergeben*.
+
+
+
+
+=== Ein NetApp ESXi-Host ist in einem vCenter-Hostcluster vorhanden.
+
+Wenn sich ein NetApp ESXi-Host innerhalb eines vCenter-Hostclusters mit ESXi-Hosts anderer Hersteller befindet, können Sie mit dem folgenden Verfahren die NetApp HCC-Rolle und Benutzerberechtigungen in vCenter zuweisen.
+
+. Wählen Sie im Menü *Hosts* und *Cluster* aus.
+. Erweitern Sie im linken Navigationsbereich den gewünschten Hostcluster.
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne.
+.. Verwenden Sie die Suchfunktion, um den neuen Benutzer zu finden, den Sie erstellt haben in<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `NetApp Role` Die
++
+
+IMPORTANT: Wählen Sie *NICHT* die Option *An untergeordnete Elemente weitergeben*.
+
+
+
+. Wählen Sie im linken Navigationsbereich einen NetApp ESXi-Host aus.
+. Im rechten Navigationsbereich wählen Sie *Berechtigungen* aus.
+. Wählen Sie das *+*-Symbol, um den neuen Benutzer hinzuzufügen.
++
+Fügen Sie die folgenden Details im Fenster *Berechtigung hinzufügen* hinzu:
+
++
+.. Wählen `vsphere.local` oder Ihre LDAP-Domäne.
+.. Verwenden Sie die Suchfunktion, um den neuen Benutzer zu finden, den Sie erstellt haben in<<Ein neues Benutzerkonto in vCenter einrichten>> Die
+.. Wählen `NetApp Role` oder `Administrator` Die
+.. Wählen Sie *An untergeordnete Elemente weitergeben*.
+
+
+. Wiederholen Sie den Vorgang für die übrigen NetApp ESXi-Hosts im Hostcluster.
+
+
+
+
+== Das Controller-Asset ist bereits auf dem Management-Knoten vorhanden.
+
+Falls auf dem Management-Knoten bereits ein Controller-Asset vorhanden ist, führen Sie die folgenden Schritte aus, um den Controller mithilfe von `PUT /assets /{asset_id} /controllers /{controller_id}` Die
+
+.Schritte
+. Greifen Sie auf die API-Benutzeroberfläche des mnode-Dienstes auf dem Management-Knoten zu:
++
+`https://<ManagementNodeIP>/mnode`
+
+. Wählen Sie *Autorisieren* und geben Sie die Anmeldeinformationen für den Zugriff auf die API-Aufrufe ein.
+. Wählen `GET /assets` um die übergeordnete ID zu erhalten.
+. Wählen `PUT /assets /{asset_id} /controllers /{controller_id}` Die
++
+.. Geben Sie die bei der Kontoeinrichtung erstellten Anmeldeinformationen im Anfragetext ein.
+
+
+
+
+
+
+== Fügen Sie dem Verwaltungsknoten ein Asset hinzu.
+
+Falls Sie nach der Installation manuell ein neues Asset hinzufügen müssen, verwenden Sie das neue HCC-Benutzerkonto, das Sie erstellt haben.<<Ein neues Benutzerkonto in vCenter einrichten>> Die Weitere Informationen finden Sie unter link:task_mnode_add_assets.html["Fügen Sie dem Verwaltungsknoten ein Controller-Asset hinzu."].
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

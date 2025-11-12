@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_prechecks.html 
+summary: Im Rahmen eines Upgrades Ihres NetApp SolidFire -Speichersystems müssen Sie Integritätsprüfungen für die NetApp Element -Software durchführen. 
+keywords: netapp, storage prechecks, element upgrade, sfupgradecheck 
+---
+= Führen Sie vor dem Speicher-Upgrade Integritätsprüfungen des Element-Speichers durch.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Vor dem Upgrade des Element-Speichers müssen Sie Integritätsprüfungen durchführen, um sicherzustellen, dass alle Speicherknoten in Ihrem Cluster für das nächste Element-Speicher-Upgrade bereit sind.
+
+.Was du brauchst
+* *Management-Services*: Sie haben auf das neueste Management-Services-Paket (2.10.27 oder höher) aktualisiert.
++
+
+IMPORTANT: Sie müssen auf das neueste Management-Services-Paket aktualisieren, bevor Sie Ihre Element-Software aktualisieren können.
+
+* *Management-Knoten*:Sie verwenden Management-Knoten Version 11.3 oder höher.
+* *Element-Software*: Auf Ihrem Cluster läuft die NetApp Element -Software Version 11.3 oder höher.
+* *Endbenutzer-Lizenzvereinbarung (EULA)*: Ab Management Services Version 2.20.69 müssen Sie die EULA akzeptieren und speichern, bevor Sie die NetApp Hybrid Cloud Control-Benutzeroberfläche oder -API verwenden, um Element-Speicherzustandsprüfungen durchzuführen:
++
+.. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des Speichercluster-Administrators angeben.
+.. Wählen Sie oben rechts in der Benutzeroberfläche die Option *Upgrade*.
+.. Die Endbenutzer-Lizenzvereinbarung (EULA) erscheint.  Scrollen Sie nach unten, wählen Sie *Ich akzeptiere aktuelle und alle zukünftigen Updates* und wählen Sie *Speichern*.
+
+
+
+
+.Optionen für Gesundheitschecks
+Sie können Integritätsprüfungen über die NetApp Hybrid Cloud Control-Benutzeroberfläche oder die NetApp Hybrid Cloud Control-API durchführen:
+
+* <<Verwenden Sie NetApp Hybrid Cloud Control, um vor dem Upgrade des Speichers Integritätsprüfungen für Element-Speicher durchzuführen.>>(Bevorzugte Methode)
+
+
+Sie können auch mehr über die vom Dienst durchgeführten Speicherzustandsprüfungen erfahren:
+
+* <<vom Dienst durchgeführte Speicherzustandsprüfungen>>
+
+
+
+
+== Verwenden Sie NetApp Hybrid Cloud Control, um vor dem Upgrade des Speichers Integritätsprüfungen für Element-Speicher durchzuführen.
+
+Mit NetApp Hybrid Cloud Control können Sie überprüfen, ob ein Speichercluster für ein Upgrade bereit ist.
+
+.Schritte
+. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser:
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des Speichercluster-Administrators angeben.
+. Wählen Sie oben rechts in der Benutzeroberfläche die Option *Upgrade*.
+. Auf der Seite *Upgrades* wählen Sie die Registerkarte *Speicher* aus.
+. Wählen Sie den Gesundheitscheck aus.image:hcc_healthcheck_icon.png["Symbol"] für den Cluster, den Sie auf Upgrade-Bereitschaft prüfen möchten.
+. Wählen Sie auf der Seite *Speicherzustandsprüfung* die Option *Zustandsprüfung ausführen*.
+. Falls Probleme auftreten, gehen Sie wie folgt vor:
++
+.. Rufen Sie den für jedes Problem aufgeführten spezifischen KB-Artikel auf oder führen Sie die angegebene Abhilfemaßnahme durch.
+.. Falls ein Knowledge Base-Artikel angegeben ist, führen Sie die im entsprechenden Knowledge Base-Artikel beschriebenen Schritte durch.
+.. Nachdem Sie die Clusterprobleme behoben haben, wählen Sie *Integritätsprüfung erneut ausführen*.
+
+
+
+
+Nachdem die Integritätsprüfung fehlerfrei abgeschlossen wurde, ist der Speichercluster bereit für das Upgrade.  Siehe Speicherknoten-Upgradelink:task_hcc_upgrade_element_software.html["Anweisungen"] um fortzufahren.
+
+
+
+== Verwenden Sie die API, um vor dem Speicher-Upgrade Integritätsprüfungen des Element-Speichers durchzuführen.
+
+Mithilfe der REST-API können Sie überprüfen, ob ein Speichercluster für ein Upgrade bereit ist.  Der Health Check stellt sicher, dass dem Upgrade keine Hindernisse im Wege stehen, wie z. B. ausstehende Knoten, Speicherplatzprobleme oder Clusterfehler.
+
+.Schritte
+. Ermitteln Sie die Speichercluster-ID:
++
+.. Öffnen Sie die REST-API-Benutzeroberfläche des Management-Knotens auf dem Management-Knoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` falls der Wert noch nicht belegt ist.
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Autorisierungsfenster.
+
+
+.. Wählen Sie in der REST-API-Benutzeroberfläche Folgendes aus: `GET /assets` Die
+.. Wählen Sie *Ausprobieren*.
+.. Wählen Sie *Ausführen*.
+.. Kopieren Sie aus der Antwort die `"id"` von `"storage"` Abschnitt des Clusters, den Sie auf Upgrade-Bereitschaft überprüfen möchten.
++
+
+NOTE: Verwenden Sie nicht `"parent"` Wert in diesem Abschnitt, da es sich um die ID des Management-Knotens handelt, nicht um die ID des Speicherclusters.
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. Führen Sie Integritätsprüfungen am Speichercluster durch:
++
+.. Öffnen Sie die Benutzeroberfläche der Storage-REST-API auf dem Verwaltungsknoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` falls der Wert noch nicht belegt ist.
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Autorisierungsfenster.
+
+
+.. Wählen Sie *POST /health-checks*.
+.. Wählen Sie *Ausprobieren*.
+.. Geben Sie im Parameterfeld die in Schritt 1 erhaltene Speichercluster-ID ein.
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. Wählen Sie *Ausführen*, um eine Integritätsprüfung des angegebenen Speicherclusters durchzuführen.
++
+Die Antwort sollte den Status angeben `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. Kopiere die `healthCheckID` Das ist Teil der Reaktion.
+
+
+. Überprüfen Sie die Ergebnisse der Gesundheitschecks:
++
+.. Wählen Sie *GET ​/health-checks​/{healthCheckId}*.
+.. Wählen Sie *Ausprobieren*.
+.. Geben Sie die Health-Check-ID in das Parameterfeld ein.
+.. Wählen Sie *Ausführen*.
+.. Scrollen Sie bis zum Ende des Antworttextes.
++
+Wenn alle Gesundheitsprüfungen erfolgreich sind, sieht die Rückgabe in etwa wie im folgenden Beispiel aus:
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. Wenn die `message` Die Fehlermeldung deutet auf Probleme mit dem Clusterzustand hin. Gehen Sie wie folgt vor:
++
+.. Wählen Sie *GET ​/health-checks​/{healthCheckId}/log*
+.. Wählen Sie *Ausprobieren*.
+.. Geben Sie die Health-Check-ID in das Parameterfeld ein.
+.. Wählen Sie *Ausführen*.
+.. Prüfen Sie alle spezifischen Fehler und rufen Sie die zugehörigen Links zu den Wissensdatenbankartikeln ab.
+.. Rufen Sie den für jedes Problem aufgeführten spezifischen KB-Artikel auf oder führen Sie die angegebene Abhilfemaßnahme durch.
+.. Falls ein Knowledge Base-Artikel angegeben ist, führen Sie die im entsprechenden Knowledge Base-Artikel beschriebenen Schritte durch.
+.. Nachdem Sie die Clusterprobleme behoben haben, führen Sie *GET ​/health-checks​/{healthCheckId}/log* erneut aus.
+
+
+
+
+
+
+== vom Dienst durchgeführte Speicherzustandsprüfungen
+
+Die Speicherzustandsprüfungen führen die folgenden Prüfungen pro Cluster durch.
+
+|===
+| Name prüfen | Knoten/Cluster | Beschreibung 
+
+
+| check_async_results | Cluster | Prüft, ob die Anzahl der asynchronen Ergebnisse in der Datenbank unter einem Schwellenwert liegt. 
+
+
+| check_cluster_faults | Cluster | Prüft, ob keine Clusterfehler vorliegen, die ein Upgrade blockieren (wie in der Elementquelle definiert). 
+
+
+| Uploadgeschwindigkeit prüfen | Node | Misst die Upload-Geschwindigkeit zwischen dem Speicherknoten und dem Verwaltungsknoten. 
+
+
+| Verbindungsgeschwindigkeitsprüfung | Node | Prüft, ob die Knoten eine Verbindung zum Management-Knoten haben, der die Upgrade-Pakete bereitstellt, und schätzt die Verbindungsgeschwindigkeit. 
+
+
+| check_cores | Node | Prüft, ob auf dem Knoten Kernel-Absturzabbilder und Core-Dateien vorhanden sind.  Die Überprüfung schlägt fehl, wenn es in einem kürzlich zurückliegenden Zeitraum (Schwellenwert 7 Tage) zu Abstürzen gekommen ist. 
+
+
+| check_root_disk_space | Node | Prüft, ob im Root-Dateisystem ausreichend freier Speicherplatz für ein Upgrade vorhanden ist. 
+
+
+| check_var_log_disk_space | Node | Bestätigt, dass `/var/log` Der freie Speicherplatz muss einen bestimmten Prozentsatz an freiem Speicherplatz erfüllen.  Falls dies nicht der Fall ist, rotiert und löscht die Prüfroutine ältere Protokolle, um den Schwellenwert zu unterschreiten.  Die Überprüfung schlägt fehl, wenn es nicht gelingt, ausreichend freien Speicherplatz zu schaffen. 
+
+
+| check_pending_nodes | Cluster | Prüft, ob im Cluster keine Knoten ausstehen. 
+|===
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

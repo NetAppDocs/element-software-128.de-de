@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_intro_management_node.html 
+sidebar: sidebar 
+keywords: what is the management node, what is the mNode 
+summary: 'Der Management-Knoten \(mNode\) ist eine virtuelle Maschine, die parallel zu einem oder mehreren Element-Software-basierten Speicherclustern läuft.  Es dient der Aktualisierung und Bereitstellung von Systemdiensten, einschließlich Überwachung und Telemetrie, der Verwaltung von Clusterressourcen und -einstellungen, der Ausführung von Systemtests und -dienstprogrammen sowie der Ermöglichung des NetApp Supportzugriffs zur Fehlerbehebung.' 
+---
+= Verwaltungsknoten für die Element-Software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der Management-Knoten (mNode) ist eine virtuelle Maschine, die parallel zu einem oder mehreren Element-Software-basierten Speicherclustern läuft.  Es dient der Aktualisierung und Bereitstellung von Systemdiensten, einschließlich Überwachung und Telemetrie, der Verwaltung von Clusterressourcen und -einstellungen, der Ausführung von Systemtests und -dienstprogrammen sowie der Ermöglichung des NetApp Supportzugriffs zur Fehlerbehebung.
+
+Ab der Element-Version 11.3 fungiert der Management-Knoten als Microservice-Host, was schnellere Aktualisierungen ausgewählter Softwaredienste außerhalb von Hauptversionen ermöglicht.  Diese Mikrodienste oder Managementdienste, wie beispielsweise der Active IQ Collector, QoSSIOC für das vCenter Plug-in und der mNode-Dienst, werden regelmäßig als Service-Bundles aktualisiert.  Zusätzliche Dienste für Software-Upgrades der Speicherknoten und Support-Tools (Remote-Support-Tunneling) sind ebenfalls über den Management-Knoten verfügbar.
+
+
+NOTE: Als bewährte Methode empfiehlt es sich, nur einen Management-Knoten mit einer VMware vCenter-Instanz zu verknüpfen und die Definition derselben Speicher- und Rechenressourcen oder vCenter-Instanzen in mehreren Management-Knoten zu vermeiden.

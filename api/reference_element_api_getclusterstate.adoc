@@ -1,0 +1,85 @@
+---
+permalink: api/reference_element_api_getclusterstate.html 
+sidebar: sidebar 
+keywords: cluster,state,getting,get,getclusterstate 
+summary: Mit der GetClusterState-API-Methode können Sie angeben, ob ein Knoten Teil eines Clusters ist oder nicht. 
+---
+= GetClusterState
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetClusterState` API-Methode zur Angabe, ob ein Knoten Teil eines Clusters ist oder nicht.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Cluster
+ a| 
+Name des Clusters.
+ a| 
+Schnur
+
+
+
+ a| 
+Zustand
+ a| 
+* Verfügbar: Der Knoten wurde nicht mit einem Clusternamen konfiguriert.
+* Status: Der Knoten wartet auf die Aufnahme in einen bestimmten benannten Cluster und kann hinzugefügt werden.
+* Aktiv: Der Knoten ist ein aktives Mitglied eines Clusters und kann keinem anderen Cluster hinzugefügt werden.
+
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetClusterState",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" :
+      "cluster" :  "Cluster101"
+      "state" : "Active"
+}
+----
+
+
+== Neu seit Version
+
+9,6

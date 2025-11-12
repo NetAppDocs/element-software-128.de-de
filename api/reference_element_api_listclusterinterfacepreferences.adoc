@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_listclusterinterfacepreferences.html 
+sidebar: sidebar 
+keywords:  
+summary: Die Methode ListClusterInterfacePreference ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, die vorhandenen, auf dem System gespeicherten Cluster-Schnittstelleneinstellungen aufzulisten.  Diese Methode ist nur für den internen Gebrauch bestimmt. 
+---
+= ListClusterInterfacePreferences
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `ListClusterInterfacePreference` Mit dieser Methode können Systeme, die in Speichercluster integriert sind, auf denen die Element-Software läuft, die vorhandenen Cluster-Schnittstelleneinstellungen auflisten, die auf dem System gespeichert sind.  Diese Methode ist nur für den internen Gebrauch bestimmt.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Präferenzen
+ a| 
+Eine Liste der aktuell im Speichercluster gespeicherten Cluster-Schnittstellenobjekte, die jeweils den Namen und den Wert der Einstellung enthalten.
+ a| 
+JSON-Objektarray
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "ListClusterInterfacePreferences",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"preferences": [
+			{
+				"name": "prefname",
+				"value": "testvalue"
+			}
+		]
+	}
+}
+----
+
+
+== Neu seit Version
+
+11,0

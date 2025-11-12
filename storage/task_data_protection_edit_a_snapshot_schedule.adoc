@@ -1,0 +1,42 @@
+---
+permalink: storage/task_data_protection_edit_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, edit, modify 
+summary: Sie können bestehende Snapshot-Zeitpläne ändern.  Nach der Änderung werden beim nächsten Ausführen des Zeitplans die aktualisierten Attribute verwendet.  Alle gemäß dem ursprünglichen Zeitplan erstellten Snapshots bleiben im Speichersystem erhalten. 
+---
+= Bearbeiten eines Snapshot-Zeitplans
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können bestehende Snapshot-Zeitpläne ändern.  Nach der Änderung werden beim nächsten Ausführen des Zeitplans die aktualisierten Attribute verwendet.  Alle gemäß dem ursprünglichen Zeitplan erstellten Snapshots bleiben im Speichersystem erhalten.
+
+.Schritte
+. Klicken Sie auf *Datenschutz* > *Zeitpläne*.
+. Klicken Sie auf das Symbol *Aktionen* für den Zeitplan, den Sie ändern möchten.
+. Klicken Sie im daraufhin angezeigten Menü auf *Bearbeiten*.
+. Im Feld *Volume IDs CSV* können Sie die einzelne Volume-ID oder die durch Kommas getrennte Liste der Volume-IDs ändern, die aktuell in der Snapshot-Operation enthalten sind.
+. Um den Zeitplan anzuhalten oder fortzusetzen, wählen Sie eine der folgenden Optionen:
++
+** Um einen aktiven Zeitplan anzuhalten, wählen Sie *Ja* aus der Liste *Zeitplan manuell anhalten*.
+** Um einen pausierten Zeitplan fortzusetzen, wählen Sie *Nein* aus der Liste *Zeitplan manuell pausieren*.
+
+
+. Geben Sie bei Bedarf im Feld *Neuer Zeitplanname* einen anderen Namen für den Zeitplan ein.
+. Um den Zeitplan so zu ändern, dass er an anderen Wochentagen oder im selben Monat ausgeführt wird, wählen Sie *Zeitplantyp* und ändern Sie den Zeitplan anhand der bereitgestellten Optionen.
+. *Optional:* Wählen Sie *Wiederkehrender Zeitplan*, um den Snapshot-Zeitplan unbegrenzt zu wiederholen.
+. *Optional:* Geben Sie im Feld *Name des neuen Snapshots* einen Namen für den neuen Snapshot ein oder ändern Sie diesen.
++
+Wenn Sie das Feld leer lassen, verwendet das System Datum und Uhrzeit der Snapshot-Erstellung als Namen.
+
+. *Optional:* Aktivieren Sie das Kontrollkästchen *Snapshots bei der Replikation berücksichtigen, wenn gekoppelt*, um sicherzustellen, dass die Snapshots bei der Replikation erfasst werden, wenn das übergeordnete Volume gekoppelt wird.
+. Um die Aufbewahrungseinstellung zu ändern, wählen Sie eine der folgenden Optionen aus:
++
+** Klicken Sie auf *Für immer behalten*, um den Snapshot auf unbestimmte Zeit im System zu speichern.
+** Klicken Sie auf *Aufbewahrungsdauer festlegen* und wählen Sie mithilfe der Datums-Drehfelder eine Zeitspanne aus, für die das System den Snapshot aufbewahrt.
+
+
+. Klicken Sie auf *Änderungen speichern*.
+

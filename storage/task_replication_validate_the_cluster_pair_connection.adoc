@@ -1,0 +1,19 @@
+---
+permalink: storage/task_replication_validate_the_cluster_pair_connection.html 
+sidebar: sidebar 
+keywords: cluster pair connection, validate 
+summary: Nach Abschluss der Cluster-Kopplung sollten Sie die Verbindung des Clusterpaares überprüfen, um den Erfolg der Replikation sicherzustellen. 
+---
+= Überprüfen Sie die Verbindung des Clusterpaares.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach Abschluss der Cluster-Kopplung sollten Sie die Verbindung des Clusterpaares überprüfen, um den Erfolg der Replikation sicherzustellen.
+
+. Wählen Sie im lokalen Cluster *Datenschutz* > *Clusterpaare*.
+. Überprüfen Sie im Fenster *Clusterpaare*, ob das Clusterpaar verbunden ist.
+. *Optional:* Navigieren Sie zurück zum lokalen Cluster und zum Fenster *Clusterpaare* und überprüfen Sie, ob das Clusterpaar verbunden ist.
+

@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_cluster_set_the_cluster_full_threshold.html 
+sidebar: sidebar 
+keywords: cluster fullness, setting threshold, metadata, warning 
+summary: Sie können den Schwellenwert, ab dem das System eine Warnung wegen Überfüllung eines Blockclusters ausgibt, mit den folgenden Schritten ändern.  Darüber hinaus können Sie mit der ModifyClusterFullThreshold API-Methode die Stufe ändern, ab der das System eine Block- oder Metadatenwarnung generiert. 
+---
+= Legen Sie den Schwellenwert für die Clusterauslastung fest.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können den Schwellenwert, ab dem das System eine Warnung wegen Überfüllung eines Blockclusters ausgibt, mit den folgenden Schritten ändern.  Darüber hinaus können Sie mit der ModifyClusterFullThreshold API-Methode die Stufe ändern, ab der das System eine Block- oder Metadatenwarnung generiert.
+
+.Was du brauchst
+Sie benötigen Cluster-Administratorrechte.
+
+.Schritte
+. Klicken Sie auf *Cluster* > *Einstellungen*.
+. Im Abschnitt „Cluster Full Settings“ geben Sie einen Prozentsatz für *Warnmeldung ausgeben, wenn _% der Kapazität vor dem Ausfall eines Knotens verbleiben, bevor Helix sich nicht mehr erholen kann* ein.
+. Klicken Sie auf *Änderungen speichern*.
+
+
+
+
+== Weitere Informationen
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["Wie werden die Blockraumschwellenwerte für das Element berechnet?"^]

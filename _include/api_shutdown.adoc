@@ -1,0 +1,95 @@
+= Parameter
+:allow-uri-read: 
+
+
+Sie können die `Shutdown` Methode zum Neustart oder Herunterfahren der Knoten in einem Cluster.  Mit dieser Methode können Sie einen einzelnen Knoten, mehrere Knoten oder alle Knoten im Cluster herunterfahren.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Knoten
+ a| 
+Liste der NodeIDs der Knoten, die neu gestartet oder heruntergefahren werden sollen.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Option
+ a| 
+Zu ergreifende Maßnahmen für den Cluster. Mögliche Werte:
+
+* Neustart: Startet den Cluster neu.
+* Halt: Führt eine vollständige Stromabschaltung durch.
+
+ a| 
+Schnur
+ a| 
+Neustart
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "Shutdown",
+   "params": {
+     "nodes": [
+       2,
+       3,
+       4
+     ],
+     "option": "halt"
+   },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "failed": [],
+     "successful": [
+          6
+      [
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

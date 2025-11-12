@@ -1,0 +1,91 @@
+---
+permalink: api/reference_element_api_createclusterinterfacepreference.html 
+sidebar: sidebar 
+keywords: cluster,interface,preferences,create,creating,CreateClusterInterfacePreference 
+summary: Die Methode CreateClusterInterfacePreference ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, beliebige Informationen auf dem Speichercluster zu erstellen und zu speichern.  Diese Methode ist nur für den internen Gebrauch bestimmt. 
+---
+= CreateClusterInterfacePreference
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `CreateClusterInterfacePreference` Das Verfahren ermöglicht es Systemen, die in Speichercluster integriert sind, auf denen die Element-Software läuft, beliebige Informationen auf dem Speichercluster zu erstellen und zu speichern.  Diese Methode ist nur für den internen Gebrauch bestimmt.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Name
+ a| 
+Der Name der Cluster-Schnittstelleneinstellung.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Wert
+ a| 
+Der Wert der Cluster-Schnittstellenpräferenz.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+		"method": "CreateClusterInterfacePreference",
+		"params": {
+			"name": "prefname",
+			"value": "testvalue"
+		},
+	"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {}
+}
+----
+
+
+== Neu seit Version
+
+11,0

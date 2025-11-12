@@ -1,0 +1,183 @@
+---
+permalink: storage/reference_monitor_event_types.html 
+sidebar: sidebar 
+keywords: event types, monitor, event log 
+summary: Das System meldet verschiedene Arten von Ereignissen; jedes Ereignis ist eine vom System abgeschlossene Operation.  Es kann sich um routinemäßige, normale Ereignisse oder um Ereignisse handeln, die die Aufmerksamkeit des Administrators erfordern.  Die Spalte „Ereignistypen“ auf der Seite „Ereignisprotokoll“ gibt an, in welchem Teil des Systems das Ereignis aufgetreten ist. 
+---
+= Ereignistypen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das System meldet verschiedene Arten von Ereignissen; jedes Ereignis ist eine vom System abgeschlossene Operation.  Es kann sich um routinemäßige, normale Ereignisse oder um Ereignisse handeln, die die Aufmerksamkeit des Administrators erfordern.  Die Spalte „Ereignistypen“ auf der Seite „Ereignisprotokoll“ gibt an, in welchem Teil des Systems das Ereignis aufgetreten ist.
+
+
+NOTE: Das System protokolliert keine schreibgeschützten API-Befehle im Ereignisprotokoll.
+
+Die folgende Liste beschreibt die Arten von Ereignissen, die im Ereignisprotokoll angezeigt werden:
+
+* *apiEvent*
++
+Vom Benutzer über eine API oder eine Web-Benutzeroberfläche ausgelöste Ereignisse, die Einstellungen ändern.
+
+* *binAssignmentsEvent*
++
+Ereignisse im Zusammenhang mit der Zuordnung von Datenbehältern.  Bins sind im Wesentlichen Container, die Daten enthalten und im gesamten Cluster abgebildet werden.
+
+* *binSyncEvent*
++
+Systemereignisse im Zusammenhang mit einer Neuzuordnung von Daten zwischen Blockdiensten.
+
+* *bsCheckEvent*
++
+Systemereignisse im Zusammenhang mit Blockdienstprüfungen.
+
+* *bsKillEvent*
++
+Systemereignisse im Zusammenhang mit der Beendigung von Blockdiensten.
+
+* *bulkOpEvent*
++
+Ereignisse im Zusammenhang mit Operationen, die auf einem gesamten Volume durchgeführt werden, wie z. B. eine Sicherung, Wiederherstellung, ein Snapshot oder ein Klonen.
+
+* *cloneEvent*
++
+Ereignisse im Zusammenhang mit dem Klonen von Datenträgern.
+
+* *clusterMasterEvent*
++
+Ereignisse, die bei der Initialisierung des Clusters oder bei Konfigurationsänderungen am Cluster auftreten, wie z. B. beim Hinzufügen oder Entfernen von Knoten.
+
+* [[csum_event]]*cSumEvent*
++
+Ereignisse im Zusammenhang mit der Erkennung einer Prüfsummenabweichung während der End-to-End-Prüfsummenvalidierung.
+
++
+Dienste, die eine Prüfsummenabweichung feststellen, werden automatisch gestoppt und nach dem Auslösen dieses Ereignisses nicht neu gestartet.
+
+* *dataEvent*
++
+Ereignisse im Zusammenhang mit dem Lesen und Schreiben von Daten.
+
+* *dbEvent*
++
+Ereignisse im Zusammenhang mit der globalen Datenbank, die von den Ensemble-Knoten im Cluster verwaltet wird.
+
+* *driveEvent*
++
+Ereignisse im Zusammenhang mit dem Fahrbetrieb.
+
+* *encryptionAtRestEvent*
++
+Ereignisse im Zusammenhang mit dem Verschlüsselungsprozess auf einem Cluster.
+
+* *EnsembleEvent*
++
+Ereignisse im Zusammenhang mit der Erhöhung oder Verringerung der Anzahl der Knoten in einem Ensemble.
+
+* *fibreChannelEvent*
++
+Ereignisse im Zusammenhang mit der Konfiguration und den Verbindungen zu den Knoten.
+
+* *gcEvent*
++
+Ereignisse im Zusammenhang mit Prozessen, die alle 60 Minuten ausgeführt werden, um Speicherplatz auf Blocklaufwerken freizugeben.  Dieser Vorgang wird auch als Müllabfuhr bezeichnet.
+
+* *ieEvent*
++
+Interner Systemfehler.
+
+* *installEvent*
++
+Automatische Softwareinstallationsereignisse.  Die Software wird automatisch auf einem ausstehenden Knoten installiert.
+
+* *iSCSIEvent*
++
+Ereignisse im Zusammenhang mit iSCSI-Problemen im System.
+
+* *limitEvent*
++
+Ereignisse im Zusammenhang mit der Anzahl der Volumes oder virtuellen Volumes in einem Konto oder im Cluster, die sich dem maximal zulässigen Wert nähern.
+
+* *Wartungsmodus-Ereignis*
++
+Ereignisse im Zusammenhang mit dem Wartungsmodus des Knotens, wie z. B. das Deaktivieren des Knotens.
+
+* [[network_event]]*networkEvent*
++
+Ereignisse im Zusammenhang mit der Netzwerkfehlerberichterstattung für jede physische Netzwerkschnittstellenkarte (NIC).
+
++
+Diese Ereignisse werden ausgelöst, wenn die Anzahl der Fehler einer Schnittstelle während eines 10-minütigen Überwachungsintervalls einen Standard-Schwellenwert von 1000 überschreitet.  Diese Ereignisse beziehen sich auf Netzwerkfehler wie Empfangsfehler, CRC-Fehler (Cyclic Redundancy Check), Längenfehler, Überlauffehler und Frame-Fehler.
+
+* *platformHardwareEvent*
++
+Ereignisse im Zusammenhang mit auf Hardwaregeräten festgestellten Problemen.
+
+* *remoteClusterEvent*
++
+Ereignisse im Zusammenhang mit der Kopplung entfernter Cluster.
+
+* *schedulerEvent*
++
+Ereignisse im Zusammenhang mit geplanten Snapshots.
+
+* *serviceEvent*
++
+Ereignisse im Zusammenhang mit dem Systemdienststatus.
+
+* *sliceEvent*
++
+Ereignisse im Zusammenhang mit dem Slice-Server, wie beispielsweise das Entfernen eines Metadatenlaufwerks oder -volumes.
+
++
+Es gibt drei Arten von Slice-Neuzuordnungsereignissen, die Informationen über den Dienst enthalten, dem ein Volume zugewiesen ist:
+
++
+** Umschalten: Änderung des primären Dienstes zu einem neuen primären Dienst
++
+[listing]
+----
+sliceID oldPrimaryServiceID->newPrimaryServiceID
+----
+** Umzug: Änderung des sekundären Dienstes zu einem neuen sekundären Dienst
++
+[listing]
+----
+sliceID {oldSecondaryServiceID(s)}->{newSecondaryServiceID(s)}
+----
+** Beschneidung: Entfernen eines Volumes aus einer Gruppe von Diensten
++
+[listing]
+----
+sliceID {oldSecondaryServiceID(s)}
+----
+
+
+* *snmpTrapEvent*
++
+Ereignisse im Zusammenhang mit SNMP-Traps.
+
+* *statEvent*
++
+Ereignisse im Zusammenhang mit Systemstatistiken.
+
+* *tsEvent*
++
+Ereignisse im Zusammenhang mit dem Systemtransportdienst.
+
+* *unerwartete Ausnahme*
++
+Ereignisse im Zusammenhang mit unerwarteten Systemausnahmen.
+
+* *ureEvent*
++
+Ereignisse im Zusammenhang mit nicht behebbaren Lesefehlern, die beim Lesen vom Speichermedium auftreten.
+
+* *vasaProviderEvent*
++
+Ereignisse im Zusammenhang mit einem VASA (vSphere APIs for Storage Awareness) Provider.
+
+

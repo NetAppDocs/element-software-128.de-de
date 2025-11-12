@@ -1,0 +1,69 @@
+---
+permalink: api/reference_element_api_getlldpinfo.html 
+sidebar: sidebar 
+keywords: lldp,info,get,getting,getlldpinfo,storage 
+summary: 'Mit der GetLldpInfo-Methode können Sie die Link Layer Discovery Protocol (LLDP)-Konfiguration für jeden Knoten eines Speicherclusters oder für einen einzelnen Speicherknoten abrufen.' 
+---
+= GetLldpInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetLldpInfo` Methode zum Abrufen der Link Layer Discovery Protocol (LLDP)-Konfiguration für jeden Knoten eines Speicherclusters oder eines einzelnen Speicherknotens.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+lldpInfo
+ a| 
+Informationen über das Chassis, die Schnittstelle und die LLDP-Nachbareinstellungen für jeden Knoten eines Speicherclusters.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetLldpInfo",
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+11,0
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_response_example_getlldpinfo.adoc[GetLldpInfo]

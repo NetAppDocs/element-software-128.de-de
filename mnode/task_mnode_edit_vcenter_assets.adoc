@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_edit_vcenter_assets.html 
+summary: Sie können vCenter-Management-Node-Controller über die REST-API-Benutzeroberfläche bearbeiten. 
+keywords: netapp, mnode, management node, rest api, Element 
+---
+= Vorhandene Controller-Assets anzeigen oder bearbeiten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Informationen über vorhandene VMware vCenter-Controller in der Management-Knotenkonfiguration mithilfe der REST-API anzeigen und bearbeiten.  Bei den Controllern handelt es sich um VMware vCenter-Instanzen, die beim Management-Knoten Ihrer NetApp SolidFire -Installation registriert sind.
+
+.Bevor Sie beginnen
+* Stellen Sie sicher, dass auf Ihrem Cluster die NetApp Element Software Version 11.3 oder höher ausgeführt wird.
+* Stellen Sie sicher, dass Sie einen Management-Knoten mit Version 11.3 oder höher bereitgestellt haben.
+
+
+
+
+== Greifen Sie auf die REST-API der Verwaltungsdienste zu.
+
+.Schritte
+. Greifen Sie auf die REST-API-Benutzeroberfläche für Verwaltungsdienste zu, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von eingeben. `/vcenter/1/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+.. Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+.. Geben Sie die Client-ID ein als `mnode-client` Die
+.. Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+.. Schließen Sie das Fenster.
+
+
+
+
+
+
+== Gespeicherte Informationen über vorhandene Controller anzeigen
+
+Sie können die vorhandenen vCenter-Controller, die beim Management-Knoten registriert sind, auflisten und die darüber gespeicherten Informationen mithilfe der REST-API anzeigen.
+
+.Schritte
+. Wählen Sie *GET /compute/controllers*.
+. Wählen Sie *Ausprobieren*.
+. Wählen Sie *Ausführen*.
++
+Die API gibt eine Liste aller bekannten vCenter-Controller zurück, zusammen mit der IP-Adresse, der Controller-ID, dem Hostnamen und der Benutzer-ID, die zur Kommunikation mit jedem Controller verwendet werden.
+
+. Wenn Sie den Verbindungsstatus eines bestimmten Controllers abrufen möchten, kopieren Sie die Controller-ID aus der `id` Kopieren Sie das Feld dieses Controllers in Ihre Zwischenablage und sehen Sie nach<<Den Status eines vorhandenen Controllers anzeigen>> Die
+
+
+
+
+== Den Status eines vorhandenen Controllers anzeigen
+
+Sie können den Status aller vorhandenen, beim Management-Knoten registrierten vCenter-Controller anzeigen.  Die API gibt einen Status zurück, der angibt, ob NetApp Hybrid Cloud Control eine Verbindung zum vCenter-Controller herstellen kann, sowie den Grund für diesen Status.
+
+.Schritte
+. Wählen Sie *GET /compute/controllers/{controller_id}/status*.
+. Wählen Sie *Ausprobieren*.
+. Geben Sie die zuvor kopierte Controller-ID in das Feld ein. `controller_id` Parameter.
+. Wählen Sie *Ausführen*.
++
+Die API gibt den Status dieses bestimmten vCenter-Controllers sowie den Grund für diesen Status zurück.
+
+
+
+
+
+== Bearbeiten Sie die gespeicherten Eigenschaften eines Controllers
+
+Sie können den gespeicherten Benutzernamen oder das Passwort für jeden der vorhandenen vCenter-Controller bearbeiten, die beim Verwaltungsknoten registriert sind.  Die gespeicherte IP-Adresse eines vorhandenen vCenter-Controllers kann nicht bearbeitet werden.
+
+.Schritte
+. Wählen Sie *PUT /compute/controllers/{controller_id}*.
+. Geben Sie die Controller-ID eines vCenter-Controllers in der `controller_id` Parameter.
+. Wählen Sie *Ausprobieren*.
+. Ändern Sie einen der folgenden Parameter im Feld *Anfragetext*:
++
+|===
+| Parameter | Typ | Beschreibung 
+
+
+| `userId` | Schnur | Ändern Sie die Benutzer-ID, die zur Kommunikation mit dem vCenter-Controller verwendet wird (der Benutzer muss über Administratorrechte verfügen). 
+
+
+| `password` | Schnur | Ändern Sie das Passwort, das zur Kommunikation mit dem vCenter-Controller verwendet wird. 
+|===
+. Wählen Sie *Ausführen*.
++
+Die API liefert aktualisierte Controller-Informationen.
+
+
+
+[discrete]
+== Weitere Informationen
+
+* link:task_mnode_add_assets.html["Fügen Sie dem Verwaltungsknoten ein Controller-Asset hinzu."]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

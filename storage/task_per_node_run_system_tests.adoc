@@ -1,0 +1,67 @@
+---
+permalink: storage/task_per_node_run_system_tests.html 
+sidebar: sidebar 
+keywords: storage nodes, running system tests,s ystem tests, network settings, testing changes 
+summary: Änderungen an den Netzwerkeinstellungen können Sie testen, nachdem Sie sie in die Netzwerkkonfiguration übernommen haben.  Sie können die Tests durchführen, um sicherzustellen, dass der Speicherknoten stabil ist und ohne Probleme online geschaltet werden kann. 
+---
+= Führen Sie Systemtests über die Benutzeroberfläche pro Knoten durch.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Änderungen an den Netzwerkeinstellungen können Sie testen, nachdem Sie sie in die Netzwerkkonfiguration übernommen haben.  Sie können die Tests durchführen, um sicherzustellen, dass der Speicherknoten stabil ist und ohne Probleme online geschaltet werden kann.
+
+Sie haben sich in die Benutzeroberfläche pro Knoten für den Speicherknoten eingeloggt.
+
+. Klicken Sie auf *Systemtests*.
+. Klicken Sie neben dem gewünschten Test auf *Test ausführen* oder wählen Sie *Alle Tests ausführen*.
++
+
+NOTE: Die Durchführung aller Testvorgänge kann zeitaufwändig sein und sollte nur auf Anweisung des NetApp -Supports erfolgen.
+
++
+** *Test Connected Ensemble*
++
+Testet und verifiziert die Verbindung zu einem Datenbankensemble.  Standardmäßig verwendet der Test das Ensemble für den Cluster, dem der Knoten zugeordnet ist.  Alternativ können Sie ein anderes Ensemble verwenden, um die Konnektivität zu testen.
+
+** *Test Connect Mvip*
++
+Es wird die angegebene Management Virtual IP (MVIP)-Adresse angepingt und anschließend ein einfacher API-Aufruf an die MVIP ausgeführt, um die Konnektivität zu überprüfen.  Standardmäßig verwendet der Test den MVIP für den Cluster, dem der Knoten zugeordnet ist.
+
+** *Test Connect Svip*
++
+Die angegebene virtuelle Speicher-IP-Adresse (SVIP) wird mit Hilfe von ICMP-Paketen (Internet Control Message Protocol) angepingt, deren Größe der maximalen Übertragungseinheit (MTU) des Netzwerkadapters entspricht.  Anschließend stellt es als iSCSI-Initiator eine Verbindung zum SVIP her.  Standardmäßig verwendet der Test den SVIP des Clusters, dem der Knoten zugeordnet ist.
+
+** *Test-Hardwarekonfiguration*
++
+Prüft, ob alle Hardwarekonfigurationen korrekt sind, validiert die Firmwareversionen und bestätigt, dass alle Laufwerke ordnungsgemäß installiert sind und funktionieren.  Das entspricht der Werksprüfung.
+
++
+
+NOTE: Dieser Test ist ressourcenintensiv und sollte nur auf Anfrage des NetApp Supports durchgeführt werden.
+
+** *Lokale Konnektivität testen*
++
+Testet die Konnektivität zu allen anderen Knoten im Cluster, indem die Cluster-IP (CIP) auf jedem Knoten angepingt wird.  Dieser Test wird auf einem Knoten nur dann angezeigt, wenn der Knoten Teil eines aktiven Clusters ist.
+
+** *Test Location Cluster*
++
+Prüft, ob der Knoten den in der Clusterkonfiguration angegebenen Cluster finden kann.
+
+** *Netzwerkkonfiguration testen*
++
+Überprüft, ob die konfigurierten Netzwerkeinstellungen mit den auf dem System verwendeten Netzwerkeinstellungen übereinstimmen.  Dieser Test dient nicht dazu, Hardwareausfälle zu erkennen, wenn ein Knoten aktiv an einem Cluster teilnimmt.
+
+** *Ping-Test*
++
+Es werden eine bestimmte Liste von Hosts angepingt oder, falls keine angegeben ist, dynamisch eine Liste aller registrierten Knoten im Cluster erstellt und jeder Knoten wird auf einfache Konnektivität angepingt.
+
+** *Test der Remote-Konnektivität*
++
+Testet die Konnektivität zu allen Knoten in entfernt gekoppelten Clustern, indem die Cluster-IP (CIP) auf jedem Knoten angepingt wird.  Dieser Test wird auf einem Knoten nur dann angezeigt, wenn der Knoten Teil eines aktiven Clusters ist.
+
+
+
+

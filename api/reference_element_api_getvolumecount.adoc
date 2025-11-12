@@ -1,0 +1,74 @@
+---
+permalink: api/reference_element_api_getvolumecount.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,count,measurements,getvolumecount 
+summary: Mit der Methode GetVolumeCount können Sie die Anzahl der aktuell im System vorhandenen Volumes ermitteln. 
+---
+= GetVolumeCount
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetVolumeCount` Methode zum Ermitteln der Anzahl der aktuell im System befindlichen Datenträger.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+zählen
+ a| 
+Die Anzahl der aktuell im System befindlichen Bände.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetVolumeCount",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "count": 7
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

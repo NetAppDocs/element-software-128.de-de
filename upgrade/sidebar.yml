@@ -1,0 +1,24 @@
+---
+section: upgrade
+title: Rüsten Sie Ihr NetApp SolidFire All-Flash-Speichersystem auf
+entries:
+- title: Übersicht der Upgrade-Sequenz
+  url: "/upgrade/concept_element_upgrade_overview.html"
+- title: Systemaktualisierungsverfahren
+  entries:
+  - title: Führen Sie vor dem Speicher-Upgrade Integritätsprüfungen des Element-Speichers
+      durch.
+    url: "/upgrade/task_hcc_upgrade_element_prechecks.html"
+  - title: Aktualisieren eines Verwaltungsknotens
+    url: "/upgrade/task_hcc_upgrade_management_node.html"
+  - title: Aktualisierungsverwaltungsdienste
+    url: "/upgrade/task_hcc_update_management_services.html"
+  - title: Upgrade Element Software
+    url: "/upgrade/task_hcc_upgrade_element_software.html"
+  - title: Speicher-Firmware aktualisieren
+    url: "/upgrade/task_hcc_upgrade_storage_firmware.html"
+  - title: Aktualisieren Sie das Element-Plug-in für vCenter Server
+    url: "/upgrade/task_vcp_upgrade_plugin.html"
+- title: Rüsten Sie Ihre vSphere-Komponenten für ein NetApp SolidFire -Speichersystem
+    mit dem Element-Plug-in für vCenter Server auf.
+  url: "/upgrade/task_sf_upgrade_all_vsphere.html"

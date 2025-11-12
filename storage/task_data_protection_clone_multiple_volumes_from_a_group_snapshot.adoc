@@ -1,0 +1,34 @@
+---
+permalink: storage/task_data_protection_clone_multiple_volumes_from_a_group_snapshot.html 
+sidebar: sidebar 
+keywords: multiple volumes, group snapshot, clone, create, data protection 
+summary: Sie können eine Gruppe von Volumes aus einem Point-in-Time-Gruppen-Snapshot klonen.  Für diesen Vorgang ist es erforderlich, dass bereits ein Gruppen-Snapshot der Volumes existiert, da der Gruppen-Snapshot als Grundlage für die Erstellung der Volumes verwendet wird.  Nachdem Sie die Volumes erstellt haben, können Sie sie wie jedes andere Volume im System verwenden. 
+---
+= Mehrere Volumes aus einem Gruppen-Snapshot klonen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können eine Gruppe von Volumes aus einem Point-in-Time-Gruppen-Snapshot klonen.  Für diesen Vorgang ist es erforderlich, dass bereits ein Gruppen-Snapshot der Volumes existiert, da der Gruppen-Snapshot als Grundlage für die Erstellung der Volumes verwendet wird.  Nachdem Sie die Volumes erstellt haben, können Sie sie wie jedes andere Volume im System verwenden.
+
+Die Größe des Datenträgers und die aktuelle Clusterlast beeinflussen die Zeit, die zum Abschließen eines Klonvorgangs benötigt wird.
+
+. Klicken Sie auf *Datenschutz* > *Gruppen-Snapshots*.
+. Klicken Sie auf das Aktionssymbol für den Gruppen-Snapshot, den Sie für die Volume-Klone verwenden möchten.
+. Wählen Sie im daraufhin angezeigten Menü die Option *Volumes aus Gruppen-Snapshot klonen*.
+. Geben Sie im Dialogfeld „Volumes aus Gruppen-Snapshot klonen“ ein *neues Volume-Namenspräfix* ein.
++
+Das Präfix wird auf alle aus dem Gruppen-Snapshot erstellten Volumes angewendet.
+
+. *Optional:* Wählen Sie ein anderes Konto aus, zu dem der Klon gehören soll.
++
+Wenn Sie kein Konto auswählen, ordnet das System die neuen Volumes dem aktuellen Volume-Konto zu.
+
+. *Optional:* Wählen Sie eine andere Zugriffsmethode für die Volumes im Klon.
++
+Wenn Sie keine Zugriffsmethode auswählen, verwendet das System den aktuellen Datenträgerzugriff.
+
+. Klicken Sie auf *Klonen starten*.
+

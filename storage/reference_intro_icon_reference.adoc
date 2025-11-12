@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: Die Benutzeroberfläche der NetApp Element Software zeigt Symbole an, die Aktionen darstellen, die Sie an Systemressourcen durchführen können. 
+---
+= Symbole in der Element-Oberfläche
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Benutzeroberfläche der NetApp Element Software zeigt Symbole an, die Aktionen darstellen, die Sie an Systemressourcen durchführen können.
+
+Die folgende Tabelle dient als Kurzübersicht:
+
+|===
+
+
+| Symbol | Beschreibung 
+
+
+ a| 
+image:../media/element_icon_action.gif["Aktionssymbol in der Element OS Weboberfläche"]
+ a| 
+Aktionen
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Das Symbol „Backupto“ in der Web-Oberfläche von Element OS."]
+ a| 
+Backup an
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Klon-Symbol in der Element OS Weboberfläche"]
+ a| 
+Klonen oder kopieren
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Löschsymbol in der Element OS Weboberfläche"]
+ a| 
+Löschen oder endgültig entfernen
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Bearbeitungssymbol in der Element OS Weboberfläche"]
+ a| 
+Bearbeiten
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Filtersymbol in der Element OS Weboberfläche"]
+ a| 
+Filter
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Paarsymbol in der Element OS Weboberfläche"]
+ a| 
+Paar
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Aktualisierungssymbol in der Element OS Weboberfläche"]
+ a| 
+Aktualisieren
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["Wiederherstellungssymbol in der Element OS Weboberfläche"]
+ a| 
+Wiederherstellen
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["Wiederherstellen über das Symbol in der Element OS Weboberfläche"]
+ a| 
+Wiederherstellen von
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Rollback-Symbol in der Element OS Weboberfläche"]
+ a| 
+Rückgängigmachen
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Snapshot-Symbol in der Element OS Weboberfläche"]
+ a| 
+Schnappschuss
+
+|===

@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-nodes.html 
+summary: Sie können Ihre Speicherressourcen in Ihrem System über die Seite „Hybrid Cloud Control Nodes“ anzeigen. 
+keywords: netapp, element, cluster, inventory, nodes, storage 
+---
+= Sehen Sie sich Ihren Bestand auf der Seite „Knoten“ an.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Ihre Speicherressourcen in Ihrem System anzeigen und deren IP-Adressen, Namen und Softwareversionen ermitteln.
+
+Sie können Speicherinformationen für Ihre Mehrknotensysteme einsehen.  Wennlink:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["benutzerdefinierte Schutzdomänen"] Sie können sehen, welche Schutzdomänen bestimmten Knoten zugewiesen sind.
+
+.Schritte
+. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser. Beispiel:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen für den SolidFire All-Flash-Speichercluster angeben.
+. Wählen Sie in der linken Navigation *Knoten* aus.
++
+image::hcc_nodes_storage_2nodes.png[Bild der Seite „Hybrid Cloud Control Nodes“]
+
++
+
+NOTE: Beim erstmaligen Starten einer neuen NetApp Hybrid Cloud Control-Sitzung kann es zu einer Verzögerung beim Laden der NetApp Hybrid Cloud Control-Knotenseite kommen, wenn der Management-Knoten viele Cluster verwaltet.  Die Ladezeit variiert je nach Anzahl der Cluster, die vom Management-Knoten aktiv verwaltet werden.  Bei nachfolgenden Starts werden Sie kürzere Ladezeiten erleben.
+
+. Überprüfen Sie auf der Registerkarte *Speicher* der Seite „Knoten“ die folgenden Informationen:
++
+.. Zwei-Knoten-Cluster: Auf der Registerkarte „Speicher“ wird die Bezeichnung „Zwei-Knoten“ angezeigt und die zugehörigen Witness-Knoten werden aufgelistet.
+.. Drei-Knoten-Cluster: Die Speicherknoten und die zugehörigen Zeugenknoten werden aufgelistet.  Drei-Knoten-Cluster verfügen über einen Witness-Knoten, der als Standby-Knoten bereitgestellt wird, um im Falle eines Knotenausfalls eine hohe Verfügbarkeit zu gewährleisten.
+.. Cluster mit vier oder mehr Knoten: Es werden Informationen zu Clustern mit vier oder mehr Knoten angezeigt.  Zeugenknoten sind nicht anwendbar.  Wenn Sie mit zwei oder drei Speicherknoten begonnen und weitere Knoten hinzugefügt haben, werden die Zeugenknoten weiterhin angezeigt.  Andernfalls wird die Tabelle der Zeugenknoten nicht angezeigt.
+.. Die Firmware-Bundle-Version: Ab der Management-Services-Version 2.14 können Sie bei Clustern, auf denen Element 12.0 oder höher ausgeführt wird, die Firmware-Bundle-Version für diese Cluster einsehen.  Wenn auf den Knoten eines Clusters unterschiedliche Firmware-Versionen installiert sind, wird in der Spalte *Firmware Bundle Version* *Mehrere* angezeigt.
+.. Benutzerdefinierte Schutzdomänen: Wenn auf dem Cluster benutzerdefinierte Schutzdomänen verwendet werden, können Sie die Zuordnungen benutzerdefinierter Schutzdomänen für jeden Knoten im Cluster anzeigen.  Wenn benutzerdefinierte Schutzdomänen nicht aktiviert sind, wird diese Spalte nicht angezeigt.
+
+
+. Sie können die Informationen auf diesen Seiten auf verschiedene Weise bearbeiten:
++
+.. Um die Ergebnisliste zu filtern, wählen Sie das *Filter*-Symbol und anschließend die gewünschten Filter aus.  Sie können auch Text für den Filter eingeben.
+.. Um Spalten ein- oder auszublenden, wählen Sie das Symbol *Spalten ein-/ausblenden*.
+.. Um die Tabelle herunterzuladen, wählen Sie das Symbol *Download*.
+
+
+
+
+
+TIP: Die Anzahl der Speicherkapazitäten können Sie im NetApp Hybrid Cloud Control (HCC) Dashboard einsehen. Sehenlink:task-hcc-dashboard.html["Überwachen Sie Speicherressourcen mit dem HCC-Dashboard"] .
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

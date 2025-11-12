@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_access_ui.html 
+summary: Sie können auf die Management-UI oder die REST-API-UI zugreifen. 
+keywords: netapp, mnode, management node, api, Element 
+---
+= Greifen Sie auf den Verwaltungsknoten zu.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ab der NetApp Element Softwareversion 11.3 enthält der Management-Knoten zwei Benutzeroberflächen: eine Benutzeroberfläche zur Verwaltung von REST-basierten Diensten und eine knotenspezifische Benutzeroberfläche zur Verwaltung von Netzwerk- und Clustereinstellungen sowie Betriebssystemtests und -dienstprogrammen.
+
+Für Cluster, auf denen die Element-Softwareversion 11.3 oder höher ausgeführt wird, können Sie eine von zwei Schnittstellen verwenden:
+
+* Durch die Verwendung der Verwaltungsknoten-Benutzeroberfläche(`https:// [mNode IP}:442` Sie können Änderungen an Netzwerk- und Clustereinstellungen vornehmen, Systemtests durchführen oder Systemdienstprogramme verwenden.
+* Durch die Verwendung der integrierten REST-API-Benutzeroberfläche(`https://[mNode IP}/mnode` Sie können APIs ausführen oder verstehen, die sich auf die Dienste des Verwaltungsknotens beziehen, einschließlich der Konfiguration des Proxy-Servers, Aktualisierungen auf Dienstebene oder der Anlagenverwaltung.
+
+
+
+
+== Greifen Sie auf die Benutzeroberfläche des Verwaltungsknotens pro Knoten zu.
+
+Über die Benutzeroberfläche pro Knoten können Sie auf Netzwerk- und Clustereinstellungen zugreifen und Systemtests und -hilfsmittel nutzen.
+
+.Schritte
+. Sie können auf die Benutzeroberfläche des Verwaltungsknotens zugreifen, indem Sie die IP-Adresse des Verwaltungsknotens gefolgt von :442 eingeben.
++
+[listing]
+----
+https://[IP address]:442
+----
++
+image::mnode_per_node_442_ui.png[Benutzeroberfläche für jeden Verwaltungsknoten]
+
+. Geben Sie bei Aufforderung den Benutzernamen und das Passwort des Verwaltungsknotens ein.
+
+
+
+
+== Greifen Sie auf die REST-API-Benutzeroberfläche des Management-Knotens zu.
+
+Über die REST-API-Benutzeroberfläche können Sie auf ein Menü mit dienstbezogenen APIs zugreifen, die die Verwaltungsdienste auf dem Verwaltungsknoten steuern.
+
+.Schritte
+. Um auf die REST-API-Benutzeroberfläche für Verwaltungsdienste zuzugreifen, geben Sie die IP-Adresse des Verwaltungsknotens gefolgt von ein. `/mnode` :
++
+[listing]
+----
+https://[IP address]/mnode
+----
++
+image::mnode_swagger_ui.png[REST-API-Benutzeroberfläche des Management-Knotens]
+
+. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol aus und geben Sie die Cluster-Administratoranmeldeinformationen ein, um Berechtigungen für die Nutzung der APIs zu erhalten.
+
+
+[discrete]
+== Weitere Informationen finden Sie hier.
+
+* link:task_mnode_enable_activeIQ.html["Aktivieren Sie Active IQ und die NetApp Überwachung."]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

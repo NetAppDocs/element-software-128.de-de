@@ -1,0 +1,20 @@
+---
+permalink: storage/task_replication_delete_volume_relationship_after_replication.html 
+sidebar: sidebar 
+keywords: volume pair, delete, replication 
+summary: Nach Abschluss der Replikation und wenn Sie die Volume-Paar-Beziehung nicht mehr benötigen, können Sie die Volume-Beziehung löschen. 
+---
+= Eine Volume-Beziehung nach der Replikation löschen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach Abschluss der Replikation und wenn Sie die Volume-Paar-Beziehung nicht mehr benötigen, können Sie die Volume-Beziehung löschen.
+
+. Wählen Sie *Datenschutz* > *Volume-Paare*.
+. Klicken Sie auf das Symbol *Aktionen* für das Volume-Paar, das Sie löschen möchten.
+. Klicken Sie auf *Löschen*.
+. Bestätigen Sie die Nachricht.
+

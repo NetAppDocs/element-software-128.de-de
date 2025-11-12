@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,efficiency,GetVolumeEfficiency 
+summary: Mit der Methode GetVolumeEfficiency können Sie Informationen über ein Volume abrufen.  Nur das Volumen, das Sie in dieser API-Methode als Parameter angeben, wird zur Berechnung der Kapazität verwendet. 
+---
+= GetVolumeEfficiency
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetVolumeEfficiency` Methode zur Ermittlung von Informationen über ein Volumen.  Nur das Volumen, das Sie in dieser API-Methode als Parameter angeben, wird zur Berechnung der Kapazität verwendet.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Volume-ID
+ a| 
+Gibt das Volumen an, für das die Kapazität berechnet wird.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Kompression
+ a| 
+Die durch die Komprimierung von Daten auf einem einzelnen Datenträger eingesparte Speicherplatzmenge.  Angegeben als Verhältniswert, wobei 1 bedeutet, dass die Daten unkomprimiert gespeichert wurden.
+ a| 
+schweben
+
+
+
+ a| 
+Deduplizierung
+ a| 
+Die Menge an Speicherplatz, die auf einem einzelnen Datenträger durch das Vermeiden von Datenduplizierungen eingespart wird.  Als Verhältnis angegeben.
+ a| 
+schweben
+
+
+
+ a| 
+fehlende Bände
+ a| 
+Die Volumina, für die keine Effizienzdaten abgefragt werden konnten.  Fehlende Volumes können durch eine Garbage Collection (GC) verursacht werden, die weniger als eine Stunde alt ist, durch vorübergehende Netzwerkausfälle oder durch neu gestartete Dienste seit dem GC-Zyklus.
+ a| 
+Ganzzahl-Array
+
+
+
+ a| 
+Thin Provisioning
+ a| 
+Das Verhältnis des genutzten Speicherplatzes zum für die Datenspeicherung vorgesehenen Speicherplatz.  Als Verhältnis angegeben.
+ a| 
+schweben
+
+
+
+ a| 
+Zeitstempel
+ a| 
+Die letzten Effizienzdaten wurden nach der GC-Behandlung erhoben.
+ a| 
+ISO 8601-Datenzeichenfolge
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetVolumeEfficiency",
+   "params": {
+      "volumeID": 606
+   },
+   "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.001591240821456,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T16:06:33Z"
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

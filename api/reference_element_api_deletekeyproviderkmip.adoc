@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_deletekeyproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key provider,deleting,delete 
+summary: 'Mit der Methode DeleteKeyProviderKmip können Sie den angegebenen inaktiven KMIP-Schlüsselanbieter (Key Management Interoperability Protocol) löschen.' 
+---
+= DeleteKeyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DeleteKeyProviderKmip` Methode zum Löschen des angegebenen inaktiven KMIP-Schlüsselanbieters (Key Management Interoperability Protocol).
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+keyProviderID
+ a| 
+Die ID des zu löschenden Schlüsselanbieters.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.  Der Löschvorgang gilt als erfolgreich, solange kein Fehler auftritt.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "DeleteKeyProviderKmip",
+  "params": {
+    "keyProviderID": "1"
+    },
+"id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== Neu seit Version
+
+11,7

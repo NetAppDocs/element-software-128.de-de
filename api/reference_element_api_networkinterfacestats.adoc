@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_networkinterfacestats.html 
+sidebar: sidebar 
+keywords: object,objects,stats,statistics,networkInterfacestats 
+summary: Das Objekt networkInterfaceStats enthält Netzwerkstatistiken und Fehlerinformationen für einzelne Netzwerkschnittstellen auf einem Speicherknoten. 
+---
+= Netzwerkschnittstellenstatistik
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Objekt networkInterfaceStats enthält Netzwerkstatistiken, die Gesamtzahl der gesendeten und empfangenen Pakete sowie Fehlerinformationen für einzelne Netzwerkschnittstellen auf einem Speicherknoten.  Sie können die `ListNetworkInterfaceStats` API-Methode zum Auflisten dieser Informationen für die Netzwerkschnittstellen eines Speicherknotens.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+| Kollisionen | Die Anzahl der erkannten Kollisionen. | ganze Zahl 
+
+
+| Name | Name der Netzwerkschnittstelle. | Schnur 
+
+
+| rxBytes | Die Gesamtzahl der empfangenen Bytes. | ganze Zahl 
+
+
+| rxCrcErrors | Die Anzahl der empfangenen Pakete mit einem CRC-Fehler. | ganze Zahl 
+
+
+| rxDropped | Die Anzahl der verworfenen Empfangspakete. | ganze Zahl 
+
+
+| rxErrors | Die Anzahl der empfangenen fehlerhaften oder beschädigten Pakete. | ganze Zahl 
+
+
+| rxFifoErrors | Die Anzahl der FIFO-Überlauffehler in den empfangenen Daten. | ganze Zahl 
+
+
+| rxFrameErrors | Die Anzahl der empfangenen Pakete mit Rahmenausrichtungsfehlern. | ganze Zahl 
+
+
+| rxLengthErrors | Die Anzahl der empfangenen Pakete mit einem Längenfehler. | ganze Zahl 
+
+
+| rxMissedErrors | Die Anzahl der vom Empfänger verpassten Pakete. | ganze Zahl 
+
+
+| rxOverErrors | Die Anzahl der Empfängerringpufferüberlauffehler für diese Schnittstelle. | ganze Zahl 
+
+
+| rxPackets | Die Gesamtzahl der empfangenen Pakete. | ganze Zahl 
+
+
+| txBytes | Die Gesamtzahl der übertragenen Bytes. | ganze Zahl 
+
+
+| txCarrierErrors | Die Anzahl der Trägerfehler auf der Sendeseite. | ganze Zahl 
+
+
+| txErrors | Die Anzahl der Paketübertragungsfehler. | ganze Zahl 
+
+
+| txFifoErrors | Die Anzahl der FIFO-Überlauffehler auf der Sendeseite. | ganze Zahl 
+
+
+| txPackets | Die Gesamtzahl der übertragenen Pakete. | ganze Zahl 
+|===

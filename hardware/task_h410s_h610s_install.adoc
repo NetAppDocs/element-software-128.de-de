@@ -1,0 +1,262 @@
+---
+permalink: hardware/task_h410s_h610s_install.html 
+sidebar: sidebar 
+keywords: h410s, h610s, hardware installation, hardware maintenance 
+summary: Bevor Sie mit Ihrem All-Flash-Speichersystem beginnen, sollten Sie die Speicherknoten korrekt installieren und einrichten. 
+---
+= Installieren Sie Speicherknoten der H-Serie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bevor Sie mit Ihrem All-Flash-Speichersystem beginnen, sollten Sie die Speicherknoten korrekt installieren und einrichten.
+
+
+TIP: Siehe dielink:../media/hseries_isi.pdf["Poster"^] zur visuellen Darstellung der Anweisungen.
+
+* <<Arbeitsablaufdiagramme>>
+* <<Vorbereiten der Installation>>
+* <<Montieren Sie die Schienen.>>
+* <<Installieren und verkabeln Sie die Knoten.>>
+* <<Konfigurieren Sie die Knoten>>
+* <<Erstellen Sie einen Cluster>>
+
+
+
+
+== Arbeitsablaufdiagramme
+
+Die hier dargestellten Arbeitsablaufdiagramme bieten einen allgemeinen Überblick über die Installationsschritte.  Die einzelnen Schritte variieren je nach Modell der H-Serie.
+
+
+
+=== H410S
+
+image::../media/h410s_isi_workflow.png[Installationsablauf für H410S]
+
+
+
+=== H610S
+
+
+NOTE: Die Begriffe „Node“ und „Chassis“ werden im Fall des H610S synonym verwendet, da Node und Chassis im Gegensatz zu einem 2U-Chassis mit vier Nodes keine separaten Komponenten sind.
+
+image::../media/h610s_isi_workflow.png[Installationsablauf für H610S]
+
+
+
+== Vorbereiten der Installation
+
+Prüfen Sie vor der Installation, ob die gelieferte Hardware vollständig ist, und wenden Sie sich an den NetApp Support, falls Teile fehlen.
+
+Stellen Sie sicher, dass Sie die folgenden Elemente an Ihrem Installationsort haben:
+
+* Rackplatz für das System.
+
+
+[cols="2*"]
+|===
+| Knotentyp | Rackplatz 
+
+
+| H410S-Knoten | Zwei Höheneinheiten (2U) 
+
+
+| H610S-Knoten | Eine Höheneinheit (1U) 
+|===
+* SFP28/SFP+ Direktanschlusskabel oder Transceiver
+* CAT5e- oder höherwertige Kabel mit RJ45-Stecker
+* Ein KVM-Switch (Tastatur, Video, Maus) zur Konfiguration Ihres Systems
+* USB-Stick (optional)
+
+
+
+TIP: Die Ihnen zugesandte Hardware hängt von Ihrer Bestellung ab.  Eine neue 2U-Vier-Knoten-Bestellung umfasst das Chassis, die Blende, den Gleitschienensatz, die Laufwerke, die Speicherknoten und die Stromkabel (zwei pro Chassis).  Wenn Sie H610S-Speicherknoten bestellen, sind die Laufwerke bereits im Gehäuse vorinstalliert.
+
+
+CAUTION: Achten Sie bei der Installation der Hardware darauf, sämtliches Verpackungsmaterial und Umhüllungen vom Gerät zu entfernen.  Dadurch wird verhindert, dass die Knoten überhitzen und sich abschalten.
+
+
+
+== Montieren Sie die Schienen.
+
+Die Ihnen zugesandte Hardware-Bestellung beinhaltet einen Satz Gleitschienen.  Zur Montage der Schiene benötigen Sie einen Schraubendreher.  Die Installationsschritte variieren geringfügig je nach Knotenmodell.
+
+
+TIP: Montieren Sie die Hardware von unten nach oben im Rack, um zu verhindern, dass die Geräte umkippen.  Falls Ihr Gestell Stabilisierungsvorrichtungen enthält, installieren Sie diese, bevor Sie die Hardware montieren.
+
+* <<H410S>>
+* <<H610S>>
+
+
+
+
+=== H410S
+
+Die H410S-Knoten werden in einem 2U-Gehäuse der H-Serie mit vier Knoten installiert, das mit zwei Adaptersätzen ausgeliefert wird.  Wenn Sie das Chassis in einem Rack mit runden Löchern installieren möchten, verwenden Sie die für ein Rack mit runden Löchern geeigneten Adapter.  Die Schienen für H410S-Knoten passen in ein Rack mit einer Tiefe zwischen 29 Zoll und 33,5 Zoll.  Im vollständig zusammengezogenen Zustand ist die Schiene 28 Zoll lang, und die vorderen und hinteren Abschnitte der Schiene werden nur durch eine einzige Schraube zusammengehalten.
+
+
+CAUTION: Wenn Sie das Chassis auf eine vollständig eingefahrene Schiene montieren, könnten sich die vorderen und hinteren Schienenabschnitte trennen.
+
+.Schritte
+. Richten Sie die Vorderseite der Schiene an den Löchern am vorderen Pfosten des Gestells aus.
+. Drücken Sie die Haken an der Vorderseite der Schiene in die Löcher am vorderen Pfosten des Gestells und dann nach unten, bis die federbelasteten Stifte in die Löcher des Gestells einrasten.
+. Befestigen Sie die Schiene mit Schrauben am Gestell.  Hier ist eine Abbildung, wie die linke Schiene an der Vorderseite des Gestells befestigt ist:
++
+image::../media/h410s_rail.gif[Schienenmontage für 2U]
+
+. Verlängern Sie den hinteren Teil der Schiene bis zum hinteren Pfosten des Gestells.
+. Richten Sie die Haken an der Rückseite der Schiene an den entsprechenden Löchern am hinteren Pfosten aus und achten Sie darauf, dass Vorder- und Rückseite der Schiene auf gleicher Höhe sind.
+. Montieren Sie die Rückseite der Schiene am Gestell und befestigen Sie die Schiene mit Schrauben.
+. Führen Sie alle oben genannten Schritte für die andere Seite des Gestells durch.
+
+
+
+
+=== H610S
+
+Hier eine Abbildung zur Installation von Schienen für einen H610S-Speicherknoten:
+
+image::../media/h610s_rail_isi.gif[Schieneninstallation für den Speicherknoten H610S.]
+
+
+TIP: Der H610S verfügt über eine linke und eine rechte Schiene.  Positionieren Sie das Schraubenloch nach unten, damit die H610S-Rändelschraube das Chassis an der Schiene befestigen kann.
+
+
+
+== Installieren und verkabeln Sie die Knoten.
+
+Sie installieren den H410S-Speicherknoten in einem 2U-Gehäuse mit vier Knoten.  Bei H610S montieren Sie das Chassis/den Knoten direkt auf den Schienen im Rack.
+
+
+CAUTION: Entfernen Sie sämtliches Verpackungsmaterial vom Gerät.  Dadurch wird verhindert, dass die Knoten überhitzen und sich abschalten.
+
+* <<H410S>>
+* <<H610S>>
+
+
+
+
+=== H410S
+
+.Schritte
+. Installieren Sie die H410S-Knoten im Gehäuse.  Hier ein Beispiel der Rückansicht eines Chassis mit vier installierten Knoten:
++
+image::../media/sf_isi_chassis_rear.png[Diese Abbildung zeigt die Rückseite eines 2U-Gehäuses.]
+
++
+
+WARNING: Beim Anheben der Hardware und beim Einbau in das Gestell ist Vorsicht geboten.  Ein leeres Chassis mit zwei Höheneinheiten (2U) und vier Knoten wiegt 54,45 lb (24,7 kg) und ein Knoten wiegt 8,0 lb (3,6 kg).
+
+. Installieren Sie die Laufwerke.
++
+image::../media/hci_stor_node_ssd_bays.gif[Diese Abbildung zeigt die Vorderseite des 2U]
+
+. Verkabeln Sie die Knoten.
++
+
+IMPORTANT: Wenn die Lüftungsschlitze an der Rückseite des Gehäuses durch Kabel oder Etiketten blockiert sind, kann dies aufgrund von Überhitzung zu vorzeitigem Bauteilausfall führen.
+
++
+image::../media/hci_isi_storage_cabling.png[Diese Abbildung zeigt die Verkabelung eines H410S-Speicherknotens.]
+
++
+** Verbinden Sie zwei CAT5e-Kabel oder höherwertige Kabel mit den Ports A und B für die Management-Konnektivität.
+** Schließen Sie zwei SFP28/SFP+-Kabel oder -Transceiver an die Ports C und D an, um eine Speicherverbindung herzustellen.
+** (Optional, empfohlen) Schließen Sie ein CAT5e-Kabel an den IPMI-Port an, um eine Out-of-Band-Management-Konnektivität herzustellen.
+
+
+. Verbinden Sie die Netzkabel mit den beiden Netzteilen pro Chassis und stecken Sie diese in eine 240-V-Stromverteilungseinheit oder eine Steckdose.
+. Stromversorgung der Knoten.
++
+
+NOTE: Der Knoten benötigt ungefähr sechs Minuten zum Hochfahren.
+
++
+image::../media/hci_poweron_isg.gif[Diese Abbildung zeigt die Netzschalter an den Knoten im 2U-Gehäuse.]
+
+
+
+
+
+=== H610S
+
+.Schritte
+. Installieren Sie das H610S-Gehäuse.  Hier eine Abbildung zur Installation des Knotens/Chassis im Rack:
++
+image::../media/h610s_chassis_isi.gif[Zeigt die Installation des H610S-Knotens/Chassis im Rack.]
+
++
+
+WARNING: Beim Anheben der Hardware und beim Einbau in das Gestell ist Vorsicht geboten.  Ein H610S-Chassis wiegt 40,5 lb (18,4 kg).
+
+. Verkabeln Sie die Knoten.
++
+
+IMPORTANT: Wenn die Lüftungsschlitze an der Rückseite des Gehäuses durch Kabel oder Etiketten blockiert sind, kann dies aufgrund von Überhitzung zu vorzeitigem Bauteilausfall führen.
+
++
+image::../media/h600s_isi_noderear.png[Diese Abbildung zeigt die Verkabelung des Speicherknotens H610S.]
+
++
+** Verbinden Sie den Knoten mit einem 10/25GbE-Netzwerk mithilfe von zwei SFP28- oder SFP+-Kabeln.
+** Verbinden Sie den Knoten mit einem 1GbE-Netzwerk mithilfe von zwei RJ45-Anschlüssen.
+** Verbinden Sie den Knoten über einen RJ-45-Stecker im IPMI-Port mit einem 1GbE-Netzwerk.
+** Schließen Sie beide Stromkabel an den Knoten an.
+
+
+. Stromversorgung der Knoten.
++
+
+NOTE: Der Knoten benötigt ungefähr fünf Minuten und 30 Sekunden zum Hochfahren.
+
++
+image::../media/h600s_isi_nodefront.png[Diese Abbildung zeigt die Vorderseite des H610S-Gehäuses, wobei der Netzschalter hervorgehoben ist.]
+
+
+
+
+
+== Konfigurieren Sie die Knoten
+
+Nachdem Sie die Hardware montiert und verkabelt haben, können Sie Ihre neue Speicherressource konfigurieren.
+
+.Schritte
+. Schließen Sie eine Tastatur und einen Monitor an den Knoten an.
+. Konfigurieren Sie in der angezeigten Terminal-Benutzeroberfläche (TUI) die Netzwerk- und Clustereinstellungen für den Knoten mithilfe der Bildschirmnavigation.
++
+
+NOTE: Die IP-Adresse des Knotens sollten Sie über die TUI abrufen.  Sie benötigen dies, wenn Sie den Knoten zu einem Cluster hinzufügen.  Nach dem Speichern der Einstellungen befindet sich der Knoten im Status „Ausstehend“ und kann einem Cluster hinzugefügt werden.  Siehe <Link zum Abschnitt „Einrichtung“ einfügen>.
+
+. Konfigurieren Sie das Out-of-Band-Management mithilfe des Baseboard Management Controllers (BMC).  Diese Schritte gelten *nur für H610S*-Knoten.
++
+.. Öffnen Sie einen Webbrowser und rufen Sie die Standard-IP-Adresse des BMC auf: 192.168.0.120
+.. Melden Sie sich mit dem Benutzernamen *root* und dem Passwort *calvin* an.
+.. Navigieren Sie im Knotenverwaltungsbildschirm zu *Einstellungen* > *Netzwerkeinstellungen* und konfigurieren Sie die Netzwerkparameter für den Out-of-Band-Management-Port.
+
+
+
+
+
+TIP: Sehen https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_access_BMC_and_change_IP_address_on_H610S["dieser KB-Artikel (Anmeldung erforderlich)"] .
+
+
+
+== Erstellen Sie einen Cluster
+
+Nachdem Sie den Speicherknoten zu Ihrer Installation hinzugefügt und die neue Speicherressource konfiguriert haben, können Sie einen neuen Speichercluster erstellen.
+
+.Schritte
+. Von einem Client im selben Netzwerk wie der neu konfigurierte Knoten aus greifen Sie über die IP-Adresse des Knotens auf die NetApp Element Software-Benutzeroberfläche zu.
+. Geben Sie die erforderlichen Informationen im Fenster **Neuen Cluster erstellen** ein. Siehe dielink:../setup/concept_setup_overview.html["Übersicht der Einrichtung"^] für weitere Informationen.
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

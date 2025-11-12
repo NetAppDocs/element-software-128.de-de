@@ -1,0 +1,60 @@
+---
+permalink: storage/task-element-replication-initialize-replication-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, initialize, replication, relationship 
+summary: 'Bei allen Beziehungstypen wird im Rahmen der Initialisierung eine Basisübertragung durchgeführt: Es wird eine Momentaufnahme des Quellvolumes erstellt, anschließend werden diese Kopie und alle darin referenzierten Datenblöcke auf das Zielvolume übertragen.' 
+---
+= Initialisiere eine Replikationsbeziehung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei allen Beziehungstypen wird im Rahmen der Initialisierung eine _Basislinienübertragung_ durchgeführt: Dabei wird eine Snapshot-Kopie des Quellvolumes erstellt und anschließend diese Kopie zusammen mit allen darin referenzierten Datenblöcken auf das Zielvolume übertragen.
+
+.Bevor Sie beginnen
+* Der Elementknoten, der das zu replizierende Volume enthält, muss für ONTAP zugänglich gemacht worden sein.
+* Das Element-Volume muss für die SnapMirror Replikation aktiviert sein.
+* Wenn Sie den Richtlinientyp "`mirror-vault`" verwenden, muss für die zu replizierenden Element-Snapshot-Kopien ein SnapMirror Label konfiguriert worden sein.
++
+[NOTE]
+====
+Diese Aufgabe kann nur imlink:concept_snapmirror_labels.html["Element Software Web-Benutzeroberfläche"] oder unter Verwendung derlink:../api/concept_element_api_snapshots_overview.html["API-Methoden"] Die
+
+====
+
+
+.Informationen zu diesem Vorgang
+Sie müssen den Elementquellpfad im folgenden Format angeben: `<hostip:>/lun/<name>` , wobei "`lun`" die eigentliche Zeichenkette "`lun`" ist und `_name_` ist der Name des Element-Volumes.
+
+Die Initialisierung kann zeitaufwändig sein.  Möglicherweise möchten Sie die Basisübertragung außerhalb der Spitzenzeiten durchführen.
+
+[NOTE]
+====
+Wenn die Initialisierung einer Beziehung von einer ONTAP Quelle zu einem Element-Ziel aus irgendeinem Grund fehlschlägt, schlägt sie auch dann weiterhin fehl, nachdem Sie das Problem behoben haben (z. B. einen ungültigen LUN-Namen).  Die Umgehungslösung sieht folgendermaßen aus:
+
+. Die Beziehung löschen.
+. Löschen Sie das Element-Zielvolume.
+. Erstellen Sie ein neues Element-Zielvolume.
+. Erstellen und initialisieren Sie eine neue Beziehung von der ONTAP Quelle zum Element-Zielvolume.
+
+
+====
+.Schritt
+. Initialisiere eine Replikationsbeziehung:
++
+`snapmirror initialize -source-path <hostip:>/lun/<name> -destination-path <SVM:volume|cluster://SVM/volume>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel initialisiert die Beziehung zwischen dem Quellvolumen `0005` an der IP-Adresse 10.0.0.11 und dem Zielvolumen `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror initialize -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

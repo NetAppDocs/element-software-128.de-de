@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_listvolumeaccessgroups.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,list,listing,listvolumeaccessgroups 
+summary: Mit der Methode ListVolumeAccessGroups können Sie Informationen über die aktuell im System vorhandenen Datenträgerzugriffsgruppen abrufen. 
+---
+= ListVolumeAccessGroups
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListVolumeAccessGroups` Methode zum Abrufen von Informationen über die aktuell im System vorhandenen Datenträgerzugriffsgruppen.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Limit
+ a| 
+Maximale Anzahl der zurückzugebenden volumeAccessGroup-Objekte.  Schließt sich gegenseitig mit dem Parameter volumeAccessGroups aus.
+ a| 
+ganze Zahl
+ a| 
+Unbegrenzt
+ a| 
+Nein
+
+
+
+ a| 
+startVolumeAccessGroupID
+ a| 
+Die Zugriffsgruppen-ID des Datenträgers, mit der die Auflistung beginnen soll.  Schließt sich gegenseitig mit dem Parameter volumeAccessGroups aus.
+ a| 
+ganze Zahl
+ a| 
+0
+ a| 
+Nein
+
+
+
+ a| 
+volumeAccessGroups
+ a| 
+Liste der abzurufenden volumeAccessGroupID-Werte.  Schließen sich gegenseitig mit den Parametern startVolumeAccessGroupID und limit aus.
+ a| 
+Ganzzahl-Array
+ a| 
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+volumeAccessGroups
+ a| 
+Eine Liste von Objekten, die jede Datenträgerzugriffsgruppe beschreiben.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[volumeAccessGroup]Array
+
+
+
+ a| 
+volumeAccessGroupsNotFound
+ a| 
+Eine Liste der vom System nicht gefundenen Datenträgerzugriffsgruppen.  Wird angezeigt, wenn Sie den Parameter volumeAccessGroups verwendet haben und das System eine oder mehrere der von Ihnen angegebenen Datenträgerzugriffsgruppen nicht finden konnte.
+ a| 
+Ganzzahl-Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListVolumeAccessGroups",
+   "params": {
+      "startVolumeAccessGroupID": 3,
+      "limit"   : 1
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroups": [
+      {
+        "attributes": {},
+        "deletedVolumes": [],
+        "initiatorIDs": [],
+        "initiators": [],
+        "name": "example1",
+        "volumeAccessGroupID": 3,
+        "volumes": []
+      }
+    ]
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

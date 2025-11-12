@@ -1,0 +1,32 @@
+---
+permalink: hardware/concept_sfseries_info.html 
+sidebar: sidebar 
+keywords: sf-series nodes, hardware installation, hardware maintenance 
+summary: Hier finden Sie Informationen zur Installation und Wartung von Speicherknoten der SF-Serie. 
+---
+= Hardwareinformationen der SF-Serie
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Hier finden Sie Informationen zur Installation und Wartung von Speicherknoten der SF-Serie.
+
+Hier finden Sie die Links zu den Installations- und Wartungshinweisen:
+
+* link:../media/c-series-isi.pdf["SolidFire C-Series-Knoten installieren und einrichten"^]
+* link:../media/fc-getting-started-guide.pdf["Fibre Channel-Knoten installieren und einrichten"^]
+* link:../media/solidfire-10-getting-started-guide.pdf["Installation und Einrichtung von Speicherknoten der SF-Serie"^]
+* link:task_sfseries_chassisrepl.html["Ersetzen Sie ein Chassis"^]
+* link:task_sfseries_driverepl.html["Laufwerke ersetzen"^]
+* link:task_sfseries_psurepl.html["Netzteil austauschen"^]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

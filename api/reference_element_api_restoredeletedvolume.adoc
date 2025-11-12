@@ -1,0 +1,77 @@
+---
+permalink: api/reference_element_api_restoredeletedvolume.html 
+sidebar: sidebar 
+keywords: restore,active,restoring,deleted,volume,volumes,restoredeletedvolume 
+summary: Mit der Methode RestoreDeletedVolume können Sie ein gelöschtes Volume wieder als aktiv markieren.  Durch diese Aktion steht das Volume sofort für eine iSCSI-Verbindung zur Verfügung. 
+---
+= RestoreDeletedVolume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RestoreDeletedVolume` Methode zum erneuten Aktivieren eines gelöschten Volumes.  Durch diese Aktion steht das Volume sofort für eine iSCSI-Verbindung zur Verfügung.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Volume-ID
+ a| 
+Die Volume-ID des gelöschten Volumes, das wiederhergestellt werden soll.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "RestoreDeletedVolume",
+   "params": {
+      "volumeID"  : 5
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_getnvraminfo.html 
+sidebar: sidebar 
+keywords: nvram,info,get,getting,getnvraminfo 
+summary: Mit der GetNvramInfo-Methode können Sie Informationen von jedem Knoten über die NVRAM -Karte abrufen. 
+---
+= GetNvramInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetNvramInfo` Methode zum Abrufen von Informationen über die NVRAM -Karte von jedem Knoten.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Gewalt
+ a| 
+Der Parameter „force“ muss in dieser Methode enthalten sein, damit sie auf allen Knoten im Cluster erfolgreich ausgeführt werden kann.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+nvramInfo
+ a| 
+Arrays von Ereignissen und Fehlern, die auf der NVRAM -Karte erkannt wurden.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetNvramInfo",
+  "params": {
+      "force": true
+	  },
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_response_example_getnvraminfo.adoc[GetNvramInfo]

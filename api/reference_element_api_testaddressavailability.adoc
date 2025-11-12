@@ -1,0 +1,143 @@
+---
+permalink: api/reference_element_api_testaddressavailability.html 
+sidebar: sidebar 
+keywords: ip,address,availability,test,testing,ensemble,cluster,testaddressavailability 
+summary: Mit der Methode TestAddressAvailability können Sie überprüfen, ob eine bestimmte IP-Adresse auf einer Schnittstelle innerhalb des Speicherclusters verwendet wird. 
+---
+= TestAddressAvailability
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `TestAddressAvailability` Methode zur Überprüfung, ob eine bestimmte IP-Adresse auf einer Schnittstelle innerhalb des Speicherclusters verwendet wird.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Schnittstelle
+ a| 
+Die Zielnetzwerkschnittstelle (z. B. eth0, Bond10G usw.).
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+Adresse
+ a| 
+Die IP-Adresse, nach der auf der Zielschnittstelle gescannt werden soll.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+virtuelles Netzwerk-Tag
+ a| 
+Die Ziel-VLAN-ID.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Time-out
+ a| 
+Die Zeitüberschreitung in Sekunden für die Prüfung der Zieladresse.
+ a| 
+ganze Zahl
+ a| 
+5
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Adresse
+ a| 
+Die getestete IP-Adresse.
+ a| 
+Schnur
+
+
+
+ a| 
+verfügbar
+ a| 
+Wahr, wenn die angeforderte IP-Adresse verwendet wird, und falsch, wenn sie nicht verwendet wird.
+ a| 
+boolescher Wert
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "TestAddressAvailability",
+	"params": {
+		"interface": "Bond10G",
+		"address": "10.0.0.1",
+		"virtualNetworkTag": 1234
+	}
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"address":"10.0.0.1",
+		"available": true
+	}
+}
+----
+
+
+== Neu seit Version
+
+11,0

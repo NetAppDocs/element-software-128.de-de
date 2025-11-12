@@ -1,0 +1,70 @@
+---
+permalink: api/reference_element_api_getnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,get,getting,getnetworkconfig 
+summary: Mit der Methode GetNetworkConfig können Sie die Netzwerkkonfigurationsinformationen für einen Knoten anzeigen. 
+---
+= GetNetworkConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetNetworkConfig` Methode zum Anzeigen der Netzwerkkonfigurationsinformationen für einen Knoten.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Netzwerk
+ a| 
+Netzwerkverbindungstypen und aktuelle Einstellungen für jede Netzwerkschnittstelle des Knotens.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[Netzwerk (alle Schnittstellen)]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetNetworkConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_response_example_getnetworkconfig.adoc[GetNetworkConfig]

@@ -1,0 +1,50 @@
+---
+permalink: storage/concept_system_manage_nodes_cluster_capacity_in_a_mixed_node_environment.html 
+sidebar: sidebar 
+keywords: nodes, mixed environment, capacity, cluster capacity, mixed nodes, encrypted, non-encrypted, threshold 
+summary: In einem Cluster können verschiedene Knotentypen gemischt werden.  Die SF-Serie 2405, 3010, 4805, 6010, 9605, 9010, 19210, 38410 und die H-Serie können in einem Cluster koexistieren. 
+---
+= Clusterkapazität in einer gemischten Knotenumgebung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+In einem Cluster können verschiedene Knotentypen gemischt werden.  Die SF-Serie 2405, 3010, 4805, 6010, 9605, 9010, 19210, 38410 und die H-Serie können in einem Cluster koexistieren.
+
+Die H-Serie besteht aus den Knoten H610S-1, H610S-2, H610S-4 und H410S.  Diese Knoten sind sowohl 10GbE- als auch 25GbE-fähig.
+
+Es empfiehlt sich, unverschlüsselte und verschlüsselte Knoten nicht zu vermischen.  In einem gemischten Knotencluster darf kein Knoten größer als 33 Prozent der gesamten Clusterkapazität sein.  In einem Cluster mit vier SF-Series 4805-Knoten ist beispielsweise der größte Knoten, der einzeln hinzugefügt werden kann, ein SF-Series 9605.  Die Clusterkapazitätsschwelle wird auf Basis des potenziellen Ausfalls des größten Knotens in dieser Situation berechnet.
+
+Je nach Ihrer Element-Softwareversion werden die folgenden Speicherknoten der SF-Serie nicht unterstützt:
+
+[cols="40,40"]
+|===
+| Beginnend mit... | Speicherknoten wird nicht unterstützt... 
+
+
+| Element 12.8  a| 
+* SF4805
+* SF9605
+* SF19210
+* SF38410
+
+
+
+
+| Element 12.7  a| 
+* SF2405
+* SF9608
+
+
+
+
+| Element 12.0  a| 
+* SF3010
+* SF6010
+* SF9010
+
+
+|===
+Wenn Sie versuchen, einen dieser Knoten auf eine nicht unterstützte Element-Version zu aktualisieren, wird eine Fehlermeldung angezeigt, die besagt, dass der Knoten von Element 12.x nicht unterstützt wird.

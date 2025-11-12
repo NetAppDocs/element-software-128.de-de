@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_enableclusterssh.html 
+sidebar: sidebar 
+keywords: SSH,enabling,enable,cluster,EnableClusterSsh 
+summary: Mit der Methode EnableClusterSsh können Sie den SSH-Dienst auf allen Knoten im Speichercluster aktivieren. 
+---
+= EnableClusterSsh
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `EnableClusterSsh` Methode zum Aktivieren des SSH-Dienstes auf allen Knoten im Speichercluster.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Dauer
+ a| 
+Die Zeitspanne, in der der SSH-Dienst aktiviert bleibt.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Ergebnis
+ a| 
+Ein JSON-Objekt, das den Status des SSH-Dienstes für den Speichercluster, die verbleibende Zeit bis zur Deaktivierung von SSH und den SSH-Dienststatus für jeden Knoten enthält.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "EnableClusterSsh",
+  "params": {
+      "duration"  : "02:00:00.00"
+  },
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : {
+    "enabled": true,
+    "timeRemaining": "00:43:21",
+    "nodes": [
+    {
+        "nodeID": 1,
+        "enabled": true
+    },
+    {
+        "nodeID": 2,
+        "enabled": true
+    },
+    {
+        "nodeID": 3,
+        "enabled": false
+    },
+    {
+        "nodeID": 4,
+        "enabled": false
+    } ]
+			}
+	}
+----
+
+
+== Neu seit Version
+
+10,3

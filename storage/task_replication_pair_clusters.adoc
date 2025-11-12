@@ -1,0 +1,47 @@
+---
+permalink: storage/task_replication_pair_clusters.html 
+sidebar: sidebar 
+keywords: pair clusters, replication, connect clusters, data protection 
+summary: 'Um die Echtzeit-Replikationsfunktion nutzen zu können, müssen Sie zunächst zwei Cluster koppeln.  Nachdem Sie zwei Cluster gekoppelt und verbunden haben, können Sie aktive Volumes auf einem Cluster so konfigurieren, dass sie kontinuierlich auf einen zweiten Cluster repliziert werden, wodurch ein kontinuierlicher Datenschutz (Continuous Data Protection, CDP) gewährleistet wird.' 
+---
+= Clusterpaare für die Replikation
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um die Echtzeit-Replikationsfunktion nutzen zu können, müssen Sie zunächst zwei Cluster koppeln.  Nachdem Sie zwei Cluster gekoppelt und verbunden haben, können Sie aktive Volumes auf einem Cluster so konfigurieren, dass sie kontinuierlich auf einen zweiten Cluster repliziert werden, wodurch ein kontinuierlicher Datenschutz (Continuous Data Protection, CDP) gewährleistet wird.
+
+.Was du brauchst
+* Sie benötigen Cluster-Administratorrechte für mindestens einen der beiden zu koppelnden Cluster.
+* Alle Knoten-MIPs und -SIPs werden untereinander geroutet.
+* Weniger als 2000 ms Round-Trip-Latenz zwischen den Clustern.
+* Beide Speichercluster sollten eindeutige Clusternamen, MVIPs, SVIPs und alle Knoten-IP-Adressen haben.
+* Der Unterschied zwischen den Element-Softwareversionen auf den Clustern beträgt maximal eine Hauptversion.  Ist der Unterschied größer, muss einer der Cluster aufgerüstet werden, um die Datenreplikation durchzuführen.
+
+
+
+NOTE: Für die Cluster-Kopplung ist eine vollständige Konnektivität zwischen den Knoten im Management-Netzwerk erforderlich.  Für die Replikation ist eine Verbindung zwischen den einzelnen Knoten im Speichercluster-Netzwerk erforderlich.
+
+Sie können einen Cluster mit bis zu vier anderen Clustern zur Replikation von Volumes koppeln.  Sie können auch Cluster innerhalb der Clustergruppe miteinander paaren.
+
+
+
+== Cluster mithilfe von MVIP oder einem Pairing-Schlüssel koppeln
+
+Sie können einen Quell- und einen Zielcluster mithilfe des MVIP des Zielclusters koppeln, sofern ein Clusteradministrator Zugriff auf beide Cluster hat.  Wenn der Clusteradministratorzugriff nur auf einem Cluster eines Clusterpaares verfügbar ist, kann ein Kopplungsschlüssel auf dem Zielcluster verwendet werden, um die Clusterkopplung abzuschließen.
+
+. Wählen Sie eine der folgenden Methoden zum Paaren von Clustern aus:
++
+** link:task_replication_pair_cluster_using_mvip.html["Paarcluster mithilfe von MVIP"]Diese Methode ist anzuwenden, wenn auf beide Cluster ein Cluster-Administratorzugriff besteht. Bei dieser Methode wird der MVIP des entfernten Clusters verwendet, um zwei Cluster zu koppeln.
+** link:task_replication_pair_cluster_using_pairing_key.html["Cluster mithilfe eines Paarungsschlüssels koppeln"]Verwenden Sie diese Methode, wenn der Clusteradministrator nur auf einen der Cluster Zugriff hat. Diese Methode generiert einen Kopplungsschlüssel, der auf dem Zielcluster verwendet werden kann, um die Clusterkopplung abzuschließen.
+
+
+
+
+
+
+== Weitere Informationen
+
+xref:reference_prereq_network_port_requirements.adoc[Anforderungen an den Netzwerkanschluss]

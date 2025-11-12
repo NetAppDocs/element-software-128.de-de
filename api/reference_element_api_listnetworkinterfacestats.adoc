@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listnetworkinterfacestats.html 
+sidebar: sidebar 
+keywords: network,interface,stats,statistics,interfaces,list,listing,listnetworkinterfacestats 
+summary: Mit der Methode ListNetworkInterfaceStats können Sie Statistiken zu jeder Netzwerkschnittstelle eines Knotens auflisten.  Diese API-Methode ist für die Verwendung auf einzelnen Knoten vorgesehen; für den Zugriff auf einzelne Knoten ist eine Benutzer-ID- und Passwortauthentifizierung erforderlich.  Sie können diese Methode jedoch auf dem Cluster verwenden, wenn dem Parameter force im Methodenaufruf der Wert true zugewiesen wird.  Wenn der Parameter auf dem Cluster verwendet wird, werden alle Schnittstellen aufgelistet. 
+---
+= ListNetworkInterfaceStats
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListNetworkInterfaceStats` Methode zur Auflistung von Statistiken wie der Anzahl verworfener Pakete und verschiedener Fehlertypen für jede Netzwerkschnittstelle eines Knotens.  Diese API-Methode ist für die Verwendung auf einzelnen Knoten vorgesehen; für den Zugriff auf einzelne Knoten ist eine Benutzer-ID- und Passwortauthentifizierung erforderlich.  Sie können diese Methode jedoch auf dem Cluster verwenden, wenn dem Parameter force im Methodenaufruf der Wert true zugewiesen wird.  Wenn der Parameter auf dem Cluster verwendet wird, werden Netzwerkstatistiken für alle Schnittstellen aufgelistet.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+| Netzwerkschnittstellenstatistik | Eine Liste mit Netzwerkstatistikinformationen, wie z. B. die Anzahl der verworfenen Pakete und verschiedene Arten von Netzwerkfehlern, für jede Netzwerkschnittstelle eines Speicherknotens. | xref:reference_element_api_networkinterfacestats.adoc[Netzwerkschnittstellenstatistik]Array 
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+"method": "ListNetworkInterfaceStats",
+"params": {},
+"id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+    "networkInterfaceStats": [
+        {
+            "rxErrors": 1,
+            "rxPackets": 1,
+            "txErrors": 1,
+            "rxDropped": 1,
+            "txCarrierErrors": 1,
+            "rxOverErrors": 1,
+            "rxMissedErrors": 1,
+            "txPackets": 1,
+            "name": "if_name",
+            "rxLengthErrors": 1,
+            "collisions": 1,
+            "rxFifoErrors": 1,
+            "txBytes": 1,
+            "rxBytes": 1,
+            "rxFrameErrors": 1,
+            "rxCrcErrors": 1,
+            "txFifoErrors": 1
+        }
+    ]
+}
+----
+
+
+== Neu seit Version
+
+12,3

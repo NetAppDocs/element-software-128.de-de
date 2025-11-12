@@ -1,0 +1,91 @@
+---
+permalink: storage/reference_monitor_volume_performance_details.html 
+sidebar: sidebar 
+keywords: volume performance 
+summary: Leistungsstatistiken zu Volumes können Sie auf der Seite „Volume-Leistung“ der Registerkarte „Berichte“ in der Element-Benutzeroberfläche einsehen. 
+---
+= Details zur Lautstärkeleistung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Leistungsstatistiken zu Volumes können Sie auf der Seite „Volume-Leistung“ der Registerkarte „Berichte“ in der Element-Benutzeroberfläche einsehen.
+
+Die folgende Liste beschreibt die Ihnen zur Verfügung stehenden Details:
+
+* *AUSWEIS*
++
+Die vom System generierte ID für das Volume.
+
+* *Name*
++
+Der Name, der dem Band bei seiner Erstellung gegeben wurde.
+
+* *Konto*
++
+Der Name des dem Volumen zugeordneten Kontos.
+
+* *Zugriffsgruppen*
++
+Der Name der Datenträgerzugriffsgruppe oder -gruppen, zu denen der Datenträger gehört.
+
+* *Volumenauslastung*
++
+Ein Prozentwert, der angibt, wie stark der Kunde das Datenvolumen nutzt.
+
++
+Mögliche Werte:
+
++
+** 0 = Der Client nutzt das Volumen nicht.
+** 100 = Der Kunde nutzt das Maximum.
+** >100 = Der Client nutzt den Burst.
+
+
+* *Gesamt-IOPS*
++
+Die Gesamtzahl der IOPS (Lesen und Schreiben), die aktuell auf dem Volume ausgeführt werden.
+
+* *IOPS lesen*
++
+Die Gesamtzahl der aktuell für das Volume ausgeführten Lese-IOPS.
+
+* *Schreib-IOPS*
++
+Die Gesamtzahl der Schreib-IOPS, die aktuell auf dem Volume ausgeführt werden.
+
+* *Gesamtdurchsatz*
++
+Die aktuell auf dem Volume ausgeführte Gesamtmenge an Durchsatz (Lesen und Schreiben).
+
+* *Lesedurchsatz*
++
+Die aktuell ausgeführte Gesamtmenge des Lesedurchsatzes für das Volume.
+
+* *Schreibdurchsatz*
++
+Die aktuell auf dem Volume ausgeführte Gesamtmenge an Schreibvorgängen.
+
+* *Gesamtlatenz*
++
+Die durchschnittliche Zeit in Mikrosekunden für Lese- und Schreibvorgänge auf einem Datenträger.
+
+* *Leseverzögerung*
++
+Die durchschnittliche Zeit in Mikrosekunden, die zum Abschließen von Lesevorgängen auf dem Datenträger in den letzten 500 Millisekunden benötigt wurde.
+
+* *Schreiblatenz*
++
+Die durchschnittliche Zeit in Mikrosekunden, die zum Abschließen von Schreibvorgängen auf einem Volume in den letzten 500 Millisekunden benötigt wurde.
+
+* *Warteschlangenlänge*
++
+Die Anzahl der ausstehenden Lese- und Schreibvorgänge für das Volumen.
+
+* *Durchschnittliche E/A-Größe*
++
+Durchschnittliche Größe der letzten E/A-Operationen auf dem Datenträger in den letzten 500 Millisekunden in Bytes.
+
+

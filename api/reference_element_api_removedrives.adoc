@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_removedrives.html 
+sidebar: sidebar 
+keywords: cluster,drive,drives,remove,removing,removedrives 
+summary: Mit der RemoveDrives-Methode können Sie proaktiv Laufwerke entfernen, die Teil des Clusters sind.  Diese Methode eignet sich beispielsweise zur Reduzierung der Clusterkapazität oder zur Vorbereitung des Austauschs von Laufwerken, die sich dem Ende ihrer Lebensdauer nähern.  Bevor ein Laufwerk aus dem Cluster entfernt wird, werden alle darauf befindlichen Daten gelöscht und auf andere Laufwerke im Cluster migriert. 
+---
+= Laufwerke entfernen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `RemoveDrives` Methode zum proaktiven Entfernen von Laufwerken, die Teil des Clusters sind.  Diese Methode eignet sich beispielsweise zur Reduzierung der Clusterkapazität oder zur Vorbereitung des Austauschs von Laufwerken, die sich dem Ende ihrer Lebensdauer nähern. `RemoveDrives` Erstellt eine dritte Kopie der Blockdaten auf den anderen Knoten im Cluster und wartet, bis die Synchronisierung abgeschlossen ist, bevor die Laufwerke in die Liste „Verfügbar“ verschoben werden.  Laufwerke in der Liste „Verfügbar“ sind vollständig aus dem System entfernt und enthalten keine laufenden Dienste oder aktiven Daten.
+
+`RemoveDrives`ist eine asynchrone Methode.  Je nach Gesamtkapazität der ausgebauten Laufwerke kann die Migration aller Daten mehrere Minuten dauern.
+
+Beim Entfernen mehrerer Laufwerke verwenden Sie einen einzelnen `RemoveDrives` Methodenaufruf statt mehrerer einzelner Methoden mit jeweils einem einzigen Laufwerk.  Dadurch verringert sich der Aufwand für den Datenausgleich, der zur gleichmäßigen Stabilisierung der Speicherlast im Cluster erforderlich ist.
+
+Sie können auch Laufwerke mit dem Status „fehlerhaft“ entfernen, indem Sie `RemoveDrives` Die  Wenn Sie ein Laufwerk mit dem Status „ausgefallen“ entfernen, wird das Laufwerk nicht wieder in den Status „verfügbar“ oder „aktiv“ versetzt.  Das Laufwerk steht im Cluster nicht zur Verfügung.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Laufwerke
+ a| 
+Liste der aus dem Cluster zu entfernenden Laufwerks-IDs.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+asyncHandle
+ a| 
+Der Wert, der zum Abrufen des Operationsergebnisses verwendet wird, ist ein Handle.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "RemoveDrives",
+   "params": {
+      "drives"  : [3, 4, 5]
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 1,
+   "result" : {
+     "asyncHandle": 1
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_getasyncresult.adoc[GetAsyncResult]
+* xref:reference_element_api_listdrives.adoc[ListDrives]
+

@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_protectiondomainresiliency.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainResiliency 
+summary: 'Das Objekt protectionDomainResiliency enthält den Resilienzstatus dieses Speicherclusters.  Resilienz bezeichnet die Fähigkeit des Speicherclusters, sich innerhalb einer einzigen Schutzdomäne seines zugehörigen Schutzdomänentyps automatisch von einem oder mehreren Ausfällen zu erholen.  Ein Speichercluster gilt als wiederhergestellt, wenn er auch bei Ausfall eines einzelnen Speicherknotens weiterhin Daten lesen und schreiben kann (ein Zustand, der als Knotentoleranz bezeichnet wird).' 
+---
+= Schutzdomänenresilienz
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Objekt protectionDomainResiliency enthält den Resilienzstatus dieses Speicherclusters.  Resilienz bezeichnet die Fähigkeit des Speicherclusters, sich innerhalb einer einzigen Schutzdomäne seines zugehörigen Schutzdomänentyps automatisch von einem oder mehreren Ausfällen zu erholen.  Ein Speichercluster gilt als wiederhergestellt, wenn er auch nach dem Ausfall eines einzelnen Speicherknotens weiterhin Daten lesen und schreiben kann (ein Zustand, der als Knotentoleranz bezeichnet wird).
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Resilienz des Schutzsystems
+ a| 
+Eine Liste von Objekten (eines für jedes Schutzschema), die Informationen zur Ausfallsicherheit für den jeweiligen Schutzdomänentyp enthalten.
+ a| 
+xref:reference_element_api_protectionschemeresiliency.adoc[Resilienz des Schutzsystems]Array
+
+
+
+ a| 
+singleFailureThresholdBytesForBlockData
+ a| 
+Die maximale Anzahl an Bytes, die auf dem Speichercluster gespeichert werden können, bevor die Fähigkeit zur automatischen Wiederherstellung in einen Zustand der Knotentoleranz verloren geht.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+nachhaltigeFehlerFürEnsemble
+ a| 
+Die vorhergesagte Anzahl gleichzeitiger Ausfälle, die auftreten können, ohne dass die Fähigkeit zur automatischen Wiederherstellung eines Zustands der Knotentoleranz für das Ensemble-Quorum verloren geht.
+ a| 
+ganze Zahl
+
+|===

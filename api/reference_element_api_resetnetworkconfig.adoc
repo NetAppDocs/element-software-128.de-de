@@ -1,0 +1,52 @@
+---
+permalink: api/reference_element_api_resetnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,reset,restetting,factory,default,resetnetworkconfig 
+summary: Mit der Methode ResetNetworkConfig können Sie Netzwerkkonfigurationsprobleme für einen einzelnen Knoten beheben.  Diese Methode setzt die Netzwerkkonfiguration eines einzelnen Knotens auf die werkseitigen Standardeinstellungen zurück. 
+---
+= ResetNetworkConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ResetNetworkConfig` Methode zur Behebung von Netzwerkkonfigurationsproblemen für einen einzelnen Knoten.  Diese Methode setzt die Netzwerkkonfiguration eines einzelnen Knotens auf die werkseitigen Standardeinstellungen zurück.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ResetNetworkConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert keine Antwort.
+
+
+
+== Neu seit Version
+
+11,0

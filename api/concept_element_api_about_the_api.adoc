@@ -1,0 +1,237 @@
+---
+permalink: api/concept_element_api_about_the_api.html 
+sidebar: sidebar 
+keywords: SolidFire,API,overview,about,Element 
+summary: Die Element-API basiert auf dem JSON-RPC-Protokoll über HTTPS.  JSON-RPC ist ein einfaches textbasiertes RPC-Protokoll, das auf dem leichtgewichtigen JSON-Datenaustauschformat basiert.  Für alle gängigen Programmiersprachen sind Clientbibliotheken verfügbar. 
+---
+= Erfahren Sie mehr über die Speicherverwaltung mit der Element API.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Element-API basiert auf dem JSON-RPC-Protokoll über HTTPS.  JSON-RPC ist ein einfaches textbasiertes RPC-Protokoll, das auf dem leichtgewichtigen JSON-Datenaustauschformat basiert.  Für alle gängigen Programmiersprachen sind Clientbibliotheken verfügbar.
+
+Sie können API-Anfragen über HTTPS-POST-Anfragen an den API-Endpunkt senden.  Der Body der POST-Anfrage ist ein JSON-RPC-Anfrageobjekt.  Die API unterstützt derzeit keine Batch-Anfragen (mehrere Anfrageobjekte in einem einzigen POST-Request).  Bei der Übermittlung von API-Anfragen müssen Sie "application/json-rpc" als Inhaltstyp der Anfrage verwenden und sicherstellen, dass der Anfragetext nicht formularcodiert ist.
+
+
+NOTE: Die Element-Weboberfläche nutzt die in diesem Dokument beschriebenen API-Methoden.  Sie können API-Operationen in der Benutzeroberfläche überwachen, indem Sie das API-Protokoll aktivieren; dadurch können Sie die an das System gesendeten Methoden einsehen.  Sie können sowohl Anfragen als auch Antworten aktivieren, um zu sehen, wie das System auf die aufgerufenen Methoden reagiert.
+
+Sofern nicht anders angegeben, sind alle Datumsangaben in den API-Antworten im UTC+0-Format.
+
+
+NOTE: Wenn der Speichercluster stark ausgelastet ist oder Sie viele aufeinanderfolgende API-Anfragen ohne Verzögerung senden, kann eine Methode fehlschlagen und den Fehler "xDBVersionMismatch" zurückgeben.  Sollte dies der Fall sein, versuchen Sie den Methodenaufruf erneut.
+
+
+
+== Gemeinsame Objekte
+
+Die Element-Software-API verwendet JSON-Objekte zur Darstellung organisierter Datenkonzepte.  Viele dieser API-Methoden nutzen diese Objekte für die Dateneingabe und -ausgabe.  In diesem Abschnitt werden diese häufig verwendeten Objekte dokumentiert; Objekte, die nur innerhalb einer einzigen Methode verwendet werden, werden in der jeweiligen Methode und nicht in diesem Abschnitt dokumentiert.
+
+link:../api/reference_element_api_account.html["Lerne gängige Gegenstände kennen"]
+
+
+
+== Gängige Methoden
+
+Gängige Methoden sind Methoden, die verwendet werden, um Informationen über den Speichercluster, die API selbst oder laufende API-Operationen abzurufen.
+
+link:../api/reference_element_api_getapi.html["Lernen Sie gängige Methoden kennen"]
+
+
+
+== Methoden der Account-API
+
+Mit den Kontomethoden können Sie Konto- und Sicherheitsinformationen hinzufügen, entfernen, anzeigen und ändern.
+
+link:../api/reference_element_api_addaccount.html["Erfahren Sie mehr über die API-Methoden für Konten."]
+
+
+
+== Administrator-API-Methoden
+
+Mithilfe der Administrator-API-Methoden können Sie Speichercluster-Administratoren erstellen, ändern, anzeigen und entfernen sowie Zugriffsebenen und Berechtigungen für diejenigen zuweisen, die Zugriff auf einen Speichercluster haben.
+
+link:../api/reference_element_api_addclusteradmin.html["Erfahren Sie mehr über die Administrator-API-Methoden."]
+
+
+
+== Cluster-API-Methoden
+
+Die Element Software Cluster API-Methoden ermöglichen die Verwaltung der Konfiguration und Topologie des Speicherclusters sowie der zu einem Speichercluster gehörenden Knoten.
+
+Einige Cluster-API-Methoden arbeiten auf Knoten, die Teil eines Clusters sind oder für den Beitritt zu einem Cluster konfiguriert wurden.  Sie können Knoten zu einem neuen Cluster oder zu einem bestehenden Cluster hinzufügen.  Knoten, die bereit sind, einem Cluster hinzugefügt zu werden, befinden sich im Status „ausstehend“. Dies bedeutet, dass sie konfiguriert, aber noch nicht dem Cluster hinzugefügt wurden.
+
+link:../api/reference_element_api_addnodes.html["Erfahren Sie mehr über Cluster-API-Methoden."]
+
+
+
+== API-Methoden zur Clustererstellung
+
+Sie können diese API-Methoden verwenden, um einen Speichercluster zu erstellen.  Alle diese Methoden müssen auf einem einzelnen Knoten gegen den API-Endpunkt angewendet werden.
+
+link:../api/reference_element_api_checkproposedcluster.html["Erfahren Sie mehr über die API-Methoden zur Clustererstellung."]
+
+
+
+== Drive-API-Methoden
+
+Sie können die Methoden der Drive-API verwenden, um Laufwerke, die einem Speichercluster zur Verfügung stehen, hinzuzufügen und zu verwalten.  Wenn Sie einen Speicherknoten zum Speichercluster hinzufügen oder neue Laufwerke in einem vorhandenen Speicherknoten installieren, stehen die Laufwerke zur Hinzufügung zum Speichercluster zur Verfügung.
+
+link:../api/reference_element_api_adddrives.html["Erfahren Sie mehr über die Drive-API-Methoden."]
+
+
+
+== Fibre Channel API-Methoden
+
+Mit den Methoden der Fibre Channel API können Sie Fibre Channel-Knotenmitglieder eines Speicherclusters hinzufügen, ändern oder entfernen.
+
+link:../api/reference_element_api_getvolumeaccessgrouplunassignments.html["Erfahren Sie mehr über Fibre Channel API-Methoden"]
+
+
+
+== Initiator-API-Methoden
+
+Initiatormethoden ermöglichen das Hinzufügen, Entfernen, Anzeigen und Ändern von iSCSI-Initiatorobjekten, die die Kommunikation zwischen dem Speichersystem und externen Speicherclients steuern.
+
+link:../api/reference_element_api_createinitiators.html["Erfahren Sie mehr über die Initiator-API-Methoden."]
+
+
+
+== LDAP-API-Methoden
+
+Sie können das Lightweight Directory Access Protocol (LDAP) verwenden, um den Zugriff auf den Element-Speicher zu authentifizieren.  Die in diesem Abschnitt beschriebenen LDAP-API-Methoden ermöglichen Ihnen die Konfiguration des LDAP-Zugriffs auf den Speichercluster.
+
+link:../api/reference_element_api_addldapclusteradmin.html["Erfahren Sie mehr über die LDAP-API-Methoden."]
+
+
+
+== API-Methoden für die Multi-Faktor-Authentifizierung
+
+Sie können die Multi-Faktor-Authentifizierung (MFA) verwenden, um Benutzersitzungen mithilfe eines Drittanbieter-Identitätsanbieters (IdP) über die Security Assertion Markup Language (SAML) zu verwalten.
+
+link:../api/reference_element_api_addidpclusteradmin.html["Erfahren Sie mehr über API-Methoden zur Multi-Faktor-Authentifizierung."]
+
+
+
+== Methoden der Sitzungsauthentifizierungs-API
+
+Sie können die sitzungsbasierte Authentifizierung zur Verwaltung von Benutzersitzungen verwenden.
+
+link:../api/reference_element_api_listauthsessionbyclusteradmin.html["Erfahren Sie mehr über die API-Methoden zur Sitzungsauthentifizierung."]
+
+
+
+== Node API-Methoden
+
+Sie können Node-API-Methoden verwenden, um einzelne Nodes zu konfigurieren.  Diese Methoden funktionieren auf einzelnen Knoten, die konfiguriert werden müssen, konfiguriert sind, aber noch nicht an einem Cluster teilnehmen, oder aktiv an einem Cluster teilnehmen.  Mithilfe der Node-API-Methoden können Sie die Einstellungen für einzelne Knoten und das Cluster-Netzwerk, das zur Kommunikation mit dem Knoten verwendet wird, anzeigen und ändern.  Diese Methoden müssen auf einzelnen Knoten ausgeführt werden; es ist nicht möglich, knotenbezogene API-Methoden auf der Adresse des Clusters auszuführen.
+
+link:../api/reference_element_api_checkpingonvlan.html["Lernen Sie die Node-API-Methoden kennen."]
+
+
+
+== Replikations-API-Methoden
+
+Die Methoden der Replikations-API ermöglichen es Ihnen, zwei Cluster für den kontinuierlichen Datenschutz (CDP) zu verbinden.  Wenn Sie zwei Cluster verbinden, können aktive Volumes innerhalb eines Clusters kontinuierlich auf einen zweiten Cluster repliziert werden, um die Datenwiederherstellung zu ermöglichen.  Durch die Kopplung von Volumes zur Replikation können Sie Ihre Daten vor Ereignissen schützen, die sie unzugänglich machen könnten.
+
+link:../api/reference_element_api_cluster_pairing_order_of_operations.html["Erfahren Sie mehr über die Replikations-API-Methoden."]
+
+
+
+== Methoden der Sicherheits-API
+
+Sie können die Element-Software mit externen sicherheitsrelevanten Diensten, wie beispielsweise einem externen Schlüsselverwaltungsserver, integrieren.  Mithilfe dieser sicherheitsrelevanten Methoden können Sie Sicherheitsfunktionen von Element konfigurieren, wie z. B. die externe Schlüsselverwaltung für die Verschlüsselung ruhender Daten.
+
+link:../api/reference_element_api_addkeyservertoproviderkmip.html["Erfahren Sie mehr über Sicherheits-API-Methoden."]
+
+
+
+== SnapMirror API-Methoden
+
+Die SnapMirror API-Methoden werden von der Element-Weboberfläche zur Verwaltung von Snapshots verwendet, die mit entfernten ONTAP -Systemen gespiegelt werden.  Diese Methoden sind ausschließlich für die Verwendung mit der Element-Weboberfläche vorgesehen.  Wenn Sie API-Zugriff auf SnapMirror -Funktionen benötigen, verwenden Sie die ONTAP -APIs.  Für die SnapMirror API-Methoden werden keine Beispiele für Anfragen und Rückgabewerte bereitgestellt.
+
+link:../api/reference_element_api_abortsnapmirrorrelationship.html["Erfahren Sie mehr über die SnapMirror API-Methoden."]
+
+
+
+== Systemkonfigurations-API-Methoden
+
+Mithilfe der Systemkonfigurations-API-Methoden können Sie Konfigurationswerte abrufen und festlegen, die für alle Knoten im Cluster gelten.
+
+link:../api/reference_element_api_disablebmccoldreset.html["Erfahren Sie mehr über die API-Methoden zur Systemkonfiguration."]
+
+
+
+== Multitenant-Netzwerk-API-Methoden
+
+Multitenant-Netzwerkfunktionen in Element-Speicherclustern ermöglichen es, den Datenverkehr zwischen mehreren Clients, die sich in separaten logischen Netzwerken befinden, ohne Layer-3-Routing mit einem Element-Speichercluster zu verbinden.
+
+Die Verbindungen zum Speichercluster werden im Netzwerk-Stack durch VLAN-Tagging getrennt.
+
+
+
+=== Voraussetzungen für die Einrichtung eines mandantenfähigen virtuellen Netzwerks
+
+* Sie müssen den Block von Client-Netzwerk-IP-Adressen identifiziert haben, der den virtuellen Netzwerken auf den Speicherknoten zugewiesen werden soll.
+* Sie müssen eine Client-Speichernetzwerk-IP-Adresse (SVIP) identifiziert haben, die als Endpunkt für den gesamten Speicherdatenverkehr verwendet werden soll.
+
+
+
+
+=== Reihenfolge der Operationen in virtuellen Netzwerken
+
+. Verwenden Sie die AddVirtualNetwork-Methode, um die eingegebenen IP-Adressen in großen Mengen bereitzustellen.
++
+Nach dem Hinzufügen eines virtuellen Netzwerks führt der Cluster automatisch die folgenden Schritte aus:
+
++
+** Jeder Speicherknoten erzeugt eine virtuelle Netzwerkschnittstelle.
+** Jedem Speicherknoten wird eine VLAN-Adresse zugewiesen, die über den virtuellen SVIP geroutet werden kann.
+** Die VLAN-IP-Adressen bleiben auf jedem Knoten auch nach einem Neustart erhalten.
+
+
+. Sobald die virtuelle Netzwerkschnittstelle und die VLAN-Adressen zugewiesen wurden, können Sie den Client-Netzwerkverkehr dem virtuellen SVIP zuweisen.
+
+
+link:../api/concept_element_api_virtual_network_naming_conventions.html["Erfahren Sie mehr über Multitenant-Netzwerk-API-Methoden"]
+
+
+
+== Methoden der Volume API
+
+Die Element Software Volume API-Methoden ermöglichen die Verwaltung von Volumes, die sich auf einem Speicherknoten befinden.  Mit diesen Methoden können Sie Volumes erstellen, ändern, klonen und löschen.  Sie können auch Methoden der Volume-API verwenden, um Datenmessungen für ein Volumen zu erfassen und anzuzeigen.
+
+link:../api/reference_element_api_cancelclone.html["Erfahren Sie mehr über die Volume-API-Methoden."]
+
+
+
+== API-Methoden für den Zugriff auf Volumengruppen
+
+Die Methoden für Volume-Zugriffsgruppen ermöglichen das Hinzufügen, Entfernen, Anzeigen und Ändern von Volume-Zugriffsgruppen. Dabei handelt es sich um Sammlungen von Volumes, auf die Benutzer entweder über iSCSI- oder Fibre-Channel-Initiatoren zugreifen können.
+
+link:../api/reference_element_api_addinitiatorstovolumeaccessgroup.html["Erfahren Sie mehr über die API-Methoden für Volumenzugriffsgruppen."]
+
+
+
+== Methoden der Volume-Snapshot-API
+
+Die Element Software Volume Snapshot API-Methoden ermöglichen die Verwaltung von Volume-Snapshots.  Mit den Methoden der Volume Snapshot API können Sie Volume Snapshots erstellen, ändern, klonen und löschen.
+
+link:../api/concept_element_api_snapshots_overview.html["Erfahren Sie mehr über die API-Methoden für Volume-Snapshots."]
+
+
+
+== Methoden der virtuellen Volume-API
+
+Die Virtual Volume API-Methoden der Element-Software ermöglichen die Verwaltung virtueller Volumes (VVols).  Mit diesen API-Methoden können Sie vorhandene VVols anzeigen sowie virtuelle Volume-Speichercontainer erstellen, ändern und löschen.  Obwohl Sie diese Methoden nicht für die Bearbeitung normaler Volumes verwenden können, können Sie die API-Methoden für normale Volumes verwenden, um Informationen über VVols aufzulisten.
+
+link:../api/reference_element_api_createstoragecontainer.html["Erfahren Sie mehr über die API-Methoden für virtuelle Volumes."]
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_listsnapmirrornetworkinterfaces.html 
+sidebar: sidebar 
+keywords: snapmirror,interface,interfaces,list,listing,listsnapmirrornetworkinterfaces,ontap 
+summary: Die Web-Benutzeroberfläche der Element-Software verwendet die Methode ListSnapMirrorNetworkInterfaces, um alle verfügbaren SnapMirror Schnittstellen auf einem entfernten ONTAP -System aufzulisten. 
+---
+= ListSnapMirrorNetworkInterfaces
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `ListSnapMirrorNetworkInterfaces` Methode zum Auflisten aller verfügbaren SnapMirror Schnittstellen auf einem entfernten ONTAP System.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Es werden nur die Netzwerkschnittstellen zurückgegeben, die mit der angegebenen Endpunkt-ID verknüpft sind.  Wird keine Endpunkt-ID angegeben, listet das System Schnittstellen aller bekannten SnapMirror Endpunkte auf.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Schnittstellenrolle
+ a| 
+Listen Sie nur die Netzwerkschnittstelle auf, die die angegebene Rolle erfüllt.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+snapMirrorNetworkInterfaces
+ a| 
+Eine Liste der auf dem entfernten ONTAP Speichersystem verfügbaren SnapMirror -Netzwerkschnittstellen.
+ a| 
+xref:reference_element_api_snapmirrornetworkinterface.adoc[snapMirrornetworkInterface]Array
+
+|===
+
+
+== Neu seit Version
+
+10,1

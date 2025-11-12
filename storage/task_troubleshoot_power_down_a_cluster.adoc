@@ -1,0 +1,44 @@
+---
+permalink: storage/task_troubleshoot_power_down_a_cluster.html 
+sidebar: sidebar 
+keywords: cluster, power down, mvip 
+summary: Sie können einen gesamten Cluster herunterfahren, nachdem Sie den NetApp -Support kontaktiert und die vorbereitenden Schritte abgeschlossen haben. 
+---
+= Schalten Sie einen Cluster aus
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Führen Sie die folgenden Schritte durch, um einen gesamten Cluster herunterzufahren.
+
+.Schritte
+. (Optional) Wenden Sie sich an den NetApp Support, um Unterstützung bei der Durchführung der vorbereitenden Schritte zu erhalten.
+. Vergewissern Sie sich, dass alle E/A-Vorgänge beendet sind.
+. Alle iSCSI-Sitzungen trennen:
++
+.. Navigieren Sie zur Management Virtual IP (MVIP)-Adresse im Cluster, um die Element-Benutzeroberfläche zu öffnen.
+.. Beachten Sie die in der Knotenliste aufgeführten Knoten.
+.. Führen Sie die Shutdown-API-Methode mit der Option „halt“ für jede Knoten-ID im Cluster aus.
+
+
+
+
+[NOTE]
+====
+Beim Neustart des Clusters müssen Sie bestimmte Schritte befolgen, um sicherzustellen, dass alle Knoten wieder online sind:
+
+. Überprüfen Sie, ob alle kritischen Schweregrade und `volumesOffline` Die Clusterfehler wurden behoben.
+. Warten Sie 10 bis 15 Minuten, bis sich das Cluster beruhigt hat.
+. Beginnen Sie mit dem Hochfahren der Hosts, um auf die Daten zuzugreifen.
+
+
+Wenn Sie beim Einschalten der Knoten und bei der Überprüfung ihrer Funktionsfähigkeit nach Wartungsarbeiten mehr Zeit einplanen möchten, wenden Sie sich an den technischen Support, um Unterstützung bei der Verzögerung der Datensynchronisierung zu erhalten und so unnötige Bin-Synchronisierungen zu vermeiden.
+
+====
+
+
+== Weitere Informationen
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/How_to_gracefully_shut_down_and_power_on_a_NetApp_Solidfire_HCI_storage_cluster["Wie man einen NetApp Solidfire/HCI-Speichercluster ordnungsgemäß herunterfährt und wieder einschaltet"^]

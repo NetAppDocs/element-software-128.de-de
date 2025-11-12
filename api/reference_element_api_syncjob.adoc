@@ -1,0 +1,217 @@
+---
+permalink: api/reference_element_api_syncjob.html 
+sidebar: sidebar 
+keywords: object,objects,syncjob 
+summary: Das syncJob-Objekt enthält Informationen über Klon-, Remote-Replikations- oder Slice-Synchronisierungsaufträge, die auf einem Cluster ausgeführt werden. 
+---
+= syncJob
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das syncJob-Objekt enthält Informationen über Klon-, Remote-Replikations- oder Slice-Synchronisierungsaufträge, die auf einem Cluster ausgeführt werden.
+
+Sie können Synchronisierungsinformationen mit dem abrufen `ListSyncJobs` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Blöcke pro Sekunde
+ a| 
+Die Anzahl der Datenblöcke, die pro Sekunde vom Quellcluster zum Zielcluster übertragen werden.  Nur vorhanden, wenn das Typmitglied auf „remote“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Zweigtyp
+ a| 
+Wird nur für Remote-Replikations-Synchronisierungsaufträge zurückgegeben. Mögliche Werte:
+
+* Schnappschuss
+* Volumen
+
+ a| 
+Schnur
+
+
+
+ a| 
+Bytes pro Sekunde
+ a| 
+Die Anzahl der Bytes, die der Klon pro Sekunde verarbeitet.  Nur vorhanden, wenn das Typmitglied auf „Klonen“ oder „Slice“ gesetzt ist.
+ a| 
+schweben
+
+
+
+ a| 
+cloneID
+ a| 
+Die Kennung des laufenden Klonvorgangs.  Nur vorhanden, wenn das Typmitglied auf „Klonen“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+aktuelle Bytes
+ a| 
+Die Anzahl der Bytes, die der Klon im Quellvolume verarbeitet hat.  Nur vorhanden, wenn das Typmitglied auf „Klonen“ oder „Slice“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+dstServiceID
+ a| 
+Die Dienstkennung, die die primäre Replik für das Volume hostet.  Nur vorhanden, wenn das Typmitglied auf „remote“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+dstVolumeID
+ a| 
+Die Zielvolumen-ID.  Nur vorhanden, wenn das Typmitglied auf „Klon“ oder „Remote“ eingestellt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+verstrichene Zeit
+ a| 
+Die seit dem Start des Synchronisierungsvorgangs verstrichene Zeit in Sekunden.
+ a| 
+Gleitkommazahl oder Ganzzahl, abhängig von der Art der Synchronisierungsoperation
+
+
+
+ a| 
+Gruppenklon-ID
+ a| 
+Die ID der aktuell laufenden Gruppenklonoperation.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Knoten-ID
+ a| 
+Gibt den Knoten an, auf dem der Klonvorgang stattfindet.  Nur vorhanden, wenn das Typmitglied auf „Klonen“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Prozent abgeschlossen
+ a| 
+Der Prozentsatz der abgeschlossenen Synchronisierungsaufträge.
+ a| 
+Gleitkommazahl oder Ganzzahl, abhängig von der Art der Synchronisierungsoperation
+
+
+
+ a| 
+verbleibende Zeit
+ a| 
+Die geschätzte Zeit in Sekunden, die für die Durchführung des Vorgangs benötigt wird.
+ a| 
+schweben
+
+
+
+ a| 
+sliceID
+ a| 
+Die ID des zu synchronisierenden Laufwerkssegments.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Bühne
+ a| 
+Nur vorhanden, wenn das Typmitglied auf remote oder clone gesetzt ist. Mögliche Werte:
+
+* Metadaten: Die Replikation ermittelt derzeit, welche Daten an den Remote-Cluster übertragen werden müssen.  Für diese Phase des Replikationsprozesses wird kein Status gemeldet.
+* Daten: Die Replikation ist im Gange und überträgt den Großteil der Daten an den Remote-Cluster.
+* Ganzes: Gibt die Abwärtskompatibilität des Slice für Slice-Synchronisierungsaufträge an.
+
+ a| 
+Schnur
+
+
+
+ a| 
+Snapshot-ID
+ a| 
+Die ID des Snapshots, aus dem der Klon erstellt wurde.  Nur vorhanden, wenn das Typmitglied auf „Klonen“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+srcServiceID
+ a| 
+Die Quelldienst-ID.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+srcVolumeID
+ a| 
+Die Quell-Volume-ID.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Gesamtbytes
+ a| 
+Die Gesamtanzahl der Bytes des Klons.  Nur vorhanden, wenn das Typmitglied auf „Klonen“ oder „Slice“ gesetzt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Typ
+ a| 
+Die Art des Synchronisierungsvorgangs. Mögliche Werte:
+
+* Klon
+* Scheibe
+* Block
+* Fernbedienung
+
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]

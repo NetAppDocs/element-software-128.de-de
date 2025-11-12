@@ -1,0 +1,88 @@
+---
+permalink: storage/task_monitor_information_about_system_events.html 
+sidebar: sidebar 
+keywords: system events, monitor, view event log 
+summary: Sie können Informationen über verschiedene im System erkannte Ereignisse einsehen.  Das System aktualisiert die Ereignismeldungen alle 30 Sekunden.  Das Ereignisprotokoll zeigt wichtige Ereignisse für den Cluster an. 
+---
+= Informationen zu Systemereignissen anzeigen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Informationen über verschiedene im System erkannte Ereignisse einsehen.  Das System aktualisiert die Ereignismeldungen alle 30 Sekunden.  Das Ereignisprotokoll zeigt wichtige Ereignisse für den Cluster an.
+
+. Wählen Sie in der Element-Benutzeroberfläche *Berichterstellung* > *Ereignisprotokoll*.
++
+Für jede Veranstaltung werden Ihnen folgende Informationen angezeigt:
+
++
+|===
+
+
+| Artikel | Beschreibung 
+
+
+ a| 
+AUSWEIS
+ a| 
+Jedem Ereignis ist eine eindeutige ID zugeordnet.
+
+
+
+ a| 
+Ereignistyp
+ a| 
+Die Art des protokollierten Ereignisses, zum Beispiel API-Ereignisse oder Klonereignisse.
+
+
+
+ a| 
+Nachricht
+ a| 
+Nachricht, die mit dem Ereignis verknüpft ist.
+
+
+
+ a| 
+Details
+ a| 
+Informationen, die dabei helfen, die Ursache des Ereignisses zu ermitteln.
+
+
+
+ a| 
+Dienst-ID
+ a| 
+Der Dienst, der das Ereignis gemeldet hat (falls zutreffend).
+
+
+
+ a| 
+Node
+ a| 
+Der Knoten, der das Ereignis gemeldet hat (falls zutreffend).
+
+
+
+ a| 
+Laufwerks-ID
+ a| 
+Das Laufwerk, das das Ereignis gemeldet hat (falls zutreffend).
+
+
+
+ a| 
+Ereigniszeit
+ a| 
+Der Zeitpunkt, zu dem das Ereignis stattfand.
+
+|===
+
+
+
+
+== Weitere Informationen
+
+xref:reference_monitor_event_types.adoc[Ereignistypen]

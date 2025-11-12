@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_storage_nodes.html 
+sidebar: sidebar 
+keywords: storage nodes, management nodes, block space, metadata space, data management, storage management, Bond10G, network interface, network, metadata, data storage, storage, drives, network interfaces 
+summary: Ein SolidFire -Speicherknoten ist ein Server, der eine Sammlung von Laufwerken enthält, die über die Bond10G-Netzwerkschnittstelle miteinander kommunizieren.  Die Laufwerke im Knoten enthalten Block- und Metadatenspeicher für die Datenspeicherung und Datenverwaltung. 
+---
+= Speicherknoten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein SolidFire -Speicherknoten ist ein Server, der eine Sammlung von Laufwerken enthält, die über die Bond10G-Netzwerkschnittstelle miteinander kommunizieren.  Die Laufwerke im Knoten enthalten Block- und Metadatenspeicher für die Datenspeicherung und Datenverwaltung.
+
+Speicherknoten weisen folgende Eigenschaften auf:
+
+* Jeder Knoten hat einen eindeutigen Namen.  Wird kein Knotenname von einem Administrator angegeben, wird standardmäßig SF-XXXX verwendet, wobei XXXX vier vom System generierte Zufallszeichen sind.
+* Jeder Knoten verfügt über einen eigenen, leistungsstarken, nichtflüchtigen Direktzugriffsspeicher (NVRAM) als Schreibcache, um die Gesamtleistung des Systems zu verbessern und die Schreiblatenz zu reduzieren.
+* Jeder Knoten ist mit zwei Netzwerken verbunden, einem Speichernetzwerk und einem Verwaltungsnetzwerk, die jeweils über zwei unabhängige Verbindungen für Redundanz und Leistung verfügen.  Jeder Knoten benötigt eine IP-Adresse in jedem Netzwerk.
+* Sie können einen Cluster mit neuen Speicherknoten erstellen oder einem bestehenden Cluster Speicherknoten hinzufügen, um die Speicherkapazität und die Leistung zu erhöhen.
+* Sie können jederzeit Knoten zum Cluster hinzufügen oder daraus entfernen, ohne den Dienst zu unterbrechen.
+

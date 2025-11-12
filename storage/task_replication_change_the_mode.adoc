@@ -1,0 +1,27 @@
+---
+permalink: storage/task_replication_change_the_mode.html 
+sidebar: sidebar 
+keywords: volume pairings, replication mode, change, volume pair properties 
+summary: Sie können die Eigenschaften des Datenträgerpaares bearbeiten, um den Replikationsmodus der Datenträgerpaarbeziehung zu ändern. 
+---
+= Ändern Sie den Replikationsmodus.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Eigenschaften des Datenträgerpaares bearbeiten, um den Replikationsmodus der Datenträgerpaarbeziehung zu ändern.
+
+. Wählen Sie *Datenschutz* > *Volume-Paare*.
+. Klicken Sie auf das Aktionssymbol für das Lautsprecherpaar.
+. Klicken Sie auf *Bearbeiten*.
+. Im Bereich *Volume-Paar bearbeiten* einen neuen Replikationsmodus auswählen:
++
+** *Echtzeit (Asynchron)*: Schreibvorgänge werden dem Client erst bestätigt, nachdem sie im Quellcluster abgeschlossen wurden.
+** *Echtzeit (synchron)*: Schreibvorgänge werden dem Client bestätigt, nachdem sie sowohl im Quell- als auch im Zielcluster abgeschlossen wurden.
+** *Nur Snapshots*: Es werden nur Snapshots repliziert, die auf dem Quellcluster erstellt wurden.  Aktive Schreibvorgänge vom Quellvolume werden nicht repliziert.  *Achtung:* Durch Ändern des Replikationsmodus wird der Modus sofort geändert.  Stellen Sie sicher, dass Sie diese Änderungen an beiden Standorten koordiniert haben.
+
+
+. Klicken Sie auf *Änderungen speichern*.
+

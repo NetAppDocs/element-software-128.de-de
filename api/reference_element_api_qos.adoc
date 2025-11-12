@@ -1,0 +1,74 @@
+---
+permalink: api/reference_element_api_qos.html 
+sidebar: sidebar 
+keywords: object,objects,QoS 
+summary: 'Das QoS-Objekt enthält Informationen über die Quality of Service (QoS)-Einstellungen für Volumes.  Für die Erstellung von Volumes ohne Angabe von QoS-Werten werden die Standardwerte verwendet.  Standardwerte können Sie mit der Methode GetDefaultQoS ermitteln.' 
+---
+= QoS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das QoS-Objekt enthält Informationen über die Quality of Service (QoS)-Einstellungen für Volumes.  Für die Erstellung von Volumes ohne Angabe von QoS-Werten werden die Standardwerte verwendet.  Sie können Standardwerte mithilfe der folgenden Methode ermitteln: `GetDefaultQoS` Verfahren.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+burstIOPS
+ a| 
+Maximal zulässige 4-KB-IOPS-Spitze für kurze Zeiträume.  Ermöglicht kurzzeitige E/A-Aktivitätsspitzen, die den normalen maxIOPS-Wert überschreiten.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Zeit bis zum Ausbruch
+ a| 
+Die zulässige Zeitspanne für burstIOPS.  Der zurückgegebene Wert wird in Sekunden angegeben.  Dieser Wert wird vom System auf Basis der für QoS festgelegten IOPS berechnet.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Kurve
+ a| 
+Die Kurve ist eine Menge von Schlüssel-Wert-Paaren.  Die Schlüssel geben die E/A-Größen in Bytes an.  Die Werte stellen die Kosten für die Durchführung einer IOP bei einer bestimmten I/O-Größe dar.  Die Kurve wird relativ zu einer 4096 Byte großen Operation bei 100 IOPS berechnet.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+maxIOPS
+ a| 
+Die angestrebten maximalen 4 KB IOPS, die über einen längeren Zeitraum zulässig sind.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+miniIOPS
+ a| 
+Die angestrebten minimalen 4KB IOPS, die garantiert werden sollen.  Die zulässige IOPS-Zahl sinkt nur dann unter diesen Wert, wenn alle Volumes auf ihren minIOPS-Wert begrenzt wurden und die Leistungskapazität immer noch nicht ausreicht.
+ a| 
+ganze Zahl
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_getdefaultqos.adoc[Standard-QoS abrufen]

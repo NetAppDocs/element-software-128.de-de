@@ -1,0 +1,67 @@
+---
+permalink: storage/task-element-replication-make-destination-volume-writeable.html 
+sidebar: sidebar 
+keywords: ontap, cli, make, destination, volume, write 
+summary: 'Bevor Sie Daten von diesem Volume an Clients senden können, müssen Sie das Zielvolume beschreibbar machen.  Mit dem Befehl `snapmirror quiesce` können Sie geplante Übertragungen zum Ziel stoppen, mit dem Befehl `snapmirror abort` können Sie laufende Übertragungen stoppen und mit dem Befehl `snapmirror break` können Sie das Ziel beschreibbar machen.' 
+---
+= Das Zielvolume beschreibbar machen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn ein Katastrophenfall den primären Standort für eine SnapMirror DR-Beziehung außer Betrieb setzt, können Sie Daten vom Zielvolume mit minimalen Unterbrechungen bereitstellen.  Sie können das Quellvolume reaktivieren, sobald der Dienst am primären Standort wiederhergestellt ist.
+
+Bevor Sie Daten von diesem Volume an Clients senden können, müssen Sie das Zielvolume beschreibbar machen.  Sie können die `snapmirror quiesce` Befehl zum Stoppen geplanter Transfers zum Zielort, `snapmirror abort` Befehl zum Stoppen laufender Überweisungen und die `snapmirror break` Befehl, um das Ziel beschreibbar zu machen.
+
+.Informationen zu diesem Vorgang
+Sie müssen den Elementquellpfad im folgenden Format angeben: `<hostip:>/lun/<name>` , wobei "`lun`" die eigentliche Zeichenkette "`lun`" ist und `name` ist der Name des Element-Volumes.
+
+.Schritte
+. Stellen Sie die planmäßigen Transfers zum Zielort ein:
++
+`snapmirror quiesce -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel stoppt geplante Übertragungen zwischen dem Quellvolume. `0005` an der IP-Adresse 10.0.0.11 und dem Zielvolumen `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. Laufende Transfers zum Zielort einstellen:
++
+`snapmirror abort -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel stoppt laufende Übertragungen zwischen dem Quellvolume. `0005` an der IP-Adresse 10.0.0.11 und dem Zielvolumen `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. Die SnapMirror DR-Beziehung unterbrechen:
++
+`snapmirror break -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+Die vollständige Befehlssyntax finden Sie in der Manpage.
+
++
+Das folgende Beispiel unterbricht die Beziehung zwischen dem Quellvolumen `0005` an der IP-Adresse 10.0.0.11 und dem Zielvolumen `volA_dst` An `svm_backup` und das Zielvolumen `volA_dst` An `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

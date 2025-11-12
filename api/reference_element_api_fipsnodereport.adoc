@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_fipsnodereport.html 
+sidebar: sidebar 
+keywords: objects,object,fipsNodeReport 
+summary: Das fipsNodeReport-Objekt enthält Informationen über die FIPS 140-2-Unterstützung für einen einzelnen Knoten im Speichercluster.  Diese Informationen können Sie mit der Methode GetFipsReport abrufen. 
+---
+= fipsNodeReport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das fipsNodeReport-Objekt enthält Informationen über die FIPS 140-2-Unterstützung für einen einzelnen Knoten im Speichercluster.  Sie können diese Informationen abrufen mithilfe der `GetFipsReport` Verfahren.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Knoten-ID
+ a| 
+Die ID des Knotens, der die Informationen meldet.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+fipsDrives
+ a| 
+Ob die FIPS 140-2-Laufwerkverschlüsselung für diesen Knoten aktiviert ist oder nicht. Mögliche Werte:
+
+* Keine: Dieser Knoten unterstützt keine FIPS-Laufwerksverschlüsselung.
+* Teilweise: Der Knoten ist zur FIPS-Laufwerksverschlüsselung fähig, aber nicht alle vorhandenen Laufwerke sind FIPS-fähig.
+* Bereit: Der Knoten ist zur FIPS-Laufwerksverschlüsselung fähig und entweder sind alle vorhandenen Laufwerke FIPS-fähig oder es sind keine Laufwerke vorhanden.
+
+ a| 
+FipsDrivesStatusType
+
+
+
+ a| 
+httpsAktiviert
+ a| 
+Ob die FIPS 140-2 HTTPS-Verschlüsselung für diesen Knoten aktiviert ist oder nicht. Mögliche Werte:
+
+* wahr: aktiviert
+* falsch: deaktiviert
+
+ a| 
+boolescher Wert
+
+|===

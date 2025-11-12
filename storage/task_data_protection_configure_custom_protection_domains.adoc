@@ -1,0 +1,63 @@
+---
+permalink: storage/task_data_protection_configure_custom_protection_domains.html 
+sidebar: sidebar 
+keywords:  
+summary: Sie können benutzerdefinierte Schutzdomänen konfigurieren, um die Ausfallsicherheit des Clusters zu verbessern. 
+---
+= Benutzerdefinierte Schutzdomänen konfigurieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Bei Element-Clustern mit mehr als zwei Speicherknoten können Sie für jeden Knoten benutzerdefinierte Schutzdomänen konfigurieren.  Wenn Sie benutzerdefinierte Schutzdomänen konfigurieren, müssen Sie alle Knoten im Cluster einer Domäne zuweisen.
+
+
+TIP: Wenn Sie Schutzdomänen zuweisen, beginnt eine Datensynchronisierung zwischen den Knoten, und einige Clusteroperationen sind erst nach Abschluss der Datensynchronisierung verfügbar.  Nachdem eine benutzerdefinierte Schutzdomäne für einen Cluster konfiguriert wurde, können Sie beim Hinzufügen eines neuen Speicherknotens keine Laufwerke für den neuen Knoten hinzufügen, bis Sie dem Knoten eine Schutzdomäne zugewiesen und die Datensynchronisierung abgeschlossen haben.  Besuchen Sie dielink:../concepts/concept_solidfire_concepts_data_protection.html#protection-domains["Dokumentation zu Schutzdomänen"] Um mehr über Schutzdomänen zu erfahren.
+
+
+NOTE: Damit ein benutzerdefiniertes Schutzdomänenschema für einen Cluster sinnvoll ist, müssen alle Speicherknoten innerhalb jedes Chassis der gleichen benutzerdefinierten Schutzdomäne zugewiesen werden.  Sie müssen so viele benutzerdefinierte Schutzdomänen erstellen, wie dafür erforderlich sind (das kleinstmögliche benutzerdefinierte Schutzdomänenschema umfasst drei Domänen).  Als bewährte Methode empfiehlt es sich, pro Domäne die gleiche Anzahl von Knoten zu konfigurieren und sicherzustellen, dass jeder einer bestimmten Domäne zugewiesene Knoten vom gleichen Typ ist.
+
+.Schritte
+. Klicken Sie auf *Cluster* > *Knoten*.
+. Klicken Sie auf *Schutzdomänen konfigurieren*.
++
+Im Fenster *Benutzerdefinierte Schutzdomänen konfigurieren* können Sie die aktuell konfigurierten Schutzdomänen (falls vorhanden) sowie die Zuweisungen von Schutzdomänen für einzelne Knoten einsehen.
+
+. Geben Sie einen Namen für die neue benutzerdefinierte Schutzdomäne ein und klicken Sie auf *Erstellen*.
++
+Wiederholen Sie diesen Schritt für alle neuen Schutzdomänen, die Sie erstellen müssen.
+
+. Klicken Sie für jeden Knoten in der Liste *Knoten zuweisen* auf das Dropdown-Menü in der Spalte *Schutzdomäne* und wählen Sie eine Schutzdomäne aus, die diesem Knoten zugewiesen werden soll.
++
+
+CAUTION: Bevor Sie die Änderungen anwenden, stellen Sie sicher, dass Sie das Layout Ihres Knotens und Chassis, das von Ihnen konfigurierte benutzerdefinierte Schutzdomänenschema und die Auswirkungen des Schemas auf den Datenschutz verstehen.  Wenn Sie ein Schutzdomänenschema anwenden und sofort Änderungen vornehmen müssen, kann es einige Zeit dauern, bis Sie dies tun können, da nach der Anwendung einer Konfiguration eine Datensynchronisierung stattfindet.
+
+. Klicken Sie auf *Schutzdomänen konfigurieren*.
+
+
+.Ergebnis
+Je nach Größe Ihres Clusters kann die Datensynchronisierung zwischen den Domänen einige Zeit in Anspruch nehmen.  Nach Abschluss der Datensynchronisierung können Sie die benutzerdefinierten Schutzdomänenzuweisungen auf der Seite *Cluster* > *Knoten* einsehen, und das Element-Web-UI-Dashboard zeigt den Schutzstatus des Clusters im Bereich *Integrität der benutzerdefinierten Schutzdomäne* an.
+
+.Mögliche Fehler
+Hier sind einige Fehler, die nach der Anwendung einer benutzerdefinierten Schutzdomänenkonfiguration auftreten können:
+
+|===
+
+
+| Fehler | Beschreibung | Auflösung 
+
+
+| SetProtectionDomainLayout fehlgeschlagen: ProtectionDomainLayout würde NodeID {9} unbrauchbar machen.  Standardnamen und benutzerdefinierte Namen können nicht gleichzeitig verwendet werden. | Einem Knoten ist keine Schutzdomäne zugewiesen. | Weisen Sie dem Knoten eine Schutzdomäne zu. 
+
+
+| SetProtectionDomainLayout fehlgeschlagen: Der Schutzdomänentyp 'custom' teilt den Schutzdomänentyp 'chassis' auf. | Einem Knoten in einem Multi-Node-Chassis wird eine Schutzdomäne zugewiesen, die sich von den anderen Knoten im Chassis unterscheidet. | Stellen Sie sicher, dass allen Knoten im Chassis dieselbe Schutzdomäne zugewiesen ist. 
+|===
+
+
+== Weitere Informationen
+
+* link:../concepts/concept_solidfire_concepts_data_protection.html#custom_pd["Benutzerdefinierte Schutzdomänen"^]
+* link:../api/concept_element_api_about_the_api.html["Speicherverwaltung mit der Element-API"^]
+

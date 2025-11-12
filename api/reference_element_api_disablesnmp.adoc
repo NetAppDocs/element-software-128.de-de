@@ -1,0 +1,59 @@
+---
+permalink: api/reference_element_api_disablesnmp.html 
+sidebar: sidebar 
+keywords: SNMP,disable,disabling,DisableSnmp 
+summary: Mit der Methode DisableSnmp können Sie SNMP auf den Clusterknoten deaktivieren. 
+---
+= SNMP deaktivieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DisableSnmp` Methode zum Deaktivieren von SNMP auf den Clusterknoten.
+
+
+
+== Parameter
+
+Diese Methode hat keinen Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "DisableSnmp",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "result" : {},
+  "id" : 1
+}
+----
+
+
+== Neu seit Version
+
+9,6

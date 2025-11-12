@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_run_system_utilities.html 
+summary: Sie können Cluster-Support-Bundles erstellen oder löschen, Knotenkonfigurationseinstellungen zurücksetzen oder das Netzwerk neu starten. 
+keywords: netapp, Element, management node ui, mnode ui, system utilities 
+---
+= Führen Sie Systemdienstprogramme vom Verwaltungsknoten aus.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die Benutzeroberfläche des Verwaltungsknotens können Sie Cluster-Support-Bundles erstellen oder löschen, Knotenkonfigurationseinstellungen zurücksetzen oder das Netzwerk neu starten.
+
+.Schritte
+. Öffnen Sie die Benutzeroberfläche des Verwaltungsknotens pro Knoten mit den Administratoranmeldeinformationen des Verwaltungsknotens.
+. Wählen Sie *Systemdienstprogramme*.
+. Wählen Sie die Schaltfläche für das Dienstprogramm aus, das Sie ausführen möchten:
++
+.. *Stromversorgung steuern*: Startet den Knoten neu, schaltet ihn aus und wieder ein oder fährt ihn herunter.  Wählen Sie eine der folgenden Optionen.
++
+
+IMPORTANT: Dieser Vorgang führt zu einem vorübergehenden Verlust der Netzwerkverbindung.
+
++
+*** *Aktion*: Optionen umfassen `Restart` Und `Halt` (Strom ausgeschaltet).
+*** *Aufwachverzögerung*: Jede zusätzliche Zeit, bevor der Knoten wieder online geht.
+
+
+.. *Cluster-Support-Bundle erstellen*: Erstellt das Cluster-Support-Bundle, um die Diagnoseauswertungen eines oder mehrerer Knoten in einem Cluster durch den NetApp -Support zu unterstützen.  Geben Sie die folgenden Optionen an:
++
+*** *Bundle-Name*: Eindeutiger Name für jedes erstellte Support-Bundle.  Wird kein Name angegeben, werden „supportbundle“ und der Knotenname als Dateiname verwendet.
+*** *Mvip*: Der MVIP des Clusters.  Die Datenpakete werden von allen Knoten im Cluster gesammelt.  Dieser Parameter ist erforderlich, wenn der Parameter „Nodes“ nicht angegeben ist.
+*** *Knoten*: Die IP-Adressen der Knoten, von denen Pakete gesammelt werden sollen.  Verwenden Sie entweder Nodes oder Mvip, aber nicht beides, um die Knoten anzugeben, von denen Bundles gesammelt werden sollen.  Dieser Parameter ist erforderlich, wenn Mvip nicht angegeben ist.
+*** *Benutzername*: Der Benutzername des Cluster-Administrators.
+*** *Passwort*: Das Cluster-Administratorpasswort.
+*** *Unvollständige Abfrage zulassen*: Ermöglicht die weitere Ausführung des Skripts, falls von einem oder mehreren Knoten keine Pakete gesammelt werden können.
+*** *Zusätzliche Argumente*: Dieser Parameter wird an die `sf_make_support_bundle` Skript.  Dieser Parameter sollte nur auf Anfrage des NetApp Supports verwendet werden.
+
+
+.. *Alle Support-Bundles löschen*: Löscht alle aktuell auf dem Management-Knoten vorhandenen Support-Bundles.
+.. *Knoten zurücksetzen*: Setzt den Management-Knoten auf ein neues Installationsabbild zurück.  Dadurch werden alle Einstellungen außer der Netzwerkkonfiguration auf den Standardzustand zurückgesetzt.  Geben Sie die folgenden Optionen an:
++
+*** *Build*: Die URL zu einem Remote-Element-Software-Image, auf das der Knoten zurückgesetzt wird.
+*** *Optionen*: Spezifikationen für die Durchführung der Reset-Operationen.  Detaillierte Informationen erhalten Sie bei Bedarf vom NetApp Support.
++
+
+IMPORTANT: Dieser Vorgang führt zu einem vorübergehenden Verlust der Netzwerkverbindung.
+
+
+
+.. *Netzwerk neu starten*: Startet alle Netzwerkdienste auf dem Management-Knoten neu.
++
+
+IMPORTANT: Dieser Vorgang führt zu einem vorübergehenden Verlust der Netzwerkverbindung.
+
+
+
+
+
+[discrete]
+== Weitere Informationen finden Sie hier.
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

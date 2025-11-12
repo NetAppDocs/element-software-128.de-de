@@ -1,0 +1,115 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_settings.html 
+summary: Sie können die Einstellungen des Management-Knotennetzwerks, des Clusters und des Systems ändern und testen. 
+keywords: netapp, management node ui, mnode ui, network settings, test network, cluster settings 
+---
+= Ändern und testen Sie die Einstellungen des Management-Knotennetzwerks, des Clusters und des Systems.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Einstellungen des Management-Knotennetzwerks, des Clusters und des Systems ändern und testen.
+
+* <<Netzwerkeinstellungen des Verwaltungsknotens aktualisieren>>
+* <<Aktualisieren der Cluster-Einstellungen des Verwaltungsknotens>>
+* <<Testen Sie die Einstellungen des Verwaltungsknotens.>>
+
+
+
+
+== Netzwerkeinstellungen des Verwaltungsknotens aktualisieren
+
+Auf der Registerkarte „Netzwerkeinstellungen“ der Benutzeroberfläche des Verwaltungsknotens pro Knoten können Sie die Felder der Netzwerkschnittstelle des Verwaltungsknotens ändern.
+
+. Öffnen Sie die Benutzeroberfläche des Verwaltungsknotens pro Knoten.
+. Wählen Sie die Registerkarte *Netzwerkeinstellungen*.
+. Folgende Informationen anzeigen oder eingeben:
++
+.. *Methode*: Wählen Sie eine der folgenden Methoden zur Konfiguration der Schnittstelle:
++
+*** `loopback`: Wird verwendet, um die IPv4-Loopback-Schnittstelle zu definieren.
+*** `manual`: Dient zur Definition von Schnittstellen, für die standardmäßig keine Konfiguration erfolgt.
+*** `dhop`Dient dazu, eine IP-Adresse per DHCP zu beziehen.
+*** `static`: Dient zur Definition von Ethernet-Schnittstellen mit statisch zugewiesenen IPv4-Adressen.
+
+
+.. *Verbindungsgeschwindigkeit*: Die von der virtuellen Netzwerkkarte ausgehandelte Geschwindigkeit.
+.. *IPv4-Adresse*: Die IPv4-Adresse für das eth0-Netzwerk.
+.. *IPv4-Subnetzmaske*: Adressunterteilungen des IPv4-Netzwerks.
+.. *IPv4-Gateway-Adresse*: Router-Netzwerkadresse, an die Pakete aus dem lokalen Netzwerk gesendet werden.
+.. *IPv6-Adresse*: Die IPv6-Adresse für das eth0-Netzwerk.
+.. *IPv6-Gateway-Adresse*: Router-Netzwerkadresse, an die Pakete aus dem lokalen Netzwerk gesendet werden.
++
+
+IMPORTANT: Die IPv6-Optionen werden für Management-Knoten ab Version 11.3 nicht unterstützt.
+
+.. *MTU*: Größte Paketgröße, die ein Netzwerkprotokoll übertragen kann.  Muss größer oder gleich 1500 sein.  Wenn Sie eine zweite Speicher-Netzwerkkarte hinzufügen, sollte der Wert 9000 betragen.
+.. *DNS-Server*: Netzwerkschnittstelle zur Clusterkommunikation.
+.. *Domänen suchen*: Suche nach zusätzlichen MAC-Adressen, die dem System zur Verfügung stehen.
+.. *Status*: Mögliche Werte:
++
+*** `UpAndRunning`
+*** `Down`
+*** `Up`
+
+
+.. *Routen*: Statische Routen zu bestimmten Hosts oder Netzwerken über die zugehörige Schnittstelle, für deren Verwendung die Routen konfiguriert sind.
+
+
+
+
+
+
+== Aktualisieren der Cluster-Einstellungen des Verwaltungsknotens
+
+Auf der Registerkarte „Clustereinstellungen“ der Benutzeroberfläche pro Knoten für den Verwaltungsknoten können Sie Clusterschnittstellenfelder ändern, wenn sich ein Knoten im Status „Verfügbar“, „Ausstehend“, „AusstehendAktiv“ oder „Aktiv“ befindet.
+
+. Öffnen Sie die Benutzeroberfläche des Verwaltungsknotens pro Knoten.
+. Wählen Sie die Registerkarte *Cluster-Einstellungen*.
+. Folgende Informationen anzeigen oder eingeben:
++
+** *Rolle*: Die Rolle, die der Management-Knoten im Cluster hat.  Möglicher Wert: `Management` Die
+** *Version*: Die auf dem Cluster laufende Element-Softwareversion.
+** *Standardschnittstelle*: Standardnetzwerkschnittstelle, die für die Kommunikation des Management-Knotens mit dem Cluster, auf dem die Element-Software ausgeführt wird, verwendet wird.
+
+
+
+
+
+
+== Testen Sie die Einstellungen des Verwaltungsknotens.
+
+Nachdem Sie die Management- und Netzwerkeinstellungen für den Management-Knoten geändert und die Änderungen übernommen haben, können Sie Tests durchführen, um die vorgenommenen Änderungen zu überprüfen.
+
+. Öffnen Sie die Benutzeroberfläche des Verwaltungsknotens pro Knoten.
+. Wählen Sie in der Benutzeroberfläche des Management-Knotens *Systemtests* aus.
+. Bitte füllen Sie eine der folgenden Aufgaben aus:
++
+.. Um zu überprüfen, ob die von Ihnen konfigurierten Netzwerkeinstellungen für das System gültig sind, wählen Sie *Netzwerkkonfiguration testen*.
+.. Um die Netzwerkverbindung zu allen Knoten im Cluster sowohl über 1G- als auch über 10G-Schnittstellen mithilfe von ICMP-Paketen zu testen, wählen Sie *Test Ping*.
+
+
+. Folgendes anzeigen oder eingeben:
++
+** *Hosts*: Geben Sie eine durch Kommas getrennte Liste von Adressen oder Hostnamen der anzupingenden Geräte an.
+** *Versuche*: Geben Sie an, wie oft das System den Test-Ping wiederholen soll.  Standardwert: 5.
+** *Paketgröße*: Geben Sie die Anzahl der Bytes an, die im ICMP-Paket an jede IP-Adresse gesendet werden sollen.  Die Anzahl der Bytes muss kleiner sein als die in der Netzwerkkonfiguration angegebene maximale MTU.
+** *Timeout mSec*: Geben Sie die Anzahl der Millisekunden an, die auf jede einzelne Ping-Antwort gewartet werden soll.  Standardwert: 500 ms.
+** *Gesamtes Timeout in Sekunden*: Geben Sie die Zeit in Sekunden an, die der Ping auf eine Systemantwort warten soll, bevor der nächste Ping-Versuch gestartet oder der Prozess beendet wird.  Standardwert: 5.
+** *Fragmentierung verhindern*: Aktivieren Sie das DF-Flag (Do Not Fragment) für die ICMP-Pakete.
+
+
+
+
+[discrete]
+== Weitere Informationen finden Sie hier.
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

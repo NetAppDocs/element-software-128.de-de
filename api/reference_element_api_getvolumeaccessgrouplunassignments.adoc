@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_getvolumeaccessgrouplunassignments.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,LUN,mapping,assignment,get,getting,GetVolumeAccessGroupLunAssignments 
+summary: Mit der Methode GetVolumeAccessGroupLunAssignments können Sie Details zu LUN-Zuordnungen einer bestimmten Volume-Zugriffsgruppe abrufen. 
+---
+= GetVolumeAccessGroupLunAssignments
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetVolumeAccessGroupLunAssignments` Methode zum Abrufen von Details zu LUN-Zuordnungen einer bestimmten Volume-Zugriffsgruppe.
+
+
+
+== Parameter
+
+Diese Methode hat folgende Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Eine eindeutige Datenträgerzugriffsgruppen-ID, die zur Rückgabe von Informationen verwendet wird.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+volumeAccessGroupLunAssignments
+ a| 
+Eine Liste aller physischen Fibre-Channel-Ports oder ein Port für einen einzelnen Knoten.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetVolumeAccessGroupLunAssignments",
+   "params": {
+      "volumeAccessGroupID": 5
+    },
+  "id" : 1
+   }
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+    "volumeAccessGroupLunAssignments" : {
+       "volumeAccessGroupID" : 5,
+       "lunAssignments" : [
+          {"volumeID" : 5, "lun" : 0},
+          {"volumeID" : 6, "lun" : 1},
+          {"volumeID" : 7, "lun" : 2},
+          {"volumeID" : 8, "lun" : 3}
+       ],
+       "deletedLunAssignments" : [
+           {"volumeID" : 44, "lun" : 44}
+       ]
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

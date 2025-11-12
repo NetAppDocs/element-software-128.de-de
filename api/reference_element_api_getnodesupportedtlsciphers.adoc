@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_getnodesupportedtlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,ciphers,get,getting,supported,getnodesupportedtlsciphers 
+summary: Mit der Methode GetNodeSupportedTlsCiphers eines einzelnen Knotens können Sie eine Liste der TLS-Verschlüsselungen erhalten, die derzeit auf diesem Knoten unterstützt werden.  Diese Methode kann auf Management- und Speicherknoten angewendet werden. 
+---
+= GetNodeSupportedTlsCiphers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetNodeSupportedTlsCiphers` Methode auf einem einzelnen Knoten, um eine Liste der TLS-Verschlüsselungen zu erhalten, die derzeit auf diesem Knoten unterstützt werden.  Diese Methode kann auf Management- und Speicherknoten angewendet werden.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+obligatorische Verschlüsselungen
+ a| 
+Liste der für den Knoten obligatorischen TLS-Verschlüsselungssammlungen.  Dies sind Verschlüsselungsverfahren, die auf dem Knoten immer aktiv sind.
+ a| 
+Schnur
+
+
+
+ a| 
+Standard-Zusatzchiffren
+ a| 
+Liste der standardmäßigen zusätzlichen TLS-Verschlüsselungssammlungen für den Knoten.  Die zusätzlichen Verschlüsselungen werden dieser Liste wiederhergestellt, wenn Sie die API-Methode ResetNodeSupplementalTlsCiphers ausführen.
+ a| 
+Schnur
+
+
+
+ a| 
+unterstützte Zusatzchiffren
+ a| 
+Liste der verfügbaren zusätzlichen TLS-Verschlüsselungssammlungen, die Sie mit der API-Methode SetNodeSupplementalTlsCiphers konfigurieren können.
+ a| 
+Schnur
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "GetNodeSupportedTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+	"defaultSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256"
+	],
+	"mandatoryCiphers": [
+		"DHE-RSA-AES256-SHA256",
+		"DHE-RSA-AES256-GCM-SHA384",
+		"ECDHE-RSA-AES256-SHA384",
+		"ECDHE-RSA-AES256-GCM-SHA384"
+	],
+	"supportedSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256",
+		"DHE-RSA-AES256-SHA",
+		"ECDHE-RSA-AES256-SHA",
+		"DHE-RSA-CAMELLIA256-SHA",
+		"DHE-RSA-AES128-SHA",
+		"ECDHE-RSA-AES128-SHA",
+		"DHE-RSA-CAMELLIA128-SHA"
+	]
+}
+}
+----

@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_volumepair.html 
+sidebar: sidebar 
+keywords: object,objects,volumePair 
+summary: Das volumePair-Objekt enthält Informationen über ein Volume, das mit einem anderen Volume auf einem anderen Cluster gepaart ist.  Wenn das Volume nicht gekoppelt ist, ist dieses Objekt leer.  Mit den API-Methoden ListActivePairedVolumes und ListActiveVolumes können Sie Informationen über gepaarte Volumes abrufen. 
+---
+= volumePair
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das volumePair-Objekt enthält Informationen über ein Volume, das mit einem anderen Volume auf einem anderen Cluster gepaart ist.  Wenn das Volume nicht gekoppelt ist, ist dieses Objekt leer.  Sie können die `ListActivePairedVolumes` Und `ListActiveVolumes` API-Methoden zur Rückgabe von Informationen über gepaarte Volumes.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Clusterpaar-ID
+ a| 
+Der Cluster, auf dem das Volumen zugeordnet ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Remote-Replikation
+ a| 
+Details zur Volumenreplikation.  Mitglieder:
+
+* Modus: (Zeichenkette) Einer der Werte "Async", "Sync" oder "SnapshotsOnly".
+* pauseLimit: (Ganzzahl) Nur für den internen Gebrauch.
+* remoteServiceID: (Ganzzahl) Die Remote-Slice-Service-ID.
+* resumeDetails: (Zeichenkette) Für zukünftige Verwendung reserviert.
+* Snapshot-Replikation (JSON-Objekt)
++
+** Status: (Zeichenkette) Der Status der laufenden Snapshot-Replikation, falls eine solche im Gange ist.
+** stateDetails: (Zeichenkette) Für zukünftige Verwendung reserviert.
+
+
+* Status: (Zeichenkette) Der Status der Volume-Replikation.
+* stateDetails: (Zeichenkette) Für zukünftige Verwendung reserviert.
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+remoteSliceID
+ a| 
+Die vom Cluster definierte Slice-ID auf dem Remote-Cluster.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+remoteVolumeID
+ a| 
+Die ID des Volumes auf dem Remote-Cluster, mit dem das lokale Volume gekoppelt ist.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+remoteVolumeName
+ a| 
+Der Name des entfernten Volumes.
+ a| 
+Schnur
+
+
+
+ a| 
+volumePairUUID
+ a| 
+Ein universell eindeutiger, clusterdefinierter Bezeichner für dieses Paar in einem kanonischen Format.
+ a| 
+Schnur
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_listactivepairedvolumes.adoc[ListActivePairedVolumes]
+* xref:reference_element_api_listactivevolumes.adoc[ListActiveVolumes]
+

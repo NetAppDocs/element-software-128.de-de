@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_account.html 
+sidebar: sidebar 
+keywords: account,object,accounts 
+summary: Das Kontoobjekt enthält Informationen über ein Konto.  Dieses Objekt enthält ausschließlich „konfigurierte“ Informationen über das Konto, keine Laufzeit- oder Nutzungsinformationen. 
+---
+= Konto
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `account` Das Objekt enthält Informationen über ein Konto.  Dieses Objekt enthält ausschließlich „konfigurierte“ Informationen über das Konto, keine Laufzeit- oder Nutzungsinformationen.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+`accountID`
+ a| 
+Die eindeutige Konto-ID für das Konto.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`attributes`
+ a| 
+Liste von Name-Wert-Paaren im JSON-Objektformat.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+`enableChap`
+ a| 
+Legt fest, ob CHAP-Kontodaten von einem Initiator für den Zugriff auf Volumes verwendet werden können.
+ a| 
+boolescher Wert
+
+
+
+ a| 
+`initiatorSecret`
+ a| 
+Das Initiator-CHAP-Geheimnis.
+ a| 
+Schnur
+
+
+
+ a| 
+`status`
+ a| 
+Der aktuelle Status des Kontos. Mögliche Werte:
+
+* aktiv: Ein aktives Konto.
+* gesperrt: Ein gesperrtes Konto.
+* entfernt: Ein Konto, das gelöscht und endgültig entfernt wurde.
+
+ a| 
+Schnur
+
+
+
+ a| 
+`storageContainerID`
+ a| 
+Die eindeutige ID des virtuellen Speichercontainers, der diesem Konto zugeordnet ist.
+ a| 
+UUID
+
+
+
+ a| 
+`targetSecret`
+ a| 
+Das Ziel CHAP-Geheimnis.
+ a| 
+Schnur
+
+
+
+ a| 
+`username`
+ a| 
+Der Benutzername für das Konto.
+ a| 
+Schnur
+
+
+
+ a| 
+`volumes`
+ a| 
+Eine Liste der Volume-IDs für Volumes, die diesem Konto gehören.
+ a| 
+Ganzzahl-Array
+
+|===
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_addaccount.adoc[Konto hinzufügen]
+* xref:reference_element_api_getaccountbyid.adoc[GetAccountByID]
+* xref:reference_element_api_getaccountbyname.adoc[GetAccountByName]
+* xref:reference_element_api_listaccounts.adoc[Konten auflisten]
+

@@ -1,0 +1,62 @@
+---
+section: mnode
+title: Arbeiten Sie mit dem Management-Knoten
+entries:
+- title: Übersicht der Verwaltungsknoten
+  url: "/mnode/task_mnode_work_overview.html"
+- title: Installieren oder Wiederherstellen eines Verwaltungsknotens
+  entries:
+  - title: Installieren Sie einen Management-Knoten
+    url: "/mnode/task_mnode_install.html"
+  - title: Erstellen Sie eine NetApp HCC-Rolle in vCenter
+    url: "/mnode/task_mnode_create_netapp_hcc_role_vcenter.html"
+  - title: Konfigurieren eines Speichernetzwerkschnittstellencontrollers (NIC)
+    url: "/mnode/task_mnode_install_add_storage_NIC.html"
+  - title: Wiederherstellen eines Verwaltungsknotens
+    url: "/mnode/task_mnode_recover.html"
+- title: Greifen Sie auf den Verwaltungsknoten zu.
+  url: "/mnode/task_mnode_access_ui.html"
+- title: Ändern Sie das Standard-SSL-Zertifikat des Verwaltungsknotens.
+  url: "/mnode/reference_change_mnode_default_ssl_certificate.html"
+- title: Arbeiten Sie mit der Benutzeroberfläche des Verwaltungsknotens.
+  entries:
+  - title: Übersicht der Benutzeroberfläche des Verwaltungsknotens
+    url: "/mnode/task_mnode_work_overview_UI.html"
+  - title: Alarmüberwachung konfigurieren
+    url: "/mnode/task_mnode_enable_alerts.html"
+  - title: Ändern und testen Sie die Einstellungen des Management-Knotennetzwerks,
+      des Clusters und des Systems.
+    url: "/mnode/task_mnode_settings.html"
+  - title: Führen Sie Systemdienstprogramme vom Verwaltungsknoten aus.
+    url: "/mnode/task_mnode_run_system_utilities.html"
+- title: Arbeiten Sie mit der REST-API des Management-Knotens.
+  entries:
+  - title: Übersicht der REST-API-Benutzeroberfläche des Management-Knotens
+    url: "/mnode/task_mnode_work_overview_API.html"
+  - title: Autorisierung zur Nutzung von REST-APIs einholen.
+    url: "/mnode/task_mnode_api_get_authorizationtouse.html"
+  - title: Aktivieren Sie Active IQ und die NetApp Überwachung.
+    url: "/mnode/task_mnode_enable_activeIQ.html"
+  - title: NetApp Hybrid Cloud Control für mehrere vCenter-Center konfigurieren
+    url: "/mnode/task_mnode_multi_vcenter_config.html"
+  - title: Fügen Sie dem Verwaltungsknoten ein Controller-Asset hinzu.
+    url: "/mnode/task_mnode_add_assets.html"
+  - title: Speichercluster-Assets erstellen und verwalten
+    url: "/mnode/task_mnode_manage_storage_cluster_assets.html"
+  - title: Vorhandene Controller-Assets anzeigen oder bearbeiten
+    url: "/mnode/task_mnode_edit_vcenter_assets.html"
+  - title: Konfigurieren Sie einen Proxy-Server
+    url: "/mnode/task_mnode_configure_proxy_server.html"
+  - title: Überprüfen Sie die Versionen des Management-Knoten-Betriebssystems und
+      der Dienste.
+    url: "/mnode/task_mnode_api_find_mgmt_svcs_version.html"
+  - title: Abrufen von Protokollen von Verwaltungsdiensten
+    url: "/mnode/task_mnode_logs.html"
+- title: Supportverbindungen verwalten
+  entries:
+  - title: Zugriff auf Speicherknoten über SSH zur grundlegenden Fehlerbehebung
+    url: "/mnode/task_mnode_enable_node_troubleshooting_sessions.html"
+  - title: Starten Sie eine NetApp Remote-Supportsitzung
+    url: "/mnode/task_mnode_enable_remote_support_connections.html"
+  - title: SSH-Funktionalität auf dem Management-Knoten verwalten
+    url: "/mnode/task_mnode_ssh_management.html"

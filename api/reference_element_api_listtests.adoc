@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_listtests.html 
+sidebar: sidebar 
+keywords: test,tests,list,listing,listtests 
+summary: Mit der Methode ListTests können Sie die Tests auflisten, die auf einem Knoten ausgeführt werden können. 
+---
+= ListTests
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `ListTests` Methode zum Auflisten der Tests, die auf einem Knoten ausgeführt werden können.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Tests
+ a| 
+Liste der Tests, die auf dem Knoten durchgeführt werden können.
+ a| 
+Zeichenketten-Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListTests",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+   "tests": [
+             "TestConnectEnsemble",
+             "TestConnectMvip",
+             "TestConnectSvip",
+             "TestDrives",
+             "TestHardwareConfig",
+             "TestLocateCluster",
+             "TestPing",
+             "TestLocalConnectivity",
+             "TestRemoteConnectivity",
+             "TestNetworkConfig"
+           ]
+      }
+}
+----
+
+
+== Neu seit Version
+
+9,6

@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_deletevolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,delete,deleting,DeleteVolumeAccessGroup 
+summary: Mit DeleteVolumeAccessGroup können Sie eine Volume-Zugriffsgruppe löschen. 
+---
+= DeleteVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `DeleteVolumeAccessGroup` Eine Volume-Zugriffsgruppe löschen.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+volumeAccessGroupID
+ a| 
+Die ID der zu löschenden Volume-Zugriffsgruppe.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+deleteOrphanInitiators
+ a| 
+Gibt an, ob Initiatorobjekte gelöscht werden sollen oder nicht. Mögliche Werte:
+
+* true: Initiatorobjekte löschen, nachdem sie aus einer Volume-Zugriffsgruppe entfernt wurden.
+* falsch: Initiatorobjekte werden nicht gelöscht, nachdem sie aus einer Volume-Zugriffsgruppe entfernt wurden. Dies ist die Standardeinstellung.
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Gewalt
+ a| 
+Durch Hinzufügen dieses Flags wird die Volume-Zugriffsgruppe erzwungen, auch wenn sie über eine virtuelle Netzwerk-ID oder ein Tag verfügt. Mögliche Werte:
+
+* true: Die Volume-Zugriffsgruppe wird gelöscht.
+* false: Standardwert.  Löschen Sie die Volume-Zugriffsgruppe nicht, wenn sie eine virtuelle Netzwerk-ID oder ein Tag besitzt.
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "DeleteVolumeAccessGroup",
+   "params": {
+          "force": true,
+	  "volumeAccessGroupID"  : 3
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {}
+}
+----
+
+
+== Neu seit Version
+
+9,6

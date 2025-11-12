@@ -1,0 +1,23 @@
+---
+permalink: storage/concept_intro_clusters.html 
+sidebar: sidebar 
+keywords: clusters, about clusters, collection of nodes, nodes in a cluster, block storage, logical group, add nodes, access cluster 
+summary: Ein Cluster ist das Herzstück eines SolidFire -Speichersystems und besteht aus einer Sammlung von Knoten.  Um die Speichereffizienzvorteile von SolidFire nutzen zu können, müssen Sie mindestens vier Knoten in einem Cluster haben.  Ein Cluster erscheint im Netzwerk als eine einzige logische Gruppe und kann dann als Blockspeicher angesprochen werden. 
+---
+= Cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ein Cluster ist das Herzstück eines SolidFire -Speichersystems und besteht aus einer Sammlung von Knoten.  Um die Speichereffizienzvorteile von SolidFire nutzen zu können, müssen Sie mindestens vier Knoten in einem Cluster haben.  Ein Cluster erscheint im Netzwerk als eine einzige logische Gruppe und kann dann als Blockspeicher angesprochen werden.
+
+Beim Erstellen eines neuen Clusters wird ein Knoten als Kommunikationsinhaber für den Cluster initialisiert und die Netzwerkkommunikation für jeden Knoten im Cluster eingerichtet.  Dieser Vorgang wird für jeden neuen Cluster nur einmal durchgeführt.  Sie können einen Cluster über die Element-Benutzeroberfläche oder die API erstellen.
+
+Sie können einen Cluster skalieren, indem Sie zusätzliche Knoten hinzufügen.  Beim Hinzufügen eines neuen Knotens kommt es zu keiner Unterbrechung des Dienstes, und der Cluster nutzt automatisch die Leistung und Kapazität des neuen Knotens.
+
+Administratoren und Hosts können über virtuelle IP-Adressen auf den Cluster zugreifen.  Jeder Knoten im Cluster kann die virtuellen IP-Adressen hosten.  Die Management Virtual IP (MVIP) ermöglicht die Clusterverwaltung über eine 1GbE-Verbindung, während die Storage Virtual IP (SVIP) den Hostzugriff auf den Speicher über eine 10GbE-Verbindung ermöglicht.  Diese virtuellen IP-Adressen ermöglichen konsistente Verbindungen unabhängig von der Größe oder Zusammensetzung eines SolidFire Clusters.  Wenn ein Knoten, der eine virtuelle IP-Adresse hostet, ausfällt, übernimmt ein anderer Knoten im Cluster die Hosting der virtuellen IP-Adresse.
+
+
+NOTE: Ab Element Version 11.0 können Knoten mit IPv4-, IPv6- oder beiden Adressen für ihr Managementnetzwerk konfiguriert werden.  Dies gilt sowohl für Speicherknoten als auch für Verwaltungsknoten, mit Ausnahme des Verwaltungsknotens 11.3 und höher, der IPv6 nicht unterstützt.  Bei der Erstellung eines Clusters kann nur eine einzige IPv4- oder IPv6-Adresse für den MVIP verwendet werden, und der entsprechende Adresstyp muss auf allen Knoten konfiguriert sein.

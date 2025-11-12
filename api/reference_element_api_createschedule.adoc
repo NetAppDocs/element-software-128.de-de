@@ -1,0 +1,539 @@
+---
+permalink: api/reference_element_api_createschedule.html 
+sidebar: sidebar 
+keywords: CreateSchedule,create,creating,schedule,schedules,snapshot,snapshots,scheduling,automatic,volume,volumes 
+summary: Mit CreateSchedule können Sie die Erstellung eines automatischen Snapshots eines Volumes in einem definierten Intervall planen. 
+---
+= Zeitplan erstellen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `CreateSchedule` um einen automatischen Snapshot eines Volumes in einem definierten Intervall zu planen.
+
+Sie können den erstellten Snapshot später als Backup oder Rollback verwenden, um sicherzustellen, dass die Daten auf einem Volume oder einer Gruppe von Volumes zu dem Zeitpunkt konsistent sind, zu dem der Snapshot erstellt wurde.  Wenn Sie einen Snapshot für einen Zeitraum planen, der nicht durch 5 Minuten teilbar ist, wird der Snapshot zum nächsten Zeitpunkt ausgeführt, der durch 5 Minuten teilbar ist.  Wenn Sie beispielsweise einen Snapshot für 12:42:00 UTC planen, wird er um 12:45:00 UTC ausgeführt.  Sie können nicht planen, dass ein Snapshot in Abständen von weniger als 5 Minuten ausgeführt wird.
+
+
+NOTE: Sie können Snapshots erstellen, wenn der Cluster ausgelastet ist (Stufe 1, 2 oder 3).  Snapshots können nicht erstellt werden, wenn der Cluster-Füllstand Stufe 4 oder 5 erreicht.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+`attributes`
+ a| 
+Verwenden Sie die Zeichenkette "`frequency`", um die Häufigkeit der Momentaufnahme anzugeben. Mögliche Werte:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+| `hasError` | *Hilfe bei der Beschreibung benötigt* | boolescher Wert | `false` | Nein 
+
+
+ a| 
+`hours`
+ a| 
+Anzahl der Stunden zwischen wiederkehrenden Snapshots oder Stunde in GMT-Zeit, zu der der Snapshot im Wochentags- oder Monatsmodus erstellt wird. Gültige Werte sind 0 bis 23.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+| `lastRunStatus` | Das Ergebnis oder der Status der letzten geplanten Snapshot-Erstellung. | Schnur | Keine | Nein 
+
+
+ a| 
+`name`
+ a| 
+Der Name des Snapshots.  Wird kein Name eingegeben, wird das Datum und die Uhrzeit der Gruppenaufnahme verwendet.  Die maximal zulässige Namenslänge beträgt 244 Zeichen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+`minutes`
+ a| 
+Anzahl der Minuten zwischen wiederkehrenden Momentaufnahmen oder die Minute in GMT-Zeit, zu der die Momentaufnahme im Wochentags- oder Monatsmodus erfolgen soll. Gültige Werte sind 5 bis 59.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+`paused`
+ a| 
+Gibt an, ob der Zeitplan pausiert werden soll oder nicht.  Gültige Werte:
+
+* `true`
+* `false`
+
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+`recurring`
+ a| 
+Gibt an, ob der Zeitplan wiederkehrend ist oder nicht.  Gültige Werte sind:
+
+* `true`
+* `false`
+
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+| `runNextInterval`  a| 
+Legt fest, ob der Snapshot beim nächsten aktiven Scheduler ausgeführt werden soll oder nicht.  Wenn diese Einstellung auf „true“ gesetzt ist, wird der geplante Snapshot beim nächsten aktiven Scheduler ausgeführt und anschließend wieder auf „false“ zurückgesetzt.  Gültige Werte sind:
+
+* `true`
+* `false`
+
+| boolescher Wert | `false` | Nein 
+
+
+ a| 
+`scheduleName`
+ a| 
+Einzigartiger Name für den Zeitplan.  Die maximal zulässige Länge des Terminplannamens beträgt 244 Zeichen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+`scheduleType`
+ a| 
+Gibt den zu erstellenden Zeitplantyp an.  Gültiger Wert ist Snapshot.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+Der eindeutige Name des Zeitplans, die Aufbewahrungsfrist für den erstellten Snapshot und die Volume-ID des Volumes, von dem der Snapshot erstellt wurde.  Gültige Werte:
+
+* `volumeID`Die ID des Volumes, das in den Snapshot aufgenommen werden soll.  (ganze Zahl)
+* `volumes`Eine Liste der Volume-IDs, die in den Gruppen-Snapshot aufgenommen werden sollen.  (Ganzzahl-Array)
+* `name`Der zu verwendende Snapshot-Name.  (Zeichenkette)
+* `enableRemoteReplication`: Gibt an, ob der Snapshot in die Remote-Replikation einbezogen werden soll.  (boolesch)
+* `retention`Die Zeitspanne, für die der Snapshot gespeichert wird, in HH:mm:ss.  Ist der Snapshot leer, wird er dauerhaft gespeichert.  (Zeichenkette)
+* `fifo`Die Speicherung der Momentaufnahme erfolgt nach dem Prinzip „First-In-First-Out“ (FIFO).  (Zeichenkette)
+* `ensureSerialCreation`: Legen Sie fest, ob die Erstellung eines neuen Snapshots zulässig sein soll, wenn die Replikation eines vorherigen Snapshots gerade läuft.  (boolesch)
+
+ a| 
+JSON-Objekt
+ a| 
+Keine
+ a| 
+Ja
+
+
+
+ a| 
+`snapMirrorLabel`
+ a| 
+Die Bezeichnung, die von der SnapMirror -Software verwendet wird, um die Aufbewahrungsrichtlinie für Snapshots auf einem SnapMirror Endpunkt festzulegen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+`startingDate`
+ a| 
+Zeitpunkt, nach dem der Zeitplan ausgeführt wird.  Falls kein Zeitplan festgelegt ist, beginnt dieser sofort.  Formatiert in UTC-Zeit.
+ a| 
+ISO 8601 Datumszeichenfolge
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+| `toBeDeleted` | Gibt an, dass dieser Snapshot-Zeitplan nach Abschluss der Snapshot-Erstellung gelöscht werden soll. | boolescher Wert | `false` | Nein 
+
+
+ a| 
+`monthdays`
+ a| 
+Die Tage des Monats, an denen eine Momentaufnahme erstellt wird. Gültige Werte sind 1 bis 31.
+ a| 
+Ganzzahl-Array
+ a| 
+Keine
+ a| 
+Ja (bei Terminplanung für Tage im Monat)
+
+
+
+ a| 
+`weekdays`
+ a| 
+An welchem Wochentag soll der Snapshot erstellt werden?  Erforderliche Werte (falls verwendet):
+
+* `Day`: 0 bis 6 (Sonntag bis Samstag)
+* `Offset`: für jede mögliche Woche in einem Monat, 1 bis 6 (Wenn größer als 1, wird nur am N-ten-ten Tag der Woche abgeglichen).  Beispielsweise bedeutet offset:3 für Sonntag den dritten Sonntag des Monats, während offset:4 für Mittwoch den vierten Mittwoch des Monats bedeutet.  Offset:0 bedeutet, dass keine Aktion ausgeführt wird.  Offset:1 (Standardeinstellung) bedeutet, dass der Snapshot für diesen Wochentag erstellt wird, unabhängig davon, wo er im Monat liegt.
+
+ a| 
+JSON-Objektarray
+ a| 
+Keine
+ a| 
+Ja (bei Planung nach Wochentagen)
+
+|===
+
+
+== Rückgabewerte
+
+Diese Methode hat die folgenden Rückgabewerte:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Zeitplan-ID
+ a| 
+ID des erstellten Zeitplans.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Zeitplan
+ a| 
+Ein Objekt, das Informationen über den neu erstellten Zeitplan enthält.
+ a| 
+xref:reference_element_api_schedule.adoc[Zeitplan]
+
+|===
+
+
+== Anfragebeispiel 1
+
+Der folgende Beispielzeitplan hat die folgenden Parameter:
+
+* Es werden keine Startzeiten oder -minuten angegeben, sodass der Zeitplan so nah wie möglich an Mitternacht (00:00:00Z) beginnt.
+* Es wird nicht wiederholt (wird nur einmal ausgeführt).
+* Es findet einmalig entweder am ersten Sonntag oder Mittwoch nach dem 1. Juni 2015, 19:17:15 UTC (je nachdem, welcher Tag zuerst kommt) statt.
+* Es enthält nur einen Band (volumeID = 1).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":0,
+    "minutes":0,
+    "paused":false,
+    "recurring":false,
+    "scheduleName":"MCAsnapshot1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Week"
+    },
+    "scheduleInfo":{
+      "volumeID":"1",
+      "name":"MCA1"
+    },
+    "monthdays":[],
+    "weekdays":[
+      {
+        "day":0,
+        "offset":1
+      },
+      {
+        "day":3,
+        "offset":1
+      }
+    ],
+    "startingDate":"2015-06-01T19:17:54Z"
+  },
+   "id":1
+}
+}
+}
+----
+
+
+== Antwortbeispiel 1
+
+Die obige Anfrage liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+      },
+      "hasError": false,
+      "hours": 0,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": false,
+      "runNextInterval": false,
+      "scheduleID": 4,
+      "scheduleInfo": {
+        "name": "MCA1",
+        "volumeID": "1"
+      },
+      "scheduleName": "MCAsnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-06-01T19:17:54Z",
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 0,
+          "offset": 1
+        },
+        {
+          "day": 3,
+          "offset": 1
+        }
+      ]
+    },
+    "scheduleID": 4
+  }
+}
+----
+
+
+== Anfragebeispiel 2
+
+Der folgende Beispielzeitplan hat die folgenden Parameter:
+
+* Es handelt sich um eine wiederkehrende Aktion (wird in jedem geplanten Intervall des Monats zur angegebenen Zeit ausgeführt).
+* Es findet am 1., 10., 15. und 30. jedes Monats nach dem Startdatum statt.
+* Es findet an jedem geplanten Tag um 12:15 Uhr statt.
+* Es enthält nur einen Band (volumeID = 1).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+    "params":{
+      "hours":12,
+      "minutes":15,
+      "paused":false,
+      "recurring":true,
+      "scheduleName":"MCASnapshot1",
+      "scheduleType":"snapshot",
+      "attributes":{
+        "frequency":"Days Of Month"
+      },
+      "scheduleInfo":{
+        "volumeID":"1"
+      },
+      "weekdays":[
+      ],
+      "monthdays":[
+        1,
+        10,
+        15,
+        30
+      ],
+      "startingDate":"2015-04-02T18:03:15Z"
+    },
+    "id":1
+}
+----
+
+
+== Antwortbeispiel 2
+
+Die obige Anfrage liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 12,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 15,
+      "monthdays": [
+        1,
+        10,
+        15,
+        30
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 5,
+      "scheduleInfo": {
+        "volumeID": "1"
+      },
+      "scheduleName": "MCASnapshot1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T18:03:15Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+      "scheduleID": 5
+  }
+}
+----
+
+
+== Anfragebeispiel 3
+
+Der folgende Beispielzeitplan hat die folgenden Parameter:
+
+* Es beginnt innerhalb von 5 Minuten nach dem geplanten Zeitpunkt am 2. April 2015.
+* Es handelt sich um eine wiederkehrende Aktion (wird in jedem geplanten Intervall des Monats zur angegebenen Zeit ausgeführt).
+* Es findet am zweiten, dritten und vierten Tag jedes Monats nach dem Startdatum statt.
+* Es findet an jedem geplanten Veranstaltungstag um 14:45 Uhr statt.
+* Es umfasst eine Gruppe von Bänden (Bände = 1 und 2).
+
+
+[listing]
+----
+{
+  "method":"CreateSchedule",
+  "params":{
+    "hours":14,
+    "minutes":45,
+    "paused":false,
+    "recurring":true,
+    "scheduleName":"MCASnapUser1",
+    "scheduleType":"snapshot",
+    "attributes":{
+      "frequency":"Days Of Month"
+    },
+    "scheduleInfo":{
+      "volumes":[1,2]
+    },
+    "weekdays":[],
+    "monthdays":[2,3,4],
+    "startingDate":"2015-04-02T20:38:23Z"
+  },
+  "id":1
+}
+----
+
+
+== Antwortbeispiel 3
+
+Die obige Anfrage liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Month"
+      },
+      "hasError": false,
+      "hours": 14,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 45,
+      "monthdays": [
+        2,
+        3,
+        4
+      ],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 6,
+      "scheduleInfo": {
+        "volumes": [
+          1,
+          2
+        ]
+      },
+      "scheduleName": "MCASnapUser1",
+      "scheduleType": "Snapshot",
+      "startingDate": "2015-04-02T20:38:23Z",
+      "toBeDeleted": false,
+      "weekdays": []
+    },
+    "scheduleID": 6
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

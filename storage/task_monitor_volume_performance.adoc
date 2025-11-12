@@ -1,0 +1,36 @@
+---
+permalink: storage/task_monitor_volume_performance.html 
+sidebar: sidebar 
+keywords: volume performance, view, view alerts 
+summary: Sie können detaillierte Leistungsinformationen für alle Volumes im Cluster anzeigen.  Sie können die Informationen nach Volume-ID oder nach einer beliebigen Spalte der Leistungsdaten sortieren.  Sie können die Informationen auch nach bestimmten Kriterien filtern. 
+---
+= Lautstärkeleistung anzeigen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können detaillierte Leistungsinformationen für alle Volumes im Cluster anzeigen.  Sie können die Informationen nach Volume-ID oder nach einer beliebigen Spalte der Leistungsdaten sortieren.  Sie können die Informationen auch nach bestimmten Kriterien filtern.
+
+Sie können ändern, wie oft das System die Leistungsinformationen auf der Seite aktualisiert, indem Sie auf die Liste *Aktualisieren alle* klicken und einen anderen Wert auswählen.  Das Standard-Aktualisierungsintervall beträgt 10 Sekunden, wenn der Cluster weniger als 1000 Volumes umfasst; andernfalls beträgt der Standardwert 60 Sekunden.  Wenn Sie den Wert „Nie“ wählen, wird die automatische Seitenaktualisierung deaktiviert.
+
+Sie können die automatische Aktualisierung wieder aktivieren, indem Sie auf *Automatische Aktualisierung aktivieren* klicken.
+
+. Wählen Sie in der Element-Benutzeroberfläche *Berichte* > *Volumenleistung*.
+. Klicken Sie in der Volume-Liste auf das Aktionssymbol für ein Volume.
+. Klicken Sie auf *Details anzeigen*.
++
+Am unteren Rand der Seite wird eine Übersicht mit allgemeinen Informationen zum Band angezeigt.
+
+. Um detailliertere Informationen zum Volumen zu erhalten, klicken Sie auf *Weitere Details anzeigen*.
++
+Das System zeigt detaillierte Informationen sowie Leistungsdiagramme für das Volumen an.
+
+
+
+
+
+== Weitere Informationen
+
+xref:reference_monitor_volume_performance_details.adoc[Details zur Lautstärkeleistung]

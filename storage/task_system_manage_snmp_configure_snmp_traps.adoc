@@ -1,0 +1,29 @@
+---
+permalink: storage/task_system_manage_snmp_configure_snmp_traps.html 
+sidebar: sidebar 
+keywords: snmp, config, traps, notifications, monitor, health, enable, disable 
+summary: Systemadministratoren können SNMP-Traps, auch Benachrichtigungen genannt, verwenden, um den Zustand des SolidFire Clusters zu überwachen. 
+---
+= SNMP-Traps konfigurieren
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Systemadministratoren können SNMP-Traps, auch Benachrichtigungen genannt, verwenden, um den Zustand des SolidFire Clusters zu überwachen.
+
+Wenn SNMP-Traps aktiviert sind, generiert der SolidFire -Cluster Traps, die mit Ereignisprotokolleinträgen und Systemwarnungen verknüpft sind.  Um SNMP-Benachrichtigungen zu erhalten, müssen Sie die zu generierenden Traps auswählen und die Empfänger der Trap-Informationen identifizieren.  Standardmäßig werden keine Traps generiert.
+
+. Klicken Sie auf *Cluster* > *SNMP*.
+. Wählen Sie im Abschnitt *SNMP-Trap-Einstellungen* einen oder mehrere Trap-Typen aus, die das System generieren soll:
++
+** Cluster-Fehlerfallen
+** Clusteraufgelöste Fehlerfallen
+** Cluster-Ereignisfallen
+
+
+. Im Abschnitt *Trap-Empfänger* geben Sie die Host-, Port- und Community-String-Informationen für einen Empfänger ein.
+. *Optional*: Um einen weiteren Trap-Empfänger hinzuzufügen, klicken Sie auf *Trap-Empfänger hinzufügen* und geben Sie Host-, Port- und Community-String-Informationen ein.
+. Klicken Sie auf *Änderungen speichern*.
+

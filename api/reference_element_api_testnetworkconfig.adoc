@@ -1,0 +1,135 @@
+---
+permalink: api/reference_element_api_testnetworkconfig.html 
+sidebar: sidebar 
+keywords: test,testing,network,config,configuration,testnetworkconfig 
+summary: Mit der Methode TestNetworkConfig können Sie überprüfen, ob die konfigurierten Netzwerkeinstellungen mit den auf dem System verwendeten Netzwerkeinstellungen übereinstimmen. 
+---
+= TestNetzwerkkonfiguration
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `TestNetworkConfig` Methode zum Testen, ob die konfigurierten Netzwerkeinstellungen mit den auf dem System verwendeten Netzwerkeinstellungen übereinstimmen.
+
+
+
+== Parameter
+
+Wenn Sie einen Knoten mit der Methode SetNetworkConfig in der Benutzeroberfläche oder der TUI konfigurieren, wird die Konfiguration validiert und gespeichert.  Der TestNetworkConfig API-Test verwendet die gespeicherte Konfiguration für die Nachvalidierungslogik.  Beispielsweise können Sie im Falle eines Stromausfalls oder Netzwerkausfalls diese API-Methode verwenden, um sicherzustellen, dass ein Knoten mit der aktuell gespeicherten Netzwerkkonfiguration läuft.  Dies bestätigt, dass keine Konfigurationsfehler vorliegen und die aktuelle Konfiguration verwendet wird.
+
+Dieser Test ist so konzipiert, dass er ausschließlich Fehler in der Antwortausgabe anzeigt.  Wenn keine Fehler auftreten, liefert dieser Test keine Ausgabe.  Siehe die folgenden Antwortbeispiele.
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Details
+ a| 
+Enthält alle Fehler, die beim Abgleich der aktuell gespeicherten Netzwerkeinstellungen mit der laufenden Netzwerkkonfiguration gefunden wurden.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "TestNetworkConfig",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel 1
+
+Werden keine Fehler festgestellt, werden keine Antworten zurückgegeben.
+
+[listing]
+----
+{
+   "id" : 1,
+   "result": {
+   "details": {
+   "network": {...}
+  },
+   "duration": "00:00:00.144514",
+   "result": "Passed"
+  }
+}
+----
+
+
+== Antwortbeispiel 2
+
+Beispiel für eine MTU-Fehlanpassung.
+
+[listing]
+----
+{
+  "id" : 1,
+  "result":
+  {
+	 "details" :
+	 {
+		"error":
+		{
+		   "message" : "Network configuration mismatch on Bond10G: Incorrect MTU expectedMTU=[1500]  actualMTU=[9600]", name: "xAssertionFailure"
+		}
+	 },
+	 "duration": "0.125213sec",
+	 "result": "Failed"
+  }
+}
+----
+
+
+== Antwortbeispiel 3
+
+Beispiel einer fehlenden statischen Route.
+
+[listing]
+----
+{
+  "id": 1,
+  "result":
+  {
+	 "details" :
+	 {
+	 "error":
+		{
+		"message" : "Network configuration mismatch on Bond1G: Routing table missing route=[192.168.137.2 via 192.168.159.254 dev Bond1G]", name: "xAssertionFailure"
+		}
+	 },
+	 "duration" : "0.128547sec",
+	 "result" : "Failed"
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_setnetworkconfig.adoc[SetNetworkConfig]

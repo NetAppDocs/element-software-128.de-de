@@ -1,0 +1,77 @@
+---
+permalink: concepts/concept_solidfire_concepts_accounts_and_permissions.html 
+sidebar: sidebar 
+keywords: solidfire, element, cluster admin, storage, account, authoritative cluster 
+summary: Um Speicherressourcen auf Ihrem System zu verwalten und Zugriff darauf zu gewähren, müssen Sie Konten für Systemressourcen einrichten. 
+---
+= Konten und Berechtigungen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um Speicherressourcen auf Ihrem System zu verwalten und den Zugriff darauf zu ermöglichen, müssen Sie Konten für Systemressourcen einrichten.
+
+Mit Element Storage können Sie die folgenden Kontotypen erstellen und verwalten:
+
+* <<Administratorkonten für Speichercluster,Administrator-Benutzerkonten für den Speichercluster>>
+* <<Benutzerkonten,Benutzerkonten für den Zugriff auf Speichervolumes>>
+* <<Autorisierte Cluster-Benutzerkonten,Autorisierte Cluster-Benutzerkonten für NetApp Hybrid Cloud Control>>
+
+
+
+
+== Administratorkonten für Speichercluster
+
+In einem Speichercluster, auf dem die NetApp Element -Software ausgeführt wird, können zwei Arten von Administratorkonten existieren:
+
+* *Primäres Cluster-Administratorkonto*: Dieses Administratorkonto wird bei der Erstellung des Clusters erstellt.  Dieses Konto ist das primäre Administratorkonto mit dem höchsten Zugriffsniveau auf den Cluster.  Dieses Konto ist vergleichbar mit einem Root-Benutzer in einem Linux-System.  Sie können das Passwort für dieses Administratorkonto ändern.
+* *Cluster-Administratorkonto*: Sie können einem Cluster-Administratorkonto einen begrenzten administrativen Zugriff gewähren, um bestimmte Aufgaben innerhalb eines Clusters auszuführen.  Die jedem Cluster-Administratorkonto zugewiesenen Anmeldeinformationen werden zur Authentifizierung von API- und Element-UI-Anfragen innerhalb des Speichersystems verwendet.
+
+
+
+NOTE: Um über die Benutzeroberfläche pro Knoten auf aktive Knoten in einem Cluster zuzugreifen, ist ein lokales (nicht-LDAP-)Cluster-Administratorkonto erforderlich.  Für den Zugriff auf einen Knoten, der noch nicht Teil eines Clusters ist, werden keine Kontodaten benötigt.
+
+Du kannstlink:../storage/concept_system_manage_manage_cluster_administrator_users.html["Cluster-Administratorkonten verwalten"] durch Erstellen, Löschen und Bearbeiten von Cluster-Administratorkonten, Ändern des Cluster-Administratorpassworts und Konfigurieren von LDAP-Einstellungen zur Verwaltung des Systemzugriffs für Benutzer.
+
+
+
+== Benutzerkonten
+
+Benutzerkonten dienen der Steuerung des Zugriffs auf die Speicherressourcen in einem softwarebasierten NetApp Element Netzwerk.  Für die Erstellung eines Volumes ist mindestens ein Benutzerkonto erforderlich.
+
+Wenn Sie ein Volume erstellen, wird es einem Konto zugewiesen.  Wenn Sie ein virtuelles Volume erstellt haben, ist das Konto der Speichercontainer.
+
+Hier einige weitere Überlegungen:
+
+* Das Konto enthält die CHAP-Authentifizierung, die für den Zugriff auf die ihm zugewiesenen Volumes erforderlich ist.
+* Einem Konto können bis zu 2000 Volumes zugeordnet werden, aber ein Volume kann nur zu einem Konto gehören.
+* Benutzerkonten können über den NetApp Element Management-Erweiterungspunkt verwaltet werden.
+
+
+
+
+== Autorisierte Cluster-Benutzerkonten
+
+Autorisierte Cluster-Benutzerkonten können sich gegenüber jedem Speichermedium authentifizieren, das mit der NetApp Hybrid Cloud Control-Instanz von Knoten und Clustern verknüpft ist.  Mit diesem Konto können Sie Volumes, Accounts, Zugriffsgruppen und mehr clusterübergreifend verwalten.
+
+Autorisierte Benutzerkonten werden über die Option „Benutzerverwaltung“ im Menü oben rechts in NetApp Hybrid Cloud Control verwaltet.
+
+Derlink:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["autoritativer Speichercluster"] ist der Speichercluster, den NetApp Hybrid Cloud Control zur Authentifizierung von Benutzern verwendet.
+
+Alle Benutzer, die auf dem autoritativen Speichercluster erstellt wurden, können sich bei NetApp Hybrid Cloud Control anmelden.  Benutzer, die auf anderen Speicherclustern erstellt wurden, können sich nicht bei Hybrid Cloud Control anmelden.
+
+* Wenn Ihr Management-Knoten nur über einen Speichercluster verfügt, dann ist dieser der autoritative Cluster.
+* Wenn Ihr Management-Knoten über zwei oder mehr Speichercluster verfügt, wird einer dieser Cluster als autoritativer Cluster festgelegt, und nur Benutzer dieses Clusters können sich bei NetApp Hybrid Cloud Control anmelden.
+
+
+Viele Funktionen von NetApp Hybrid Cloud Control sind zwar mit mehreren Speicherclustern kompatibel, jedoch gibt es bei der Authentifizierung und Autorisierung notwendige Einschränkungen.  Die Einschränkung bei der Authentifizierung und Autorisierung besteht darin, dass Benutzer des autoritativen Clusters Aktionen auf anderen Clustern ausführen können, die mit NetApp Hybrid Cloud Control verbunden sind, selbst wenn sie auf den anderen Speicherclustern keine Benutzer sind.  Bevor Sie mit der Verwaltung mehrerer Speichercluster fortfahren, sollten Sie sicherstellen, dass die auf den autoritativen Clustern definierten Benutzer auch auf allen anderen Speicherclustern mit denselben Berechtigungen definiert sind.  Sie können Benutzer über NetApp Hybrid Cloud Control verwalten.
+
+
+
+== Volumenkonten
+
+Volumespezifische Konten sind nur auf den Speichercluster beschränkt, auf dem sie erstellt wurden.  Mit diesen Konten können Sie Berechtigungen für bestimmte Volumes im gesamten Netzwerk festlegen, sie haben jedoch keine Auswirkungen außerhalb dieser Volumes.
+
+Die Verwaltung der Volumenkonten erfolgt in der Tabelle „NetApp Hybrid Cloud Control Volumes“.

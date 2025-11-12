@@ -1,0 +1,93 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_api_find_mgmt_svcs_version.html 
+summary: Die Versionen des Betriebssystems und der Managementdienste des Managementknotens können Sie über die REST-API ermitteln. 
+keywords: netapp, Element, management node, management services, version, bundle version, what is 
+---
+= Überprüfen Sie die Versionen des Management-Knoten-Betriebssystems und der Dienste.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Versionsnummern des Management-Node-Betriebssystems, des Management-Services-Bundles und der einzelnen Dienste, die auf dem Management-Node ausgeführt werden, mithilfe der REST-API im Management-Node überprüfen.
+
+.Was du brauchst
+* Auf Ihrem Cluster läuft die NetApp Element Software 11.3 oder höher.
+* Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+
+
+.Optionen
+* <<API-Befehle>>
+* <<REST-API-UI-Schritte>>
+
+
+
+
+== API-Befehle
+
+* Ermitteln Sie Versionsinformationen zum Betriebssystem des Management-Knotens, zum Management-Services-Bundle und zum Management-Knoten-API-Dienst (mnode-api), die auf dem Management-Knoten ausgeführt werden:
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/about" -H  "accept: application/json"
+----
+* Versionsinformationen zu einzelnen Diensten, die auf dem Verwaltungsknoten ausgeführt werden, abrufen:
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/services?status=running" -H  "accept: */*" -H  "Authorization: ${TOKEN}"
+----
++
+
+NOTE: Sie können den Träger finden `${TOKEN}` wird vom API-Befehl verwendet, wenn Sielink:task_mnode_api_get_authorizationtouse.html["autorisieren"] Die  Der Überbringer `${TOKEN}` befindet sich in der Curl-Antwort.
+
+
+
+
+
+== REST-API-UI-Schritte
+
+. Greifen Sie auf die REST-API-Benutzeroberfläche des Dienstes zu, indem Sie die IP-Adresse des Management-Knotens gefolgt von eingeben. `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. Führen Sie einen der folgenden Schritte aus:
++
+** Ermitteln Sie Versionsinformationen zum Betriebssystem des Management-Knotens, zum Management-Services-Bundle und zum Management-Knoten-API-Dienst (mnode-api), die auf dem Management-Knoten ausgeführt werden:
++
+... Wählen Sie *GET /about*.
+... Wählen Sie *Ausprobieren*.
+... Wählen Sie *Ausführen*.
++
+Die Version des Management-Services-Bundles(`"mnode_bundle_version"` ), Management-Knoten-Betriebssystemversion(`"os_version"` ), und der Management-Node-API-Version(`"version"` ) werden im Antworttext angegeben.
+
+
+
+** Versionsinformationen zu einzelnen Diensten, die auf dem Verwaltungsknoten ausgeführt werden, abrufen:
++
+... Wählen Sie *GET /services*.
+... Wählen Sie *Ausprobieren*.
+... Wählen Sie als Status *Läuft* aus.
+... Wählen Sie *Ausführen*.
++
+Die auf dem Management-Knoten laufenden Dienste werden im Antworttext angegeben.
+
+
+
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

@@ -1,0 +1,114 @@
+---
+permalink: api/reference_element_api_listsnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: snapmirror,endpoints,endpoint,list,listing,listsnapmirrorrelationships 
+summary: Die Web-Benutzeroberfläche der Element-Software verwendet die Methode ListSnapMirrorRelationships, um eine oder alle SnapMirror Beziehungen in einem Element-Speichercluster aufzulisten. 
+---
+= ListSnapMirrorRelationships
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Web-Benutzeroberfläche der Element-Software verwendet die `ListSnapMirrorRelationships` Methode zum Auflisten einer oder aller SnapMirror Beziehungen in einem Element-Speichercluster.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+snapMirrorEndpointID
+ a| 
+Es werden nur die Beziehungen aufgelistet, die mit der angegebenen Endpunkt-ID verknüpft sind.  Wird keine Endpunkt-ID angegeben, listet das System die Beziehungen aller bekannten SnapMirror Endpunkte auf.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Zielvolumen
+ a| 
+Listen Sie die Beziehungen auf, die mit dem angegebenen Zielvolume verknüpft sind.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Quellvolumen
+ a| 
+Listen Sie die Beziehungen auf, die dem angegebenen Quellvolume zugeordnet sind.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[snapMirrorVolumeInfo]
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+vServer
+ a| 
+Beziehungen auf dem angegebenen Vserver auflisten.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Beziehungs-ID
+ a| 
+Liste der Beziehungen auf, die mit der angegebenen Beziehungs-ID verknüpft sind.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+SnapMirrorRelationships
+ a| 
+Eine Liste von Objekten, die Informationen über SnapMirror -Beziehungen enthalten.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[Snap-Spiegelbeziehung]Array
+
+|===
+
+
+== Neu seit Version
+
+10,1

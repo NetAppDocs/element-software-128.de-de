@@ -1,0 +1,37 @@
+---
+permalink: storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Speicherverwaltung mit der Element-Software
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit der Element-Software können Sie SolidFire -Speicher einrichten, die Clusterkapazität und -leistung überwachen und die Speicheraktivität in einer Multi-Tenant-Infrastruktur verwalten.
+
+Element ist das Speicherbetriebssystem, das das Herzstück eines SolidFire Clusters bildet.  Die Element-Software läuft unabhängig auf allen Knoten im Cluster und ermöglicht es den Knoten des Clusters, Ressourcen zu bündeln und sich externen Clients als ein einziges Speichersystem darzustellen.  Die Element-Software ist für die gesamte Clusterkoordination, Skalierung und Verwaltung des Gesamtsystems verantwortlich.
+
+Die Softwareschnittstelle basiert auf der Element API.
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["Greifen Sie auf die Benutzeroberfläche der Element-Software zu."]
+* link:task_post_deploy_configure_system_options.html["Konfigurieren Sie die SolidFire -Systemoptionen nach der Bereitstellung"]
+* link:../upgrade/concept_element_upgrade_overview.html["Komponenten des Speichersystems aufrüsten"]
+* link:task_intro_use_basic_options_in_the_element_software_ui.html["Nutzen Sie die grundlegenden Optionen der Element-Software-Benutzeroberfläche."]
+* link:concept_system_manage_accounts_overview.html["Konten verwalten"]
+* link:concept_system_manage_system_management.html["Verwalten Sie Ihr System"]
+* link:concept_data_manage_data_management.html["Volumes und virtuelle Volumes verwalten"]
+* link:concept_data_protection.html["Schützen Sie Ihre Daten"]
+* link:concept_system_monitoring_and_troubleshooting.html["Beheben Sie Systemprobleme"]
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+

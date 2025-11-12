@@ -1,0 +1,233 @@
+---
+permalink: api/reference_element_api_schedule.html 
+sidebar: sidebar 
+keywords: object,objects,schedule 
+summary: Das Zeitplanobjekt enthält Informationen über einen Zeitplan, der erstellt wurde, um autonom eine Momentaufnahme eines Volumes zu erstellen.  Mit der ListSchedules-API-Methode können Sie Informationen zu allen Zeitplänen abrufen. 
+---
+= Zeitplan
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Das Zeitplanobjekt enthält Informationen über einen Zeitplan, der erstellt wurde, um autonom eine Momentaufnahme eines Volumes zu erstellen.  Sie können mit der folgenden Funktion Fahrplaninformationen für alle Fahrpläne abrufen: `ListSchedules` API-Methode.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Attribute
+ a| 
+Gibt die Häufigkeit des geplanten Ereignisses an. Mögliche Werte:
+
+* Wochentag
+* Tag des Monats
+* Zeitintervall
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+hasError
+ a| 
+Zeigt an, ob der Zeitplan Fehler enthält oder nicht. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+Std.
+ a| 
+Zeigt die Stunden an, die vergehen, bis der nächste Snapshot erstellt wird.  Mögliche Werte sind 0 bis 24.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+letzterLaufstatus
+ a| 
+Zeigt den Status des letzten geplanten Snapshots an. Mögliche Werte:
+
+* Erfolg
+* Fehlgeschlagen
+
+ a| 
+Schnur
+
+
+
+ a| 
+letzter Laufzeitstart
+ a| 
+Zeigt den Zeitpunkt des letzten Starts des Zeitplans an.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+Minuten
+ a| 
+Zeigt die Minuten an, die vergehen, bis der nächste Snapshot erstellt wird.  Mögliche Werte sind 0 bis 59.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Monatstage
+ a| 
+Zeigt die Tage des Monats an, an denen eine Momentaufnahme erstellt wird.
+ a| 
+Array
+
+
+
+ a| 
+pausiert
+ a| 
+Zeigt an, ob der Zeitplan pausiert ist oder nicht. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+wiederkehrend
+ a| 
+Gibt an, ob der Zeitplan wiederkehrend ist oder nicht. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+runNextInterval
+ a| 
+Gibt an, ob der Zeitplan beim nächsten aktiven Scheduler ausgeführt wird oder nicht.  Wenn dieser Wert auf „true“ gesetzt ist, wird der Zeitplan beim nächsten aktiven Scheduler ausgeführt und anschließend wieder auf „false“ gesetzt. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+Zeitplan-ID
+ a| 
+Die eindeutige ID des Zeitplans.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+Zeitplaninformationen
+ a| 
+Enthält den eindeutigen Namen des Zeitplans, die Aufbewahrungsfrist für den erstellten Snapshot und die Volume-ID des Volumes, von dem der Snapshot erstellt wurde.  Gültige Werte:
+
+* `enableRemoteReplication`: Gibt an, ob der Snapshot in die Remote-Replikation einbezogen werden soll.  (boolesch)
+* `ensureSerialCreation`: Gibt an, ob die Erstellung eines neuen Snapshots zulässig sein soll, wenn die Replikation eines vorherigen Snapshots gerade läuft.  (boolesch)
+* `name`Der zu verwendende Snapshot-Name.  (Zeichenkette)
+* `retention`Die Zeitspanne, für die der Snapshot aufbewahrt wird.  Je nach Uhrzeit wird es in einem der folgenden Formate angezeigt:
++
+** `fifo`Die Speicherung der Momentaufnahme erfolgt nach dem Prinzip „First-In-First-Out“ (FIFO).  Ist der Snapshot leer, wird er dauerhaft gespeichert.  (Zeichenkette)
+** HH:mm:ss
+
+
+* `volumeID`Die ID des Volumes, das in den Snapshot aufgenommen werden soll.  (ganze Zahl)
+* `volumes`Eine Liste der Volume-IDs, die in den Gruppen-Snapshot aufgenommen werden sollen.  (Ganzzahl-Array)
+
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+Zeitplanname
+ a| 
+Der eindeutige Name, der dem Zeitplan zugewiesen wurde.
+ a| 
+Schnur
+
+
+
+ a| 
+Zeitplantyp
+ a| 
+Derzeit werden nur zeitgesteuerte Snapshot-Typen unterstützt.
+ a| 
+Schnur
+
+
+
+ a| 
+Snap-Spiegel-Beschriftung
+ a| 
+Das snapMirrorLabel, das auf den erstellten Snapshot oder Gruppen-Snapshot angewendet werden soll und in den scheduleInfo enthalten ist.  Falls dieser Wert nicht festgelegt ist, ist er null.
+ a| 
+Schnur
+
+
+
+ a| 
+Startdatum
+ a| 
+Gibt das Datum an, an dem der Zeitplan erstmals begann oder beginnen wird; formatiert in UTC-Zeit.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+zu löschen
+ a| 
+Zeigt an, ob der Zeitplan zur Löschung markiert ist. Mögliche Werte:
+
+* true
+* FALSCH
+
+ a| 
+boolescher Wert
+
+
+
+ a| 
+Wochentage
+ a| 
+Zeigt die Wochentage an, an denen eine Momentaufnahme erstellt wird.
+ a| 
+Array
+
+|===
+
+
+== Weitere Informationen
+
+xref:reference_element_api_listschedules.adoc[Zeitpläne auflisten]

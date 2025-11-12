@@ -1,0 +1,142 @@
+---
+permalink: api/reference_element_api_listaccounts.html 
+sidebar: sidebar 
+keywords: account,accounts,list,listing,all,listaccounts 
+summary: Mit ListAccounts erhalten Sie die vollständige Liste der Speicher-Mandantenkonten, optional auch mit Paging-Unterstützung.  Elementkonten ermöglichen den Zugriff auf Volumes. 
+---
+= Konten auflisten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `ListAccounts` um die vollständige Liste der Speicher-Tenant-Konten zu erhalten, mit optionaler Paging-Unterstützung.  Elementkonten ermöglichen den Zugriff auf Volumes.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+inklusive Lagerbehälter
+ a| 
+Virtuelle Speichercontainer werden standardmäßig in die Antwort aufgenommen.  Um Speichercontainer auszuschließen, auf „false“ setzen.
+ a| 
+boolescher Wert
+ a| 
+true
+ a| 
+Nein
+
+
+
+ a| 
+startAccountID
+ a| 
+Die zu erstattende Konto-ID beginnt.  Existiert kein Konto mit dieser Konto-ID, wird das nächste Konto in der Reihenfolge der Konto-ID als Startpunkt der Liste verwendet.  Um die Liste seitenweise zu durchlaufen, übergeben Sie die Account-ID des letzten Accounts aus der vorherigen Antwort + 1.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Limit
+ a| 
+Maximale Anzahl der zurückzugebenden Kontoobjekte.
+ a| 
+ganze Zahl
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Konten
+ a| 
+Die Liste der Konten.
+ a| 
+xref:reference_element_api_account.adoc[Konto]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "ListAccounts",
+   "params": {
+     "startAccountID"  : 0,
+     "limit" : 1000
+   },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "result" : {
+    "accounts": [
+	{
+        "attributes": {},
+        "username": "jamesw",
+        "targetSecret": "168#5A757ru268)",
+        "volumes": [],
+        "enableChap": false,
+        "status": "active",
+        "accountID": 16,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "168#5A757ru268)"
+    },
+    {
+        "attributes": {},
+        "username": "jimmyd",
+        "targetSecret": "targetsecret",
+        "volumes": [],
+        "enableChap": true,
+        "status": "active",
+        "accountID": 5,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "initiatorsecret"
+    }
+  ]
+}
+}
+----
+
+
+== Neu seit Version
+
+9,6

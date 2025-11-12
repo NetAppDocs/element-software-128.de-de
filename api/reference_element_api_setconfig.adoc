@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setconfig.html 
+sidebar: sidebar 
+keywords: config,configuration,set,setting,node,setconfig,network,cluster 
+summary: Mit der SetConfig-Methode können Sie die Netzwerk- und Clusterinformationen für den Knoten festlegen.  Diese Methode beinhaltet die gleichen Einstellungen in einer einzigen API-Methode, die auch mit den Methoden SetClusterConfig und SetNetworkConfig verfügbar sind.  Bei dieser Methode müssen nur die Felder angegeben werden, die geändert werden sollen. 
+---
+= SetConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `SetConfig` Methode zum Festlegen der Netzwerk- und Clusterinformationen für den Knoten.  Diese Methode beinhaltet dieselben Einstellungen in einer einzigen API-Methode, die auch über beide Methoden verfügbar sind. `SetClusterConfig` Und `SetNetworkConfig` Methoden.  Bei dieser Methode müssen nur die Felder angegeben werden, die geändert werden sollen.
+
+
+
+== Parameter
+
+VORSICHT:
+
+Das Ändern des Bindungsmodus eines Knotens kann einen vorübergehenden Verlust der Netzwerkverbindung verursachen.
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Cluster
+ a| 
+Clusterinformationen, die angeben, wie der Speicherknoten mit dem zugehörigen Speichercluster kommuniziert.
+ a| 
+xref:reference_element_api_cluster.adoc[Cluster]
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Netzwerk
+ a| 
+Netzwerkverbindungstypen und aktuelle Einstellungen für jede Netzwerkschnittstelle des Knotens.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[Netzwerk (alle Schnittstellen)]
+ a| 
+Keine
+ a| 
+Nein
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Konfiguration
+ a| 
+Die neue und aktuelle Konfiguration des Knotens.  Dieses Objekt enthält:
+
+* xref:reference_element_api_cluster.adoc[Cluster]: Clusterinformationen, die angeben, wie der Speicherknoten mit dem zugehörigen Speichercluster kommuniziert.
+* xref:reference_element_api_network_all_interfaces.adoc[Netzwerk (alle Schnittstellen)]Netzwerkverbindungstypen und aktuelle Einstellungen für jede Netzwerkschnittstelle des Knotens.
+
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+	"method": "SetConfig",
+	"params": {
+		"cluster": {
+			"name": "MyHostname"
+		},
+		"network": {
+			"Bond10G": {
+				"bond-mode": "ALB"
+			}
+		}
+	}
+}
+----
+
+
+== Antwortbeispiel
+
+Die Antwort dieser Methode ist dieselbe wie der Rückgabewert der GetConfig-Methode.  Alle Felder für die Objektanzeige und die aktualisierten Werte werden angezeigt, wenn SetConfig verwendet wird.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+* xref:reference_element_api_setclusterconfig.adoc[SetClusterConfig]
+* xref:reference_element_api_setnetworkconfig.adoc[SetNetworkConfig]
+* xref:reference_element_api_response_example_getconfig.adoc[GetConfig]
+

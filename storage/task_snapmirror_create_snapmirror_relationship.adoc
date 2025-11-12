@@ -1,0 +1,82 @@
+---
+permalink: storage/task_snapmirror_create_snapmirror_relationship.html 
+sidebar: sidebar 
+keywords: element, relationships, create, snapmirror, ui 
+summary: Sie müssen eine SnapMirror Beziehung in der NetApp Element -Benutzeroberfläche erstellen. 
+---
+= Erstellen Sie eine SnapMirror Beziehung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen eine SnapMirror Beziehung in der NetApp Element -Benutzeroberfläche erstellen.
+
+
+NOTE: Wenn ein Volume noch nicht für SnapMirror aktiviert ist und Sie in der Element-Benutzeroberfläche die Option zum Erstellen einer Beziehung auswählen, wird SnapMirror auf diesem Volume automatisch aktiviert.
+
+.Was du brauchst
+SnapMirror ist auf dem Volume aktiviert.
+
+.Schritte
+. Klicken Sie auf *Verwaltung* > *Volumes*.
+. Klicken Sie auf das Symbol *Aktionen* für das Volume, das Teil der Beziehung sein soll.
+. Klicken Sie auf * SnapMirror -Beziehung erstellen*.
+. Im Dialogfeld * SnapMirror -Beziehung erstellen* wählen Sie einen Endpunkt aus der Liste *Endpunkt* aus.
+. Wählen Sie aus, ob die Beziehung mithilfe eines neuen ONTAP -Volumes oder eines vorhandenen ONTAP Volumes erstellt werden soll.
+. Um ein neues ONTAP Volume in der Element-Benutzeroberfläche zu erstellen, klicken Sie auf *Neues Volume erstellen*.
++
+.. Wählen Sie für diese Beziehung die *Storage Virtual Machine* aus.
+.. Wählen Sie *Aggregat* aus der Dropdown-Liste aus.
+.. Geben Sie im Feld *Volume-Namenssuffix* ein Suffix ein.
++
+
+NOTE: Das System erkennt den Namen des Quellvolumes und kopiert ihn in das Feld *Volume Name*.  Der von Ihnen eingegebene Suffix hängt den Namen an.
+
+.. Klicken Sie auf *Zielvolume erstellen*.
+
+
+. Um ein vorhandenes ONTAP Volume zu verwenden, klicken Sie auf *Vorhandenes Volume verwenden*.
++
+.. Wählen Sie für diese Beziehung die *Storage Virtual Machine* aus.
+.. Wählen Sie das Volume aus, das als Ziel für diese neue Beziehung dienen soll.
+
+
+. Im Abschnitt *Beziehungsdetails* wählen Sie eine Richtlinie aus.  Wenn die ausgewählte Richtlinie Beibehaltungsregeln enthält, werden in der Tabelle „Regeln“ die Regeln und die zugehörigen Bezeichnungen angezeigt.
+. *Optional*: Wählen Sie einen Zeitplan.
++
+Dies bestimmt, wie oft die Beziehung Kopien erzeugt.
+
+. *Optional*: Geben Sie im Feld *Bandbreite begrenzen auf* die maximale Bandbreite ein, die für Datenübertragungen im Zusammenhang mit dieser Beziehung verbraucht werden darf.
+. Weitere Details prüfen:
++
+** *Status*: Aktueller Beziehungsstatus des Zielvolumes.  Mögliche Werte sind:
++
+*** Nicht initialisiert: Das Zielvolume wurde nicht initialisiert.
+*** snapmirrored: Das Zielvolume wurde initialisiert und ist bereit, SnapMirror -Updates zu empfangen.
+*** Abgebrochen: Das Zielvolume ist les- und schreibbar und es sind Snapshots vorhanden.
+
+
+** *Status*: Aktueller Status der Beziehung.  Mögliche Werte sind: Leerlauf, Übertragung, Überprüfung, Ruhezustand, Ruhezustand, Warteschlange, Vorbereitung, Abschluss, Abbruch und Unterbrechung.
+** *Verzögerungszeit*: Die Zeitspanne in Sekunden, um die das Zielsystem dem Quellsystem hinterherhinkt.  Die Verzögerungszeit darf nicht länger sein als das Übertragungsintervall.
+** *Bandbreitenlimit*: Die maximale Bandbreite, die für Datenübertragungen im Zusammenhang mit dieser Beziehung genutzt werden kann.
+** *Zuletzt übertragen*: Zeitstempel des zuletzt übertragenen Snapshots.  Klicken Sie hier für weitere Informationen.
+** *Richtlinienname*: Der Name der ONTAP SnapMirror -Richtlinie für die Beziehung.
+** *Richtlinientyp*: Art der ONTAP SnapMirror Richtlinie, die für die Beziehung ausgewählt wurde.  Mögliche Werte sind:
++
+*** async_mirror
+*** Spiegelgewölbe
+
+
+** *Terminplanname*: Name des bereits vorhandenen Terminplans im ONTAP -System, der für diese Beziehung ausgewählt wurde.
+
+
+. Um die Initialisierung jetzt zu verhindern, stellen Sie sicher, dass das Kontrollkästchen *Initialisieren* nicht ausgewählt ist.
++
+
+NOTE: Die Initialisierung kann zeitaufwändig sein.  Vielleicht möchten Sie dies außerhalb der Stoßzeiten ausführen.  Bei der Initialisierung wird eine Basisübertragung durchgeführt; dabei wird eine Momentaufnahme des Quellvolumes erstellt und anschließend diese Kopie zusammen mit allen darin referenzierten Datenblöcken auf das Zielvolume übertragen.  Sie können die Initialisierung manuell durchführen oder einen Zeitplan verwenden, um den Initialisierungsprozess (und nachfolgende Aktualisierungen) gemäß dem Zeitplan zu starten.
+
+. Klicken Sie auf *Beziehung erstellen*.
+. Klicken Sie auf *Datenschutz* > * SnapMirror -Beziehungen*, um diese neue SnapMirror Beziehung anzuzeigen.
+

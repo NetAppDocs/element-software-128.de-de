@@ -1,0 +1,80 @@
+---
+permalink: api/reference_element_api_getcurrentclusteradmin.html 
+sidebar: sidebar 
+keywords: cluster,admin,get,getting,current,getcurrentclusteradmin 
+summary: Mit der Methode GetCurrentClusterAdmin können Sie Informationen zum aktuellen primären Clusteradministrator abrufen.  Der primäre Cluster-Administrator wurde bei der Erstellung des Clusters angelegt. 
+---
+= GetCurrentClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetCurrentClusterAdmin` Methode zum Abrufen von Informationen für den aktuellen primären Clusteradministrator.  Der primäre Cluster-Administrator wurde bei der Erstellung des Clusters angelegt.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Cluster-Admin
+ a| 
+Informationen zum Cluster-Administrator.
+ a| 
+xref:reference_element_api_clusteradmin.adoc[Cluster-Admin]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+"method": "GetCurrentClusterAdmin",
+"id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+    "clusterAdmin":
+        "access": [
+           "administrator"
+        ],
+         "attributes": null,
+         "authMethod": "Cluster"
+         "clusterAdminID": 1,
+         "username": "admin"
+     }
+   }
+}
+----
+
+
+== Neu seit Version
+
+10,0

@@ -1,0 +1,92 @@
+= 
+:allow-uri-read: 
+
+
+.Bevor Sie beginnen
+* Einige Funktionen in Active IQ, beispielsweise Quality of Service (QoS), benötigen Element 11.3 oder höher, um korrekt zu funktionieren.  Um sicherzustellen, dass Sie alle Active IQ -Funktionen nutzen können, empfiehlt NetApp Folgendes:
++
+** Auf Ihrem Speichercluster läuft die NetApp Element Software 11.3 oder höher.
+** Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+
+
+* Sie haben Internetzugang.  Der Active IQ Collector-Dienst kann nicht von Dark-Sites aus genutzt werden, die keine externe Verbindung haben.
+
+
+.Schritte
+. Ermitteln Sie die Basis-Asset-ID für die Installation:
++
+.. Öffnen Sie die REST-API-Benutzeroberfläche des Inventardienstes auf dem Verwaltungsknoten:
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. Wählen Sie *Autorisieren* und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` Die
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Fenster.
+
+
+.. Wählen Sie in der REST-API-Benutzeroberfläche *GET /installations* aus.
+.. Wählen Sie *Ausprobieren*.
+.. Wählen Sie *Ausführen*.
+.. Kopieren Sie aus dem Antworttext des Codes 200 den `id` für die Installation.
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: Ihre Installation verfügt über eine Basis-Asset-Konfiguration, die während der Installation oder des Upgrades erstellt wurde.
+
+
+
+. Telemetrie aktivieren:
++
+.. Greifen Sie auf die API-Benutzeroberfläche des mnode-Dienstes auf dem Management-Knoten zu, indem Sie die IP-Adresse des Management-Knotens gefolgt von eingeben. `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. Wählen Sie *Autorisieren* oder ein beliebiges Schlosssymbol und führen Sie die folgenden Schritte aus:
++
+... Geben Sie den Cluster-Benutzernamen und das Passwort ein.
+... Geben Sie die Client-ID ein als `mnode-client` Die
+... Wählen Sie *Autorisieren*, um eine Sitzung zu starten.
+... Schließen Sie das Fenster.
+
+
+.. Basis-Asset konfigurieren:
++
+... Wählen Sie *PUT /assets/{asset_id}*.
+... Wählen Sie *Ausprobieren*.
+... Geben Sie Folgendes in die JSON-Nutzlast ein:
++
+[listing]
+----
+{
+"telemetry_active": true
+"config": {}
+}
+----
+... Geben Sie die Basis-ID aus dem vorherigen Schritt in *asset_ID* ein.
+... Wählen Sie *Ausführen*.
++
+Der Active IQ Dienst wird automatisch neu gestartet, sobald Assets geändert werden.  Das Ändern von Assets führt zu einer kurzen Verzögerung, bevor die Einstellungen angewendet werden.
+
+
+
+
+
+

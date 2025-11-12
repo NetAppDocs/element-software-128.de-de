@@ -1,0 +1,103 @@
+---
+permalink: storage/task_per_node_run_system_utilities.html 
+sidebar: sidebar 
+keywords: storage nodes, running system utilities, system utilities, network settings, testing changes, reboot the node, power cycle, shuts down the node 
+summary: Über die Benutzeroberfläche pro Knoten für den Speicherknoten können Sie Support-Bundles erstellen oder löschen, Konfigurationseinstellungen für Laufwerke zurücksetzen und Netzwerk- oder Clusterdienste neu starten. 
+---
+= Führen Sie Systemdienstprogramme über die Benutzeroberfläche pro Knoten aus.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Über die Benutzeroberfläche pro Knoten für den Speicherknoten können Sie Support-Bundles erstellen oder löschen, Konfigurationseinstellungen für Laufwerke zurücksetzen und Netzwerk- oder Clusterdienste neu starten.
+
+Sie haben sich in die Benutzeroberfläche pro Knoten für den Speicherknoten eingeloggt.
+
+. Klicken Sie auf *Systemdienstprogramme*.
+. Klicken Sie auf die Schaltfläche für das Systemdienstprogramm, das Sie ausführen möchten.
++
+** *Steuerleistung*
++
+Neustarts, Stromausfälle oder Abschaltung des Knotens.
+
++
+
+IMPORTANT: Dieser Vorgang führt zu einem vorübergehenden Verlust der Netzwerkverbindung.
+
++
+Geben Sie die folgenden Parameter an:
+
++
+*** Aktion: Zu den Optionen gehören Neustart und Anhalten (Ausschalten).
+*** Aufwachverzögerung: Jede zusätzliche Zeit, bevor der Knoten wieder online geht.
+
+
+** *Knotenprotokolle sammeln*
++
+Erstellt ein Support-Bundle im Verzeichnis /tmp/bundles des Knotens.
+
++
+Geben Sie die folgenden Parameter an:
+
++
+*** Bundle-Name: Eindeutiger Name für jedes erstellte Support-Bundle.  Wird kein Name angegeben, werden „supportbundle“ und der Knotenname als Dateiname verwendet.
+*** Zusätzliche Argumente: Dieser Parameter wird an das Skript sf_make_support_bundle übergeben.  Dieser Parameter sollte nur auf Anfrage des NetApp Supports verwendet werden.
+*** Timeout Sec: Geben Sie die Anzahl der Sekunden an, die auf jede einzelne Ping-Antwort gewartet werden soll.
+
+
+** *Knotenprotokolle löschen*
++
+Löscht alle aktuell auf dem Knoten vorhandenen Support-Bundles, die mit *Create Cluster Support Bundle* oder der CreateSupportBundle-API-Methode erstellt wurden.
+
+** *Laufwerke zurücksetzen*
++
+Initialisiert die Laufwerke und löscht alle aktuell auf dem Laufwerk vorhandenen Daten.  Sie können das Laufwerk in einem bestehenden Knoten oder in einem aktualisierten Knoten wiederverwenden.
+
++
+Geben Sie den folgenden Parameter an:
+
++
+*** Laufwerke: Liste der zurückzusetzenden Gerätenamen (nicht Laufwerks-IDs).
+
+
+** *Netzwerkkonfiguration zurücksetzen*
++
+Hilft bei der Behebung von Netzwerkkonfigurationsproblemen für einen einzelnen Knoten und setzt die Netzwerkkonfiguration eines einzelnen Knotens auf die Werkseinstellungen zurück.
+
+** *Knoten zurücksetzen*
++
+Setzt einen Knoten auf die Werkseinstellungen zurück.  Alle Daten werden gelöscht, die Netzwerkeinstellungen des Knotens bleiben jedoch während dieses Vorgangs erhalten.  Knoten können nur zurückgesetzt werden, wenn sie keinem Cluster zugewiesen sind und sich im Status „Verfügbar“ befinden.
+
++
+
+IMPORTANT: Beim Verwenden dieser Option werden alle Daten, Pakete (Software-Upgrades), Konfigurationen und Protokolldateien vom Knoten gelöscht.
+
+** *Netzwerk neu starten*
++
+Startet alle Netzwerkdienste auf einem Knoten neu.
+
++
+
+IMPORTANT: Dieser Vorgang kann zu einem vorübergehenden Verlust der Netzwerkverbindung führen.
+
+** *Dienste neu starten*
++
+Startet die Element-Softwaredienste auf einem Knoten neu.
+
++
+
+IMPORTANT: Dieser Vorgang kann zu einer vorübergehenden Unterbrechung des Knotendienstes führen.  Diese Operation sollte nur auf Anweisung des NetApp -Supports durchgeführt werden.
+
++
+Geben Sie die folgenden Parameter an:
+
++
+*** Dienst: Name des neu zu startenden Dienstes.
+*** Aktion: Die für den Dienst auszuführende Aktion.  Zu den Optionen gehören Start, Stopp und Neustart.
+
+
+
+
+

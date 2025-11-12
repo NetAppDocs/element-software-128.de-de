@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: Das bulkVolumeJob-Objekt enthält Informationen über Lese- oder Schreibvorgänge von Massenvolumes, wie z. B. Klonen oder Erstellen von Snapshots. 
+---
+= Massenvolumenauftrag
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Der `bulkVolumeJob` Das Objekt enthält Informationen über Lese- oder Schreibvorgänge von großen Datenträgern, wie z. B. das Klonen oder das Erstellen von Snapshots.
+
+
+
+== Objektmitglieder
+
+Dieses Objekt enthält die folgenden Elemente:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+`attributes`
+ a| 
+JSON-Attribut des Bulk-Volume-Jobs.
+ a| 
+JSON-Objekt
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+Die interne Auftrags-ID für Massenvolumen.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`createTime`
+ a| 
+Zeitstempel für den Massenvolumenauftrag im UTC+0-Format erstellt.
+ a| 
+ISO 8601 Datumszeichenfolge
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+Die Anzahl der Sekunden seit Beginn des Auftrags.
+ a| 
+Schnur
+
+
+
+ a| 
+`format`
+ a| 
+Das Format der Massenvolumenoperation. Mögliche Werte:
+
+* einheimisch
+* unkomprimiert
+
+ a| 
+Schnur
+
+
+
+ a| 
+`key`
+ a| 
+Der eindeutige Schlüssel, der durch die Massenvolumen-Sitzung erstellt wurde.
+ a| 
+Schnur
+
+
+
+ a| 
+`percentComplete`
+ a| 
+Der vom Betrieb gemeldete Fertigstellungsgrad.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`remainingTime`
+ a| 
+Die geschätzte verbleibende Zeit in Sekunden.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+Die Quell-Volume-ID.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`status`
+ a| 
+Der Status der Operation. Mögliche Werte:
+
+* Vorbereitung
+* läuft
+* vollständig
+* fehlgeschlagen
+
+ a| 
+Schnur
+
+
+
+ a| 
+`script`
+ a| 
+Der Name des Skripts, falls ein solcher angegeben ist.
+ a| 
+Schnur
+
+
+
+ a| 
+`snapshotID`
+ a| 
+Die ID des Snapshots, falls sich ein Snapshot in der Quelle des Bulk-Volume-Jobs befindet.
+ a| 
+ganze Zahl
+
+
+
+ a| 
+`type`
+ a| 
+Die Art des Massenguttransports. Mögliche Werte:
+
+* lesen
+* schreiben
+
+ a| 
+Schnur
+
+|===

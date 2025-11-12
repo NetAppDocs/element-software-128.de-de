@@ -1,0 +1,56 @@
+---
+permalink: storage/reference_replication_volume_pairing_warnings.html 
+sidebar: sidebar 
+keywords: volume warnings, messages, replication, data protection 
+summary: 'Die Seite „Volume-Paare“ auf der Registerkarte „Datenschutz“ zeigt diese Meldungen an, nachdem Sie Volumes gekoppelt haben.  Diese Meldungen können sowohl am Quell- als auch am Zielende des Paares angezeigt werden (sofern nicht anders angegeben) in der Listenansicht „Replizierende Volumes“.' 
+---
+= Warnungen zur Lautstärkepaarung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die Seite „Volume-Paare“ auf der Registerkarte „Datenschutz“ zeigt diese Meldungen an, nachdem Sie Volumes gekoppelt haben.  Diese Meldungen können sowohl am Quell- als auch am Zielende des Paares in der Listenansicht „Replizierende Volumes“ angezeigt werden (sofern nicht anders angegeben).
+
+* *PausedClusterFull*
++
+Da der Zielcluster voll ist, können Quellreplikation und Massendatenübertragung nicht durchgeführt werden.  Die Meldung wird nur am Quellende des Paares angezeigt.
+
+* *Angehalten: Maximale Anzahl an Schnappschüssen überschritten*
++
+Das Zielvolume enthält bereits die maximale Anzahl an Snapshots und kann keine weiteren Snapshots replizieren.
+
+* *Manuell pausiert*
++
+Die lokale Lautstärke wurde manuell pausiert.  Die Replikation muss fortgesetzt werden, bevor sie wieder aufgenommen werden kann.
+
+* *Manuelle Fernbedienung pausiert*
++
+Die Fernbedienung für die Lautstärkeregelung befindet sich im manuellen Pausenmodus.  Manuelles Eingreifen ist erforderlich, um das pausierte Remote-Volume wieder aufzuheben, bevor die Replikation fortgesetzt werden kann.
+
+* *Fehlkonfiguration angehalten*
++
+Warten auf eine aktive Quelle und ein aktives Ziel.  Manuelles Eingreifen erforderlich, um die Replikation fortzusetzen.
+
+* *PausedQoS*
++
+Das Ziel-QoS konnte die eingehenden E/A-Vorgänge nicht bewältigen.  Die Replikation wird automatisch fortgesetzt.  Die Meldung wird nur am Quellende des Paares angezeigt.
+
+* *PausedSlowLink*
++
+Langsame Verbindung erkannt und Replikation gestoppt.  Die Replikation wird automatisch fortgesetzt.  Die Meldung wird nur am Quellende des Paares angezeigt.
+
+* *Fehlende Lautstärkeanzeige*
++
+Das Zielvolume hat nicht die gleiche Größe wie das Quellvolume.
+
+* *PausedXCopy*
++
+Es wird ein SCSI XCOPY-Befehl an ein Quellvolume gesendet.  Der Befehl muss abgeschlossen sein, bevor die Replikation fortgesetzt werden kann.  Die Meldung wird nur am Quellende des Paares angezeigt.
+
+* *Fehlkonfiguration behoben*
++
+Es wurde ein dauerhafter Konfigurationsfehler festgestellt.  Das Remote-Volume wurde gelöscht oder die Verbindung wurde getrennt.  Eine Korrekturmaßnahme ist nicht möglich; es muss eine neue Paarung hergestellt werden.
+
+

@@ -1,0 +1,57 @@
+---
+permalink: api/reference_element_api_disableidpauthentication.html 
+sidebar: sidebar 
+keywords: IdP,idp,authentication,disable 
+summary: Mit der Methode DisableIdpAuthentication können Sie die Unterstützung für die Authentifizierung mit Drittanbieter-IdPs für den Cluster deaktivieren.  Sobald diese Funktion deaktiviert ist, können Benutzer, die über Drittanbieter-IdPs authentifiziert wurden, nicht mehr auf den Cluster zugreifen, und alle aktiven authentifizierten Sitzungen werden ungültig gemacht/getrennt.  LDAP- und Cluster-Administratoren können über unterstützte Benutzeroberflächen auf den Cluster zugreifen. 
+---
+= DeaktiviereIdpAuthentifizierung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `DisableIdpAuthentication` Methode zum Deaktivieren der Unterstützung für die Authentifizierung mit Drittanbieter-IdPs für den Cluster.  Sobald diese Funktion deaktiviert ist, können Benutzer, die über Drittanbieter-IdPs authentifiziert wurden, nicht mehr auf den Cluster zugreifen, und alle aktiven authentifizierten Sitzungen werden ungültig gemacht/getrennt.  LDAP- und Cluster-Administratoren können über unterstützte Benutzeroberflächen auf den Cluster zugreifen.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewerte
+
+Diese Methode hat keinen Rückgabewert.
+
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "DisableIdpAuthentication",
+  "params": {}
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+"result": {}
+}
+----
+
+
+== Neu seit Version
+
+12,0

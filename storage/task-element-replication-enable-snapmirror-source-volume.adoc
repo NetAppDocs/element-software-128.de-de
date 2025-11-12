@@ -1,0 +1,32 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-source-volume.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, source, volume 
+summary: Sie müssen SnapMirror auf dem Element-Quellvolume aktivieren, bevor Sie eine Replikationsbeziehung erstellen können.  Diese Aufgabe kann nur über die Web-Benutzeroberfläche der Element-Software oder mithilfe der API-Methoden ausgeführt werden. 
+---
+= Aktivieren Sie SnapMirror auf dem Element-Quellvolume.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen SnapMirror auf dem Element-Quellvolume aktivieren, bevor Sie eine Replikationsbeziehung erstellen können.  Diese Aufgabe kann nur in der Web-Benutzeroberfläche der Element-Software oder mithilfe derlink:../api/reference_element_api_modifyvolume.html["Lautstärke ändern"] Undlink:../api/reference_element_api_modifyvolumes.html["ModifyVolumes"] API-Methoden.
+
+.Bevor Sie beginnen
+* Sie müssen SnapMirror auf dem Element-Cluster aktiviert haben.
+* Die Volumenblockgröße muss 512 Bytes betragen.
+* Das Volume darf nicht an der Remote-Replikation von Element teilnehmen.
+* Der Datenträgerzugriffstyp darf nicht "`Replikationsziel`" sein.
+
+
+.Informationen zu diesem Vorgang
+Das folgende Verfahren setzt voraus, dass das Volumen bereits existiert.  Sie können SnapMirror auch beim Erstellen oder Klonen eines Volumes aktivieren.
+
+.Schritte
+. Wählen Sie *Verwaltung* > *Volumes*.
+. Wählen Sie dieimage:../media/action-icon.gif["Symbol „Aktionen“"] Taste für die Lautstärke.
+. Im Dropdown-Menü *Bearbeiten* auswählen.
+. Im Dialogfeld *Volume bearbeiten* wählen Sie * SnapMirror aktivieren*.
+. Wählen Sie *Änderungen speichern*.
+

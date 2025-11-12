@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_getdefaultqos.html 
+sidebar: sidebar 
+keywords: qos,values,default,get,getting,getdefaultqos 
+summary: 'Mit der Methode GetDefaultQoS können Sie die Standardwerte für die Dienstgüte (QoS) eines neu erstellten Volumes abrufen.' 
+---
+= Standard-QoS abrufen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetDefaultQoS` Methode zum Abrufen der Standardwerte für die Dienstgüte (QoS) eines neu erstellten Volumes.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+QoS
+ a| 
+Die Standard-QoS-Werte.
+ a| 
+xref:reference_element_api_qos.adoc[QoS]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "GetDefaultQoS",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "burstIOPS" : 15000,
+      "burstTime" : 60,
+      "curve" : {
+         "1048576" : 15000,
+         "131072" : 1900,
+         "16384" : 270,
+         "262144" : 3000,
+         "32768" : 500,
+         "4096" : 100,
+         "524288" : 7500,
+         "65536" : 1000,
+         "8192" : 160
+      },
+      "maxIOPS" : 15000,
+      "minIOPS" : 100
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6

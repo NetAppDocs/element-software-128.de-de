@@ -1,0 +1,30 @@
+---
+permalink: storage/task_per_node_access_settings.html 
+sidebar: sidebar 
+keywords: nodes, accessing node settings, accessing node settings with per-node UI 
+summary: Nach Eingabe der Management-Knoten-IP-Adresse und Authentifizierung können Sie über die Benutzeroberfläche pro Knoten auf Netzwerkeinstellungen, Clustereinstellungen sowie Systemtests und -hilfsmittel zugreifen. 
+---
+= Greifen Sie über die Benutzeroberfläche pro Knoten auf die Einstellungen pro Knoten zu.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Nach Eingabe der Management-Knoten-IP-Adresse und Authentifizierung können Sie über die Benutzeroberfläche pro Knoten auf Netzwerkeinstellungen, Clustereinstellungen sowie Systemtests und -hilfsmittel zugreifen.
+
+Wenn Sie die Einstellungen eines Knotens im aktiven Zustand ändern möchten, der Teil eines Clusters ist, müssen Sie sich als Cluster-Administrator anmelden.
+
+
+TIP: Sie sollten jeweils nur einen Knoten konfigurieren oder modifizieren.  Sie sollten sicherstellen, dass die festgelegten Netzwerkeinstellungen die erwartete Wirkung haben und dass das Netzwerk stabil ist und gut funktioniert, bevor Sie Änderungen an einem anderen Knoten vornehmen.
+
+. Öffnen Sie die Benutzeroberfläche pro Knoten mit einer der folgenden Methoden:
++
+** Geben Sie die Management-IP-Adresse gefolgt von :442 in ein Browserfenster ein und melden Sie sich mit einem Administrator-Benutzernamen und -Passwort an.
+** Wählen Sie in der Element-Benutzeroberfläche *Cluster* > *Knoten* aus und klicken Sie auf den Link zur Management-IP-Adresse des Knotens, den Sie konfigurieren oder ändern möchten.  Im sich öffnenden Browserfenster können Sie die Einstellungen des Knotens bearbeiten.
+
+
++
+image::../media/per_node_ui_hcc_skin.png[Seite mit den Netzwerkeinstellungen pro Knoten (UI)]
+
+

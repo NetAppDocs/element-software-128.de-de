@@ -1,0 +1,33 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-cluster.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, cluster 
+summary: Sie müssen SnapMirror auf dem Element-Cluster aktivieren, bevor Sie eine Replikationsbeziehung erstellen können.  Diese Aufgabe kann nur über die Web-Benutzeroberfläche der Element-Software oder mithilfe der API-Methoden ausgeführt werden. 
+---
+= Aktivieren Sie SnapMirror auf dem Element-Cluster.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie müssen SnapMirror auf dem Element-Cluster aktivieren, bevor Sie eine Replikationsbeziehung erstellen können. Diese Aufgabe kann nur in der Web-Benutzeroberfläche der Element-Software oder mithilfe der link:../api/reference_element_api_enablefeature.html["API-Methode"]Die
+
+.Bevor Sie beginnen
+* Auf dem Element-Cluster muss die NetApp Element Softwareversion 10.1 oder höher ausgeführt werden.
+* SnapMirror kann nur für Element-Cluster aktiviert werden, die mit NetApp ONTAP -Volumes verwendet werden.
+
+
+.Informationen zu diesem Vorgang
+Beim Element-System ist SnapMirror standardmäßig deaktiviert.  SnapMirror wird bei einer Neuinstallation oder einem Upgrade nicht automatisch aktiviert.
+
+[NOTE]
+====
+Sobald SnapMirror aktiviert ist, kann es nicht mehr deaktiviert werden.  Die SnapMirror -Funktion lässt sich nur deaktivieren und die Standardeinstellungen können wiederhergestellt werden, indem der Cluster auf das Werksimage zurückgesetzt wird.
+
+====
+.Schritte
+. Klicken Sie auf *Cluster* > *Einstellungen*.
+. Suchen Sie die clusterspezifischen Einstellungen für SnapMirror.
+. Klicken Sie auf * SnapMirror aktivieren*.
+

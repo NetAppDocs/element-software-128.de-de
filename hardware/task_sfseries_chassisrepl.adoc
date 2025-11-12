@@ -1,0 +1,128 @@
+---
+permalink: hardware/task_sfseries_chassisrepl.html 
+sidebar: sidebar 
+keywords: solidfire chassis, chassis replacement, sf-series nodes 
+summary: 'Möglicherweise müssen Sie das Gehäuse austauschen, wenn der Lüfter, die zentrale Verarbeitungseinheit (CPU) oder das Dual-Inline-Speichermodul (DIMM) ausfällt oder um Überhitzungsprobleme oder Probleme mit dem Bootvorgang zu beheben.  Clusterfehler in der NetApp Element Software-Benutzeroberfläche (UI) und das Blinken der gelben Leuchte an der Vorderseite des Gehäuses sind Hinweise auf einen möglichen Bedarf an Gehäuseaustausch.  Sie sollten sich vor dem Fortfahren an den NetApp -Support wenden.' 
+---
+= Ersetzen Sie ein Chassis
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Möglicherweise müssen Sie das Gehäuse austauschen, wenn der Lüfter, die zentrale Verarbeitungseinheit (CPU) oder das Dual-Inline-Speichermodul (DIMM) ausfällt oder um Überhitzungsprobleme oder Probleme mit dem Bootvorgang zu beheben.  Clusterfehler in der NetApp Element Software-Benutzeroberfläche (UI) und das Blinken der gelben Leuchte an der Vorderseite des Gehäuses sind Hinweise auf einen möglichen Bedarf an Gehäuseaustausch.  Sie sollten sich vor dem Fortfahren an den NetApp -Support wenden.
+
+.Was du brauchst
+* Sie haben den NetApp Support kontaktiert.
++
+Wenn Sie ein Ersatzgerät bestellen, müssen Sie einen Fall beim NetApp -Support eröffnen.
+
+* Sie haben das Ersatzchassis erhalten.
+* Sie besitzen ein ESD-Armband (elektrostatische Entladung) oder haben andere antistatische Schutzmaßnahmen getroffen.
+* Falls Sie den RTFI-Prozess (Return to Factory Image) durchführen müssen, haben Sie den USB-Schlüssel erhalten.
++
+Der NetApp Support hilft Ihnen bei der Entscheidung, ob RTFI erforderlich ist. Sehen https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["dieser KB-Artikel (Anmeldung erforderlich)"] .
+
+* Du hast eine Tastatur und einen Monitor.
+
+
+.Informationen zu diesem Vorgang
+Die Anweisungen in diesem Dokument gelten, wenn Sie ein 1-HE-Gehäuse (One-Rack Unit) mit einem der folgenden Knoten besitzen:
+
+* SF2405
+* SF4805
+* SF9605
+* SF9608
+* SF19210
+* SF38410
+* SF-FCN-01
+* FC0025
+
+
+[NOTE]
+====
+Je nach Ihrer Element-Softwareversion werden die folgenden Knoten nicht unterstützt:
+
+* Beginnend mit den Speicherknoten Element 12.8, SF4805, SF9605, SF19210 und SF38410.
+* Beginnend mit Element 12.7, den Speicherknoten SF2405 und SF9608 sowie den FC-Knoten FC0025 und SF-FCN-01.
+* Beginnend mit Element 12.0, SF3010, SF6010 und SF9010 Speicherknoten.
+
+
+====
+.Schritte
+. Suchen Sie das Service-Tag des defekten Gehäuses und überprüfen Sie, ob die Seriennummer mit der Nummer auf dem Fall übereinstimmt, den Sie bei NetApp Support eröffnet haben, als Sie den Ersatz bestellt haben.
++
+Das Service-Etikett befindet sich an der Vorderseite des Chassis.
+
++
+Die folgende Abbildung zeigt ein Beispiel für ein Service-Tag:
+
++
+image::../media/sf_series_chassis_service_tag.gif[Diese Abbildung zeigt das Service-Tag in einem SolidFire -Gehäuse.]
+
++
+
+NOTE: Die obige Abbildung ist ein Beispiel.  Die genaue Position des Service-Tags kann je nach Hardwaremodell variieren.
+
+. Schließen Sie Tastatur und Monitor an der Rückseite des defekten Gehäuses an.
+. Überprüfen Sie die Chassis-Informationen beim NetApp -Support.
+. Schalten Sie das Chassis aus.
+. Beschriften Sie die Laufwerke an der Vorderseite des Gehäuses und die Kabel an der Rückseite.
++
+
+NOTE: Fibre-Channel-Knoten haben keine Laufwerke an der Vorderseite.
+
+. Entfernen Sie die Netzteile und Kabel.
+. Nehmen Sie die Laufwerke vorsichtig heraus und legen Sie sie auf eine antistatische, ebene Fläche.
++
+
+NOTE: Wenn Sie über einen Fibre Channel-Knoten verfügen, können Sie diesen Schritt überspringen.
+
+. Je nach Hardwaremodell können Sie das Gehäuse durch Drücken des Riegels oder durch Lösen der Rändelschraube entfernen.
++
+Sie sollten das defekte Chassis verpacken und an NetApp zurücksenden.
+
+. *Optional*: Entfernen Sie die Schienen und montieren Sie die neuen Schienen, die mit Ihrem Ersatzchassis geliefert wurden.
++
+Sie können die vorhandenen Schienen wiederverwenden.  Wenn Sie die bestehenden Rails wiederverwenden, können Sie diesen Schritt überspringen.
+
+. Schieben Sie das Ersatzchassis auf die Schienen.
+. Bei Speicherknoten werden die Laufwerke aus dem defekten Gehäuse in das Ersatzgehäuse eingesetzt.
++
+
+NOTE: Sie sollten die Laufwerke in die gleichen Steckplätze einsetzen, in denen sie sich im defekten Gehäuse befanden.
+
+. Installieren Sie die Netzteile.
+. Stecken Sie die Netzkabel sowie die 1GbE- und 10GbE-Kabel in ihre ursprünglichen Anschlüsse.
++
+In die 10GbE-Ports des Ersatzgehäuses könnten SFP-Transceiver (Small Form-Factor Pluggable) eingesetzt werden.  Sie sollten diese entfernen, bevor Sie die 10GbE-Ports verkabeln.
+
+. Wenn Sie festgestellt haben, dass Sie den RTFI-Prozess auf dem Knoten nicht durchführen müssen, starten Sie den Knoten neu und warten Sie, bis die Terminal-Benutzeroberfläche (TUI) erscheint.  Fahren Sie mit Schritt 16 fort und lassen Sie den Cluster den Knoten beim Hinzufügen über die Benutzeroberfläche automatisch neu installieren.
+. *Optional*: Falls der NetApp Support empfiehlt, den Knoten mithilfe eines USB-Sticks neu zu installieren, führen Sie die folgenden Teilschritte durch:
++
+.. Stromversorgung am Chassis.  Es bootet mit dem RTFI-Schlüsselabbild.
+.. Geben Sie bei der ersten Aufforderung *Y* ein, um das Speichersystem abzubilden.
+.. Geben Sie bei der zweiten Eingabeaufforderung *N* für Hardware-Integritätsprüfungen ein.
++
+Wenn das RTFI-Skript ein Problem mit einer Hardwarekomponente erkennt, wird eine Fehlermeldung in der Konsole angezeigt.  Wenn ein Fehler auftritt, wenden Sie sich an den NetApp -Support.  Nach Abschluss des RTFI-Prozesses wird der Knoten heruntergefahren.
+
+.. Entfernen Sie den USB-Stick aus dem USB-Anschluss.
+.. Starten Sie den neu erstellten Knoten und warten Sie, bis die TUI erscheint.
+
+
+. Konfigurieren Sie die Netzwerk- und Clusterinformationen über die TUI.
++
+Sie können sich an den NetApp Support wenden, um Unterstützung zu erhalten.
+
+. Fügen Sie den neuen Knoten mithilfe der Cluster-TUI zum Cluster hinzu.
+. Verpacken und senden Sie das defekte Chassis zurück.
+
+
+
+
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
+

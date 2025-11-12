@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview.html 
+summary: 'Mit dem Management-Knoten (mNode) können Sie Systemdienste nutzen, Cluster-Ressourcen und -Einstellungen verwalten, Systemtests und -hilfsmittel ausführen, Active IQ für die Systemüberwachung konfigurieren und den NetApp -Supportzugriff zur Fehlerbehebung aktivieren.' 
+keywords: netapp, mnode, api, rest api, mnode ui, management node ui 
+---
+= Übersicht der Verwaltungsknoten
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Mit dem Management-Knoten (mNode) können Sie Systemdienste nutzen, Cluster-Ressourcen und -Einstellungen verwalten, Systemtests und -hilfsmittel ausführen, Active IQ für die Systemüberwachung konfigurieren und den NetApp -Supportzugriff zur Fehlerbehebung aktivieren.
+
+
+NOTE: Als bewährte Methode empfiehlt es sich, nur einen Management-Knoten mit einer VMware vCenter-Instanz zu verknüpfen und die Definition derselben Speicher- und Rechenressourcen oder vCenter-Instanzen in mehreren Management-Knoten zu vermeiden.
+
+Bei Clustern, auf denen die Element-Softwareversion 11.3 oder höher ausgeführt wird, können Sie mit dem Management-Knoten über eine von zwei Schnittstellen arbeiten:
+
+* Mit der Verwaltungsknoten-Benutzeroberfläche(`https://[mNode IP]:442` Sie können Änderungen an Netzwerk- und Clustereinstellungen vornehmen, Systemtests durchführen oder Systemdienstprogramme verwenden.
+* Mit der integrierten REST-API-Benutzeroberfläche(`https://[mNode IP]/mnode` Sie können APIs ausführen oder verstehen, die sich auf die Dienste des Verwaltungsknotens beziehen, einschließlich der Konfiguration des Proxy-Servers, Aktualisierungen auf Dienstebene oder der Anlagenverwaltung.
+
+
+Installieren oder Wiederherstellen eines Management-Knotens:
+
+* link:task_mnode_install.html["Installieren Sie einen Management-Knoten"]
+* link:task_mnode_install_add_storage_NIC.html["Konfigurieren eines Speichernetzwerkschnittstellencontrollers (NIC)"]
+* link:task_mnode_recover.html["Wiederherstellen eines Verwaltungsknotens"]
+
+
+Zugriff auf den Verwaltungsknoten:
+
+* link:task_mnode_access_ui.html["Zugriff auf den Verwaltungsknoten (Benutzeroberfläche oder REST-API)"]
+
+
+Ändern Sie das Standard-SSL-Zertifikat:
+
+* link:reference_change_mnode_default_ssl_certificate.html["Ändern Sie das Standard-SSL-Zertifikat des Verwaltungsknotens."]
+
+
+Aufgaben mit der Benutzeroberfläche des Verwaltungsknotens ausführen:
+
+* link:task_mnode_work_overview_UI.html["Übersicht der Benutzeroberfläche des Verwaltungsknotens"]
+
+
+Aufgaben mit den REST-APIs des Management-Knotens ausführen:
+
+* link:task_mnode_work_overview_API.html["Übersicht der REST-API-Benutzeroberfläche des Management-Knotens"]
+
+
+Deaktivieren oder aktivieren Sie die Remote-SSH-Funktionalität oder starten Sie eine Remote-Support-Tunnel-Sitzung mit dem NetApp Support, um Ihnen bei der Fehlerbehebung zu helfen:
+
+* link:task_mnode_enable_node_troubleshooting_sessions.html["Zugriff auf Speicherknoten über SSH zur grundlegenden Fehlerbehebung"]
++
+** link:task_mnode_enable_remote_support_connections.html["Aktivieren Sie Remote NetApp Support-Verbindungen."]
+** link:task_mnode_ssh_management.html["SSH-Funktionalität auf dem Management-Knoten verwalten"]
+
+
+
+
+[discrete]
+== Weitere Informationen
+
+* https://docs.netapp.com/us-en/vcp/index.html["NetApp Element Plug-in für vCenter Server"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+

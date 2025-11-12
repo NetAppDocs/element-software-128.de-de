@@ -1,0 +1,169 @@
+---
+permalink: api/reference_element_api_modifysnapshot.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,attributes,attribute 
+summary: 'Mit ModifySnapshot können Sie die Attribute ändern, die einem Snapshot aktuell zugewiesen sind.  Mit dieser Methode können Sie auch Snapshots, die auf dem Lese-/Schreib-Volume (Quellvolume) erstellt wurden, remote auf einen Zielspeichercluster replizieren, auf dem die Element-Software ausgeführt wird.' 
+---
+= Snapshot bearbeiten
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können verwenden `ModifySnapshot` Die aktuell einem Snapshot zugewiesenen Attribute ändern.  Mit dieser Methode können Sie auch Snapshots, die auf dem Lese-/Schreib-Volume (Quellvolume) erstellt wurden, remote auf einen Zielspeichercluster replizieren, auf dem die Element-Software ausgeführt wird.
+
+
+
+== Parameter
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+
+
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+Remote-Replikation aktivieren
+ a| 
+Dient dazu, den erstellten Snapshot in einen entfernten Speichercluster zu replizieren. Mögliche Werte:
+
+* `true`Der Snapshot wird auf einen entfernten Speicher repliziert.
+* `false`Der Snapshot wird nicht auf den Remote-Speicher repliziert.
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Ablaufzeit
+ a| 
+Geben Sie den Zeitpunkt an, nach dem der Snapshot gelöscht werden kann.  Kann nicht mit Retention verwendet werden.  Wenn weder expirationTime noch retention of the original snapshot angegeben werden, läuft der Snapshot nicht ab.  Das Zeitformat ist eine ISO 8601-Datumszeichenfolge für zeitbasiertes Ablaufen, andernfalls läuft es nicht ab.  Der Wert null bewirkt, dass der Snapshot dauerhaft beibehalten wird.  Der Wert fifo bewirkt, dass der Snapshot auf Basis des First-In-First-Out-Prinzips (FIFO) relativ zu anderen FIFO-Snapshots auf dem Volume gespeichert wird.  Die API schlägt fehl, wenn kein FIFO-Speicherplatz verfügbar ist.
+ a| 
+ISO 8601 Datumszeichenfolge
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Name
+ a| 
+Der Name des Snapshots.  Wird kein Name eingegeben, wird das Datum und die Uhrzeit der Aufnahme verwendet.  Die maximal zulässige Namenslänge beträgt 255 Zeichen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Snap-Spiegel-Beschriftung
+ a| 
+Die Bezeichnung, die von der SnapMirror -Software verwendet wird, um die Aufbewahrungsrichtlinie für Snapshots auf einem SnapMirror Endpunkt festzulegen.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Nein
+
+
+
+ a| 
+Snapshot-ID
+ a| 
+Kennung des Snapshots.
+ a| 
+Schnur
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+
+
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Schnappschuss
+ a| 
+Ein Objekt, das Informationen über den neu geänderten Snapshot enthält.
+ a| 
+xref:reference_element_api_snapshot.adoc[Schnappschuss]
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+  "method": "ModifySnapshot",
+  "params": {
+    "snapshotID": 3114,
+    "enableRemoteReplication": "true",
+    "name" : "Chicago"
+  },
+  "id": 1
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshot": {
+      "attributes": {},
+      "checksum": "0x0",
+      "createTime": "2016-04-04T17:26:20Z",
+      "enableRemoteReplication": true,
+      "expirationReason": "None",
+      "expirationTime": null,
+      "groupID": 0,
+      "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+      "name": "test1",
+      "snapshotID": 3114,
+      "snapshotUUID": "5809a671-4ad0-4a76-9bf6-01cccf1e65eb",
+      "status": "done",
+      "totalSize": 5000658944,
+      "virtualVolumeID": null,
+      "volumeID": 1
+    }
+  }
+}
+----
+
+
+== Neu seit Version
+
+9,6

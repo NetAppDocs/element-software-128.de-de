@@ -1,0 +1,108 @@
+---
+permalink: api/reference_element_api_testhardwareconfig.html 
+sidebar: sidebar 
+keywords: node,test,testing,hardware,config,configuration,testhardwareconfig 
+summary: Mit der Methode TestHardwareConfig können Sie Hardwaretests an einem Knoten durchführen.  Zu den Testoptionen gehören die Überprüfung der Hardwarekonfigurationen, der Firmwareversionen und die Sicherstellung, dass alle Laufwerke vorhanden sind. 
+---
+= TestHardwareConfig
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `TestHardwareConfig` Methode zur Durchführung von Hardwaretests an einem Knoten.  Zu den Testoptionen gehören die Überprüfung der Hardwarekonfigurationen, der Firmwareversionen und die Sicherstellung, dass alle Laufwerke vorhanden sind.
+
+
+
+== Parameter
+
+
+NOTE: Diese Tests dienen nicht der Erkennung von Hardwarefehlern.
+
+Diese Methode hat die folgenden Eingabeparameter:
+
+|===
+| Name | Beschreibung | Typ | Standardwert | Erforderlich 
+
+
+ a| 
+sauber
+ a| 
+Startet den Hardwarekonfigurationstest mit einem leeren Cache. Mögliche Werte:
+
+* true: Löscht die zwischengespeicherte Testergebnisdatei und führt die Tests erneut aus.
+* false: Ruft zwischengespeicherte Testergebnisse ab.
+
+ a| 
+boolescher Wert
+ a| 
+FALSCH
+ a| 
+Nein
+
+
+
+ a| 
+Gewalt
+ a| 
+Der Kraftparameter muss in diese Methode einbezogen werden, um den Knoten erfolgreich zurückzusetzen.
+ a| 
+boolescher Wert
+ a| 
+Keine
+ a| 
+Ja
+
+|===
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Details
+ a| 
+Details zur Hardwarekonfiguration.
+ a| 
+JSON-Objekt
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "method": "TestHardwareConfig",
+   "params": {
+      "force": true
+     },
+   "id" : 1
+}
+----
+
+
+== Antwortbeispiel
+
+Aufgrund der Länge dieses Antwortbeispiels ist es in einem separaten Thema dokumentiert.
+
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_response_example_testhardwareconfig.adoc[TestHardwareConfig]

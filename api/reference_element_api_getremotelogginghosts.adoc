@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_getremotelogginghosts.html 
+sidebar: sidebar 
+keywords: remote,logging,hosts,host,get,getting,getremotelogginghosts 
+summary: Mit der Methode GetRemoteLoggingHosts können Sie die aktuelle Liste der Protokollserver abrufen. 
+---
+= GetRemoteLoggingHosts
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die `GetRemoteLoggingHosts` Methode zum Abrufen der aktuellen Liste der Log-Server.
+
+
+
+== Parameter
+
+Diese Methode hat keine Eingabeparameter.
+
+
+
+== Rückgabewert
+
+Diese Methode hat folgenden Rückgabewert:
+
+|===
+| Name | Beschreibung | Typ 
+
+
+ a| 
+Remote-Hosts
+ a| 
+Liste der IP-Adressen und Portinformationen von Hosts, die für den Empfang weitergeleiteter Protokollinformationen konfiguriert sind.
+ a| 
+xref:reference_element_api_loggingserver.adoc[Protokollierungsserver]Array
+
+|===
+
+
+== Anforderungsbeispiel
+
+Anfragen für diese Methode ähneln dem folgenden Beispiel:
+
+[listing]
+----
+{
+   "id": 3386609,
+   "method": "GetRemoteLoggingHosts",
+   "params": {}
+}
+----
+
+
+== Antwortbeispiel
+
+Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
+
+[listing]
+----
+{
+   "id": 3386609,
+   "result": {
+      "remoteHosts": [
+         {
+           "host": "172.16.1.20",
+           "port": 10514
+         },
+         {
+           "host": "172.16.1.25"
+         }
+      ]
+   }
+}
+----
+
+
+== Neu seit Version
+
+9,6
+
+
+
+== Weitere Informationen
+
+xref:reference_element_api_setremotelogginghosts.adoc[SetRemoteLoggingHosts]

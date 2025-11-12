@@ -1,0 +1,202 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-manage-storage-clusters.html 
+summary: Über die NetApp Hybrid Control-Benutzeroberfläche können Sie den Wartungsmodus für Speichercluster hinzufügen, entfernen, ändern sowie aktivieren und deaktivieren. 
+keywords: netapp, element, storage cluster, hybrid cloud control, hcc, maintenance mode, enable, disable 
+---
+= Fügen Sie Speichercluster mit NetApp Hybrid Cloud Control hinzu und verwalten Sie diese.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können Speichercluster zum Inventar der Management-Knoten-Assets hinzufügen, sodass diese mit NetApp Hybrid Cloud Control (HCC) verwaltet werden können.  Der erste während der Systemeinrichtung hinzugefügte Speichercluster ist der Standard-Speichercluster.link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["autoritativer Speichercluster"] Weitere Cluster können jedoch über die HCC-Benutzeroberfläche hinzugefügt werden.
+
+Nach dem Hinzufügen eines Speicherclusters können Sie die Clusterleistung überwachen, die Anmeldeinformationen für den verwalteten Speichercluster ändern oder einen Speichercluster aus dem Asset-Inventar des Verwaltungsknotens entfernen, wenn er nicht mehr mit HCC verwaltet werden muss.
+
+.Was du brauchst
+* *Cluster-Administratorberechtigungen*: Sie verfügen über Administratorrechte für den Cluster.link:../concepts/concept_intro_clusters.html#authoritative-storage-clusters["autoritativer Speichercluster"] Die  Der autoritative Cluster ist der erste Cluster, der während der Systemeinrichtung dem Management-Knoteninventar hinzugefügt wird.
+* *Element-Software*: Auf Ihrem Speichercluster läuft die NetApp Element -Software Version 11.3 oder höher.
+* *Management-Knoten*: Sie haben einen Management-Knoten mit Version 11.3 oder höher bereitgestellt.
+* *Verwaltungsdienste*: Sie haben Ihr Verwaltungsdienstpaket auf Version 2.17 oder höher aktualisiert.
+
+
+.Optionen
+* <<Fügen Sie einen Speichercluster hinzu.>>
+* <<Speicherclusterstatus bestätigen>>
+* <<Anmeldeinformationen für den Speichercluster bearbeiten>>
+* <<Entfernen eines Speicherclusters>>
+* <<Wartungsmodus aktivieren und deaktivieren>>
+
+
+
+
+== Fügen Sie einen Speichercluster hinzu.
+
+Sie können mit NetApp Hybrid Cloud Control einen Speichercluster zum Inventar der Management-Knoten-Assets hinzufügen.  Dies ermöglicht Ihnen die Verwaltung und Überwachung des Clusters mithilfe der HCC-Benutzeroberfläche.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des autorisierten Speichercluster-Administrators angeben.
+. Wählen Sie im Dashboard oben rechts das Optionsmenü und anschließend *Konfigurieren*.
+. Im Bereich *Speichercluster* wählen Sie *Speicherclusterdetails* aus.
+. Wählen Sie *Speichercluster hinzufügen*.
+. Geben Sie die folgenden Informationen ein:
++
+** virtuelle IP-Adresse für die Speicherclusterverwaltung
++
+
+NOTE: Es können nur entfernte Speichercluster hinzugefügt werden, die derzeit nicht von einem Management-Knoten verwaltet werden.
+
+** Benutzername und Passwort des Speicherclusters
+
+
+. Wählen Sie *Hinzufügen*.
++
+
+NOTE: Nach dem Hinzufügen des Speicherclusters kann es bis zu 2 Minuten dauern, bis die Clusterbestandsanzeige aktualisiert wird und der neue Eintrag angezeigt wird.  Möglicherweise müssen Sie die Seite in Ihrem Browser aktualisieren, um die Änderungen zu sehen.
+
+
+
+
+
+== Speicherclusterstatus bestätigen
+
+Sie können den Verbindungsstatus von Speichercluster-Assets über die NetApp Hybrid Cloud Control-Benutzeroberfläche überwachen.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des autorisierten Speichercluster-Administrators angeben.
+. Wählen Sie im Dashboard oben rechts das Optionsmenü und anschließend *Konfigurieren*.
+. Überprüfen Sie den Status der Speichercluster im Inventar.
+. Wählen Sie im Bereich *Speichercluster* die Option *Speicherclusterdetails* aus, um weitere Details anzuzeigen.
+
+
+
+
+== Anmeldeinformationen für den Speichercluster bearbeiten
+
+Sie können den Benutzernamen und das Passwort des Administrators des Speicherclusters über die NetApp Hybrid Cloud Control-Benutzeroberfläche bearbeiten.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des autorisierten Speichercluster-Administrators angeben.
+. Wählen Sie im Dashboard oben rechts das Optionsmenü und anschließend *Konfigurieren*.
+. Im Bereich *Speichercluster* wählen Sie *Speicherclusterdetails* aus.
+. Wählen Sie im Menü *Aktionen* für den Cluster die Option *Cluster-Anmeldeinformationen bearbeiten*.
+. Aktualisieren Sie den Benutzernamen und das Passwort des Speicherclusters.
+. Wählen Sie *Speichern*.
+
+
+
+
+== Entfernen eines Speicherclusters
+
+Durch das Entfernen eines Speicherclusters aus NetApp Hybrid Cloud Control wird der Cluster aus dem Management-Knoteninventar entfernt.  Nach dem Entfernen eines Speicherclusters kann dieser nicht mehr von HCC verwaltet werden und ist nur noch über die direkte Navigation zu seiner Management-IP-Adresse erreichbar.
+
+
+IMPORTANT: Der autoritative Cluster kann nicht aus dem Inventar entfernt werden.  Um den maßgeblichen Cluster zu ermitteln, gehen Sie zu *Benutzerverwaltung > Benutzer*.  Der maßgebliche Cluster ist neben der Überschrift *Benutzer* aufgeführt.
+
+.Schritte
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Anmeldeinformationen des autorisierten Speichercluster-Administrators angeben.
+. Wählen Sie im Dashboard oben rechts das Optionsmenü und anschließend *Konfigurieren*.
+. Im Bereich *Speichercluster* wählen Sie *Speicherclusterdetails* aus.
+. Wählen Sie im Menü *Aktionen* für den Cluster die Option *Speichercluster entfernen*.
++
+
+CAUTION: Durch Auswahl von *Ja* wird der Cluster anschließend aus der Installation entfernt.
+
+. Wählen Sie *Ja*.
+
+
+
+
+== Wartungsmodus aktivieren und deaktivieren
+
+Wenn Sie einen Speicherknoten für Wartungsarbeiten wie Software-Upgrades oder Host-Reparaturen offline nehmen müssen, können Sie die Auswirkungen auf die E/A-Last des restlichen Speicherclusters minimieren, indem Sie<<enable_main_mode,Aktivierung>> Wartungsmodus für diesen Knoten.  Wenn du<<disable_main_mode,deaktivieren>> Im Wartungsmodus wird der Knoten überwacht, um sicherzustellen, dass bestimmte Kriterien erfüllt sind, bevor der Knoten den Wartungsmodus verlassen kann.
+
+.Was du brauchst
+* *Element-Software*: Auf Ihrem Speichercluster läuft die NetApp Element -Software Version 12.2 oder höher.
+* *Management-Knoten*: Sie haben einen Management-Knoten mit Version 12.2 oder höher bereitgestellt.
+* *Management-Services*: Sie haben Ihr Management-Services-Paket auf Version 2.19 oder höher aktualisiert.
+* Sie haben Zugriff auf den Administrator-Login.
+
+
+
+
+=== [[enable_main_mode]]Wartungsmodus aktivieren
+
+Sie können das folgende Verfahren verwenden, um den Wartungsmodus für einen Speicherclusterknoten zu aktivieren.
+
+
+NOTE: Es kann immer nur ein Knoten im Wartungsmodus sein.
+
+.Schritte
+. Öffnen Sie die IP-Adresse des Management-Knotens in einem Webbrowser. Beispiel:
++
+[listing]
+----
+https://[management node IP address]
+----
+. Melden Sie sich bei NetApp Hybrid Cloud Control an, indem Sie die Administratoranmeldeinformationen für den SolidFire All-Flash-Speichercluster angeben.
++
+
+NOTE: Die Optionen des Wartungsmodus sind im Nur-Lese-Modus deaktiviert.
+
+. Wählen Sie im linken blauen Navigationsfeld die SolidFire All-Flash-Installation aus.
+. Im linken Navigationsbereich wählen Sie *Knoten* aus.
+. Um Informationen zum Lagerbestand anzuzeigen, wählen Sie *Lager*.
+. Wartungsmodus auf einem Speicherknoten aktivieren:
++
+[NOTE]
+====
+Die Tabelle der Speicherknoten wird alle zwei Minuten automatisch für Aktionen aktualisiert, die nicht vom Benutzer initiiert wurden.  Um sicherzustellen, dass Sie vor einer Aktion über den aktuellsten Status verfügen, können Sie die Knotentabelle aktualisieren, indem Sie das Aktualisierungssymbol oben rechts in der Knotentabelle verwenden.
+
+image:hcc_enable_maintenance_mode.PNG["Wartungsmodus aktivieren"]
+
+====
++
+.. Unter *Aktionen* wählen Sie *Wartungsmodus aktivieren*.
++
+Während der *Wartungsmodus* aktiviert ist, stehen Wartungsmodus-Aktionen weder für den ausgewählten Knoten noch für alle anderen Knoten im selben Cluster zur Verfügung.
+
++
+Nach Abschluss des Vorgangs *Aktivieren des Wartungsmodus* wird in der Spalte *Knotenstatus* für den Knoten, der sich im Wartungsmodus befindet, ein Schraubenschlüsselsymbol und der Text „*Wartungsmodus*“ angezeigt.
+
+
+
+
+
+
+
+=== [[disable_main_mode]]Wartungsmodus deaktivieren
+
+Nachdem ein Knoten erfolgreich in den Wartungsmodus versetzt wurde, steht für diesen Knoten die Aktion *Wartungsmodus deaktivieren* zur Verfügung.  Aktionen auf den anderen Knoten sind erst verfügbar, wenn der Wartungsmodus auf dem zu wartenden Knoten erfolgreich deaktiviert wurde.
+
+.Schritte
+. Wählen Sie für den Knoten im Wartungsmodus unter *Aktionen* die Option *Wartungsmodus deaktivieren*.
++
+Während der *Wartungsmodus* deaktiviert ist, stehen Wartungsmodus-Aktionen weder für den ausgewählten Knoten noch für alle anderen Knoten im selben Cluster zur Verfügung.
+
++
+Nach Abschluss der *Deaktivierung des Wartungsmodus* wird in der Spalte *Knotenstatus* der Status *Aktiv* angezeigt.
+
++
+
+NOTE: Wenn sich ein Knoten im Wartungsmodus befindet, nimmt er keine neuen Daten entgegen.  Daher kann es länger dauern, den Wartungsmodus zu deaktivieren, da der Knoten seine Daten erst wieder synchronisieren muss, bevor er den Wartungsmodus verlassen kann.  Je länger der Wartungsmodus aktiv ist, desto länger kann es dauern, den Wartungsmodus zu deaktivieren.
+
+
+
+
+
+=== Fehlerbehebung
+
+Wenn beim Aktivieren oder Deaktivieren des Wartungsmodus Fehler auftreten, wird oben in der Knotentabelle eine Fehlermeldung angezeigt.  Weitere Informationen zu dem Fehler erhalten Sie über den Link *Details anzeigen* im Banner. Dort sehen Sie, was die API zurückgibt.
+
+[discrete]
+== Weitere Informationen
+
+* link:../mnode/task_mnode_manage_storage_cluster_assets.html["Speichercluster-Assets erstellen und verwalten"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
+
