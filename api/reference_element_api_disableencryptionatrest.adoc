@@ -14,7 +14,7 @@ summary: Mit der Methode DisableEncryptionAtRest können Sie die Verschlüsselun
 Sie können die `DisableEncryptionAtRest` Methode zum Entfernen der zuvor auf den Cluster angewendeten Verschlüsselung mithilfe der `EnableEncryptionAtRest` Verfahren.  Diese Deaktivierungsmethode ist asynchron und gibt eine Antwort zurück, bevor die Verschlüsselung deaktiviert wird.  Sie können die `GetClusterInfo` Methode, um das System abzufragen und festzustellen, wann der Prozess abgeschlossen ist.
 
 
-TIP: Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:api/reference_element_api_getclusterinfo.html["Methode zum Abrufen von Clusterinformationen"] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"]Die
+TIP: Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:../api/reference_element_api_getclusterinfo.html["Methode zum Abrufen von Clusterinformationen"] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"]Die
 
 
 NOTE: Mit dieser Methode lässt sich die Softwareverschlüsselung im Ruhezustand nicht deaktivieren.  Um die Softwareverschlüsselung im Ruhezustand zu deaktivieren, müssen Sielink:reference_element_api_createcluster.html["Einen neuen Cluster erstellen"] mit deaktivierter Softwareverschlüsselung im Ruhezustand.
@@ -67,7 +67,7 @@ Diese Methode liefert eine Antwort, die dem folgenden Beispiel ähnelt:
 [discrete]
 == Weitere Informationen
 
-* link:api/reference_element_api_getclusterinfo.html["GetClusterInfo"]
+* link:../api/reference_element_api_getclusterinfo.html["GetClusterInfo"]
 * https://docs.netapp.com/us-en/element-software/index.html["SolidFire und Element-Softwaredokumentation"]
 * https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["Dokumentation für frühere Versionen der NetApp SolidFire und Element-Produkte"^]
 
