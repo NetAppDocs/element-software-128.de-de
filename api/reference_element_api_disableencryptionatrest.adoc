@@ -13,12 +13,13 @@ summary: Mit der Methode DisableEncryptionAtRest können Sie die Verschlüsselun
 [role="lead"]
 Sie können die `DisableEncryptionAtRest` Methode zum Entfernen der zuvor auf den Cluster angewendeten Verschlüsselung mithilfe der `EnableEncryptionAtRest` Verfahren.  Diese Deaktivierungsmethode ist asynchron und gibt eine Antwort zurück, bevor die Verschlüsselung deaktiviert wird.  Sie können die `GetClusterInfo` Methode, um das System abzufragen und festzustellen, wann der Prozess abgeschlossen ist.
 
+[NOTE]
+====
+* Mit dieser Methode lässt sich die Softwareverschlüsselung im Ruhezustand nicht deaktivieren.  Um die Softwareverschlüsselung im Ruhezustand zu deaktivieren, müssen Sielink:reference_element_api_createcluster.html["Einen neuen Cluster erstellen"] mit deaktivierter Softwareverschlüsselung im Ruhezustand.
+* Um den aktuellen Status der Verschlüsselung ruhender Daten, der Softwareverschlüsselung ruhender Daten oder beider im Cluster anzuzeigen, verwenden Sie die link:../api/reference_element_api_getclusterinfo.html["Methode zum Abrufen von Clusterinformationen"]Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"]Die
 
-TIP: Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:../api/reference_element_api_getclusterinfo.html["Methode zum Abrufen von Clusterinformationen"] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"]Die
 
-
-NOTE: Mit dieser Methode lässt sich die Softwareverschlüsselung im Ruhezustand nicht deaktivieren.  Um die Softwareverschlüsselung im Ruhezustand zu deaktivieren, müssen Sielink:reference_element_api_createcluster.html["Einen neuen Cluster erstellen"] mit deaktivierter Softwareverschlüsselung im Ruhezustand.
-
+====
 
 
 == Parameter

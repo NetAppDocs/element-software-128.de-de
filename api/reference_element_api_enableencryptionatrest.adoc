@@ -13,12 +13,13 @@ summary: 'Mit der Methode EnableEncryptionAtRest können Sie die Advanced Encryp
 [role="lead"]
 Sie können die `EnableEncryptionAtRest` Methode zur Aktivierung der Advanced Encryption Standard (AES) 256-Bit-Verschlüsselung ruhender Daten im Cluster, damit der Cluster den für die Laufwerke auf jedem Knoten verwendeten Verschlüsselungsschlüssel verwalten kann.  Diese Funktion ist nicht standardmäßig aktiviert.
 
+[NOTE]
+====
+* Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:../api/reference_element_api_getclusterinfo["Methode zum Abrufen von Clusterinformationen"^] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"^]Die
+* Diese Methode ermöglicht keine Softwareverschlüsselung im Ruhezustand.  Dies kann nur mit Hilfe des/derlink:../api/reference_element_api_createcluster.html["Methode zum Erstellen von Clustern"^] mit `enableSoftwareEncryptionAtRest` eingestellt auf `true` Die
 
-TIP: Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie dielink:../api/reference_element_api_getclusterinfo["Methode zum Abrufen von Clusterinformationen"^] Die Sie können die `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["Methode zum Abrufen von Informationen, die der Cluster zur Verschlüsselung ruhender Daten verwendet"^]Die
 
-
-NOTE: Diese Methode ermöglicht keine Softwareverschlüsselung im Ruhezustand.  Dies kann nur mit Hilfe des/derlink:../api/reference_element_api_createcluster.html["Methode zum Erstellen von Clustern"^] mit `enableSoftwareEncryptionAtRest` eingestellt auf `true` Die
-
+====
 Wenn Sie die Verschlüsselung ruhender Daten aktivieren, verwaltet der Cluster die Verschlüsselungsschlüssel für die Laufwerke auf jedem Knoten im Cluster automatisch intern.
 
 Wenn eine keyProviderID angegeben wird, wird das Passwort entsprechend dem Typ des Schlüsselanbieters generiert und abgerufen.  Dies geschieht üblicherweise mithilfe eines KMIP-Schlüsselservers (Key Management Interoperability Protocol), wenn ein KMIP-Schlüsselanbieter verwendet wird.  Nach diesem Vorgang gilt der angegebene Provider als aktiv und kann erst gelöscht werden, wenn die Verschlüsselung ruhender Daten deaktiviert wird. `DisableEncryptionAtRest` Verfahren.

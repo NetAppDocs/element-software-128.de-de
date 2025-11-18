@@ -755,8 +755,6 @@
   <block id="00ae1f75b0c9cec52e9827d766f2a9f0" category="paragraph"><block ref="00ae1f75b0c9cec52e9827d766f2a9f0" category="inline-link-macro-rx"></block></block>
   <block id="a0ccd69fa0bf592109e0896c3f9257e9" category="section-title">API-Methoden zur Clustererstellung</block>
   <block id="df40a0d48604ceb446509f54dd53d965" category="paragraph">Sie können diese API-Methoden verwenden, um einen Speichercluster zu erstellen.  Alle diese Methoden müssen auf einem einzelnen Knoten gegen den API-Endpunkt angewendet werden.</block>
-  <block id="0308f0d51b4ba54593f1e96114c69c11" category="inline-link-macro">Erfahren Sie mehr über die API-Methoden zur Clustererstellung.</block>
-  <block id="1bed70a38ca13f48bede345dc001e2c9" category="paragraph"><block ref="1bed70a38ca13f48bede345dc001e2c9" category="inline-link-macro-rx"></block></block>
   <block id="6a67229ead1343c9647798cef324176a" category="section-title">Drive-API-Methoden</block>
   <block id="81edb4223e14439aae2b852f3ff5fa9b" category="paragraph">Sie können die Methoden der Drive-API verwenden, um Laufwerke, die einem Speichercluster zur Verfügung stehen, hinzuzufügen und zu verwalten.  Wenn Sie einen Speicherknoten zum Speichercluster hinzufügen oder neue Laufwerke in einem vorhandenen Speicherknoten installieren, stehen die Laufwerke zur Hinzufügung zum Speichercluster zur Verfügung.</block>
   <block id="d9d1e170360eff3d6edce6bc5ac15a96" category="inline-link-macro">Erfahren Sie mehr über die Drive-API-Methoden.</block>
@@ -12429,6 +12427,9 @@
   <block id="5a4bef238f8c68aedf2579a9018edb5a" category="sidebar">Lernen über die Arbeit mit knotenspezifischen Hilfsprogrammen</block>
   <block id="909a1c829d29d09da00949e5c8b87a0e" category="sidebar">Rüsten Sie Ihr NetApp SolidFire All-Flash-Speichersystem auf</block>
   <block id="b837bae0f441ebacd86887d737939282" category="sidebar">Systemaktualisierungsverfahren</block>
-  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">Um den aktuellen Status der Verschlüsselung ruhender Daten und/oder der Softwareverschlüsselung ruhender Daten auf dem Cluster anzuzeigen, verwenden Sie die<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> Die Sie können die<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>Die</block>
   <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
+  <block id="57a0b277e5bc33fa133ed50fee2e39c7" category="section-title">API-Methoden zur Clustererstellung</block>
+  <block id="ed23ae983fdf44661032ebde203dc482" category="inline-link-macro">Erfahren Sie mehr über die API-Methoden zur Clustererstellung.</block>
+  <block id="124da988a52d4207ceb89c16326011cd" category="paragraph"><block ref="124da988a52d4207ceb89c16326011cd" category="inline-link-macro-rx"></block></block>
+  <block id="e7d0e70ab185af3096a889f5850e7526" category="list-text">Um den aktuellen Status der Verschlüsselung ruhender Daten, der Softwareverschlüsselung ruhender Daten oder beider im Cluster anzuzeigen, verwenden Sie die <block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block>Die Sie können die<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>Die</block>
 </blocks>
